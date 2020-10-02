@@ -14,3 +14,6 @@ Thời buổi công nghệ phát triển việc kinh doanh tiệm cafe hay trà 
 - Có chức năng quản lí nhân viên và thực hiện một số hành động như: hiển thị thông tin nhân viên, thêm nhân viên mới, xóa nhân viên,...
 ## *Giáo viên hướng dẫn*
 Thầy Nguyễn Tấn Toàn 
+## *Demo giao diện*
+- P1: https://ninjamock.com/s/D2FQ6Gx
+- P2: https://ninjamock.com/s/V4SX5Gx
