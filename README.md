@@ -8,12 +8,30 @@ Thời buổi công nghệ phát triển việc kinh doanh tiệm cafe hay trà 
 ## *Đối tượng*
 - Người quản lý quán cafe
 - Người quản lý cửa hàng kinh doanh về ẩm thực
-## *Yêu cầu*
-- Các tính năng cần có: tạo danh sách sản phẩm(thức uống,đồ ăn,...), thêm hoặc xóa 1 sản phẩm, thống kê bán hàng.
-- Giao diện phù hợp với yêu cầu lĩnh vực cần quản lí, dễ sử dụng.
-- Có chức năng quản lí nhân viên và thực hiện một số hành động như: hiển thị thông tin nhân viên, thêm nhân viên mới, xóa nhân viên,...
 ## *Giáo viên hướng dẫn*
 Thầy Nguyễn Tấn Toàn 
 ## *Demo giao diện*
 - P1: https://ninjamock.com/s/D2FQ6Gx
 - P2: https://ninjamock.com/s/V4SX5Gx
+## *Danh sách tính năng*
+1. Chức năng quản lý bàn
+- Biết được trạng thái của bàn (có người hay chưa có người) 
+- Gọi món (loại, số lượng)
+- Xóa món (loại, số lượng)
+- Chuyển bàn
+- Xuất hóa đơn (được giảm giá hoặc không)
+2. Chức năng quản lý món 
+- Thêm hoặc xóa 1 món
+- Đổi tên hoặc giá của 1 món
+3. Chức năng quản lý nhân viên
+- Thêm hoặc xóa 1 nhân viên
+- Cập nhật thông tin nhân viên (tên, địa chỉ, giới tính, vị trí làm việc)
+- Điều chỉnh ca làm việc
+4. Chức năng thống kê
+- Thống kê tổng số giờ làm việc của 1 nhân viên + thái độ làm việc
+- Thống kê số lượng món được bán + đánh giá của khách hàng (nếu có)
+- Thống kê tổng thu nhập + số tiền lương phải trả cho nhân viên
+5. Chức năng quản lý tài khoản
+- Tạo mới 1 tài khoản (admin hoặc user)
+- Xóa 1 tài khoản (chỉ có admin mới có quyền xóa user)
+- Reset mật khẩu
