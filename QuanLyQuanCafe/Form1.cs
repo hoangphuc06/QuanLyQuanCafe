@@ -24,12 +24,25 @@ namespace QuanLyQuanCafe
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            fTableManager f = new fTableManager();
-            this.Hide();
-            f.ShowDialog();
-            this.Show();
+            string username = txbUser.Text;
+            string password = txbPassWord.Text;
+            if (Login(username, password))
+            {
+                fTableManager f = new fTableManager();
+                this.Hide();
+                f.ShowDialog();
+                this.Show();
+            }
+            else
+            {
+                MessageBox.Show("Sai tài khoản mật khẩu");
+            }
         }
 
+        bool Login(string Username,string Password)
+        {
+            return UserAccount.Instance.Login(Username, Password);
+        }
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -41,6 +54,11 @@ namespace QuanLyQuanCafe
             {
                 e.Cancel = true;
             }    
+        }
+
+        private void txbPassWord_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
