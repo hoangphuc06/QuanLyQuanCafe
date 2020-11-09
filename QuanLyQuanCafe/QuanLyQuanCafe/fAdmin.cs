@@ -45,7 +45,7 @@ namespace QuanLyQuanCafe
 
         void AddAccount(string userName, string displayName, int type)
         {
-           if (UserAccount.Instance.InsertAccount(userName, displayName, type) == true)
+           if (UserAccount.Instance.InsertAccount(userName, displayName, type))
             {
                 MessageBox.Show("Thêm tài khoản thành công");
 
@@ -61,6 +61,7 @@ namespace QuanLyQuanCafe
             if (UserAccount.Instance.UpdateAccount(userName, displayName, type))
             {
                 MessageBox.Show("Cập nhật tài khoản thành công");
+
             }
             else
             {
@@ -68,7 +69,6 @@ namespace QuanLyQuanCafe
             }
             LoadAccount();
         }
-
 
         void DeleteAccount(string userName)
         {
