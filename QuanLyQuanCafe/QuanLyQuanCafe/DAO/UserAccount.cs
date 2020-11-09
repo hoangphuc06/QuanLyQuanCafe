@@ -92,16 +92,9 @@ namespace QuanLyQuanCafe
 
         public bool InsertAccount(string name, string displayName, int type)
         {
-            if (Check(name) == 1)
-            {
-                string query = string.Format("INSERT dbo.Account (UserName, DisplayName, Type, PassWord) VALUES ( N'{0}', N'{1}', {2}, N'{3}')", name, displayName, type, "1962026656160185351301320480154111117132155");
-                int result = DataProvider.Instance.ExecuteNonQuery(query);
-                return result > 0;
-            }    
-            else
-            {
-                return false;
-            }    
+            string query = string.Format("INSERT dbo.Account (UserName, DisplayName, Type, PassWord) VALUES ( N'{0}', N'{1}', {2}, N'{3}')", name, displayName, type, "1962026656160185351301320480154111117132155");
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
         }
 
         public bool UpdateAccount(string name, string displayName, int type)
@@ -123,16 +116,6 @@ namespace QuanLyQuanCafe
             string query = string.Format("UPDATE dbo.Account SET PassWord = N'1962026656160185351301320480154111117132155' WHERE UserName = N'{0}'", name);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
-        }
-
-        public int Check(string userName)
-        {
-            string check = string.Format("SELECT * FROM dbo.Account WHERE UserName = N'{0}'", userName);
-            var test = DataProvider.Instance.ExecuteScalar(check);
-            if (test == null)
-                return 1;
-            else
-                return 0;
         }
     }
 }

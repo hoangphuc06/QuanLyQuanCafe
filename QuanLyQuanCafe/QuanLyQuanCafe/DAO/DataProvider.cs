@@ -20,7 +20,7 @@ namespace QuanLyQuanCafe.DAO
 
         private DataProvider() { }
 
-        private string connectionSTR = @"Data Source=LAPTOP-2V5RLH6O\SQLEXPRESS01;Initial Catalog=QuanLyQuanCafe;Integrated Security=True";
+        private string connectionSTR = @"Data Source=MAYTINH\SQLEXPRESS;Initial Catalog = QuanLyQuanCafe; Integrated Security = True";
 
         public DataTable ExecuteQuery(string query, object[] parameter = null)
         {

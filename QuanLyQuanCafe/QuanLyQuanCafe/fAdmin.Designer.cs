@@ -104,7 +104,6 @@
             this.panel25 = new System.Windows.Forms.Panel();
             this.btnResetPassWord = new System.Windows.Forms.Button();
             this.panel26 = new System.Windows.Forms.Panel();
-            this.nudAccountType = new System.Windows.Forms.NumericUpDown();
             this.lbTypeAccount = new System.Windows.Forms.Label();
             this.panel27 = new System.Windows.Forms.Panel();
             this.txbDisplayName = new System.Windows.Forms.TextBox();
@@ -112,6 +111,7 @@
             this.panel28 = new System.Windows.Forms.Panel();
             this.txbUserName = new System.Windows.Forms.TextBox();
             this.lbUserName = new System.Windows.Forms.Label();
+            this.nudAccountType = new System.Windows.Forms.NumericUpDown();
             this.Admin.SuspendLayout();
             this.tbBill.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -149,9 +149,9 @@
             this.panel24.SuspendLayout();
             this.panel25.SuspendLayout();
             this.panel26.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudAccountType)).BeginInit();
             this.panel27.SuspendLayout();
             this.panel28.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAccountType)).BeginInit();
             this.SuspendLayout();
             // 
             // Admin
@@ -845,7 +845,6 @@
             // 
             // dtgvAccount
             // 
-            this.dtgvAccount.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvAccount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvAccount.Location = new System.Drawing.Point(4, 4);
             this.dtgvAccount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -944,19 +943,6 @@
             this.panel26.Size = new System.Drawing.Size(331, 55);
             this.panel26.TabIndex = 2;
             // 
-            // nudAccountType
-            // 
-            this.nudAccountType.Location = new System.Drawing.Point(187, 17);
-            this.nudAccountType.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudAccountType.Name = "nudAccountType";
-            this.nudAccountType.ReadOnly = true;
-            this.nudAccountType.Size = new System.Drawing.Size(50, 22);
-            this.nudAccountType.TabIndex = 1;
-            // 
             // lbTypeAccount
             // 
             this.lbTypeAccount.AutoSize = true;
@@ -1023,6 +1009,18 @@
             this.lbUserName.TabIndex = 0;
             this.lbUserName.Text = "Tên tài khoản:";
             // 
+            // nudAccountType
+            // 
+            this.nudAccountType.Location = new System.Drawing.Point(187, 17);
+            this.nudAccountType.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudAccountType.Name = "nudAccountType";
+            this.nudAccountType.Size = new System.Drawing.Size(50, 22);
+            this.nudAccountType.TabIndex = 1;
+            // 
             // fAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1081,11 +1079,11 @@
             this.panel25.ResumeLayout(false);
             this.panel26.ResumeLayout(false);
             this.panel26.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudAccountType)).EndInit();
             this.panel27.ResumeLayout(false);
             this.panel27.PerformLayout();
             this.panel28.ResumeLayout(false);
             this.panel28.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAccountType)).EndInit();
             this.ResumeLayout(false);
 
         }
