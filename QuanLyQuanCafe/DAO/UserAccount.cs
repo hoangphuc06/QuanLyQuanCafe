@@ -38,10 +38,10 @@ namespace QuanLyQuanCafe
             foreach (byte item in hashData)
             {
                 hashPass += item;
-            }    
+            }
 
             string query = "USP_Login @username , @password";
-            DataTable result = DataProvider.Instance.ExecuteQuery(query,new object[]{username,hashPass});
+            DataTable result = DataProvider.Instance.ExecuteQuery(query, new object[] { username, hashPass });
             return result.Rows.Count > 0;
         }
 
@@ -56,7 +56,7 @@ namespace QuanLyQuanCafe
             return null;
         }
 
-        public bool UpdateAccount(string userName, string displayName, string pass, string newPass)
+        public bool UpdatePassword(string userName, string pass, string newPass)
         {
             // Mã hóa password
             byte[] temp1 = ASCIIEncoding.ASCII.GetBytes(pass);
@@ -79,12 +79,20 @@ namespace QuanLyQuanCafe
                 {
                     hashPass2 += item;
                 }
-            }    
-            
-            int result = DataProvider.Instance.ExecuteNonQuery("exec USP_UpdateAccount @userName , @displayName , @password , @newPassword", new object[] {userName, displayName, hashPass1, hashPass2});
+            }
+
+            string query = string.Format("UPDATE dbo.Account SET PassWord = N'{0}' WHERE UserName = N'{1}' AND PassWord = N'{2}'", hashPass2, userName, hashPass1);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }
-        
+
+        public bool UpdateAccount(string name, string displayName)
+        {
+            string query = string.Format("UPDATE dbo.Account SET DisplayName = N'{1}' WHERE UserName = N'{0}'", name, displayName);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
+
         public DataTable GetListAccount()
         {
             return DataProvider.Instance.ExecuteQuery("SELECT UserName, DisplayName, Type FROM dbo.Account");
@@ -97,11 +105,11 @@ namespace QuanLyQuanCafe
                 string query = string.Format("INSERT dbo.Account (UserName, DisplayName, Type, PassWord) VALUES ( N'{0}', N'{1}', {2}, N'{3}')", name, displayName, type, "1962026656160185351301320480154111117132155");
                 int result = DataProvider.Instance.ExecuteNonQuery(query);
                 return result > 0;
-            }    
+            }
             else
             {
                 return false;
-            }    
+            }
         }
 
         public bool UpdateAccount(string name, string displayName, int type)
