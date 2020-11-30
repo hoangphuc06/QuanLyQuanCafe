@@ -10,130 +10,83 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QuanLyQuanCafe.FormChildren;
+using QuanLyQuanCafe.DTO;
 
 namespace QuanLyQuanCafe
 {
     public partial class fAdmin : Form
     {
-        BindingSource accountList = new BindingSource();
+        private Account loginAccount;
+        private Form activeForm;
 
-        public Account loginAccount;
-        public fAdmin()
+        public Account LoginAccount
+        {
+            get
+            {
+                return loginAccount;
+            }
+            set
+            {
+                loginAccount = value;
+            }
+        }
+        public fAdmin(Account acc)
         {
             InitializeComponent();
-            load();
+            this.LoginAccount = acc;
+            fcAccountList fc = new fcAccountList(LoginAccount);
+            OpenChildFrom(fc);
         }
 
-        void load()
+        private void OpenChildFrom(Form childForm)
         {
-            dtgvAccount.DataSource = accountList;
-            LoadAccount();
-            AddAccountBinding();
-        }
-        
-        void AddAccountBinding()
-        {
-            txbUserName.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "UserName", true, DataSourceUpdateMode.Never));
-            txbDisplayName.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "DisplayName", true, DataSourceUpdateMode.Never));
-            nudAccountType.DataBindings.Add(new Binding("Value", dtgvAccount.DataSource, "Type", true, DataSourceUpdateMode.Never));
-        }
-
-        void LoadAccount()
-        {
-            accountList.DataSource = UserAccount.Instance.GetListAccount();
-        }
-
-        void AddAccount(string userName, string displayName, int type)
-        {
-           if (UserAccount.Instance.InsertAccount(userName, displayName, type) == true)
+            if (activeForm != null)
             {
-                MessageBox.Show("Thêm tài khoản thành công");
-
-            }   
-           else
-            {
-                MessageBox.Show("Thêm tài khoản thất bại");
+                activeForm.Close();
             }
-            LoadAccount();
-        }
-        void EditAccount(string userName, string displayName, int type)
-        {
-            if (UserAccount.Instance.UpdateAccount(userName, displayName, type))
-            {
-                MessageBox.Show("Cập nhật tài khoản thành công");
-            }
-            else
-            {
-                MessageBox.Show("Cập nhật tài khoản thất bại");
-            }
-            LoadAccount();
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            this.panelDesktop.Controls.Add(childForm);
+            this.panelDesktop.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
         }
 
-
-        void DeleteAccount(string userName)
+        private void btnAccount_Click(object sender, EventArgs e)
         {
-            if (loginAccount.UserName.Equals(userName))
-            {
-                MessageBox.Show("Không thể xóa tài khoản đang được đăng nhập");
-                return;
-            }    
-            if (UserAccount.Instance.DeleteAccount(userName))
-            {
-                MessageBox.Show("Xóa tài khoản thành công");
-
-            }
-            else
-            {
-                MessageBox.Show("Xóa tài khoản thất bại");
-            }
-            LoadAccount();
+            panelRight.Top = btnAccount.Top;
+            panelRight.Height = btnAccount.Height;
+            fcAccountList fc = new fcAccountList(LoginAccount);
+            OpenChildFrom(fc);
         }
 
-        void ResetPassword(string userName)
+        private void btnBill_Click(object sender, EventArgs e)
         {
-            if (UserAccount.Instance.ResetPassword(userName))
-            {
-                MessageBox.Show("Đặt lại mật khẩu thành công");
-
-            }
-            else
-            {
-                MessageBox.Show("Đặt lại mật khẩu thất bại");
-            }
-            LoadAccount();
+            panelRight.Top = btnBill.Top;
+            panelRight.Height = btnBill.Height;
         }
 
-        private void btnShowAccount_Click(object sender, EventArgs e)
+        private void btnTable_Click(object sender, EventArgs e)
         {
-            LoadAccount();
+            panelRight.Top = btnTable.Top;
+            panelRight.Height = btnTable.Height;
         }
 
-        private void btnAddAccount_Click(object sender, EventArgs e)
+        private void btnCategory_Click(object sender, EventArgs e)
         {
-            string userName = txbUserName.Text;
-            string displayName = txbDisplayName.Text;
-            int type = (int)nudAccountType.Value;
-            AddAccount(userName, displayName, type);
+            panelRight.Top = btnCategory.Top;
+            panelRight.Height = btnCategory.Height;
         }
 
-        private void btnDeleteAccount_Click(object sender, EventArgs e)
+        private void btnFood_Click(object sender, EventArgs e)
         {
-            string userName = txbUserName.Text;
-            DeleteAccount(userName);
-        }
-
-        private void btnEditAccount_Click(object sender, EventArgs e)
-        {
-            string userName = txbUserName.Text;
-            string displayName = txbDisplayName.Text;
-            int type = (int)nudAccountType.Value;
-            EditAccount(userName, displayName, type);
-        }
-
-        private void btnResetPassWord_Click(object sender, EventArgs e)
-        {
-            string userName = txbUserName.Text;
-            ResetPassword(userName);
+            panelRight.Top = btnFood.Top;
+            panelRight.Height = btnFood.Height;
+            fcFood fc = new fcFood();
+            OpenChildFrom(fc);
         }
     }
 }

@@ -18,15 +18,11 @@ namespace QuanLyQuanCafe
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string username = txbUser.Text;
-            string password = txbPassWord.Text;
+            string password = txbPassword.Text;
             if (Login(username, password))
             {
                 Account loginAccount = UserAccount.Instance.GetAccountByUserNamae(username);
@@ -41,13 +37,9 @@ namespace QuanLyQuanCafe
             }
         }
 
-        bool Login(string Username,string Password)
+        bool Login(string Username, string Password)
         {
             return UserAccount.Instance.Login(Username, Password);
-        }
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
 
         private void fLogin_FormClosing(object sender, FormClosingEventArgs e)
@@ -55,10 +47,20 @@ namespace QuanLyQuanCafe
             if (MessageBox.Show("Bạn có thật sự muốn thoát chương trình ?", "Thông báo", MessageBoxButtons.OKCancel) != System.Windows.Forms.DialogResult.OK)
             {
                 e.Cancel = true;
-            }    
+            }
         }
 
-        private void txbPassWord_TextChanged(object sender, EventArgs e)
+        private void lbExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void txbPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fLogin_Load(object sender, EventArgs e)
         {
 
         }

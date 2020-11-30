@@ -14,6 +14,11 @@ namespace QuanLyQuanCafe
 {
     public partial class fTableManager : Form
     {
+        public fTableManager()
+        {
+            InitializeComponent();
+        }
+
         private Account loginAccount;
 
         public Account LoginAccount
@@ -27,7 +32,7 @@ namespace QuanLyQuanCafe
                 loginAccount = value;
                 ChangeAccount(LoginAccount.Type);
             }
-        }    
+        }
 
         public fTableManager(Account acc)
         {
@@ -38,8 +43,9 @@ namespace QuanLyQuanCafe
         #region Method
         void ChangeAccount(int type)
         {
-            adminToolStripMenuItem.Enabled = type == 0;
-            thôngTinTàiKhoảnToolStripMenuItem.Text += " (" + LoginAccount.DisplayName + ")";
+            if (type == 1)
+                btnAdmin.Hide();
+            lbInfoUser.Text =  LoginAccount.DisplayName;
         }
         void LoadTable()
         {
@@ -47,7 +53,7 @@ namespace QuanLyQuanCafe
 
             foreach (Table item in tablelist)
             {
-                Button btn = new Button() {Width = TableDAO.TableWidth, Height =  TableDAO.TableHeight};
+                Button btn = new Button() { Width = TableDAO.TableWidth, Height = TableDAO.TableHeight };
                 btn.Text = item.Name + Environment.NewLine + item.Status;
                 btn.Click += Btn_Click;
                 btn.Tag = item;
@@ -55,16 +61,15 @@ namespace QuanLyQuanCafe
                 switch (item.Status)
                 {
                     case "Trống":
-                        btn.BackColor = Color.AliceBlue;
+                        btn.BackColor = Color.White;
                         break;
                     default:
-                        btn.BackColor = Color.LightYellow;
+                        btn.BackColor = Color.Green;
                         break;
-                }    
+                }
                 flpTable.Controls.Add(btn);
-            }    
+            }
         }
-
         void ShowBill(int id)
         {
             lsvBill.Items.Clear();
@@ -77,43 +82,51 @@ namespace QuanLyQuanCafe
                 lsvItem.SubItems.Add(item.TotalPrice.ToString());
 
                 lsvBill.Items.Add(lsvItem);
-            }    
-        }
-        #endregion
-        #region Events
-        private void Btn_Click(object sender, EventArgs e)
-        {
-            int tableID = ((sender as Button).Tag as Table).ID;
-            ShowBill(tableID);    
+            }
         }
 
-        private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
+        #endregion
+        #region Event
+        private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void thôngTinCáNhânToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnAdmin_Click(object sender, EventArgs e)
         {
-            fAccountProfile f = new fAccountProfile(loginAccount);
-            f.UpdateAccount += f_UpdateAccount;
+            fAdmin f = new fAdmin(LoginAccount);
             f.ShowDialog();
         }
 
-        void f_UpdateAccount (object sender, AccountEvent e)
+        private void btnUser_Click(object sender, EventArgs e)
         {
-            thôngTinTàiKhoảnToolStripMenuItem.Text = "Thông tin tài khoản (" + e.Acc.DisplayName + ")";
-        }
-
-        private void adminToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            fAdmin f = new fAdmin();
-            f.loginAccount = loginAccount;
+            fAccount f = new fAccount(loginAccount);
             f.ShowDialog();
         }
 
-
+        private void Btn_Click(object sender, EventArgs e)
+        {
+            int tableID = ((sender as Button).Tag as Table).ID;
+            ShowBill(tableID);
+        }
         #endregion
 
-       
+        private void btnCheckOut_Click(object sender, EventArgs e)
+        {
+            fCheckOut f = new fCheckOut();
+            f.ShowDialog();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            fOrderFood f = new fOrderFood();
+            f.ShowDialog();
+        }
+
+        private void btnSwitchTable_Click(object sender, EventArgs e)
+        {
+            fSwitchTable f = new fSwitchTable();
+            f.ShowDialog();
+        }
     }
 }

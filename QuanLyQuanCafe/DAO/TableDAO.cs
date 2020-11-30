@@ -33,7 +33,7 @@ namespace QuanLyQuanCafe.DAO
             {
                 Table table = new Table(item);
                 tablelsit.Add(table);
-            }    
+            }
 
             return tablelsit;
         }

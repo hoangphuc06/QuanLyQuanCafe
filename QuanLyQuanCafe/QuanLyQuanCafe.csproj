@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{495E5D9B-2EB1-41FC-92BE-75DDAD395367}</ProjectGuid>
+    <ProjectGuid>{D665888C-33A6-426B-9674-67611809E68F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>QuanLyQuanCafe</RootNamespace>
     <AssemblyName>QuanLyQuanCafe</AssemblyName>
@@ -33,12 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MaterialSkin, Version=2.1.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MaterialSkin.2.2.1.3\lib\net461\MaterialSkin.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="ReaLTaiizor, Version=3.7.8.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ReaLTaiizor.3.7.8.1\lib\net472\ReaLTaiizor.dll</HintPath>
+    <Reference Include="FontAwesome.Sharp, Version=5.15.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.Sharp.5.15.3\lib\net472\FontAwesome.Sharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -53,22 +49,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAO\BillDAO.cs" />
-    <Compile Include="DAO\BillInfoDAO.cs" />
+    <Compile Include="DAO\CategoryDAO.cs" />
     <Compile Include="DAO\DataProvider.cs" />
+    <Compile Include="DAO\FoodDAO.cs" />
     <Compile Include="DAO\MenuDAO.cs" />
     <Compile Include="DAO\TableDAO.cs" />
     <Compile Include="DAO\UserAccount.cs" />
     <Compile Include="DTO\Account.cs" />
-    <Compile Include="DTO\Bill.cs" />
-    <Compile Include="DTO\BillInfo.cs" />
+    <Compile Include="DTO\Category.cs" />
+    <Compile Include="DTO\Food.cs" />
     <Compile Include="DTO\Menu.cs" />
     <Compile Include="DTO\Table.cs" />
-    <Compile Include="fAccountProfile.cs">
+    <Compile Include="fAccount.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="fAccountProfile.Designer.cs">
-      <DependentUpon>fAccountProfile.cs</DependentUpon>
+    <Compile Include="fAccount.Designer.cs">
+      <DependentUpon>fAccount.cs</DependentUpon>
     </Compile>
     <Compile Include="fAdmin.cs">
       <SubType>Form</SubType>
@@ -76,11 +72,53 @@
     <Compile Include="fAdmin.Designer.cs">
       <DependentUpon>fAdmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="fCheckOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fCheckOut.Designer.cs">
+      <DependentUpon>fCheckOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fOrderFood.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fOrderFood.Designer.cs">
+      <DependentUpon>fOrderFood.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormChildren\fcAccountInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChildren\fcAccountInfo.Designer.cs">
+      <DependentUpon>fcAccountInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormChildren\fcAccountList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChildren\fcAccountList.Designer.cs">
+      <DependentUpon>fcAccountList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormChildren\fcChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChildren\fcChangePassword.Designer.cs">
+      <DependentUpon>fcChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormChildren\fcFood.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChildren\fcFood.Designer.cs">
+      <DependentUpon>fcFood.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fSwitchTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fSwitchTable.Designer.cs">
+      <DependentUpon>fSwitchTable.cs</DependentUpon>
     </Compile>
     <Compile Include="fTableManager.cs">
       <SubType>Form</SubType>
@@ -90,14 +128,26 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="fAccountProfile.resx">
-      <DependentUpon>fAccountProfile.cs</DependentUpon>
+    <EmbeddedResource Include="fAccount.resx">
+      <DependentUpon>fAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fAdmin.resx">
       <DependentUpon>fAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChildren\fcAccountInfo.resx">
+      <DependentUpon>fcAccountInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChildren\fcAccountList.resx">
+      <DependentUpon>fcAccountList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChildren\fcChangePassword.resx">
+      <DependentUpon>fcChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChildren\fcFood.resx">
+      <DependentUpon>fcFood.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fTableManager.resx">
       <DependentUpon>fTableManager.cs</DependentUpon>
@@ -110,6 +160,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -125,6 +176,14 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\images.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\locked+login+password+privacy+private+protect+protection+safe-1320196167397530530.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout button.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
