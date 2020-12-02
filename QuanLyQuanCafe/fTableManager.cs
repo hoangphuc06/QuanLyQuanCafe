@@ -115,11 +115,29 @@ namespace QuanLyQuanCafe
             check = true;
         }
         #endregion
-
+        bool check = false;
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
-            fCheckOut f = new fCheckOut();
-            f.ShowDialog();
+            Table table = lsvBill.Tag as Table;
+            if (check)
+            {
+                if (table.Status == "Trống")
+                {
+                    MessageBox.Show("Không thể thanh toán bàn trống !");
+                }
+                else
+                {
+                    fCheckOut f = new fCheckOut(table);
+                    f.ShowDialog();
+                    flpTable.Controls.Clear();
+                    this.LoadTable();
+                    this.ShowBill(table.ID);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn bàn !");
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
