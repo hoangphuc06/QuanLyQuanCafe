@@ -1,17 +1,17 @@
-CREATE DATABASE QuanLyQuanCafe
+ÔªøCREATE DATABASE QuanLyQuanCafe
 USE QuanLyQuanCafe
 
 CREATE TABLE TableFood
 (
 	ID_TableFood INT IDENTITY PRIMARY KEY,
-	NameTable NVARCHAR(100) NOT NULL DEFAULT N'B‡n ch˝a cÛ tÍn',
-	StatusTable NVARCHAR(100) NOT NULL DEFAULT N'Tr?ng'	-- Tr?ng ho?c CÛ ng˝?i
+	NameTable NVARCHAR(100) NOT NULL DEFAULT N'B√†n ch√Ωa c√≥ t√™n',
+	StatusTable NVARCHAR(100) NOT NULL DEFAULT N'Tr?ng'	-- Tr?ng ho?c C√≥ ng√Ω?i
 )
 
 CREATE TABLE Account
 (
 	UserName NVARCHAR(100) PRIMARY KEY,	
-	DisplayName NVARCHAR(100) NOT NULL DEFAULT N'TÍn hi?n th?',
+	DisplayName NVARCHAR(100) NOT NULL DEFAULT N'T√™n hi?n th?',
 	PassWord NVARCHAR(1000) NOT NULL DEFAULT 0,
 	Type INT NOT NULL  DEFAULT 0 -- 0: admin && 1: staff
 )
@@ -19,13 +19,13 @@ CREATE TABLE Account
 CREATE TABLE FoodCategory
 (
 	ID_FoodCategory INT IDENTITY PRIMARY KEY,
-	name NVARCHAR(100) NOT NULL DEFAULT N'Ch˝a ?t tÍn'
+	name NVARCHAR(100) NOT NULL DEFAULT N'Ch√Ωa √∞?t t√™n'
 )
 
 CREATE TABLE Food
 (
 	ID_Food INT IDENTITY PRIMARY KEY,
-	NameFood NVARCHAR(100) NOT NULL DEFAULT N'Ch˝a ?t tÍn',
+	NameFood NVARCHAR(100) NOT NULL DEFAULT N'Ch√Ωa √∞?t t√™n',
 	ID_FoodCategory INT NOT NULL,
 	Price FLOAT NOT NULL DEFAULT 0
 	
@@ -38,7 +38,7 @@ CREATE TABLE Bill
 	DateCheckIn DATE NOT NULL DEFAULT GETDATE(),
 	DateCheckOut DATE,
 	ID_TableFood INT NOT NULL, 
-	status INT NOT NULL DEFAULT 0 -- 1: ? thanh to·n && 0: ch˝a thanh to·n
+	status INT NOT NULL DEFAULT 0 -- 1: √∞? thanh to√°n && 0: ch√Ωa thanh to√°n
 	
 	FOREIGN KEY (ID_TableFood) REFERENCES TableFood(ID_TableFood)
 )
@@ -54,7 +54,7 @@ CREATE TABLE BillInfo
 	FOREIGN KEY (ID_Food) REFERENCES dbo.Food(ID_Food)
 )
 
---//CSDL Form „ng nh?p
+--//CSDL Form √∞√£ng nh?p
 
 insert into Account(UserName,DisplayName,Password,Type)
 values ('staff1','Hoang','1962026656160185351301320480154111117132',1)
@@ -93,7 +93,7 @@ DECLARE @i INT = 1
 
 WHILE @i <= 30
 BEGIN
-	INSERT DBO.TableFood(NameTable) VALUES ('B‡n ' + CAST(@i AS nvarchar(100)))
+	INSERT DBO.TableFood(NameTable) VALUES ('B√†n ' + CAST(@i AS nvarchar(100)))
 	SET @i = @i + 1
 END
 GO
@@ -109,44 +109,44 @@ EXEC dbo.USP_GetTableList
 
  -- INSERT CATEGORY
 INSERT INTO FoodCategory (name ) VALUES (N'Cafe')
-INSERT INTO FoodCategory (name ) VALUES (N'Tr‡ s?a')
+INSERT INTO FoodCategory (name ) VALUES (N'Tr√† s?a')
 INSERT INTO FoodCategory (name ) VALUES (N'Sinh t?')
-INSERT INTO FoodCategory (name ) VALUES (N'ChË')
-INSERT INTO FoodCategory (name ) VALUES (N'–· xay')
-INSERT INTO FoodCategory (name ) VALUES (N'N˝?c ng?t')
+INSERT INTO FoodCategory (name ) VALUES (N'Ch√®')
+INSERT INTO FoodCategory (name ) VALUES (N'√ê√° xay')
+INSERT INTO FoodCategory (name ) VALUES (N'N√Ω?c ng?t')
 INSERT INTO FoodCategory (name ) VALUES (N'M? cay')
-INSERT INTO FoodCategory (name ) VALUES (N'√n v?t')
+INSERT INTO FoodCategory (name ) VALUES (N'√Én v?t')
 
 -- INSERT FOOD
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Cafe ·',1, 18000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Cafe nÛng',1, 18000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Cafe s?a ·',1, 20000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Cafe s?a nÛng',1, 20000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Cafe √∞√°',1, 18000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Cafe n√≥ng',1, 18000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Cafe s?a √∞√°',1, 20000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Cafe s?a n√≥ng',1, 20000)
 
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Tr‡ s?a truy?n th?ng',2, 25000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Tr‡ s?a nho',2, 25000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Tr‡ s?a socola',2, 25000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Tr‡ s?a kiwi',2, 25000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Tr‡ s?a d‚u',2, 25000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Tr‡ s?a b?c h‡',2, 25000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Tr√† s?a truy?n th?ng',2, 25000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Tr√† s?a nho',2, 25000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Tr√† s?a socola',2, 25000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Tr√† s?a kiwi',2, 25000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Tr√† s?a d√¢u',2, 25000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Tr√† s?a b?c h√†',2, 25000)
 
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh t? bı',3, 30000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh t? d‚u',3, 30000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh t? mÌt',3, 25000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh t? xo‡i',3, 25000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh t? u ?',3, 25000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh t? sapÙchÍ',3, 25000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh t? b√µ',3, 30000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh t? d√¢u',3, 30000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh t? m√≠t',3, 25000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh t? xo√†i',3, 25000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh t? √∞u √∞?',3, 25000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh t? sap√¥ch√™',3, 25000)
 
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'ChË th·i',4, 20000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'ChË b˝?i',4, 20000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'ChË th?p c?m',4, 20000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'ChË ?u xanh',4, 20000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'ChË ?u ?',4, 20000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Ch√® th√°i',4, 20000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Ch√® b√Ω?i',4, 20000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Ch√® th?p c?m',4, 20000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Ch√® √∞?u xanh',4, 20000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Ch√® √∞?u √∞?',4, 20000)
 
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Caramel · xay',5, 35000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Cacpuccino · xay',5, 35000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Matcha · xay',5, 35000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Socola · xay',5, 35000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Caramel √∞√° xay',5, 35000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Cacpuccino √∞√° xay',5, 35000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Matcha √∞√° xay',5, 35000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Socola √∞√° xay',5, 35000)
 
 INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sting',6, 10000)
 INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'CocaCola',6, 10000)
@@ -158,10 +158,10 @@ INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'M? cay b? M?',7, 4
 INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'M? cay h?i s?n',7, 40000)
 INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'M? cay tr?ng',7, 40000)
 
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'B? c· viÍn chiÍn',8, 25000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'B·nh tr·ng tr?n',8, 20000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'B·nh bao chiÍn',8, 10000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'B·nh s?u riÍng',8, 15000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'B? c√° vi√™n chi√™n',8, 25000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'B√°nh tr√°ng tr?n',8, 20000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'B√°nh bao chi√™n',8, 10000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'B√°nh s?u ri√™ng',8, 15000)
 
 -- INSERT BILL
 INSERT INTO Bill (DateCheckIn, DateCheckOut, ID_TableFood, status) VALUES (GETDATE(), NULL, 1, 0)
@@ -177,7 +177,7 @@ INSERT INTO BillInfo (ID_Bill, ID_Food, count) VALUES (2, 10, 1)
 INSERT INTO BillInfo (ID_Bill, ID_Food, count) VALUES (3, 15, 2)
 INSERT INTO BillInfo (ID_Bill, ID_Food, count) VALUES (3, 20, 1)
 
--- Update t‡i kho?n
+-- Update t√†i kho?n
 CREATE PROC USP_UpdateAccount
 @userName NVARCHAR(100), @displayName NVARCHAR(100), @password NVARCHAR(100), @newPassword NVARCHAR(100)
 AS
@@ -201,3 +201,201 @@ SELECT * FROM BillInfo
 
 SELECT f.NameFood, bi.count, f.Price, f.Price*bi.count AS TotalPrice FROM BillInfo AS bi, Food AS f, Bill AS b 
 WHERE bi.ID_Bill = b.ID_Bill AND bi.ID_Food = f.ID_Food AND b.ID_TableFood = 1
+
+ALter table dbo.Bill
+add discount INT
+update dbo.Bill set discount=0
+
+--Thanh to√°n h√≥a ƒë∆°n
+Create PROC USP_InsertBill
+@idTable INT
+AS
+BEGIN
+	INSERT dbo.Bill
+			(DateCheckIn,
+			DateCheckOut,
+			ID_TableFood,
+			status,
+			discount
+			)
+	VALUES (GETDATE(), --DataCheckIn - date
+			NULL, --DataCheckOut - date
+			@idTable, --ID_TableFood - int
+			0,	-- status - int
+			0
+			)
+END
+GO	
+ 
+CREATE PROC USP_InsertBillInfo
+@idBill INT, @idFood INT, @count INT
+AS
+BEGIN
+	INSERT dbo.BillInfo
+			(ID_BillInfo,
+			ID_Food,
+			count
+			)
+	VALUES (@idBill,
+			@idFood,
+			@count
+			)
+END
+GO
+
+
+ALTER PROC USP_InsertBillInfo
+@idBill INT, @idFood INT, @count INT
+AS
+BEGIN
+
+	DECLARE @isExitsBillInfo INT;
+	DECLARE @foodCount INT =1
+	
+	SELECT @isExitsBillInfo = ID_Bill, @foodCount=b.count 
+	FROM dbo.BillInfo as b 
+	WHERE  ID_BillInfo=@idBill AND ID_Food=@idFood
+
+	IF(@isExitsBillInfo>0)
+	BEGIN
+		DECLARE @newCount INT = @foodCount +@count
+		IF(@newCount>0)
+			UPDATE dbo.BillInfo SET count=@foodCount +@count WHERE ID_Food=@idFood
+		ELSE
+			DELETE dbo.BillInfo WHERE ID_BillInfo=@idBill AND ID_Food= @idFood
+	END
+	ELSE
+	BEGIN
+	
+	INSERT dbo.BillInfo
+			(ID_BillInfo,
+			ID_Food,
+			count
+			)
+	VALUES (@idBill,
+			@idFood,
+			@count
+			)
+	END
+END
+GO	
+
+CREATE TRIGGER UTG_UpdateBillInfo
+ON dbo.BillInfo FOR INSERT, UPDATE
+AS
+BEGIN
+	DECLARE @idBill INT
+	SELECT @idBill=ID_BillInfo FROM Inserted
+	DECLARE @idTable INT
+	SELECT @idTable =ID_TableFood FROM dbo.Bill WHERE ID_Bill=@idBill AND status=0
+	
+	DECLARE @count INT
+	SELECT @count =COUNT(*) FROM dbo.BillInfo WHERE ID_BillInfo=@idBill
+
+	if(@count>0)
+		UPDATE dbo.TableFood SET StatusTable = N'C√≥ ng∆∞·ªùi' WHERE ID_TableFood=@idTable
+	ELSE
+		UPDATE dbo.TableFood SET StatusTable = N'Tr·ªëng' WHERE ID_TableFood=@idTable
+END
+GO
+
+CREATE TRIGGER UTG_UpdateBill
+ON dbo.Bill For Update
+AS
+BEGIN
+	
+	DECLARE @idBill INT
+	
+	SELECT @idBill=ID_Bill FROM Inserted
+	
+	DECLARE @idTable INT
+	 
+	SELECT @idTable =ID_TableFood FROM dbo.Bill WHERE ID_Bill=@idBill 
+
+	DECLARE @count int =0
+	
+	SELECT COUNT(*) FROM dbo.Bill WHERE ID_TableFood=@idTable AND status=0
+
+	IF(@count =0)
+		UPDATE TableFood SET StatusTable = N'Tr·ªëng' WHERE ID_TableFood=@idTable
+END
+Go
+
+
+--Chuy·ªÉn b√†n
+
+CREATE PROC USP_SwitchTable
+@idTable1 INT, @idTable2 INT
+AS
+BEGIN
+	
+	DECLARE @FirstEmpty INT =1
+	DECLARE @SecondEmpty INT =1
+
+
+	DECLARE @idFirstBill INT
+	DECLARE @idSecondBill INT
+
+	SELECT @idSecondBill = ID_Bill  FROM dbo.Bill WHERE ID_TableFood=@idTable2 AND status=0
+	SELECT @idFirstBill = ID_Bill  FROM dbo.Bill WHERE ID_TableFood=@idTable1 AND status=0
+
+	IF(@idFirstBill IS NULL)
+	BEGIN
+		INSERT dbo.Bill
+			(DateCheckIn,
+			DateCheckOut,
+			ID_TableFood,
+			status
+			
+			)
+		VALUES (GETDATE(), --DataCheckIn - date
+			NULL, --DataCheckOut - date
+			@idTable1, --ID_TableFood - int
+			0	-- status - int
+			
+			)
+		SELECT @idFirstBill=MAX(ID_Bill) FROM dbo.Bill WHERE ID_TableFood=@idTable1 AND status=0
+
+		UPDATE dbo.TableFood SET StatusTable=N'Tr·ªëng' WHERE ID_TableFood=@idTable2
+	END
+
+	SELECT @FirstEmpty = COUNT(*) FROM dbo.BillInfo WHERE ID_BillInfo=@idFirstBill
+
+	IF(@idSecondBill IS NULL)
+	BEGIN
+		INSERT dbo.Bill
+			(DateCheckIn,
+			DateCheckOut,
+			ID_TableFood,
+			status
+			
+			)
+		VALUES (GETDATE(), --DataCheckIn - date
+			NULL, --DataCheckOut - date
+			@idTable2, --ID_TableFood - int
+			0	-- status - int
+			
+			)
+		SELECT @idSecondBill=MAX(ID_Bill) FROM dbo.Bill WHERE ID_TableFood=@idTable2 AND status=0
+
+		UPDATE dbo.TableFood SET StatusTable=N'Tr·ªëng' WHERE ID_TableFood=@idTable1
+	END
+	
+	SELECT @SecondEmpty = COUNT(*) FROM dbo.BillInfo WHERE ID_BillInfo=@idSecondBill
+
+	SELECT ID_Bill INTO IDBillInfoTable FROM dbo.BillInfo WHERE ID_BillInfo=@idSecondBill
+
+	UPDATE dbo.BillInfo SET ID_BillInfo=@idSecondBill WHERE ID_BillInfo=@idFirstBill
+
+	UPDATE dbo.BillInfo SET ID_BillInfo=@idFirstBill WHERE ID_Bill IN (SELECT * FROM IDBillInfoTable)
+	
+	DROP TABLE IDBillInfoTable
+
+	IF(@FirstEmpty=0)
+		UPDATE dbo.TableFood SET StatusTable=N'Tr·ªëng' WHERE ID_TableFood=@idTable2
+	IF(@SecondEmpty=0)
+		UPDATE dbo.TableFood SET StatusTable=N'Tr·ªëng' WHERE ID_TableFood=@idTable1
+
+END
+GO
+

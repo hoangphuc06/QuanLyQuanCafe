@@ -58,6 +58,7 @@
     <Compile Include="DAO\UserAccount.cs" />
     <Compile Include="DTO\Account.cs" />
     <Compile Include="DTO\Bill.cs" />
+
     <Compile Include="DTO\Category.cs" />
     <Compile Include="DTO\Food.cs" />
     <Compile Include="DTO\Menu.cs" />
@@ -136,6 +137,9 @@
     <EmbeddedResource Include="fAdmin.resx">
       <DependentUpon>fAdmin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="fOrderFood.resx">
+      <DependentUpon>fOrderFood.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -150,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormChildren\fcFood.resx">
       <DependentUpon>fcFood.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fSwitchTable.resx">
+      <DependentUpon>fSwitchTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fTableManager.resx">
       <DependentUpon>fTableManager.cs</DependentUpon>

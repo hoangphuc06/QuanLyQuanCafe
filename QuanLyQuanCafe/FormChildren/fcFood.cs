@@ -55,7 +55,7 @@ namespace QuanLyQuanCafe.FormChildren
                 int Index = -1, i = 0;
                 foreach (Category item in cbxFoodCategory.Items)
                 {
-                    if (item.iD == category.iD)
+                    if (item.ID == category.ID)
                     {
                         Index = i;
                         break;
@@ -70,7 +70,7 @@ namespace QuanLyQuanCafe.FormChildren
         private void btnAddFood_Click(object sender, EventArgs e)
         {
             string name = txbFoodName.Text;
-            int categoryid = (cbxFoodCategory.SelectedItem as Category).iD;
+            int categoryid = (cbxFoodCategory.SelectedItem as Category).ID;
             float price = Convert.ToInt32(txbFoodPrice.Text);
             if (FoodDAO.Instance.InsertFood(name, categoryid, price))
                 {
@@ -87,7 +87,7 @@ namespace QuanLyQuanCafe.FormChildren
         private void btnEditFood_Click(object sender, EventArgs e)
         {
             string name = txbFoodName.Text;
-            int categoryid = (cbxFoodCategory.SelectedItem as Category).iD;
+            int categoryid = (cbxFoodCategory.SelectedItem as Category).ID;
             float price = Convert.ToInt32(txbFoodPrice.Text);
             int id = Convert.ToInt32(txbFoodID.Text);
             if (FoodDAO.Instance.UpdateFood(name, categoryid, price, id))

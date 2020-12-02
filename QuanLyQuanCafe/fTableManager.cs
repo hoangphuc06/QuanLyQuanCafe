@@ -40,6 +40,7 @@ namespace QuanLyQuanCafe
             this.LoginAccount = acc;
             LoadTable();
         }
+
         #region Method
         void ChangeAccount(int type)
         {
@@ -87,6 +88,7 @@ namespace QuanLyQuanCafe
 
         #endregion
         #region Event
+        bool check = false;
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -104,10 +106,13 @@ namespace QuanLyQuanCafe
             f.ShowDialog();
         }
 
+      
         private void Btn_Click(object sender, EventArgs e)
         {
             int tableID = ((sender as Button).Tag as Table).ID;
+            lsvBill.Tag = (sender as Button).Tag;
             ShowBill(tableID);
+            check = true;
         }
         #endregion
         bool check = false;
@@ -137,14 +142,22 @@ namespace QuanLyQuanCafe
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            fOrderFood f = new fOrderFood();
-            f.ShowDialog();
+            Table table = lsvBill.Tag as Table;
+            if (check)
+            {
+                fOrderFood f = new fOrderFood(table);
+                f.ShowDialog();
+            }
         }
 
         private void btnSwitchTable_Click(object sender, EventArgs e)
         {
-            fSwitchTable f = new fSwitchTable();
-            f.ShowDialog();
+            Table table = lsvBill.Tag as Table;
+            if (check)
+            {
+                fSwitchTable f = new fSwitchTable(table);
+                f.ShowDialog();
+            }
         }
     }
 }
