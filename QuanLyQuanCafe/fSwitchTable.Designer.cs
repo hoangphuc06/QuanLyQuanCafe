@@ -41,13 +41,12 @@
             this.cbSwitchTable.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.cbSwitchTable.ForeColor = System.Drawing.Color.White;
             this.cbSwitchTable.FormattingEnabled = true;
-            this.cbSwitchTable.Location = new System.Drawing.Point(352, 43);
-            this.cbSwitchTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbSwitchTable.Location = new System.Drawing.Point(264, 35);
+            this.cbSwitchTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbSwitchTable.Name = "cbSwitchTable";
-            this.cbSwitchTable.Size = new System.Drawing.Size(192, 38);
+            this.cbSwitchTable.Size = new System.Drawing.Size(145, 32);
             this.cbSwitchTable.TabIndex = 8;
             this.cbSwitchTable.TabStop = false;
-            //this.cbSwitchTable.SelectedIndexChanged += new System.EventHandler(this.cbSwitchTable_SelectedIndexChanged);
             // 
             // btnOK
             // 
@@ -56,14 +55,14 @@
             this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOK.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnOK.ForeColor = System.Drawing.Color.White;
-            this.btnOK.Location = new System.Drawing.Point(240, 154);
-            this.btnOK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnOK.Location = new System.Drawing.Point(180, 125);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(305, 64);
+            this.btnOK.Size = new System.Drawing.Size(229, 52);
             this.btnOK.TabIndex = 9;
             this.btnOK.Text = "CHUYỂN BÀN";
             this.btnOK.UseVisualStyleBackColor = false;
-            //this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // lbCurTable
             // 
@@ -71,10 +70,9 @@
             this.lbCurTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbCurTable.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbCurTable.ForeColor = System.Drawing.Color.White;
-            this.lbCurTable.Location = new System.Drawing.Point(52, 42);
-            this.lbCurTable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbCurTable.Location = new System.Drawing.Point(39, 34);
             this.lbCurTable.Name = "lbCurTable";
-            this.lbCurTable.Size = new System.Drawing.Size(193, 39);
+            this.lbCurTable.Size = new System.Drawing.Size(145, 32);
             this.lbCurTable.TabIndex = 11;
             this.lbCurTable.Text = "label1";
             this.lbCurTable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -86,26 +84,25 @@
             this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.LongArrowAltRight;
             this.iconPictureBox1.IconColor = System.Drawing.SystemColors.ControlText;
             this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox1.IconSize = 64;
-            this.iconPictureBox1.Location = new System.Drawing.Point(266, 33);
-            this.iconPictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.iconPictureBox1.IconSize = 48;
+            this.iconPictureBox1.Location = new System.Drawing.Point(200, 27);
             this.iconPictureBox1.Name = "iconPictureBox1";
-            this.iconPictureBox1.Size = new System.Drawing.Size(64, 66);
+            this.iconPictureBox1.Size = new System.Drawing.Size(48, 54);
             this.iconPictureBox1.TabIndex = 12;
             this.iconPictureBox1.TabStop = false;
             // 
             // fSwitchTable
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(603, 256);
+            this.ClientSize = new System.Drawing.Size(452, 208);
             this.Controls.Add(this.iconPictureBox1);
             this.Controls.Add(this.lbCurTable);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.cbSwitchTable);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "fSwitchTable";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chuyển bàn";

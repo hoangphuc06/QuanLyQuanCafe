@@ -64,7 +64,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(237, 837);
+            this.panel1.Size = new System.Drawing.Size(237, 749);
             this.panel1.TabIndex = 0;
             // 
             // btnExit
@@ -161,7 +161,7 @@
             this.panel2.Location = new System.Drawing.Point(237, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1182, 63);
+            this.panel2.Size = new System.Drawing.Size(1133, 63);
             this.panel2.TabIndex = 1;
             // 
             // lbInfoUser
@@ -169,7 +169,7 @@
             this.lbInfoUser.Dock = System.Windows.Forms.DockStyle.Right;
             this.lbInfoUser.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbInfoUser.ForeColor = System.Drawing.Color.White;
-            this.lbInfoUser.Location = new System.Drawing.Point(1058, 0);
+            this.lbInfoUser.Location = new System.Drawing.Point(1009, 0);
             this.lbInfoUser.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbInfoUser.Name = "lbInfoUser";
             this.lbInfoUser.Size = new System.Drawing.Size(124, 63);
@@ -185,10 +185,10 @@
             this.panel4.Controls.Add(this.btnCheckOut);
             this.panel4.Controls.Add(this.lsvBill);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(942, 63);
+            this.panel4.Location = new System.Drawing.Point(893, 63);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(477, 774);
+            this.panel4.Size = new System.Drawing.Size(477, 686);
             this.panel4.TabIndex = 2;
             // 
             // btnSwitchTable
@@ -201,7 +201,7 @@
             this.btnSwitchTable.Location = new System.Drawing.Point(0, 613);
             this.btnSwitchTable.Margin = new System.Windows.Forms.Padding(2);
             this.btnSwitchTable.Name = "btnSwitchTable";
-            this.btnSwitchTable.Size = new System.Drawing.Size(234, 79);
+            this.btnSwitchTable.Size = new System.Drawing.Size(234, 35);
             this.btnSwitchTable.TabIndex = 6;
             this.btnSwitchTable.Text = "Chuyển bàn";
             this.btnSwitchTable.UseVisualStyleBackColor = true;
@@ -217,7 +217,7 @@
             this.btnAdd.Location = new System.Drawing.Point(234, 613);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(243, 79);
+            this.btnAdd.Size = new System.Drawing.Size(243, 35);
             this.btnAdd.TabIndex = 5;
             this.btnAdd.Text = "Thêm món";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -231,10 +231,10 @@
             this.btnCheckOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCheckOut.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnCheckOut.ForeColor = System.Drawing.Color.White;
-            this.btnCheckOut.Location = new System.Drawing.Point(0, 692);
+            this.btnCheckOut.Location = new System.Drawing.Point(0, 648);
             this.btnCheckOut.Margin = new System.Windows.Forms.Padding(2);
             this.btnCheckOut.Name = "btnCheckOut";
-            this.btnCheckOut.Size = new System.Drawing.Size(477, 82);
+            this.btnCheckOut.Size = new System.Drawing.Size(477, 38);
             this.btnCheckOut.TabIndex = 4;
             this.btnCheckOut.Text = "THANH TOÁN";
             this.btnCheckOut.UseVisualStyleBackColor = false;
@@ -291,14 +291,14 @@
             this.flpTable.Location = new System.Drawing.Point(237, 63);
             this.flpTable.Margin = new System.Windows.Forms.Padding(2);
             this.flpTable.Name = "flpTable";
-            this.flpTable.Size = new System.Drawing.Size(705, 774);
+            this.flpTable.Size = new System.Drawing.Size(656, 686);
             this.flpTable.TabIndex = 3;
             // 
             // fTableManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1419, 837);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.flpTable);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
