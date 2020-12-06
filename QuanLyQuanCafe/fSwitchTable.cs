@@ -39,5 +39,10 @@ namespace QuanLyQuanCafe
             TableDAO.Instance.SwitchTable(id1, id2);
             this.Close();
         }
+
+        private void fSwitchTable_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            BillDAO.Instance.DeleteBillByTableID(t.ID);
+        }
     }
 }

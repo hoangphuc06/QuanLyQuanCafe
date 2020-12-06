@@ -115,7 +115,7 @@ namespace QuanLyQuanCafe
             check = true;
         }
         #endregion
-        bool check = false;
+        
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
             Table table = lsvBill.Tag as Table;

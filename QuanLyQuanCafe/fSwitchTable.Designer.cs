@@ -42,7 +42,7 @@
             this.cbSwitchTable.ForeColor = System.Drawing.Color.White;
             this.cbSwitchTable.FormattingEnabled = true;
             this.cbSwitchTable.Location = new System.Drawing.Point(264, 35);
-            this.cbSwitchTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbSwitchTable.Margin = new System.Windows.Forms.Padding(2);
             this.cbSwitchTable.Name = "cbSwitchTable";
             this.cbSwitchTable.Size = new System.Drawing.Size(145, 32);
             this.cbSwitchTable.TabIndex = 8;
@@ -56,7 +56,7 @@
             this.btnOK.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnOK.ForeColor = System.Drawing.Color.White;
             this.btnOK.Location = new System.Drawing.Point(180, 125);
-            this.btnOK.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(2);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(229, 52);
             this.btnOK.TabIndex = 9;
@@ -102,10 +102,11 @@
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.cbSwitchTable);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "fSwitchTable";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chuyển bàn";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.fSwitchTable_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             this.ResumeLayout(false);
 

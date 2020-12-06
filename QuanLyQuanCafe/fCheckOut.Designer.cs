@@ -42,7 +42,6 @@
             this.CheckOut = new System.Windows.Forms.Button();
             this.nmDiscount = new System.Windows.Forms.NumericUpDown();
             this.lbExcessMoney = new System.Windows.Forms.Label();
-            this.btnReset = new FontAwesome.Sharp.IconButton();
             this.lbPayPrice = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -72,7 +71,7 @@
             this.btnAdd500k.TabIndex = 1;
             this.btnAdd500k.Text = "+ 500.000 VNĐ";
             this.btnAdd500k.UseVisualStyleBackColor = false;
-            //this.btnAdd500k.Click += new System.EventHandler(this.btnAdd500k_Click);
+            this.btnAdd500k.Click += new System.EventHandler(this.btnAdd500k_Click_1);
             // 
             // lbSumMoney
             // 
@@ -98,7 +97,7 @@
             this.btnAdd200k.TabIndex = 1;
             this.btnAdd200k.Text = "+ 200.000 VNĐ";
             this.btnAdd200k.UseVisualStyleBackColor = false;
-            //this.btnAdd200k.Click += new System.EventHandler(this.btnAdd200k_Click);
+            this.btnAdd200k.Click += new System.EventHandler(this.btnAdd200k_Click_1);
             // 
             // btnAdd100k
             // 
@@ -112,7 +111,7 @@
             this.btnAdd100k.TabIndex = 1;
             this.btnAdd100k.Text = "+ 100.000 VNĐ";
             this.btnAdd100k.UseVisualStyleBackColor = false;
-            //this.btnAdd100k.Click += new System.EventHandler(this.btnAdd100k_Click);
+            this.btnAdd100k.Click += new System.EventHandler(this.btnAdd100k_Click_1);
             // 
             // btnAdd50k
             // 
@@ -126,7 +125,7 @@
             this.btnAdd50k.TabIndex = 1;
             this.btnAdd50k.Text = "+ 50.000 VNĐ";
             this.btnAdd50k.UseVisualStyleBackColor = false;
-            //this.btnAdd50k.Click += new System.EventHandler(this.btnAdd50k_Click);
+            this.btnAdd50k.Click += new System.EventHandler(this.btnAdd50k_Click_1);
             // 
             // btnAdd20k
             // 
@@ -140,7 +139,7 @@
             this.btnAdd20k.TabIndex = 1;
             this.btnAdd20k.Text = "+ 20.000 VNĐ";
             this.btnAdd20k.UseVisualStyleBackColor = false;
-            //this.btnAdd20k.Click += new System.EventHandler(this.btnAdd20k_Click);
+            this.btnAdd20k.Click += new System.EventHandler(this.btnAdd20k_Click_1);
             // 
             // btnAdd10k
             // 
@@ -154,7 +153,7 @@
             this.btnAdd10k.TabIndex = 1;
             this.btnAdd10k.Text = "+ 10.000 VNĐ";
             this.btnAdd10k.UseVisualStyleBackColor = false;
-            //this.btnAdd10k.Click += new System.EventHandler(this.btnAdd10k_Click);
+            this.btnAdd10k.Click += new System.EventHandler(this.btnAdd10k_Click_1);
             // 
             // btnAdd5k
             // 
@@ -168,7 +167,7 @@
             this.btnAdd5k.TabIndex = 1;
             this.btnAdd5k.Text = "+ 5.000 VNĐ";
             this.btnAdd5k.UseVisualStyleBackColor = false;
-            //this.btnAdd5k.Click += new System.EventHandler(this.btnAdd5k_Click);
+            this.btnAdd5k.Click += new System.EventHandler(this.btnAdd5k_Click_1);
             // 
             // btnAdd2k
             // 
@@ -182,7 +181,7 @@
             this.btnAdd2k.TabIndex = 1;
             this.btnAdd2k.Text = "+ 2.000 VNĐ";
             this.btnAdd2k.UseVisualStyleBackColor = false;
-            //this.btnAdd2k.Click += new System.EventHandler(this.btnAdd2k_Click);
+            this.btnAdd2k.Click += new System.EventHandler(this.btnAdd2k_Click_1);
             // 
             // btnAdd1k
             // 
@@ -196,7 +195,7 @@
             this.btnAdd1k.TabIndex = 1;
             this.btnAdd1k.Text = "+ 1.000 VNĐ";
             this.btnAdd1k.UseVisualStyleBackColor = false;
-            //this.btnAdd1k.Click += new System.EventHandler(this.btnAdd1k_Click);
+            this.btnAdd1k.Click += new System.EventHandler(this.btnAdd1k_Click_1);
             // 
             // btnAddFullMoney
             // 
@@ -211,7 +210,7 @@
             this.btnAddFullMoney.TabIndex = 1;
             this.btnAddFullMoney.Text = "ĐỦ TIỀN";
             this.btnAddFullMoney.UseVisualStyleBackColor = false;
-            //this.btnAddFullMoney.Click += new System.EventHandler(this.btnAddFullMoney_Click);
+            this.btnAddFullMoney.Click += new System.EventHandler(this.btnAddFullMoney_Click);
             // 
             // CheckOut
             // 
@@ -226,7 +225,7 @@
             this.CheckOut.TabIndex = 3;
             this.CheckOut.Text = "THANH TOÁN";
             this.CheckOut.UseVisualStyleBackColor = false;
-            //this.CheckOut.Click += new System.EventHandler(this.CheckOut_Click);
+            this.CheckOut.Click += new System.EventHandler(this.CheckOut_Click);
             // 
             // nmDiscount
             // 
@@ -237,7 +236,6 @@
             this.nmDiscount.Size = new System.Drawing.Size(190, 29);
             this.nmDiscount.TabIndex = 4;
             this.nmDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            //this.nmDiscount.ValueChanged += new System.EventHandler(this.nmDiscount_ValueChanged);
             // 
             // lbExcessMoney
             // 
@@ -250,21 +248,6 @@
             this.lbExcessMoney.TabIndex = 2;
             this.lbExcessMoney.Text = "0";
             this.lbExcessMoney.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // btnReset
-            // 
-            this.btnReset.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReset.IconChar = FontAwesome.Sharp.IconChar.RedoAlt;
-            this.btnReset.IconColor = System.Drawing.Color.White;
-            this.btnReset.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnReset.IconSize = 20;
-            this.btnReset.Location = new System.Drawing.Point(19, 16);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(49, 37);
-            this.btnReset.TabIndex = 7;
-            this.btnReset.UseVisualStyleBackColor = false;
-            //this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // lbPayPrice
             // 
@@ -281,7 +264,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.btnReset);
             this.panel1.Controls.Add(this.btnAdd5k);
             this.panel1.Controls.Add(this.btnAddFullMoney);
             this.panel1.Controls.Add(this.btnAdd1k);
@@ -295,7 +277,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.panel1.ForeColor = System.Drawing.Color.White;
-            this.panel1.Location = new System.Drawing.Point(0, 315);
+            this.panel1.Location = new System.Drawing.Point(0, 268);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(853, 481);
             this.panel1.TabIndex = 8;
@@ -307,7 +289,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(542, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(311, 315);
+            this.panel2.Size = new System.Drawing.Size(311, 268);
             this.panel2.TabIndex = 9;
             // 
             // lbNameFood
@@ -336,7 +318,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(542, 315);
+            this.panel3.Size = new System.Drawing.Size(542, 268);
             this.panel3.TabIndex = 10;
             // 
             // label5
@@ -406,7 +388,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(853, 796);
+            this.ClientSize = new System.Drawing.Size(853, 749);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -438,7 +420,6 @@
         private System.Windows.Forms.Button CheckOut;
         private System.Windows.Forms.NumericUpDown nmDiscount;
         private System.Windows.Forms.Label lbExcessMoney;
-        private FontAwesome.Sharp.IconButton btnReset;
         private System.Windows.Forms.Label lbPayPrice;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;

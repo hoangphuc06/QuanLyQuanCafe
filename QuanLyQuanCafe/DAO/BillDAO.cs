@@ -66,5 +66,19 @@ namespace QuanLyQuanCafe.DAO
                 return 1;
             }
         }
+        public void DeleteBillByTableID(int id)
+        {
+            string query1 = "select count from dbo.BillInfo as a,dbo.Bill as b Where a.ID_BillInfo=b.ID_Bill and status=0 and b.ID_TableFood= " + id;
+            object b = DataProvider.Instance.ExecuteScalar(query1);
+            if (b == null)
+            {
+                string query2 = "delete from dbo.BillInfo where ID_BillInfo = (select ID_Bill from dbo.Bill where ID_TableFood = " + id + " and status = 0 )";
+                string query3 = "delete from dbo.Bill where ID_TableFood=" + id + "and status=0";
+                string query4 = "update dbo.TableFood set StatusTable=N'Trống' where ID_TableFood=" + id;
+                DataProvider.Instance.ExecuteNonQuery(query2);
+                DataProvider.Instance.ExecuteNonQuery(query3);
+                DataProvider.Instance.ExecuteNonQuery(query4);
+            }
+        }
     }
 }

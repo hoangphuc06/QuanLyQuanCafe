@@ -198,10 +198,10 @@
             this.btnSwitchTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSwitchTable.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnSwitchTable.ForeColor = System.Drawing.Color.Teal;
-            this.btnSwitchTable.Location = new System.Drawing.Point(0, 613);
+            this.btnSwitchTable.Location = new System.Drawing.Point(0, 580);
             this.btnSwitchTable.Margin = new System.Windows.Forms.Padding(2);
             this.btnSwitchTable.Name = "btnSwitchTable";
-            this.btnSwitchTable.Size = new System.Drawing.Size(234, 35);
+            this.btnSwitchTable.Size = new System.Drawing.Size(234, 49);
             this.btnSwitchTable.TabIndex = 6;
             this.btnSwitchTable.Text = "Chuyển bàn";
             this.btnSwitchTable.UseVisualStyleBackColor = true;
@@ -214,10 +214,10 @@
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnAdd.ForeColor = System.Drawing.Color.Teal;
-            this.btnAdd.Location = new System.Drawing.Point(234, 613);
+            this.btnAdd.Location = new System.Drawing.Point(234, 580);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(243, 35);
+            this.btnAdd.Size = new System.Drawing.Size(243, 49);
             this.btnAdd.TabIndex = 5;
             this.btnAdd.Text = "Thêm món";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -231,10 +231,10 @@
             this.btnCheckOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCheckOut.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnCheckOut.ForeColor = System.Drawing.Color.White;
-            this.btnCheckOut.Location = new System.Drawing.Point(0, 648);
+            this.btnCheckOut.Location = new System.Drawing.Point(0, 629);
             this.btnCheckOut.Margin = new System.Windows.Forms.Padding(2);
             this.btnCheckOut.Name = "btnCheckOut";
-            this.btnCheckOut.Size = new System.Drawing.Size(477, 38);
+            this.btnCheckOut.Size = new System.Drawing.Size(477, 57);
             this.btnCheckOut.TabIndex = 4;
             this.btnCheckOut.Text = "THANH TOÁN";
             this.btnCheckOut.UseVisualStyleBackColor = false;
@@ -255,7 +255,7 @@
             this.lsvBill.Location = new System.Drawing.Point(0, 0);
             this.lsvBill.Margin = new System.Windows.Forms.Padding(2);
             this.lsvBill.Name = "lsvBill";
-            this.lsvBill.Size = new System.Drawing.Size(477, 613);
+            this.lsvBill.Size = new System.Drawing.Size(477, 580);
             this.lsvBill.TabIndex = 0;
             this.lsvBill.UseCompatibleStateImageBehavior = false;
             this.lsvBill.View = System.Windows.Forms.View.Details;

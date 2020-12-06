@@ -91,5 +91,10 @@ namespace QuanLyQuanCafe
             ShowBill(t.ID);
 
         }
+
+        private void fOrderFood_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            BillDAO.Instance.DeleteBillByTableID(t.ID);
+        }
     }
 }
