@@ -12,7 +12,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using QuanLyQuanCafe.FormChildren;
 
-
 namespace QuanLyQuanCafe
 {
     public partial class fAdmin : Form
@@ -37,6 +36,7 @@ namespace QuanLyQuanCafe
             this.LoginAccount = acc;
             fcAccountList fc = new fcAccountList(LoginAccount);
             OpenChildFrom(fc);
+            DoubleBuffered = true;
         }
 
         private void OpenChildFrom(Form childForm)
@@ -67,18 +67,24 @@ namespace QuanLyQuanCafe
         {
             panelRight.Top = btnBill.Top;
             panelRight.Height = btnBill.Height;
+            fcBill fc = new fcBill();
+            OpenChildFrom(fc);
         }
 
         private void btnTable_Click(object sender, EventArgs e)
         {
             panelRight.Top = btnTable.Top;
             panelRight.Height = btnTable.Height;
+            fcTable fc = new fcTable();
+            OpenChildFrom(fc);
         }
 
         private void btnCategory_Click(object sender, EventArgs e)
         {
             panelRight.Top = btnCategory.Top;
             panelRight.Height = btnCategory.Height;
+            fcCategory fc = new fcCategory();
+            OpenChildFrom(fc);
         }
 
         private void btnFood_Click(object sender, EventArgs e)
@@ -87,6 +93,11 @@ namespace QuanLyQuanCafe
             panelRight.Height = btnFood.Height;
             fcFood fc = new fcFood();
             OpenChildFrom(fc);
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

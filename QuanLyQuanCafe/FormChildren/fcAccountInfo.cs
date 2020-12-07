@@ -58,5 +58,10 @@ namespace QuanLyQuanCafe.FormChildren
                 MessageBox.Show("Cập nhật tài khoản thất bại");
             }
         }
+
+        private void txbUser_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

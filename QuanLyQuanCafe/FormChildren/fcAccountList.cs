@@ -76,10 +76,17 @@ namespace QuanLyQuanCafe.FormChildren
 
         private void btnAddAccount_Click(object sender, EventArgs e)
         {
-            string userName = txbUserName.Text;
-            string displayName = txbDisplayName.Text;
-            int type = (int)nudAccountType.Value;
-            AddAccount(userName, displayName, type);
+            if (!string.IsNullOrEmpty(txbUserName.Text) && !string.IsNullOrEmpty(txbDisplayName.Text))
+            {
+                string userName = txbUserName.Text;
+                string displayName = txbDisplayName.Text;
+                int type = (int)nudAccountType.Value;
+                AddAccount(userName, displayName, type);
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng điền đủ thông tin !");
+            }    
         }
 
         void AddAccount(string userName, string displayName, int type)
@@ -139,6 +146,11 @@ namespace QuanLyQuanCafe.FormChildren
                 MessageBox.Show("Đặt lại mật khẩu thất bại");
             }
             LoadAccount();
+        }
+
+        private void lbTypeAccount_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

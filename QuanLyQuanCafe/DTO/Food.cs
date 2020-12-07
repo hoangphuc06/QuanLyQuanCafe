@@ -36,6 +36,11 @@ namespace QuanLyQuanCafe.DTO
             get { return ID; }
             set { ID = value; }
         }
+        public int categoryid
+        {
+            get { return CategoryID; }
+            set { CategoryID = value; }
+        }
         public string name
         {
             get { return Name; }
@@ -46,10 +51,6 @@ namespace QuanLyQuanCafe.DTO
             get { return Price; }
             set { Price = value; }
         }
-        public int categoryid
-        {
-            get { return CategoryID; }
-            set { CategoryID = value; }
-        }
+        
     }
 }

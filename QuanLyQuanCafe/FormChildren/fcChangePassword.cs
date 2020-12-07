@@ -53,13 +53,31 @@ namespace QuanLyQuanCafe.FormChildren
                 if (UserAccount.Instance.UpdatePassword(username, password, newpass))
                 {
                     MessageBox.Show("Cập nhật thành công !");
-
+                    txbPassWord.Text = null;
+                    txbNewPassWord.Text = null;
+                    txbRePassWord.Text = null;
                 }
                 else
                 {
                     MessageBox.Show("Vui lòng điền đúng mật khẩu !");
                 }
             }
+        }
+
+        private void checkboxPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkboxPassword.Checked == true)
+            {
+                txbPassWord.UseSystemPasswordChar = false;
+                txbNewPassWord.UseSystemPasswordChar = false;
+                txbRePassWord.UseSystemPasswordChar = false;
+            }    
+            else
+            {
+                txbPassWord.UseSystemPasswordChar = true;
+                txbNewPassWord.UseSystemPasswordChar = true;
+                txbRePassWord.UseSystemPasswordChar = true;
+            }    
         }
     }
 }

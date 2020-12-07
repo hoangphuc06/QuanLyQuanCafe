@@ -21,6 +21,12 @@ namespace QuanLyQuanCafe.DTO
             this.name = row["name"].ToString();
 
         }
+        private int iD;
+        public int ID
+        {
+            get { return iD; }
+            set { iD = value; }
+        }
         private string name;
         public string Name
         {
@@ -28,12 +34,7 @@ namespace QuanLyQuanCafe.DTO
             set { name = value; }
         }
 
-        private int iD;
-        public int ID
-        {
-            get { return iD; }
-            set { iD = value; }
-        }
+        
 
 
 

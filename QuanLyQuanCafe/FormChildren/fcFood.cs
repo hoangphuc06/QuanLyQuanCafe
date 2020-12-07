@@ -47,7 +47,7 @@ namespace QuanLyQuanCafe.FormChildren
 
         private void txbFoodName_TextChanged(object sender, EventArgs e)
         {
-            if (dtgvFood.SelectedCells.Count > 0)
+            if (dtgvFood.SelectedCells.Count > 0 && dtgvFood.SelectedCells[0].OwningRow.Cells["CategoryID"].Value != null)
             {
                 int id = (int)dtgvFood.SelectedCells[0].OwningRow.Cells["CategoryID"].Value;
                 Category category = CategoryDAO.Instance.GetCategoryByID(id);
@@ -114,6 +114,23 @@ namespace QuanLyQuanCafe.FormChildren
                 MessageBox.Show("Có lỗi xảy ra!");
             }
             LoadListFood();
+        }
+
+        List<Food> SearchFoodByName(string name)
+        {
+            List<Food> listFood = FoodDAO.Instance.SearchFoodByName(name);
+
+            return listFood;
+        }
+
+        private void panel9_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txbFindFoodName_TextChanged(object sender, EventArgs e)
+        {
+            foodList.DataSource = SearchFoodByName(txbFindFoodName.Text);
         }
     }
 }

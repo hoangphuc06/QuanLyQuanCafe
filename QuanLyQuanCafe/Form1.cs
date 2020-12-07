@@ -30,6 +30,7 @@ namespace QuanLyQuanCafe
                 this.Hide();
                 f.ShowDialog();
                 this.Show();
+                txbPassword.Text = null;
             }
             else
             {
@@ -55,9 +56,16 @@ namespace QuanLyQuanCafe
             Application.Exit();
         }
 
-        private void txbPassword_TextChanged(object sender, EventArgs e)
+        private void checkboxPassword_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (checkboxPassword.Checked == true)
+            {
+                txbPassword.UseSystemPasswordChar = false;
+            }    
+            else
+            {
+                txbPassword.UseSystemPasswordChar = true;
+            }    
         }
 
         private void fLogin_Load(object sender, EventArgs e)
