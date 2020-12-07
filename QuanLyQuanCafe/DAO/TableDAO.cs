@@ -18,8 +18,8 @@ namespace QuanLyQuanCafe.DAO
             private set { TableDAO.instance = value; }
         }
 
-        public static int TableWidth = 100;
-        public static int TableHeight = 100;
+        public static int TableWidth = 150;
+        public static int TableHeight = 150;
 
         private TableDAO() { }
 
@@ -32,7 +32,7 @@ namespace QuanLyQuanCafe.DAO
         {
             List<Table> tablelsit = new List<Table>();
 
-            DataTable data = DataProvider.Instance.ExecuteQuery("USP_GetTableList");
+            DataTable data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.TableFood");
 
             foreach (DataRow item in data.Rows)
             {
@@ -41,6 +41,30 @@ namespace QuanLyQuanCafe.DAO
             }
 
             return tablelsit;
+        }
+
+        public bool InsertTable(string name)
+        {
+            string query = string.Format("Insert into dbo.TableFood(NameTable,StatusTable) values (N'{0}',N'Trống')", name);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
+        public bool UpdateTable(string name, int id)
+        {
+            string query = string.Format("update dbo.TableFood set NameTable = N'{0}' where ID_TableFood = {1}", name, id);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
+        public bool DeleteTable(int id)
+        {
+            string query = string.Format("delete dbo.TableFood where ID_TableFood = {0}",id);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
         }
     }
 }

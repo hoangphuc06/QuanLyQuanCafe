@@ -42,5 +42,11 @@ namespace QuanLyQuanCafe.DAO
 
             return listMenu;
         }
+
+        public DataTable GetBillByID(int id)
+        {
+            string query = "SELECT f.NameFood, bi.count, f.Price, f.Price*bi.count AS TotalPrice FROM BillInfo AS bi, Food AS f, Bill AS b WHERE bi.ID_BillInfo = b.ID_Bill AND bi.ID_Food = f.ID_Food AND b.status = 0 AND b.ID_TableFood = " + id.ToString();
+            return DataProvider.Instance.ExecuteQuery(query);
+        }
     }
 }

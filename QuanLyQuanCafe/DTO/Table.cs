@@ -22,11 +22,11 @@ namespace QuanLyQuanCafe.DTO
             this.Name = row["NameTable"].ToString();
             this.Status = row["StatusTable"].ToString();
         }
-        private string status;
-        public string Status
+        private int iD;
+        public int ID
         {
-            get { return status; }
-            set { status = value; }
+            get { return iD; }
+            set { iD = value; }
         }
         private string name;
         public string Name
@@ -34,11 +34,13 @@ namespace QuanLyQuanCafe.DTO
             get { return name; }
             set { name = value; }
         }
-        private int iD;
-        public int ID
+        private string status;
+        public string Status
         {
-            get { return iD; }
-            set { iD = value; }
+            get { return status; }
+            set { status = value; }
         }
+       
+       
     }
 }

@@ -1,10 +1,13 @@
 ﻿using QuanLyQuanCafe.DAO;
 using QuanLyQuanCafe.DTO;
+using QuanLyQuanCafe.FormChildren;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.Design.Serialization;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,10 +17,6 @@ namespace QuanLyQuanCafe
 {
     public partial class fTableManager : Form
     {
-        public fTableManager()
-        {
-            InitializeComponent();
-        }
 
         private Account loginAccount;
 
@@ -39,8 +38,12 @@ namespace QuanLyQuanCafe
             InitializeComponent();
             this.LoginAccount = acc;
             LoadTable();
-        }
 
+            // Hiện tổng tiền bằng 0;
+            float money = 0;
+            CultureInfo culture = new CultureInfo("vi-VN");
+            lbTotalPrice.Text = money.ToString("c", culture);
+        }
         #region Method
         void ChangeAccount(int type)
         {
@@ -55,6 +58,9 @@ namespace QuanLyQuanCafe
             foreach (Table item in tablelist)
             {
                 Button btn = new Button() { Width = TableDAO.TableWidth, Height = TableDAO.TableHeight };
+                btn.FlatStyle = FlatStyle.Flat;
+                btn.Font = new System.Drawing.Font("Arial", 13.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+                btn.ForeColor = Color.Black;
                 btn.Text = item.Name + Environment.NewLine + item.Status;
                 btn.Click += Btn_Click;
                 btn.Tag = item;
@@ -65,7 +71,7 @@ namespace QuanLyQuanCafe
                         btn.BackColor = Color.White;
                         break;
                     default:
-                        btn.BackColor = Color.Green;
+                        btn.BackColor = Color.PaleGreen;
                         break;
                 }
                 flpTable.Controls.Add(btn);
@@ -75,13 +81,14 @@ namespace QuanLyQuanCafe
         {
             lsvBill.Items.Clear();
             List<QuanLyQuanCafe.DTO.Menu> listBillInfo = MenuDAO.Instance.GetListMenuByTable(id);
+            float totalPrice = 0;
             foreach (QuanLyQuanCafe.DTO.Menu item in listBillInfo)
             {
                 ListViewItem lsvItem = new ListViewItem(item.FoodName.ToString());
                 lsvItem.SubItems.Add(item.Count.ToString());
                 lsvItem.SubItems.Add(item.Price.ToString());
                 lsvItem.SubItems.Add(item.TotalPrice.ToString());
-
+                totalPrice += item.TotalPrice;
                 lsvBill.Items.Add(lsvItem);
             }
         }
@@ -89,6 +96,15 @@ namespace QuanLyQuanCafe
         #endregion
         #region Event
         bool check = false;
+        private void Btn_Click(object sender, EventArgs e)
+        {
+            int tableID = ((sender as Button).Tag as Table).ID;
+            lsvBill.Tag = (sender as Button).Tag;
+            ShowBill(tableID);
+            check = true;
+            LoadtotalPrice(tableID);
+            lbNameFood.Text = ((sender as Button).Tag as Table).Name;
+        }
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -97,25 +113,25 @@ namespace QuanLyQuanCafe
         private void btnAdmin_Click(object sender, EventArgs e)
         {
             fAdmin f = new fAdmin(LoginAccount);
+            this.Hide();
             f.ShowDialog();
+            this.Show();
+            flpTable.Controls.Clear();
+            LoadTable();
         }
 
         private void btnUser_Click(object sender, EventArgs e)
         {
             fAccount f = new fAccount(loginAccount);
+            this.Hide();
             f.ShowDialog();
+            this.Show();
+            lbInfoUser.Text = loginAccount.DisplayName;
         }
 
-      
-        private void Btn_Click(object sender, EventArgs e)
-        {
-            int tableID = ((sender as Button).Tag as Table).ID;
-            lsvBill.Tag = (sender as Button).Tag;
-            ShowBill(tableID);
-            check = true;
-        }
-        #endregion
         
+        #endregion
+
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
             Table table = lsvBill.Tag as Table;
@@ -124,10 +140,51 @@ namespace QuanLyQuanCafe
                 if (table.Status == "Trống")
                 {
                     MessageBox.Show("Không thể thanh toán bàn trống !");
-                }
+                }    
                 else
                 {
                     fCheckOut f = new fCheckOut(table);
+                    f.ShowDialog();
+                    flpTable.Controls.Clear();
+                    this.LoadTable();
+                    this.ShowBill(table.ID);
+                }    
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn bàn !");
+            }    
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            Table table = lsvBill.Tag as Table;
+            if (check)
+            {
+                fOrderFood f = new fOrderFood(table);
+                f.ShowDialog();
+                flpTable.Controls.Clear();
+                this.LoadTable();
+                this.ShowBill(table.ID);
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn bàn !");
+            }
+        }
+
+        private void btnSwitchTable_Click(object sender, EventArgs e)
+        {
+            Table table = lsvBill.Tag as Table;
+            if (check)
+            {
+                if (table.Status == "Trống")
+                {
+                    MessageBox.Show("Bàn đang trống !");
+                }
+                else
+                {
+                    fSwitchTable f = new fSwitchTable(table);
                     f.ShowDialog();
                     flpTable.Controls.Clear();
                     this.LoadTable();
@@ -140,24 +197,19 @@ namespace QuanLyQuanCafe
             }
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        void LoadtotalPrice(int id)
         {
-            Table table = lsvBill.Tag as Table;
-            if (check)
-            {
-                fOrderFood f = new fOrderFood(table);
-                f.ShowDialog();
-            }
-        }
+            float TotalPrice = 0;
+            List<QuanLyQuanCafe.DTO.Menu> listBillInfo = MenuDAO.Instance.GetListMenuByTable(id);
 
-        private void btnSwitchTable_Click(object sender, EventArgs e)
-        {
-            Table table = lsvBill.Tag as Table;
-            if (check)
+            foreach (QuanLyQuanCafe.DTO.Menu item in listBillInfo)
             {
-                fSwitchTable f = new fSwitchTable(table);
-                f.ShowDialog();
+                TotalPrice += item.TotalPrice;
             }
+            CultureInfo culture = new CultureInfo("vi-VN");
+
+            lbTotalPrice.Text = TotalPrice.ToString("c", culture);
+
         }
     }
 }

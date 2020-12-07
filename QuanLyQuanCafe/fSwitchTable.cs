@@ -15,17 +15,14 @@ namespace QuanLyQuanCafe
     public partial class fSwitchTable : Form
     {
         Table t;
-        public fSwitchTable(Table table)
+        public fSwitchTable(Table tmp)
         {
-            t = table;
-            InitializeComponent();           
+            InitializeComponent();
+            this.t = tmp;
             LoadComboboxTable(cbSwitchTable);
-            Loadlabel(lbCurTable);
+            lbCurTable.Text = t.Name;
         }
-        void Loadlabel(Label lb)
-        {
-            lb.Text ="Bàn "+ t.ID.ToString();
-        }
+
         void LoadComboboxTable(ComboBox cb)
         {
             cb.DataSource = TableDAO.Instance.LoadTableList();
@@ -40,9 +37,9 @@ namespace QuanLyQuanCafe
             this.Close();
         }
 
-        private void fSwitchTable_FormClosed(object sender, FormClosedEventArgs e)
+        private void cbSwitchTable_SelectedIndexChanged(object sender, EventArgs e)
         {
-            BillDAO.Instance.DeleteBillByTableID(t.ID);
+            this.Close();
         }
     }
 }

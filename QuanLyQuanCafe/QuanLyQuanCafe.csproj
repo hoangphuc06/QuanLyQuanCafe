@@ -33,8 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="FontAwesome.Sharp, Version=5.15.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FontAwesome.Sharp.5.15.3\lib\net472\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -76,12 +82,6 @@
     <Compile Include="fAdmin.Designer.cs">
       <DependentUpon>fAdmin.cs</DependentUpon>
     </Compile>
-    <Compile Include="fCheckOut.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="fCheckOut.Designer.cs">
-      <DependentUpon>fCheckOut.cs</DependentUpon>
-    </Compile>
     <Compile Include="fOrderFood.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +93,12 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fCheckOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fCheckOut.Designer.cs">
+      <DependentUpon>fCheckOut.cs</DependentUpon>
     </Compile>
     <Compile Include="FormChildren\fcAccountInfo.cs">
       <SubType>Form</SubType>
@@ -106,6 +112,18 @@
     <Compile Include="FormChildren\fcAccountList.Designer.cs">
       <DependentUpon>fcAccountList.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormChildren\fcBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChildren\fcBill.Designer.cs">
+      <DependentUpon>fcBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormChildren\fcCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChildren\fcCategory.Designer.cs">
+      <DependentUpon>fcCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormChildren\fcChangePassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +135,12 @@
     </Compile>
     <Compile Include="FormChildren\fcFood.Designer.cs">
       <DependentUpon>fcFood.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormChildren\fcTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChildren\fcTable.Designer.cs">
+      <DependentUpon>fcTable.cs</DependentUpon>
     </Compile>
     <Compile Include="fSwitchTable.cs">
       <SubType>Form</SubType>
@@ -138,14 +162,14 @@
     <EmbeddedResource Include="fAdmin.resx">
       <DependentUpon>fAdmin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="fCheckOut.resx">
-      <DependentUpon>fCheckOut.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="fOrderFood.resx">
       <DependentUpon>fOrderFood.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fCheckOut.resx">
+      <DependentUpon>fCheckOut.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormChildren\fcAccountInfo.resx">
       <DependentUpon>fcAccountInfo.cs</DependentUpon>
@@ -153,11 +177,20 @@
     <EmbeddedResource Include="FormChildren\fcAccountList.resx">
       <DependentUpon>fcAccountList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormChildren\fcBill.resx">
+      <DependentUpon>fcBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChildren\fcCategory.resx">
+      <DependentUpon>fcCategory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormChildren\fcChangePassword.resx">
       <DependentUpon>fcChangePassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormChildren\fcFood.resx">
       <DependentUpon>fcFood.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChildren\fcTable.resx">
+      <DependentUpon>fcTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fSwitchTable.resx">
       <DependentUpon>fSwitchTable.cs</DependentUpon>
@@ -197,6 +230,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logout button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CoffeeLogo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LogoCoffee.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Shop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Shop2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shop3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shop4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shop5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
