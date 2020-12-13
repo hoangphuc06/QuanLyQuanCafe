@@ -399,3 +399,15 @@ BEGIN
 END
 GO
 
+--Hiển thị danh sách hóa đơn
+ALTER TABLE dbo.Bill ADD totalPrice FLOAT
+
+CREATE PROC USP_GetListBillByDate
+@checkIn date,@checkout date
+AS
+BEGIN
+	SELECT t.NameTable AS [Tên bàn],b.totalPrice AS [Tổng tiền],DateCheckIn AS [Ngày vào],DateCheckOut AS [Ngày ra], discount AS [Giảm giá]
+	FROM dbo.Bill as b, dbo.TableFood as t
+	WHERE DateCheckIn>=@checkIn AND DateCheckOut<=@checkout AND b.status=1 AND t.ID_TableFood=b.ID_TableFood
+END
+Go

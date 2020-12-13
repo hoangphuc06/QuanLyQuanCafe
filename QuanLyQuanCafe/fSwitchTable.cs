@@ -34,6 +34,7 @@ namespace QuanLyQuanCafe
             int id1 = t.ID;
             int id2 = (cbSwitchTable.SelectedItem as Table).ID;
             TableDAO.Instance.SwitchTable(id1, id2);
+            BillDAO.Instance.DeleteBillByTableID(id1);
             this.Close();
         }
 
