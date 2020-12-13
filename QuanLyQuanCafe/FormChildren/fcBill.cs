@@ -17,7 +17,28 @@ namespace QuanLyQuanCafe.FormChildren
         public fcBill()
         {
             InitializeComponent();
+            LoadDataTimePickerBill();
         }
 
+        void LoadDataTimePickerBill()
+        {
+            DateTime today = DateTime.Now;
+            dtpkFromDate.Value = new DateTime(today.Year, today.Month, 1);
+            dtpkToDate.Value = dtpkFromDate.Value.AddMonths(1).AddDays(-1);
+        }
+
+        private void btnViewBill_Click(object sender, EventArgs e)
+        {
+            LoadListBillByDate(dtpkFromDate.Value, dtpkToDate.Value);
+        }
+
+
+        void LoadListBillByDate(DateTime checkIn, DateTime checkOut)
+        {
+            dtgvBill.DataSource = BillDAO.Instance.GetBillListByDate(checkIn, checkOut);
+
+        }
+
+        
     }
 }
