@@ -411,3 +411,172 @@ BEGIN
 	WHERE DateCheckIn>=@checkIn AND DateCheckOut<=@checkout AND b.status=1 AND t.ID_TableFood=b.ID_TableFood
 END
 Go
+
+--Gộp bàn
+
+ALTER PROC USP_MergeTable
+@idTable1 INT, @idTable2 INT, @idTable3 INT
+AS
+BEGIN
+
+	DECLARE @idFirstBill INT
+	DECLARE @idSecondBill INT
+	DECLARE @idThirdBill INT
+
+	SELECT @idSecondBill = ID_Bill  FROM dbo.Bill WHERE ID_TableFood=@idTable2 AND status=0
+	SELECT @idFirstBill = ID_Bill  FROM dbo.Bill WHERE ID_TableFood=@idTable1 AND status=0
+	SELECT @idThirdBill = ID_Bill  FROM dbo.Bill WHERE ID_TableFood=@idTable3 AND status=0
+
+	IF(@idThirdBill IS NULL)
+	BEGIN
+		INSERT dbo.Bill
+			(DateCheckIn,
+			DateCheckOut,
+			ID_TableFood,
+			status
+			
+			)
+		VALUES (GETDATE(), --DataCheckIn - date
+			NULL, --DataCheckOut - date
+			@idTable3, --ID_TableFood - int
+			0	-- status - int
+			
+			)
+		SELECT @idThirdBill=MAX(ID_Bill) FROM dbo.Bill WHERE ID_TableFood=@idTable3 AND status=0
+
+		
+	END
+
+	
+		
+	IF EXISTS(
+				SELECT ID_Food
+				FROM BillInfo
+				WHERE ID_BillInfo=@idFirstBill AND ID_Food IN (
+														SELECT ID_Food
+														FROM BillInfo
+														WHERE ID_BillInfo=@idThirdBill))
+		BEGIN
+		
+			DECLARE @min INT 
+			DECLARE @max INT
+			
+			DECLARE @IDFOOD INT
+			DECLARE @COUNT INT
+
+				SELECT @min=MIN(ID_Bill),@max=MAX(ID_Bill)
+				FROM BillInfo
+				WHERE ID_BillInfo=@idFirstBill AND ID_Food IN
+					  (SELECT A.ID_Food 
+					  FROM BillInfo AS A
+					  WHERE A.ID_BillInfo=@idThirdBill)
+				WHILE @min <= @max
+				BEGIN
+						IF EXISTS (SELECT * FROM BillInfo
+									WHERE ID_Bill=@min AND ID_Food IN
+									(SELECT A.ID_Food
+									FROM BillInfo AS A
+									WHERE A.ID_BillInfo=@idThirdBill))
+					BEGIN
+					  (SELECT @IDFOOD=ID_Food, @COUNT=count
+					  FROM BillInfo
+					  WHERE ID_Bill=@min AND ID_BillInfo=@idFirstBill AND ID_Food IN
+							(SELECT A.ID_Food
+							FROM BillInfo AS A
+							WHERE A.ID_BillInfo=@idThirdBill))
+					  
+					  UPDATE BillInfo SET count=count+@COUNT
+					  WHERE ID_BillInfo=@idThirdBill AND ID_Food=@IDFOOD
+					  
+					  DELETE FROM BillInfo WHERE ID_Bill=@min
+
+					  SET @min = @min + 1;
+					END
+				END
+
+				UPDATE dbo.BillInfo SET ID_BillInfo=@idThirdBill WHERE ID_BillInfo=@idFirstBill
+		
+		END
+	ELSE
+		BEGIN
+			UPDATE dbo.BillInfo SET ID_BillInfo=@idThirdBill WHERE ID_BillInfo=@idFirstBill	
+		END	
+
+	
+	
+	IF EXISTS(
+				SELECT ID_Food
+				FROM BillInfo
+				WHERE ID_BillInfo=@idSecondBill AND ID_Food IN (
+														SELECT ID_Food
+														FROM BillInfo
+														WHERE ID_BillInfo=@idThirdBill))
+		BEGIN
+		
+			
+
+				SELECT @min=MIN(ID_Bill),@max=MAX(ID_Bill)
+				FROM BillInfo
+				WHERE ID_BillInfo=@idSecondBill AND ID_Food IN
+					  (SELECT A.ID_Food 
+					  FROM BillInfo AS A
+					  WHERE A.ID_BillInfo=@idThirdBill)
+				WHILE @min <= @max
+				BEGIN
+						IF EXISTS (SELECT * FROM BillInfo
+									WHERE ID_Bill=@min AND ID_Food IN
+									(SELECT A.ID_Food
+									FROM BillInfo AS A
+									WHERE A.ID_BillInfo=@idThirdBill))
+					BEGIN
+					  (SELECT @IDFOOD=ID_Food, @COUNT=count
+					  FROM BillInfo
+					  WHERE ID_Bill=@min AND ID_BillInfo=@idSecondBill AND ID_Food IN
+							(SELECT A.ID_Food
+							FROM BillInfo AS A
+							WHERE A.ID_BillInfo=@idThirdBill))
+					  
+					  UPDATE BillInfo SET count=count+@COUNT
+					  WHERE ID_BillInfo=@idThirdBill AND ID_Food=@IDFOOD
+					  
+					  DELETE FROM BillInfo WHERE ID_Bill=@min
+
+					  SET @min = @min + 1;
+					END
+				END
+
+				UPDATE dbo.BillInfo SET ID_BillInfo=@idThirdBill WHERE ID_BillInfo=@idSecondBill
+		
+		END
+	ELSE
+		BEGIN
+			UPDATE dbo.BillInfo SET ID_BillInfo=@idThirdBill WHERE ID_BillInfo=@idSecondBill	
+		END
+	
+	DECLARE @EMPTY1 INT
+	DECLARE @EMPTY2 INT
+	select @EMPTY1=COUNT(count) from dbo.BillInfo as a,dbo.Bill as b Where a.ID_BillInfo=b.ID_Bill and status=0 and b.ID_TableFood= @idFirstBill
+	select @EMPTY2=COUNT(count) from dbo.BillInfo as a,dbo.Bill as b Where a.ID_BillInfo=b.ID_Bill and status=0 and b.ID_TableFood= @idSecondBill
+	IF(@EMPTY1=0)
+	BEGIN
+		DELETE FROM BillInfo WHERE ID_BillInfo=@idFirstBill
+		DELETE FROM Bill WHERE ID_Bill=@idFirstBill
+		UPDATE TableFood SET StatusTable=N'Trống' 
+		WHERE ID_TableFood=@idTable1
+	END
+
+	IF(@EMPTY2=0)
+	BEGIN
+		DELETE FROM BillInfo WHERE ID_BillInfo=@idSecondBill
+		DELETE FROM Bill WHERE ID_Bill=@idSecondBill
+		UPDATE TableFood SET StatusTable=N'Trống' 
+		WHERE ID_TableFood=@idTable2
+	END
+END
+GO
+
+select * from dbo.Bill 
+select * from dbo.BillInfo
+
+
+
