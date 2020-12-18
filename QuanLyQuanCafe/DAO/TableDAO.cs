@@ -28,6 +28,11 @@ namespace QuanLyQuanCafe.DAO
             DataProvider.Instance.ExecuteQuery("USP_SwitchTable @idTable1 , @idTable2", new object[] { id1, id2 });
         }
 
+        public void MergeTable(int id1, int id2, int id3)
+        {
+            DataProvider.Instance.ExecuteQuery("USP_MergeTable @idTable1 , @idTable2 , @idTable3", new object[] { id1, id2, id3 });
+        }
+
         public List<Table> LoadTableList()
         {
             List<Table> tablelsit = new List<Table>();

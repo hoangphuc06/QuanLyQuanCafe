@@ -37,26 +37,27 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbInfoUser = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.lbTotalPrice = new System.Windows.Forms.Label();
-            this.btnCheckOut = new FontAwesome.Sharp.IconButton();
             this.lsvBill = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.flpTable = new System.Windows.Forms.FlowLayoutPanel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.lbNameFood = new System.Windows.Forms.Label();
             this.btnSwitchTable = new FontAwesome.Sharp.IconButton();
             this.btnAdd = new FontAwesome.Sharp.IconButton();
-            this.lbNameFood = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.lbTotalPrice = new System.Windows.Forms.Label();
+            this.btnCheckOut = new FontAwesome.Sharp.IconButton();
+            this.flpTable = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnMerge = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -203,6 +204,113 @@
             this.panel4.Size = new System.Drawing.Size(477, 686);
             this.panel4.TabIndex = 2;
             // 
+            // lsvBill
+            // 
+            this.lsvBill.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.lsvBill.BackColor = System.Drawing.Color.White;
+            this.lsvBill.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lsvBill.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4});
+            this.lsvBill.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lsvBill.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lsvBill.GridLines = true;
+            this.lsvBill.HideSelection = false;
+            this.lsvBill.Location = new System.Drawing.Point(0, 86);
+            this.lsvBill.Margin = new System.Windows.Forms.Padding(2);
+            this.lsvBill.Name = "lsvBill";
+            this.lsvBill.Size = new System.Drawing.Size(477, 520);
+            this.lsvBill.TabIndex = 0;
+            this.lsvBill.UseCompatibleStateImageBehavior = false;
+            this.lsvBill.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Tên món";
+            this.columnHeader1.Width = 140;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Số lượng";
+            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader2.Width = 100;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Giá";
+            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader3.Width = 120;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Thành tiền";
+            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader4.Width = 120;
+            // 
+            // panel6
+            // 
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Controls.Add(this.btnMerge);
+            this.panel6.Controls.Add(this.lbNameFood);
+            this.panel6.Controls.Add(this.btnSwitchTable);
+            this.panel6.Controls.Add(this.btnAdd);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(477, 86);
+            this.panel6.TabIndex = 1;
+            // 
+            // lbNameFood
+            // 
+            this.lbNameFood.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lbNameFood.Font = new System.Drawing.Font("Bauhaus 93", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNameFood.ForeColor = System.Drawing.Color.SandyBrown;
+            this.lbNameFood.Location = new System.Drawing.Point(0, 0);
+            this.lbNameFood.Name = "lbNameFood";
+            this.lbNameFood.Size = new System.Drawing.Size(260, 84);
+            this.lbNameFood.TabIndex = 8;
+            this.lbNameFood.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnSwitchTable
+            // 
+            this.btnSwitchTable.BackColor = System.Drawing.Color.SandyBrown;
+            this.btnSwitchTable.FlatAppearance.BorderSize = 0;
+            this.btnSwitchTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSwitchTable.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnSwitchTable.ForeColor = System.Drawing.Color.White;
+            this.btnSwitchTable.IconChar = FontAwesome.Sharp.IconChar.ExchangeAlt;
+            this.btnSwitchTable.IconColor = System.Drawing.Color.White;
+            this.btnSwitchTable.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnSwitchTable.IconSize = 40;
+            this.btnSwitchTable.Location = new System.Drawing.Point(406, 20);
+            this.btnSwitchTable.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSwitchTable.Name = "btnSwitchTable";
+            this.btnSwitchTable.Size = new System.Drawing.Size(50, 47);
+            this.btnSwitchTable.TabIndex = 7;
+            this.btnSwitchTable.UseVisualStyleBackColor = false;
+            this.btnSwitchTable.Click += new System.EventHandler(this.btnSwitchTable_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.Color.SandyBrown;
+            this.btnAdd.FlatAppearance.BorderSize = 0;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
+            this.btnAdd.IconChar = FontAwesome.Sharp.IconChar.ConciergeBell;
+            this.btnAdd.IconColor = System.Drawing.Color.White;
+            this.btnAdd.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAdd.IconSize = 40;
+            this.btnAdd.Location = new System.Drawing.Point(330, 20);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(50, 47);
+            this.btnAdd.TabIndex = 7;
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // panel5
             // 
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -249,51 +357,6 @@
             this.btnCheckOut.UseVisualStyleBackColor = false;
             this.btnCheckOut.Click += new System.EventHandler(this.btnCheckOut_Click);
             // 
-            // lsvBill
-            // 
-            this.lsvBill.Activation = System.Windows.Forms.ItemActivation.OneClick;
-            this.lsvBill.BackColor = System.Drawing.Color.White;
-            this.lsvBill.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lsvBill.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
-            this.lsvBill.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lsvBill.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lsvBill.GridLines = true;
-            this.lsvBill.HideSelection = false;
-            this.lsvBill.Location = new System.Drawing.Point(0, 86);
-            this.lsvBill.Margin = new System.Windows.Forms.Padding(2);
-            this.lsvBill.Name = "lsvBill";
-            this.lsvBill.Size = new System.Drawing.Size(477, 520);
-            this.lsvBill.TabIndex = 0;
-            this.lsvBill.UseCompatibleStateImageBehavior = false;
-            this.lsvBill.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Tên món";
-            this.columnHeader1.Width = 140;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Số lượng";
-            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader2.Width = 100;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Giá";
-            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader3.Width = 120;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Thành tiền";
-            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader4.Width = 120;
-            // 
             // flpTable
             // 
             this.flpTable.AutoScroll = true;
@@ -305,66 +368,24 @@
             this.flpTable.Size = new System.Drawing.Size(656, 686);
             this.flpTable.TabIndex = 4;
             // 
-            // panel6
+            // btnMerge
             // 
-            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel6.Controls.Add(this.lbNameFood);
-            this.panel6.Controls.Add(this.btnSwitchTable);
-            this.panel6.Controls.Add(this.btnAdd);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(477, 86);
-            this.panel6.TabIndex = 1;
-            // 
-            // btnSwitchTable
-            // 
-            this.btnSwitchTable.BackColor = System.Drawing.Color.SandyBrown;
-            this.btnSwitchTable.FlatAppearance.BorderSize = 0;
-            this.btnSwitchTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSwitchTable.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnSwitchTable.ForeColor = System.Drawing.Color.White;
-            this.btnSwitchTable.IconChar = FontAwesome.Sharp.IconChar.ExchangeAlt;
-            this.btnSwitchTable.IconColor = System.Drawing.Color.White;
-            this.btnSwitchTable.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnSwitchTable.IconSize = 40;
-            this.btnSwitchTable.Location = new System.Drawing.Point(406, 20);
-            this.btnSwitchTable.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSwitchTable.Name = "btnSwitchTable";
-            this.btnSwitchTable.Size = new System.Drawing.Size(50, 47);
-            this.btnSwitchTable.TabIndex = 7;
-            this.btnSwitchTable.UseVisualStyleBackColor = false;
-            this.btnSwitchTable.Click += new System.EventHandler(this.btnSwitchTable_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.BackColor = System.Drawing.Color.SandyBrown;
-            this.btnAdd.FlatAppearance.BorderSize = 0;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.IconChar = FontAwesome.Sharp.IconChar.ConciergeBell;
-            this.btnAdd.IconColor = System.Drawing.Color.White;
-            this.btnAdd.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnAdd.IconSize = 40;
-            this.btnAdd.Location = new System.Drawing.Point(330, 20);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(50, 47);
-            this.btnAdd.TabIndex = 7;
-            this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // lbNameFood
-            // 
-            this.lbNameFood.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lbNameFood.Font = new System.Drawing.Font("Bauhaus 93", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNameFood.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbNameFood.Location = new System.Drawing.Point(0, 0);
-            this.lbNameFood.Name = "lbNameFood";
-            this.lbNameFood.Size = new System.Drawing.Size(260, 84);
-            this.lbNameFood.TabIndex = 8;
-            this.lbNameFood.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnMerge.BackColor = System.Drawing.Color.SandyBrown;
+            this.btnMerge.FlatAppearance.BorderSize = 0;
+            this.btnMerge.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMerge.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnMerge.ForeColor = System.Drawing.Color.White;
+            this.btnMerge.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.btnMerge.IconColor = System.Drawing.Color.White;
+            this.btnMerge.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnMerge.IconSize = 40;
+            this.btnMerge.Location = new System.Drawing.Point(251, 20);
+            this.btnMerge.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMerge.Name = "btnMerge";
+            this.btnMerge.Size = new System.Drawing.Size(50, 47);
+            this.btnMerge.TabIndex = 9;
+            this.btnMerge.UseVisualStyleBackColor = false;
+            this.btnMerge.Click += new System.EventHandler(this.btnMerge_Click);
             // 
             // fTableManager
             // 
@@ -384,8 +405,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -414,5 +435,6 @@
         private FontAwesome.Sharp.IconButton btnSwitchTable;
         private FontAwesome.Sharp.IconButton btnAdd;
         private System.Windows.Forms.Label lbNameFood;
+        private FontAwesome.Sharp.IconButton btnMerge;
     }
 }
