@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using QuanLyQuanCafe.DAO;
 using QuanLyQuanCafe.DTO;
+using System.IO;
 
 namespace QuanLyQuanCafe.FormChildren
 {
@@ -69,11 +70,17 @@ namespace QuanLyQuanCafe.FormChildren
 
         private void btnAddFood_Click(object sender, EventArgs e)
         {
-            string name = txbFoodName.Text;
-            int categoryid = (cbxFoodCategory.SelectedItem as Category).ID;
-            float price = Convert.ToInt32(txbFoodPrice.Text);
-            if (FoodDAO.Instance.InsertFood(name, categoryid, price))
+            FoodDetails f = new FoodDetails();
+            f.ShowDialog();
+            if (f.IsAdd())
+            {
+                string name = f.FoodName;
+                int categoryid = f.Category;
+                float price = f.Price;
+                byte[] image = f.FoodImage;
+                if (FoodDAO.Instance.InsertFood(name, categoryid, price))
                 {
+                    FoodDAO.Instance.UpdateFoodImage(image, name);
                     MessageBox.Show("Thêm thành công");
                     LoadListFood();
                 }
@@ -81,24 +88,44 @@ namespace QuanLyQuanCafe.FormChildren
                 {
                     MessageBox.Show("Có lỗi xảy ra khi thêm!");
                 }
+            }
+            this.Show();
 
         }
-
+        byte[] ImageToByteArray(Image img)
+        {
+            MemoryStream m = new MemoryStream();
+            img.Save(m, System.Drawing.Imaging.ImageFormat.Png);
+            return m.ToArray();
+        }
         private void btnEditFood_Click(object sender, EventArgs e)
         {
-            string name = txbFoodName.Text;
-            int categoryid = (cbxFoodCategory.SelectedItem as Category).ID;
-            float price = Convert.ToInt32(txbFoodPrice.Text);
-            int id = Convert.ToInt32(txbFoodID.Text);
-            if (FoodDAO.Instance.UpdateFood(name, categoryid, price, id))
+            FoodDetails f = new FoodDetails();
+            int fid = Convert.ToInt32(txbFoodID.Text);
+            string fname = txbFoodName.Text;
+            int fcategory = (cbxFoodCategory.SelectedItem as Category).ID;
+            float fprice = (float)Convert.ToInt32(txbFoodPrice.Text);
+            byte[] img = ImageToByteArray( FoodDAO.instance.getimagebyid(fid));
+            f.LoadFood(fid, fname, fcategory, fprice);
+            f.ShowDialog();
+            if (f.IsChannged(fname, fcategory, fprice,img) && f.FoodName != null)
             {
-                MessageBox.Show("Sửa thành công");
-                LoadListFood();
+                fname = f.FoodName;
+                fcategory = f.Category;
+                fprice = f.Price;
+                byte[] image = f.FoodImage;
+                if (FoodDAO.Instance.UpdateFood(fname, fcategory, fprice, fid))
+                {
+                    FoodDAO.Instance.UpdateFoodImage(image, fname);
+                    MessageBox.Show("Sửa thành công");
+                    LoadListFood();
+                }
+                else
+                {
+                    MessageBox.Show("Có lỗi xảy ra!");
+                }
             }
-            else
-            {
-                MessageBox.Show("Có lỗi xảy ra!");
-            }
+            this.Show();
         }
 
         private void btnDeleteFood_Click(object sender, EventArgs e)
@@ -131,6 +158,13 @@ namespace QuanLyQuanCafe.FormChildren
         private void txbFindFoodName_TextChanged(object sender, EventArgs e)
         {
             foodList.DataSource = SearchFoodByName(txbFindFoodName.Text);
+        }
+
+        private void dtgvFood_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int r = dtgvFood.CurrentCell.RowIndex;
+            int b = (int)dtgvFood.Rows[r].Cells[0].Value;
+            ptbFoodImage.Image = FoodDAO.Instance.getimagebyid(b);
         }
     }
 }

@@ -641,3 +641,5 @@ BEGIN
 END
 GO
 
+alter table Food
+add Image_Food image
