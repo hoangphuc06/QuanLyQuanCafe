@@ -44,6 +44,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -136,6 +137,12 @@
     <Compile Include="FormChildren\fcChangePassword.Designer.cs">
       <DependentUpon>fcChangePassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormChildren\fcChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChildren\fcChart.Designer.cs">
+      <DependentUpon>fcChart.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormChildren\fcFood.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,6 +201,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormChildren\fcChangePassword.resx">
       <DependentUpon>fcChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChildren\fcChart.resx">
+      <DependentUpon>fcChart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormChildren\fcFood.resx">
       <DependentUpon>fcFood.cs</DependentUpon>

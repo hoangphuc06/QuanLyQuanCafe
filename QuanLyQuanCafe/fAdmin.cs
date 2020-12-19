@@ -99,5 +99,13 @@ namespace QuanLyQuanCafe
         {
             this.Close();
         }
+
+        private void btnChart_Click(object sender, EventArgs e)
+        {
+            panelRight.Top = btnBill.Top;
+            panelRight.Height = btnBill.Height;
+            fcChart fc = new fcChart();
+            OpenChildFrom(fc);
+        }
     }
 }
