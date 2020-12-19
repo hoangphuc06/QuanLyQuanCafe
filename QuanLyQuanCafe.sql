@@ -4,14 +4,14 @@ USE QuanLyQuanCafe
 CREATE TABLE TableFood
 (
 	ID_TableFood INT IDENTITY PRIMARY KEY,
-	NameTable NVARCHAR(100) NOT NULL DEFAULT N'Bàn chýa có tên',
-	StatusTable NVARCHAR(100) NOT NULL DEFAULT N'Tr?ng'	-- Tr?ng ho?c Có ngý?i
+	NameTable NVARCHAR(100) NOT NULL DEFAULT N'Bàn chưa có tên',
+	StatusTable NVARCHAR(100) NOT NULL DEFAULT N'Trống'	-- Tr?ng ho?c Có ngý?i
 )
 
 CREATE TABLE Account
 (
 	UserName NVARCHAR(100) PRIMARY KEY,	
-	DisplayName NVARCHAR(100) NOT NULL DEFAULT N'Tên hi?n th?',
+	DisplayName NVARCHAR(100) NOT NULL DEFAULT N'Tên hiển thị',
 	PassWord NVARCHAR(1000) NOT NULL DEFAULT 0,
 	Type INT NOT NULL  DEFAULT 0 -- 0: admin && 1: staff
 )
@@ -19,13 +19,13 @@ CREATE TABLE Account
 CREATE TABLE FoodCategory
 (
 	ID_FoodCategory INT IDENTITY PRIMARY KEY,
-	name NVARCHAR(100) NOT NULL DEFAULT N'Chýa ð?t tên'
+	name NVARCHAR(100) NOT NULL DEFAULT N'Chưa đặt tên'
 )
 
 CREATE TABLE Food
 (
 	ID_Food INT IDENTITY PRIMARY KEY,
-	NameFood NVARCHAR(100) NOT NULL DEFAULT N'Chýa ð?t tên',
+	NameFood NVARCHAR(100) NOT NULL DEFAULT N'Chưa đặt tên',
 	ID_FoodCategory INT NOT NULL,
 	Price FLOAT NOT NULL DEFAULT 0
 	
@@ -35,38 +35,35 @@ CREATE TABLE Food
 CREATE TABLE Bill
 (
 	ID_Bill INT IDENTITY PRIMARY KEY,
-	DateCheckIn DATE NOT NULL DEFAULT GETDATE(),
-	DateCheckOut DATE,
+	DateCheckIn DATETIME NOT NULL DEFAULT GETDATE(),
+	DateCheckOut DATETIME,
 	ID_TableFood INT NOT NULL, 
-	status INT NOT NULL DEFAULT 0 -- 1: ð? thanh toán && 0: chýa thanh toán
+	status INT NOT NULL DEFAULT 0 -- 1: đã thanh toán && 0: chưa thanh toán
 	
 	FOREIGN KEY (ID_TableFood) REFERENCES TableFood(ID_TableFood)
 )
 
 CREATE TABLE BillInfo
 (
-	ID_BillInfo INT IDENTITY PRIMARY KEY,
-	ID_Bill INT NOT NULL,
+	ID_BillInfo INT NOT NULL,
+	ID_Bill INT IDENTITY PRIMARY KEY,
 	ID_Food INT NOT NULL,
 	count INT NOT NULL DEFAULT 0
 	
-	FOREIGN KEY (ID_Bill) REFERENCES Bill(ID_Bill),
+	FOREIGN KEY (ID_BillInfo) REFERENCES Bill(ID_Bill),
 	FOREIGN KEY (ID_Food) REFERENCES dbo.Food(ID_Food)
 )
 
---//CSDL Form ðãng nh?p
+--//CSDL Form đăng nhập
+		
+insert into Account(UserName,DisplayName,Password,Type)
+values ('admin','Phuc','1962026656160185351301320480154111117132155',0)
 
 insert into Account(UserName,DisplayName,Password,Type)
 values ('staff1','Hoang','1962026656160185351301320480154111117132',1)
 
 insert into Account(UserName,DisplayName,Password,Type)
 values ('staff2','Hung','1962026656160185351301320480154111117132',1)
-
-insert into Account(UserName,DisplayName,Password,Type)
-values ('admin','Phuc','1962026656160185351301320480154111117132',0)
-
-insert into Account(UserName,DisplayName,Password,Type)
-values ('admin2','Phuc','1',0)
 
 CREATE PROC USP_Getaccountbyusername
 @username varchar(100)
@@ -79,7 +76,7 @@ GO
 EXEC dbo.USP_Getaccountbyusername @username = N'staff'
 
 SELECT COUNT(*) FROM dbo.Account WHERE UserName = N'staff' AND Password = N'1' OR 1=1
-
+select*from Account
 CREATE PROC USP_Login
 @username varchar(100),@password varchar(100)
 AS
@@ -109,59 +106,59 @@ EXEC dbo.USP_GetTableList
 
  -- INSERT CATEGORY
 INSERT INTO FoodCategory (name ) VALUES (N'Cafe')
-INSERT INTO FoodCategory (name ) VALUES (N'Trà s?a')
-INSERT INTO FoodCategory (name ) VALUES (N'Sinh t?')
+INSERT INTO FoodCategory (name ) VALUES (N'Trà sữa')
+INSERT INTO FoodCategory (name ) VALUES (N'Sinh tố')
 INSERT INTO FoodCategory (name ) VALUES (N'Chè')
 INSERT INTO FoodCategory (name ) VALUES (N'Ðá xay')
-INSERT INTO FoodCategory (name ) VALUES (N'Ný?c ng?t')
-INSERT INTO FoodCategory (name ) VALUES (N'M? cay')
-INSERT INTO FoodCategory (name ) VALUES (N'Ãn v?t')
+INSERT INTO FoodCategory (name ) VALUES (N'Nước ngọt')
+INSERT INTO FoodCategory (name ) VALUES (N'Mì cay')
+INSERT INTO FoodCategory (name ) VALUES (N'Ăn vặt')
 
 -- INSERT FOOD
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Cafe ðá',1, 18000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Cafe đá',1, 18000)
 INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Cafe nóng',1, 18000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Cafe s?a ðá',1, 20000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Cafe s?a nóng',1, 20000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Cafe sữa đá',1, 20000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Cafe sữa nóng',1, 20000)
 
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Trà s?a truy?n th?ng',2, 25000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Trà s?a nho',2, 25000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Trà s?a socola',2, 25000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Trà s?a kiwi',2, 25000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Trà s?a dâu',2, 25000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Trà s?a b?c hà',2, 25000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Trà sữa truyền thống',2, 25000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Trà sữa nho',2, 25000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Trà sữa socola',2, 25000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Trà sữa kiwi',2, 25000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Trà sữa dâu',2, 25000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Trà sữa bạc hà',2, 25000)
 
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh t? bõ',3, 30000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh t? dâu',3, 30000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh t? mít',3, 25000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh t? xoài',3, 25000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh t? ðu ð?',3, 25000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh t? sapôchê',3, 25000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh tố bơ',3, 30000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh tố dâu',3, 30000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh tố mít',3, 25000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh tố xoài',3, 25000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh tố đu đủ',3, 25000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh tố sapôchê',3, 25000)
 
 INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Chè thái',4, 20000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Chè bý?i',4, 20000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Chè th?p c?m',4, 20000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Chè ð?u xanh',4, 20000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Chè ð?u ð?',4, 20000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Chè bưởi',4, 20000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Chè thập cẩm',4, 20000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Chè đậu xanh',4, 20000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Chè đậu đen',4, 20000)
 
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Caramel ðá xay',5, 35000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Cacpuccino ðá xay',5, 35000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Matcha ðá xay',5, 35000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Socola ðá xay',5, 35000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Caramel đá xay',5, 35000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Cacpuccino đá xay',5, 35000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Matcha đá xay',5, 35000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Socola đá xay',5, 35000)
 
 INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sting',6, 10000)
 INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'CocaCola',6, 10000)
 INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'7Up',6, 10000)
 INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Pepsi',6, 10000)
 
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'M? cay b?',7, 40000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'M? cay b? M?',7, 40000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'M? cay h?i s?n',7, 40000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'M? cay tr?ng',7, 40000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Mì cay bò',7, 40000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Mì cay bò Mỹ',7, 40000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Mì cay hải sản',7, 40000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Mì cay trứng',7, 40000)
 
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'B? cá viên chiên',8, 25000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Bánh tráng tr?n',8, 20000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Bò cá viên chiên',8, 25000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Bánh tráng trộn',8, 20000)
 INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Bánh bao chiên',8, 10000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Bánh s?u riêng',8, 15000)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Bánh sầu riêng',8, 15000)
 
 -- INSERT BILL
 INSERT INTO Bill (DateCheckIn, DateCheckOut, ID_TableFood, status) VALUES (GETDATE(), NULL, 1, 0)
@@ -169,13 +166,17 @@ INSERT INTO Bill (DateCheckIn, DateCheckOut, ID_TableFood, status) VALUES (GETDA
 INSERT INTO Bill (DateCheckIn, DateCheckOut, ID_TableFood, status) VALUES (GETDATE(), GETDATE(), 3, 1)
 
 -- INSERT BILL INFO
-INSERT INTO BillInfo (ID_Bill, ID_Food, count) VALUES (1, 1, 3)
-INSERT INTO BillInfo (ID_Bill, ID_Food, count) VALUES (1, 6, 1)
-INSERT INTO BillInfo (ID_Bill, ID_Food, count) VALUES (1, 10, 2)
-INSERT INTO BillInfo (ID_Bill, ID_Food, count) VALUES (2, 2, 1)
-INSERT INTO BillInfo (ID_Bill, ID_Food, count) VALUES (2, 10, 1)
-INSERT INTO BillInfo (ID_Bill, ID_Food, count) VALUES (3, 15, 2)
-INSERT INTO BillInfo (ID_Bill, ID_Food, count) VALUES (3, 20, 1)
+INSERT INTO BillInfo (ID_BillInfo, ID_Food, count) VALUES (1, 1, 3)
+INSERT INTO BillInfo (ID_BillInfo, ID_Food, count) VALUES (1, 6, 1)
+INSERT INTO BillInfo (ID_BillInfo, ID_Food, count) VALUES (1, 10, 2)
+INSERT INTO BillInfo (ID_BillInfo, ID_Food, count) VALUES (2, 2, 1)
+INSERT INTO BillInfo (ID_BillInfo, ID_Food, count) VALUES (2, 10, 1)
+INSERT INTO BillInfo (ID_BillInfo, ID_Food, count) VALUES (2, 15, 2)
+INSERT INTO BillInfo (ID_BillInfo, ID_Food, count) VALUES (2,20, 1)
+
+select * from Food
+select * from Bill
+select * from BillInfo
 
 -- Update tài kho?n
 CREATE PROC USP_UpdateAccount
@@ -199,8 +200,7 @@ GO
 SELECT * FROM Bill
 SELECT * FROM BillInfo
 
-SELECT f.NameFood, bi.count, f.Price, f.Price*bi.count AS TotalPrice FROM BillInfo AS bi, Food AS f, Bill AS b 
-WHERE bi.ID_Bill = b.ID_Bill AND bi.ID_Food = f.ID_Food AND b.ID_TableFood = 1
+
 
 ALter table dbo.Bill
 add discount INT
@@ -243,7 +243,7 @@ BEGIN
 END
 GO
 
-
+ 
 ALTER PROC USP_InsertBillInfo
 @idBill INT, @idFood INT, @count INT
 AS
@@ -255,6 +255,7 @@ BEGIN
 	SELECT @isExitsBillInfo = ID_Bill, @foodCount=b.count 
 	FROM dbo.BillInfo as b 
 	WHERE  ID_BillInfo=@idBill AND ID_Food=@idFood
+	
 
 	IF(@isExitsBillInfo>0)
 	BEGIN
@@ -411,10 +412,75 @@ BEGIN
 	WHERE DateCheckIn>=@checkIn AND DateCheckOut<=@checkout AND b.status=1 AND t.ID_TableFood=b.ID_TableFood
 END
 Go
+ 
+Create PROC USP_GetListFoodByDate
+@checkIn date,@checkout date
+AS
+BEGIN
+	SELECT t.NameFood AS [Tên Món],f.name as [Loại] ,sum(b.count) as [Số Lượng], sum(b.count)*t.Price as [Doanh Số]
+	FROM dbo.BillInfo as b, dbo.Food as t,dbo.Bill ,dbo.FoodCategory as f
+	WHERE DateCheckIn>=@checkIn AND DateCheckOut<=@checkout AND Bill.status=1 AND b.ID_Food=t.ID_Food AND b.ID_BillInfo=Bill.ID_Bill And t.ID_FoodCategory=f.ID_FoodCategory
+	Group By t.NameFood,t.Price,f.name
+END
+Go
+ --Hàm chuyển tiếng việt string(tìm kiếm)
+CREATE FUNCTION [dbo].[GetUnsignString](@strInput NVARCHAR(4000)) 
+RETURNS NVARCHAR(4000)
+AS
+BEGIN     
+    IF @strInput IS NULL RETURN @strInput
+    IF @strInput = '' RETURN @strInput
+    DECLARE @RT NVARCHAR(4000)
+    DECLARE @SIGN_CHARS NCHAR(136)
+    DECLARE @UNSIGN_CHARS NCHAR (136)
+
+    SET @SIGN_CHARS       = N'ăâđêôơưàảãạáằẳẵặắầẩẫậấèẻẽẹéềểễệếìỉĩịíòỏõọóồổỗộốờởỡợớùủũụúừửữựứỳỷỹỵýĂÂĐÊÔƠƯÀẢÃẠÁẰẲẴẶẮẦẨẪẬẤÈẺẼẸÉỀỂỄỆẾÌỈĨỊÍÒỎÕỌÓỒỔỖỘỐỜỞỠỢỚÙỦŨỤÚỪỬỮỰỨỲỶỸỴÝ'+NCHAR(272)+ NCHAR(208)
+    SET @UNSIGN_CHARS = N'aadeoouaaaaaaaaaaaaaaaeeeeeeeeeeiiiiiooooooooooooooouuuuuuuuuuyyyyyAADEOOUAAAAAAAAAAAAAAAEEEEEEEEEEIIIIIOOOOOOOOOOOOOOOUUUUUUUUUUYYYYYDD'
+
+    DECLARE @COUNTER int
+    DECLARE @COUNTER1 int
+    SET @COUNTER = 1
+ 
+    WHILE (@COUNTER <=LEN(@strInput))
+    BEGIN   
+      SET @COUNTER1 = 1
+      --Tim trong chuoi mau
+       WHILE (@COUNTER1 <=LEN(@SIGN_CHARS)+1)
+       BEGIN
+     IF UNICODE(SUBSTRING(@SIGN_CHARS, @COUNTER1,1)) = UNICODE(SUBSTRING(@strInput,@COUNTER ,1) )
+     BEGIN           
+          IF @COUNTER=1
+              SET @strInput = SUBSTRING(@UNSIGN_CHARS, @COUNTER1,1) + SUBSTRING(@strInput, @COUNTER+1,LEN(@strInput)-1)                   
+          ELSE
+              SET @strInput = SUBSTRING(@strInput, 1, @COUNTER-1) +SUBSTRING(@UNSIGN_CHARS, @COUNTER1,1) + SUBSTRING(@strInput, @COUNTER+1,LEN(@strInput)- @COUNTER)    
+              BREAK         
+               END
+             SET @COUNTER1 = @COUNTER1 +1
+       END
+      --Tim tiep
+       SET @COUNTER = @COUNTER +1
+    END
+    RETURN @strInput
+END
+
+
+
+
+select a.count from dbo.BillInfo as a,dbo.Bill as b
+Where a.ID_BillInfo=b.ID_Bill and b.ID_TableFood=22
+
+select * from dbo.BillInfo where ID_Bill=66
+select* from dbo.TableFood
+
+select count from dbo.BillInfo as a,dbo.Bill as b Where a.ID_BillInfo=b.ID_Bill and b.ID_TableFood=7  AND ID_Food=1 and status=0
+delete from dbo.BillInfo
+where ID_BillInfo=(select ID_Bill from dbo.Bill where ID_TableFood=7   and status=0 )
+delete from dbo.Bill where ID_TableFood=7   and status=0
+
 
 --Gộp bàn
 
-ALTER PROC USP_MergeTable
+Create PROC USP_MergeTable
 @idTable1 INT, @idTable2 INT, @idTable3 INT
 AS
 BEGIN
@@ -574,9 +640,4 @@ BEGIN
 	END
 END
 GO
-
-select * from dbo.Bill 
-select * from dbo.BillInfo
-
-
 
