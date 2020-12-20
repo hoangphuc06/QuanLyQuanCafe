@@ -214,12 +214,12 @@ namespace QuanLyQuanCafe
 
         private void btnMerge_Click(object sender, EventArgs e)
         {
-            Table table = lsvBill.Tag as Table;
+           
             fMergeTable f = new fMergeTable();
             f.ShowDialog();
             flpTable.Controls.Clear();
             this.LoadTable();
-            this.ShowBill(table.ID);
+
         }
     }
 }

@@ -514,7 +514,8 @@ BEGIN
 	END
 
 	
-		
+	IF(@idTable1!=@idTable3)
+	BEGIN
 	IF EXISTS(
 				SELECT ID_Food
 				FROM BillInfo
@@ -568,8 +569,10 @@ BEGIN
 			UPDATE dbo.BillInfo SET ID_BillInfo=@idThirdBill WHERE ID_BillInfo=@idFirstBill	
 		END	
 
+	END	
 	
-	
+	IF(@idTable2!=@idTable3)
+	BEGIN
 	IF EXISTS(
 				SELECT ID_Food
 				FROM BillInfo
@@ -618,11 +621,12 @@ BEGIN
 		BEGIN
 			UPDATE dbo.BillInfo SET ID_BillInfo=@idThirdBill WHERE ID_BillInfo=@idSecondBill	
 		END
-	
+	END
+
 	DECLARE @EMPTY1 INT
 	DECLARE @EMPTY2 INT
-	select @EMPTY1=COUNT(count) from dbo.BillInfo as a,dbo.Bill as b Where a.ID_BillInfo=b.ID_Bill and status=0 and b.ID_TableFood= @idFirstBill
-	select @EMPTY2=COUNT(count) from dbo.BillInfo as a,dbo.Bill as b Where a.ID_BillInfo=b.ID_Bill and status=0 and b.ID_TableFood= @idSecondBill
+	select @EMPTY1=COUNT(count) from dbo.BillInfo as a,dbo.Bill as b Where a.ID_BillInfo=b.ID_Bill and status=0 and b.ID_TableFood= @idTable1
+	select @EMPTY2=COUNT(count) from dbo.BillInfo as a,dbo.Bill as b Where a.ID_BillInfo=b.ID_Bill and status=0 and b.ID_TableFood= @idTable2
 	IF(@EMPTY1=0)
 	BEGIN
 		DELETE FROM BillInfo WHERE ID_BillInfo=@idFirstBill
