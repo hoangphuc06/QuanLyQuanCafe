@@ -155,6 +155,12 @@
     <Compile Include="FormChildren\fcTable.Designer.cs">
       <DependentUpon>fcTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormChildren\FoodDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChildren\FoodDetails.Designer.cs">
+      <DependentUpon>FoodDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="fSwitchTable.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormChildren\fcTable.resx">
       <DependentUpon>fcTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChildren\FoodDetails.resx">
+      <DependentUpon>FoodDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fSwitchTable.resx">
       <DependentUpon>fSwitchTable.cs</DependentUpon>

@@ -5,6 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using QuanLyQuanCafe.DTO;
+using System.Drawing;
+using System.IO;
+using System.Data.SqlClient;
 
 namespace QuanLyQuanCafe.DAO
 {
@@ -83,6 +86,35 @@ namespace QuanLyQuanCafe.DAO
                 list.Add(food);
             }
             return list;
+        }
+        Image ByteArrayToImage(byte[] img)
+        {
+            MemoryStream m = new MemoryStream(img);
+            return Image.FromStream(m);
+        }
+        public bool UpdateFoodImage(byte[] img, string name)
+        {
+            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-FLVOAAN8;Initial Catalog=QuanLyQuanCafe;Integrated Security=True");
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("update Food set Image_Food = @hinh where NameFood = @ten", conn);
+            cmd.Parameters.Add("@ten", name);
+            cmd.Parameters.Add("@hinh", img);
+            int result = cmd.ExecuteNonQuery();
+            conn.Close();
+
+            return result > 0;
+        }
+        public Image getimagebyid(int id)
+        {
+            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-FLVOAAN8;Initial Catalog=QuanLyQuanCafe;Integrated Security=True");
+            conn.Open();
+            string Sqlcmd = string.Format("select * from Food where ID_Food = {0}", id);
+            SqlDataAdapter cmd = new SqlDataAdapter(Sqlcmd, conn);
+            DataTable mtb = new DataTable();
+            cmd.Fill(mtb);
+            Image img = ByteArrayToImage((byte[])mtb.Rows[0]["Image_Food"]);
+            conn.Close();
+            return img;
         }
     }
 }
