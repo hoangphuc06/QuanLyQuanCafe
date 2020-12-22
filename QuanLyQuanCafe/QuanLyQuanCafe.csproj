@@ -113,6 +113,12 @@
     <Compile Include="fCheckOut.Designer.cs">
       <DependentUpon>fCheckOut.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormChildren\AccountDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChildren\AccountDetails.Designer.cs">
+      <DependentUpon>AccountDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormChildren\BillDetails.cs">
       <SubType>Form</SubType>
     </Compile>

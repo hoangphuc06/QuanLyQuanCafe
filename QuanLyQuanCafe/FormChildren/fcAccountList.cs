@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using QuanLyQuanCafe.DTO;
+using System.IO;
 
 namespace QuanLyQuanCafe.FormChildren
 {
@@ -58,11 +59,27 @@ namespace QuanLyQuanCafe.FormChildren
             string userName = txbUserName.Text;
             string displayName = txbDisplayName.Text;
             int type = (int)nudAccountType.Value;
-            EditAccount(userName, displayName, type);
+            byte[] img = ImageToByteArray(UserAccount.Instance.GetImageByName(userName));
+            AccountDetails f = new AccountDetails();
+            f.IsEdit = true;
+            f.LoadAccount(userName, displayName, type);
+            f.ShowDialog();
+            if (f.UserName != null && f.IsChannged(userName, displayName, type, img) == true)
+            {
+                EditAccount(f.UserName, f.DisplayName, f.AccountType);
+                UserAccount.Instance.UpdateImage(f.UserName, f.AccountImage);
+            }
         }
 
+        byte[] ImageToByteArray(Image img)
+        {
+            MemoryStream m = new MemoryStream();
+            img.Save(m, System.Drawing.Imaging.ImageFormat.Png);
+            return m.ToArray();
+        }
         void EditAccount(string userName, string displayName, int type)
         {
+
             if (UserAccount.Instance.UpdateAccount(userName, displayName, type))
             {
                 MessageBox.Show("Cập nhật tài khoản thành công");
@@ -76,17 +93,14 @@ namespace QuanLyQuanCafe.FormChildren
 
         private void btnAddAccount_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txbUserName.Text) && !string.IsNullOrEmpty(txbDisplayName.Text))
+            AccountDetails f = new AccountDetails();
+            f.IsEdit = false;
+            f.ShowDialog();
+            if (f.IsAdd())
             {
-                string userName = txbUserName.Text;
-                string displayName = txbDisplayName.Text;
-                int type = (int)nudAccountType.Value;
-                AddAccount(userName, displayName, type);
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng điền đủ thông tin !");
-            }    
+                AddAccount(f.UserName,f.DisplayName, f.AccountType);
+                UserAccount.Instance.UpdateImage(f.UserName, f.AccountImage);
+            }           
         }
 
         void AddAccount(string userName, string displayName, int type)

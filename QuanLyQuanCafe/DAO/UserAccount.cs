@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 using System.Data;
 using QuanLyQuanCafe.DTO;
 using System.Security.Cryptography;
+using System.IO;
+using System.Data.SqlClient;
+using System.Drawing;
 
 namespace QuanLyQuanCafe
 {
@@ -141,6 +144,35 @@ namespace QuanLyQuanCafe
                 return 1;
             else
                 return 0;
+        }
+        Image ByteArrayToImage(byte[] img)
+        {
+            MemoryStream m = new MemoryStream(img);
+            return Image.FromStream(m);
+        }
+        public bool UpdateImage(string name, byte[] img)
+        {
+            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-FLVOAAN8;Initial Catalog=QuanLyQuanCafe;Integrated Security=True");
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("update Account set Image_Account = @hinh where UserName = @ten", conn);
+            cmd.Parameters.Add("@ten", name);
+            cmd.Parameters.Add("@hinh", img);
+            int result = cmd.ExecuteNonQuery();
+            conn.Close();
+
+            return result > 0;
+        }
+        public Image GetImageByName(string name)
+        {
+            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-FLVOAAN8;Initial Catalog=QuanLyQuanCafe;Integrated Security=True");
+            conn.Open();
+            string Sqlcmd = string.Format("select * from Account where UserName = N'{0}'", name);
+            SqlDataAdapter cmd = new SqlDataAdapter(Sqlcmd, conn);
+            DataTable mtb = new DataTable();
+            cmd.Fill(mtb);
+            Image img = ByteArrayToImage((byte[])mtb.Rows[0]["Image_Account"]);
+            conn.Close();
+            return img;
         }
     }
 }
