@@ -43,6 +43,7 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel6 = new System.Windows.Forms.Panel();
+            this.btnMerge = new FontAwesome.Sharp.IconButton();
             this.lbNameFood = new System.Windows.Forms.Label();
             this.btnSwitchTable = new FontAwesome.Sharp.IconButton();
             this.btnAdd = new FontAwesome.Sharp.IconButton();
@@ -50,7 +51,7 @@
             this.lbTotalPrice = new System.Windows.Forms.Label();
             this.btnCheckOut = new FontAwesome.Sharp.IconButton();
             this.flpTable = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnMerge = new FontAwesome.Sharp.IconButton();
+            this.btnNotification = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -64,6 +65,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnNotification);
             this.panel1.Controls.Add(this.btnExit);
             this.panel1.Controls.Add(this.btnUser);
             this.panel1.Controls.Add(this.btnAdmin);
@@ -71,7 +73,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.ForeColor = System.Drawing.Color.Teal;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(237, 749);
             this.panel1.TabIndex = 0;
@@ -89,7 +91,7 @@
             this.btnExit.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnExit.Location = new System.Drawing.Point(0, 362);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(2);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(235, 90);
             this.btnExit.TabIndex = 3;
@@ -112,7 +114,7 @@
             this.btnUser.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUser.Location = new System.Drawing.Point(0, 272);
-            this.btnUser.Margin = new System.Windows.Forms.Padding(2);
+            this.btnUser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnUser.Name = "btnUser";
             this.btnUser.Size = new System.Drawing.Size(235, 90);
             this.btnUser.TabIndex = 2;
@@ -135,7 +137,7 @@
             this.btnAdmin.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAdmin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAdmin.Location = new System.Drawing.Point(0, 182);
-            this.btnAdmin.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAdmin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAdmin.Name = "btnAdmin";
             this.btnAdmin.Size = new System.Drawing.Size(235, 90);
             this.btnAdmin.TabIndex = 1;
@@ -151,7 +153,7 @@
             this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(235, 182);
             this.panel3.TabIndex = 2;
@@ -173,7 +175,7 @@
             this.panel2.Controls.Add(this.lbInfoUser);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(237, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1133, 63);
             this.panel2.TabIndex = 1;
@@ -199,7 +201,7 @@
             this.panel4.Controls.Add(this.panel5);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(893, 63);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(477, 686);
             this.panel4.TabIndex = 2;
@@ -219,7 +221,7 @@
             this.lsvBill.GridLines = true;
             this.lsvBill.HideSelection = false;
             this.lsvBill.Location = new System.Drawing.Point(0, 86);
-            this.lsvBill.Margin = new System.Windows.Forms.Padding(2);
+            this.lsvBill.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lsvBill.Name = "lsvBill";
             this.lsvBill.Size = new System.Drawing.Size(477, 520);
             this.lsvBill.TabIndex = 0;
@@ -262,6 +264,25 @@
             this.panel6.Size = new System.Drawing.Size(477, 86);
             this.panel6.TabIndex = 1;
             // 
+            // btnMerge
+            // 
+            this.btnMerge.BackColor = System.Drawing.Color.SandyBrown;
+            this.btnMerge.FlatAppearance.BorderSize = 0;
+            this.btnMerge.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMerge.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnMerge.ForeColor = System.Drawing.Color.White;
+            this.btnMerge.IconChar = FontAwesome.Sharp.IconChar.GlassCheers;
+            this.btnMerge.IconColor = System.Drawing.Color.White;
+            this.btnMerge.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnMerge.IconSize = 40;
+            this.btnMerge.Location = new System.Drawing.Point(404, 20);
+            this.btnMerge.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnMerge.Name = "btnMerge";
+            this.btnMerge.Size = new System.Drawing.Size(50, 47);
+            this.btnMerge.TabIndex = 9;
+            this.btnMerge.UseVisualStyleBackColor = false;
+            this.btnMerge.Click += new System.EventHandler(this.btnMerge_Click);
+            // 
             // lbNameFood
             // 
             this.lbNameFood.Dock = System.Windows.Forms.DockStyle.Left;
@@ -284,8 +305,8 @@
             this.btnSwitchTable.IconColor = System.Drawing.Color.White;
             this.btnSwitchTable.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnSwitchTable.IconSize = 40;
-            this.btnSwitchTable.Location = new System.Drawing.Point(406, 20);
-            this.btnSwitchTable.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSwitchTable.Location = new System.Drawing.Point(331, 20);
+            this.btnSwitchTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSwitchTable.Name = "btnSwitchTable";
             this.btnSwitchTable.Size = new System.Drawing.Size(50, 47);
             this.btnSwitchTable.TabIndex = 7;
@@ -303,8 +324,8 @@
             this.btnAdd.IconColor = System.Drawing.Color.White;
             this.btnAdd.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAdd.IconSize = 40;
-            this.btnAdd.Location = new System.Drawing.Point(330, 20);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAdd.Location = new System.Drawing.Point(257, 20);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(50, 47);
             this.btnAdd.TabIndex = 7;
@@ -348,7 +369,7 @@
             this.btnCheckOut.IconSize = 40;
             this.btnCheckOut.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnCheckOut.Location = new System.Drawing.Point(278, 0);
-            this.btnCheckOut.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCheckOut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCheckOut.Name = "btnCheckOut";
             this.btnCheckOut.Size = new System.Drawing.Size(197, 78);
             this.btnCheckOut.TabIndex = 4;
@@ -363,29 +384,29 @@
             this.flpTable.BackColor = System.Drawing.Color.White;
             this.flpTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpTable.Location = new System.Drawing.Point(237, 63);
-            this.flpTable.Margin = new System.Windows.Forms.Padding(2);
+            this.flpTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.flpTable.Name = "flpTable";
             this.flpTable.Size = new System.Drawing.Size(656, 686);
             this.flpTable.TabIndex = 4;
             // 
-            // btnMerge
+            // btnNotification
             // 
-            this.btnMerge.BackColor = System.Drawing.Color.SandyBrown;
-            this.btnMerge.FlatAppearance.BorderSize = 0;
-            this.btnMerge.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMerge.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnMerge.ForeColor = System.Drawing.Color.White;
-            this.btnMerge.IconChar = FontAwesome.Sharp.IconChar.Plus;
-            this.btnMerge.IconColor = System.Drawing.Color.White;
-            this.btnMerge.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnMerge.IconSize = 40;
-            this.btnMerge.Location = new System.Drawing.Point(251, 20);
-            this.btnMerge.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMerge.Name = "btnMerge";
-            this.btnMerge.Size = new System.Drawing.Size(50, 47);
-            this.btnMerge.TabIndex = 9;
-            this.btnMerge.UseVisualStyleBackColor = false;
-            this.btnMerge.Click += new System.EventHandler(this.btnMerge_Click);
+            this.btnNotification.BackColor = System.Drawing.Color.Teal;
+            this.btnNotification.FlatAppearance.BorderSize = 0;
+            this.btnNotification.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNotification.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnNotification.ForeColor = System.Drawing.Color.White;
+            this.btnNotification.IconChar = FontAwesome.Sharp.IconChar.Bullhorn;
+            this.btnNotification.IconColor = System.Drawing.Color.White;
+            this.btnNotification.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnNotification.IconSize = 40;
+            this.btnNotification.Location = new System.Drawing.Point(20, 690);
+            this.btnNotification.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNotification.Name = "btnNotification";
+            this.btnNotification.Size = new System.Drawing.Size(50, 47);
+            this.btnNotification.TabIndex = 8;
+            this.btnNotification.UseVisualStyleBackColor = false;
+            this.btnNotification.Click += new System.EventHandler(this.btnNotification_Click);
             // 
             // fTableManager
             // 
@@ -396,7 +417,7 @@
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "fTableManager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý quán cafe";
@@ -436,5 +457,6 @@
         private FontAwesome.Sharp.IconButton btnAdd;
         private System.Windows.Forms.Label lbNameFood;
         private FontAwesome.Sharp.IconButton btnMerge;
+        private FontAwesome.Sharp.IconButton btnNotification;
     }
 }

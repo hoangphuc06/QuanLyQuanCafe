@@ -34,6 +34,7 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnReset = new FontAwesome.Sharp.IconButton();
             this.btnAdd5k = new System.Windows.Forms.Button();
             this.btnAddFullMoney = new System.Windows.Forms.Button();
             this.btnAdd1k = new System.Windows.Forms.Button();
@@ -54,11 +55,10 @@
             this.lbExcessMoney = new System.Windows.Forms.Label();
             this.lbTotalPrice = new System.Windows.Forms.Label();
             this.lbPayPrice = new System.Windows.Forms.Label();
-            this.lbSumMoney = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbNameFood = new System.Windows.Forms.Label();
             this.CheckOut = new System.Windows.Forms.Button();
-            this.btnReset = new FontAwesome.Sharp.IconButton();
+            this.txbSumMoney = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmDiscount)).BeginInit();
@@ -79,6 +79,7 @@
             this.lsvBill.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lsvBill.FullRowSelect = true;
             this.lsvBill.GridLines = true;
+            this.lsvBill.HideSelection = false;
             this.lsvBill.Location = new System.Drawing.Point(841, 0);
             this.lsvBill.Margin = new System.Windows.Forms.Padding(2);
             this.lsvBill.Name = "lsvBill";
@@ -96,19 +97,19 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Số lượng";
-            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnHeader2.Width = 100;
             // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "Giá";
-            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnHeader3.Width = 120;
             // 
             // columnHeader4
             // 
             this.columnHeader4.Text = "Thành tiền";
-            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnHeader4.Width = 120;
             // 
             // panel1
@@ -132,6 +133,21 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(841, 481);
             this.panel1.TabIndex = 13;
+            // 
+            // btnReset
+            // 
+            this.btnReset.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReset.IconChar = FontAwesome.Sharp.IconChar.RedoAlt;
+            this.btnReset.IconColor = System.Drawing.Color.White;
+            this.btnReset.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnReset.IconSize = 20;
+            this.btnReset.Location = new System.Drawing.Point(19, 16);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(49, 37);
+            this.btnReset.TabIndex = 7;
+            this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnAdd5k
             // 
@@ -277,6 +293,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.txbSumMoney);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.label3);
@@ -286,7 +303,6 @@
             this.panel3.Controls.Add(this.lbExcessMoney);
             this.panel3.Controls.Add(this.lbTotalPrice);
             this.panel3.Controls.Add(this.lbPayPrice);
-            this.panel3.Controls.Add(this.lbSumMoney);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
@@ -390,18 +406,6 @@
             this.lbPayPrice.Text = "0";
             this.lbPayPrice.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // lbSumMoney
-            // 
-            this.lbSumMoney.BackColor = System.Drawing.Color.White;
-            this.lbSumMoney.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbSumMoney.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbSumMoney.Location = new System.Drawing.Point(184, 121);
-            this.lbSumMoney.Name = "lbSumMoney";
-            this.lbSumMoney.Size = new System.Drawing.Size(313, 34);
-            this.lbSumMoney.TabIndex = 2;
-            this.lbSumMoney.Text = "0";
-            this.lbSumMoney.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
@@ -440,20 +444,16 @@
             this.CheckOut.UseVisualStyleBackColor = false;
             this.CheckOut.Click += new System.EventHandler(this.CheckOut_Click);
             // 
-            // btnReset
+            // txbSumMoney
             // 
-            this.btnReset.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReset.IconChar = FontAwesome.Sharp.IconChar.RedoAlt;
-            this.btnReset.IconColor = System.Drawing.Color.White;
-            this.btnReset.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnReset.IconSize = 20;
-            this.btnReset.Location = new System.Drawing.Point(19, 16);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(49, 37);
-            this.btnReset.TabIndex = 7;
-            this.btnReset.UseVisualStyleBackColor = false;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            this.txbSumMoney.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txbSumMoney.Location = new System.Drawing.Point(184, 126);
+            this.txbSumMoney.Name = "txbSumMoney";
+            this.txbSumMoney.Size = new System.Drawing.Size(313, 32);
+            this.txbSumMoney.TabIndex = 16;
+            this.txbSumMoney.Text = "0";
+            this.txbSumMoney.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txbSumMoney.TextChanged += new System.EventHandler(this.txbSumMoney_TextChanged);
             // 
             // fCheckOut
             // 
@@ -506,9 +506,9 @@
         private System.Windows.Forms.Label lbExcessMoney;
         private System.Windows.Forms.Label lbTotalPrice;
         private System.Windows.Forms.Label lbPayPrice;
-        private System.Windows.Forms.Label lbSumMoney;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lbNameFood;
         private System.Windows.Forms.Button CheckOut;
+        private System.Windows.Forms.TextBox txbSumMoney;
     }
 }

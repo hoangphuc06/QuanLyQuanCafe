@@ -41,9 +41,9 @@ namespace QuanLyQuanCafe.DAO
             // Thất bại: -1 
         }
 
-        public void CheckOut(int id, int discount, float totalPrice)
+        public void CheckOut(int id, int discount, float totalPrice, string idUser)
         {
-            string query = "Update dbo.Bill SET DateCheckOut = GETDATE(), status = 1, " + "discount = " + discount + ", totalPrice = " + totalPrice + " WHERE ID_Bill = " + id;
+            string query = "Update dbo.Bill SET DateCheckOut = GETDATE(), status = 1, " + "discount = " + discount + ", totalPrice = " + totalPrice + ", ID_User = '" + idUser + "' WHERE ID_Bill = " + id;
             DataProvider.Instance.ExecuteNonQuery(query);
         }
         public void InsertBill(int id)

@@ -28,9 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnResetPassword = new FontAwesome.Sharp.IconButton();
+            this.btnAddAccount = new FontAwesome.Sharp.IconButton();
+            this.btnDeleteAccount = new FontAwesome.Sharp.IconButton();
+            this.btnEditAccount = new FontAwesome.Sharp.IconButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.nudAccountType = new System.Windows.Forms.NumericUpDown();
             this.lbTypeAccount = new System.Windows.Forms.Label();
@@ -41,18 +46,13 @@
             this.txbUserName = new System.Windows.Forms.TextBox();
             this.lbUserName = new System.Windows.Forms.Label();
             this.dtgvAccount = new System.Windows.Forms.DataGridView();
-            this.btnAddAccount = new FontAwesome.Sharp.IconButton();
-            this.btnEditAccount = new FontAwesome.Sharp.IconButton();
-            this.btnDeleteAccount = new FontAwesome.Sharp.IconButton();
-            this.btnResetPassword = new FontAwesome.Sharp.IconButton();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudAccountType)).BeginInit();
             this.panel28.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).BeginInit();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -69,6 +69,82 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(345, 772);
             this.panel1.TabIndex = 1;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.btnResetPassword);
+            this.panel4.Controls.Add(this.btnAddAccount);
+            this.panel4.Controls.Add(this.btnDeleteAccount);
+            this.panel4.Controls.Add(this.btnEditAccount);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(0, 671);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(343, 99);
+            this.panel4.TabIndex = 8;
+            // 
+            // btnResetPassword
+            // 
+            this.btnResetPassword.BackColor = System.Drawing.Color.Teal;
+            this.btnResetPassword.FlatAppearance.BorderSize = 0;
+            this.btnResetPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetPassword.IconChar = FontAwesome.Sharp.IconChar.UserLock;
+            this.btnResetPassword.IconColor = System.Drawing.Color.White;
+            this.btnResetPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnResetPassword.IconSize = 40;
+            this.btnResetPassword.Location = new System.Drawing.Point(267, 26);
+            this.btnResetPassword.Name = "btnResetPassword";
+            this.btnResetPassword.Size = new System.Drawing.Size(51, 47);
+            this.btnResetPassword.TabIndex = 4;
+            this.btnResetPassword.UseVisualStyleBackColor = false;
+            this.btnResetPassword.Click += new System.EventHandler(this.btnResetPassword_Click);
+            // 
+            // btnAddAccount
+            // 
+            this.btnAddAccount.BackColor = System.Drawing.Color.Teal;
+            this.btnAddAccount.FlatAppearance.BorderSize = 0;
+            this.btnAddAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddAccount.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.btnAddAccount.IconColor = System.Drawing.Color.White;
+            this.btnAddAccount.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAddAccount.IconSize = 40;
+            this.btnAddAccount.Location = new System.Drawing.Point(25, 26);
+            this.btnAddAccount.Name = "btnAddAccount";
+            this.btnAddAccount.Size = new System.Drawing.Size(60, 48);
+            this.btnAddAccount.TabIndex = 4;
+            this.btnAddAccount.UseVisualStyleBackColor = false;
+            this.btnAddAccount.Click += new System.EventHandler(this.btnAddAccount_Click);
+            // 
+            // btnDeleteAccount
+            // 
+            this.btnDeleteAccount.BackColor = System.Drawing.Color.Teal;
+            this.btnDeleteAccount.FlatAppearance.BorderSize = 0;
+            this.btnDeleteAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteAccount.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
+            this.btnDeleteAccount.IconColor = System.Drawing.Color.White;
+            this.btnDeleteAccount.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnDeleteAccount.IconSize = 40;
+            this.btnDeleteAccount.Location = new System.Drawing.Point(190, 26);
+            this.btnDeleteAccount.Name = "btnDeleteAccount";
+            this.btnDeleteAccount.Size = new System.Drawing.Size(51, 47);
+            this.btnDeleteAccount.TabIndex = 4;
+            this.btnDeleteAccount.UseVisualStyleBackColor = false;
+            this.btnDeleteAccount.Click += new System.EventHandler(this.btnDeleteAccount_Click);
+            // 
+            // btnEditAccount
+            // 
+            this.btnEditAccount.BackColor = System.Drawing.Color.Teal;
+            this.btnEditAccount.FlatAppearance.BorderSize = 0;
+            this.btnEditAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditAccount.IconChar = FontAwesome.Sharp.IconChar.Edit;
+            this.btnEditAccount.IconColor = System.Drawing.Color.White;
+            this.btnEditAccount.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnEditAccount.IconSize = 40;
+            this.btnEditAccount.Location = new System.Drawing.Point(107, 27);
+            this.btnEditAccount.Name = "btnEditAccount";
+            this.btnEditAccount.Size = new System.Drawing.Size(59, 48);
+            this.btnEditAccount.TabIndex = 4;
+            this.btnEditAccount.UseVisualStyleBackColor = false;
+            this.btnEditAccount.Click += new System.EventHandler(this.btnEditAccount_Click);
             // 
             // panel3
             // 
@@ -182,23 +258,23 @@
             // 
             this.dtgvAccount.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvAccount.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvAccount.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvAccount.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgvAccount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgvAccount.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgvAccount.DefaultCellStyle = dataGridViewCellStyle2;
             this.dtgvAccount.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtgvAccount.Location = new System.Drawing.Point(0, 0);
             this.dtgvAccount.Margin = new System.Windows.Forms.Padding(2);
@@ -207,82 +283,6 @@
             this.dtgvAccount.RowTemplate.Height = 24;
             this.dtgvAccount.Size = new System.Drawing.Size(633, 772);
             this.dtgvAccount.TabIndex = 3;
-            // 
-            // btnAddAccount
-            // 
-            this.btnAddAccount.BackColor = System.Drawing.Color.Teal;
-            this.btnAddAccount.FlatAppearance.BorderSize = 0;
-            this.btnAddAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddAccount.IconChar = FontAwesome.Sharp.IconChar.Plus;
-            this.btnAddAccount.IconColor = System.Drawing.Color.White;
-            this.btnAddAccount.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnAddAccount.IconSize = 40;
-            this.btnAddAccount.Location = new System.Drawing.Point(25, 26);
-            this.btnAddAccount.Name = "btnAddAccount";
-            this.btnAddAccount.Size = new System.Drawing.Size(60, 48);
-            this.btnAddAccount.TabIndex = 4;
-            this.btnAddAccount.UseVisualStyleBackColor = false;
-            this.btnAddAccount.Click += new System.EventHandler(this.btnAddAccount_Click);
-            // 
-            // btnEditAccount
-            // 
-            this.btnEditAccount.BackColor = System.Drawing.Color.Teal;
-            this.btnEditAccount.FlatAppearance.BorderSize = 0;
-            this.btnEditAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditAccount.IconChar = FontAwesome.Sharp.IconChar.Edit;
-            this.btnEditAccount.IconColor = System.Drawing.Color.White;
-            this.btnEditAccount.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnEditAccount.IconSize = 40;
-            this.btnEditAccount.Location = new System.Drawing.Point(107, 27);
-            this.btnEditAccount.Name = "btnEditAccount";
-            this.btnEditAccount.Size = new System.Drawing.Size(59, 48);
-            this.btnEditAccount.TabIndex = 4;
-            this.btnEditAccount.UseVisualStyleBackColor = false;
-            this.btnEditAccount.Click += new System.EventHandler(this.btnEditAccount_Click);
-            // 
-            // btnDeleteAccount
-            // 
-            this.btnDeleteAccount.BackColor = System.Drawing.Color.Teal;
-            this.btnDeleteAccount.FlatAppearance.BorderSize = 0;
-            this.btnDeleteAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteAccount.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
-            this.btnDeleteAccount.IconColor = System.Drawing.Color.White;
-            this.btnDeleteAccount.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnDeleteAccount.IconSize = 40;
-            this.btnDeleteAccount.Location = new System.Drawing.Point(190, 26);
-            this.btnDeleteAccount.Name = "btnDeleteAccount";
-            this.btnDeleteAccount.Size = new System.Drawing.Size(51, 47);
-            this.btnDeleteAccount.TabIndex = 4;
-            this.btnDeleteAccount.UseVisualStyleBackColor = false;
-            this.btnDeleteAccount.Click += new System.EventHandler(this.btnDeleteAccount_Click);
-            // 
-            // btnResetPassword
-            // 
-            this.btnResetPassword.BackColor = System.Drawing.Color.Teal;
-            this.btnResetPassword.FlatAppearance.BorderSize = 0;
-            this.btnResetPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResetPassword.IconChar = FontAwesome.Sharp.IconChar.UserLock;
-            this.btnResetPassword.IconColor = System.Drawing.Color.White;
-            this.btnResetPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnResetPassword.IconSize = 40;
-            this.btnResetPassword.Location = new System.Drawing.Point(267, 26);
-            this.btnResetPassword.Name = "btnResetPassword";
-            this.btnResetPassword.Size = new System.Drawing.Size(51, 47);
-            this.btnResetPassword.TabIndex = 4;
-            this.btnResetPassword.UseVisualStyleBackColor = false;
-            this.btnResetPassword.Click += new System.EventHandler(this.btnResetPassword_Click);
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.btnResetPassword);
-            this.panel4.Controls.Add(this.btnAddAccount);
-            this.panel4.Controls.Add(this.btnDeleteAccount);
-            this.panel4.Controls.Add(this.btnEditAccount);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 671);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(343, 99);
-            this.panel4.TabIndex = 8;
             // 
             // fcAccountList
             // 
@@ -295,6 +295,7 @@
             this.Name = "fcAccountList";
             this.Text = "fcAccountList";
             this.panel1.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudAccountType)).EndInit();
@@ -303,7 +304,6 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).EndInit();
-            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

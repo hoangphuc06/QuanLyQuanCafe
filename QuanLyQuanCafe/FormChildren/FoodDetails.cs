@@ -158,9 +158,9 @@ namespace QuanLyQuanCafe
             pbFoodImage.Image = FoodDAO.Instance.getimagebyid(Convert.ToInt32(txbID.Text));
         }
 
-        //private void btnSaveImage_Click(object sender, EventArgs e)
-        //{
-        //    FoodDAO.Instance.UpdateFoodImage(ImageToByteArray(pbFoodImage.Image), txbFoodName.Text);
-        //}
+        private void btnSaveImage_Click(object sender, EventArgs e)
+        {
+            FoodDAO.Instance.UpdateFoodImage(ImageToByteArray(pbFoodImage.Image), txbFoodName.Text);
+        }
     }
 }
