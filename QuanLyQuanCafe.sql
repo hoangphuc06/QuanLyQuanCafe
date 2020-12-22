@@ -481,7 +481,7 @@ delete from dbo.Bill where ID_TableFood=7   and status=0
 
 --Gộp bàn
 
-Alter PROC USP_MergeTable
+Create PROC USP_MergeTable
 @idTable1 INT, @idTable2 INT, @idTable3 INT
 AS
 BEGIN
@@ -648,3 +648,7 @@ GO
 
 alter table Food
 add Image_Food image
+
+--Add Image for Account
+alter table Account
+add Image_Account image
