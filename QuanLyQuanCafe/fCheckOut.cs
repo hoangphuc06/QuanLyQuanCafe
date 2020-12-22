@@ -11,25 +11,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Printing;
-using System.Drawing;
+//using System.Drawing;
 using iTextSharp.text.pdf;
 
 namespace QuanLyQuanCafe
 {
     public partial class fCheckOut : Form
     {
-        float TotalPrice = 0;
-        float ExcessPrice = 0;
-        float SumPrice = 0;
-        float PayPrice = 0;
+        double TotalPrice = 0;
+        double ExcessPrice = 0;
+        double SumPrice = 0;
+        double PayPrice = 0;
         Table t;
+        Account ac;
         private PrintDialog printDialog;
         private PrintDocument printDocument;
         private PrintPreviewDialog p = new PrintPreviewDialog();
-        DataGridView dtgvBill;
-        public fCheckOut(Table table)
+
+        public fCheckOut(Table table, Account account)
         {
             t = table;
+            ac = account;
             InitializeComponent();
             LoadtotalPrice();
             PayPrice = TotalPrice;
@@ -40,17 +42,14 @@ namespace QuanLyQuanCafe
             this.printDialog = new PrintDialog();
             this.printDocument = new PrintDocument();
             this.printDocument.PrintPage += new PrintPageEventHandler(this.printDocument_PrintPage);
-
-            dtgvBill = new DataGridView();
-            dtgvBill.BorderStyle = BorderStyle.Fixed3D;
-            dtgvBill.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
         }
+
 
         void ShowBill(int id)
         {
             lsvBill.Items.Clear();
             List<QuanLyQuanCafe.DTO.Menu> listBillInfo = MenuDAO.Instance.GetListMenuByTable(id);
-            float totalPrice = 0;
+            double totalPrice = 0;
             foreach (QuanLyQuanCafe.DTO.Menu item in listBillInfo)
             {
                 ListViewItem lsvItem = new ListViewItem(item.FoodName.ToString());
@@ -64,34 +63,65 @@ namespace QuanLyQuanCafe
 
         private void printDocument_PrintPage(object sender, PrintPageEventArgs e)
         {
-            e.Graphics.DrawString("HÓA ĐƠN", new Font("Arial", 20), Brushes.Black, new Point(350, 20));
+            Graphics graphic = e.Graphics;
+            Font font = new Font("Courier New", 12);
+            double fontHeight = font.GetHeight();
+
+            int startX = 50;
+            int startY = 10;
+            int offset = 40;
+
+            graphic.DrawString("COFFEE SHOP", new Font("Cooper", 20), new SolidBrush(Color.Red), startX + 200, startY);
+            offset = offset + (int)fontHeight + 10;
 
             int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(t.ID);
-            e.Graphics.DrawString("\nID Bill: " + idBill.ToString(), new Font("Arial", 16), Brushes.Black, new Point(200, 50));
+            graphic.DrawString("ID Bill: ".PadRight(10) + idBill.ToString(), font, new SolidBrush(Color.Black), startX, startY + offset);
+            offset = offset + (int)fontHeight + 5;
 
-            e.Graphics.DrawString("\n" + t.Name, new Font("Arial", 16), Brushes.Black, new Point(200, 80));
+            graphic.DrawString(t.Name, font, new SolidBrush(Color.Black), startX, startY + offset);
+            offset = offset + (int)fontHeight + 5;
 
-            LoadDtgv();
-            Bitmap objBmp = new Bitmap(1000, this.dtgvBill.Height);
-            lsvBill.DrawToBitmap(objBmp, new Rectangle(0, 0, 1000, this.dtgvBill.Height));
-            e.Graphics.DrawImage(objBmp, 200, 150);
+            graphic.DrawString("Người thu tiền: ".PadRight(10) + ac.UserName, font, new SolidBrush(Color.Black), startX, startY + offset);
+            offset = offset + (int)fontHeight + 5;
 
-            e.Graphics.DrawString("\n Giảm giá: " + nmDiscount.Value.ToString() + "%", new Font("Arial", 16), Brushes.Black, new Point(200, this.dtgvBill.Height + 180));
+            DateTime now = DateTime.Now;
+            graphic.DrawString("Thời gian: ".PadRight(10) + now, font, new SolidBrush(Color.Black), startX, startY + offset);
+            offset = offset + (int)fontHeight + 5;
 
-            CultureInfo culture = new CultureInfo("vi-VN");
-            e.Graphics.DrawString("\n Tổng tiền: " + PayPrice.ToString("c", culture), new Font("Arial", 16), Brushes.Black, new Point(200, this.dtgvBill.Height + 210));
+            graphic.DrawString("Địa chỉ: KP6, Linh Trung, Thủ Đức, TP.HCM", font, new SolidBrush(Color.Black), startX, startY + offset);
+            offset = offset + (int)fontHeight + 20;
 
-            e.Graphics.DrawString("\n Hẹn gặp lại quý khách !", new Font("Arial", 16), Brushes.Black, new Point(320, this.dtgvBill.Height + 260));
+            string top = "Sản phẩm".PadRight(20) + "SL".PadRight(10) + "Giá".PadRight(10) + "Thành tiền".PadRight(10);
+            graphic.DrawString(top, font, new SolidBrush(Color.Black), startX, startY + offset);
+            offset = offset + (int)fontHeight;
+            graphic.DrawString("------------------------------------------------------", font, new SolidBrush(Color.Black), startX, startY + offset);
+            offset = offset + (int)fontHeight + 5;
+
+            foreach (ListViewItem item in lsvBill.Items)
+            {
+                string ten = item.SubItems[0].Text;
+                string dongia = item.SubItems[2].Text;
+                string slsp = item.SubItems[1].Text;
+                string thanhtien = item.SubItems[3].Text;
+
+                graphic.DrawString(ten, font, new SolidBrush(Color.Black), startX, startY + offset);
+                graphic.DrawString(slsp, font, new SolidBrush(Color.Black), 270, startY + offset);
+                graphic.DrawString(dongia, font, new SolidBrush(Color.Black), 360, startY + offset);
+                graphic.DrawString(thanhtien, font, new SolidBrush(Color.Black), 470, startY + offset);
+                offset = offset + (int)fontHeight + 5;
+            }
+
+            offset = offset + 20;
+            graphic.DrawString("Giảm giá: ".PadRight(30) + nmDiscount.Value.ToString() + "%", new Font("Courier New", 12, FontStyle.Bold), new SolidBrush(Color.Black), startX, startY + offset);
+
+            offset = offset + (int)fontHeight + 5;
+            graphic.DrawString("Tổng cộng: ".PadRight(30) + PayPrice.ToString("###,###"), new Font("Courier New", 12, FontStyle.Bold), new SolidBrush(Color.Black), startX, startY + offset);
+
+            offset = offset + (int)fontHeight + 20;
+            graphic.DrawString("Hẹn gặp lại quý khách !", font, new SolidBrush(Color.Black), startX + 200, startY + offset);
 
         }
 
-        void LoadDtgv()
-        {
-            int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(t.ID);
-            dtgvBill.DataSource = MenuDAO.Instance.GetBillByID(idBill);
-            dtgvBill.Width = 1000;
-            dtgvBill.Height = 500;
-        }
         void LoadtotalPrice()
         {
             List<QuanLyQuanCafe.DTO.Menu> listBillInfo = MenuDAO.Instance.GetListMenuByTable(t.ID);
@@ -100,9 +130,8 @@ namespace QuanLyQuanCafe
             {
                 TotalPrice += item.TotalPrice;
             }
-            CultureInfo culture = new CultureInfo("vi-VN");
 
-            lbTotalPrice.Text = TotalPrice.ToString("c", culture);
+            lbTotalPrice.Text = TotalPrice.ToString();
 
         }
         private void btnAdd500k_Click(object sender, EventArgs e)
@@ -177,32 +206,33 @@ namespace QuanLyQuanCafe
 
         private void CheckOut_Click(object sender, EventArgs e)
         {
-             if (SumPrice - PayPrice >= 0)
-             {
-                 int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(t.ID);
-                 int discount = (int)nmDiscount.Value;
+            if (SumPrice - PayPrice >= 0)
+            {
+                int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(t.ID);
+                int discount = (int)nmDiscount.Value;
+                string idUser = ac.UserName;
 
-                 double totalPrice = Convert.ToDouble(lbTotalPrice.Text.Split(',')[0]);
-                 double finalTotaoPrice = totalPrice - (totalPrice / 100) * discount;
+                double totalPrice = Convert.ToDouble(lbTotalPrice.Text.Split(',')[0]);
+                double finalTotaoPrice = totalPrice - (totalPrice / 100) * discount;
 
-                 if (idBill != -1)
-                 {
-                     if (MessageBox.Show(string.Format("Bạn có chắc thanh toán hóa đơn cho bàn {0}\n Tổng tiền - (Tổng tiền /100)xGiảm giá(%)\n=>{1}-({1} / 100) x {2}% = {3}", t.Name, totalPrice, discount, finalTotaoPrice), "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
-                     {
+                if (idBill != -1)
+                {
+                    if (MessageBox.Show(string.Format("Bạn có chắc thanh toán hóa đơn cho bàn {0}\n Tổng tiền - (Tổng tiền /100)xGiảm giá(%)\n=>{1}-({1} / 100) x {2}% = {3}", t.Name, totalPrice, discount, finalTotaoPrice), "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                    {
                         p.Document = this.printDocument;
                         p.ShowDialog();
-                        BillDAO.Instance.CheckOut(idBill, discount, (float)finalTotaoPrice);
-                         this.Close();
-                     }
-                 }
-             }
-             else
-             {
-                 MessageBox.Show("Số tiền thanh toán chưa đủ !");
-             }
+                        BillDAO.Instance.CheckOut(idBill, discount, (float)finalTotaoPrice,idUser);
+                        this.Close();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Số tiền thanh toán chưa đủ !");
+            }
 
-            /*p.Document = this.printDocument;
-            p.ShowDialog();*/
+            //p.Document = this.printDocument;
+            //p.ShowDialog();
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -216,10 +246,9 @@ namespace QuanLyQuanCafe
 
         void load()
         {
-            CultureInfo culture = new CultureInfo("vi-VN");
-            lbPayPrice.Text = PayPrice.ToString("c", culture);
-            lbSumMoney.Text = SumPrice.ToString("c", culture);
-            lbExcessMoney.Text = ExcessPrice.ToString("c", culture);
+            lbPayPrice.Text = PayPrice.ToString();
+            txbSumMoney.Text = SumPrice.ToString();
+            lbExcessMoney.Text = ExcessPrice.ToString();
         }
 
         private void nmDiscount_ValueChanged(object sender, EventArgs e)
@@ -228,6 +257,22 @@ namespace QuanLyQuanCafe
             PayPrice = TotalPrice - (TotalPrice * discount) / 100;
             ExcessPrice = SumPrice - PayPrice;
             load();
+        }
+
+        private void txbSumMoney_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txbSumMoney.Text))
+            {
+                SumPrice = 0;
+                ExcessPrice = SumPrice - PayPrice;
+                lbExcessMoney.Text = ExcessPrice.ToString();
+            }   
+            else
+            {
+                SumPrice = Convert.ToDouble(txbSumMoney.Text);
+                ExcessPrice = SumPrice - PayPrice;
+                load();
+            }    
         }
     }
 }

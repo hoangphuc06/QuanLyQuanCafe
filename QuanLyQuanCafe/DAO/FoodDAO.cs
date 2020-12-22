@@ -94,7 +94,7 @@ namespace QuanLyQuanCafe.DAO
         }
         public bool UpdateFoodImage(byte[] img, string name)
         {
-            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-FLVOAAN8;Initial Catalog=QuanLyQuanCafe;Integrated Security=True");
+            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-2V5RLH6O\SQLEXPRESS01;Initial Catalog=QuanLyQuanCafe;Integrated Security=True");
             conn.Open();
             SqlCommand cmd = new SqlCommand("update Food set Image_Food = @hinh where NameFood = @ten", conn);
             cmd.Parameters.Add("@ten", name);
@@ -106,7 +106,7 @@ namespace QuanLyQuanCafe.DAO
         }
         public Image getimagebyid(int id)
         {
-            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-FLVOAAN8;Initial Catalog=QuanLyQuanCafe;Integrated Security=True");
+            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-2V5RLH6O\SQLEXPRESS01;Initial Catalog=QuanLyQuanCafe;Integrated Security=True");
             conn.Open();
             string Sqlcmd = string.Format("select * from Food where ID_Food = {0}", id);
             SqlDataAdapter cmd = new SqlDataAdapter(Sqlcmd, conn);
@@ -115,6 +115,30 @@ namespace QuanLyQuanCafe.DAO
             Image img = ByteArrayToImage((byte[])mtb.Rows[0]["Image_Food"]);
             conn.Close();
             return img;
+        }
+
+        public int getidcategorybyid(int id)
+        {
+            string query = string.Format("select ID_FoodCategory from Food where ID_Food = {0}", id);
+            var v = DataProvider.Instance.ExecuteScalar(query);
+            
+            return Convert.ToInt32(v);
+        }
+
+        public string getnamebyid(int id)
+        {
+            string query = string.Format("select NameFood from Food where ID_Food = {0}", id);
+            var v = DataProvider.Instance.ExecuteScalar(query);
+
+            return v.ToString();
+        }
+
+        public int getpricebyid(int id)
+        {
+            string query = string.Format("select Price from Food where ID_Food = {0}", id);
+            var v = DataProvider.Instance.ExecuteScalar(query);
+
+            return Convert.ToInt32(v);
         }
     }
 }

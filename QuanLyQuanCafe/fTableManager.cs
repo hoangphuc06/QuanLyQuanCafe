@@ -143,7 +143,7 @@ namespace QuanLyQuanCafe
                 }    
                 else
                 {
-                    fCheckOut f = new fCheckOut(table);
+                    fCheckOut f = new fCheckOut(table,loginAccount);
                     f.ShowDialog();
                     flpTable.Controls.Clear();
                     this.LoadTable();
@@ -220,6 +220,12 @@ namespace QuanLyQuanCafe
             flpTable.Controls.Clear();
             this.LoadTable();
 
+        }
+
+        private void btnNotification_Click(object sender, EventArgs e)
+        {
+            fNotification f = new fNotification();
+            f.ShowDialog();
         }
     }
 }

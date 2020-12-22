@@ -1,6 +1,4 @@
 ﻿using System;
-using QuanLyQuanCafe.DAO;
-using QuanLyQuanCafe.DTO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,98 +7,153 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
+using System.Data;
+using System.Data.SqlClient;
+using QuanLyQuanCafe.DAO;
 
 namespace QuanLyQuanCafe.FormChildren
 {
     public partial class fcChart : Form
     {
+        SqlConnection connect = new SqlConnection(@"Data Source=LAPTOP-2V5RLH6O\SQLEXPRESS01;Initial Catalog=QuanLyQuanCafe;Integrated Security=True");
+
+        string CurrentMonth = DateTime.Now.ToString("MM");
+        string CurrentYear = DateTime.Now.ToString("yyyyy");
+        string CurrentDay = DateTime.Now.ToString("dd");
+
+        string day, month, year;
         public fcChart()
         {
             InitializeComponent();
-            Load_ChartYear();
-        }
-        private void Load_ChartYear()
-        {
-
-            DateTime today = DateTime.Now;
-
-            chart1.DataSource = DataProvider.Instance.ExecuteQuery("select  MONTH(DateCheckOut) AS month , sum(totalPrice) as sum from dbo.Bill where Year(DateCheckOut) = " + today.Year + " group  by MONTH(DateCheckOut)");
-            chart1.ChartAreas["ChartArea1"].AxisX.Title = "Tháng";
-            chart1.ChartAreas["ChartArea1"].AxisY.Title = "Doanh số";
-
-            chart1.Series["Doanh Thu"].XValueMember = "month";
-            chart1.Series["Doanh Thu"].YValueMembers = "sum";
-
-            chart1.Series["Doanh Thu"]["DrawingStyle"] = "Cylinder";
-        }
-        private void Load_ChartDay(DateTime dtp)
-        {
-
-
-            chart1.DataSource = DataProvider.Instance.ExecuteQuery("select  Datepart(HH,DateCheckIn) AS hour , sum(totalPrice) as sum from dbo.Bill where Year(DateCheckIn) = " + dtp.Year + " And Month (DateCheckIn)=" + dtp.Month + " And Day(DateCheckIn)=" + dtp.Day + " group  by Datepart(HH,DateCheckIn)");
-            chart1.ChartAreas["ChartArea1"].AxisX.Title = "Giờ";
-            chart1.ChartAreas["ChartArea1"].AxisY.Title = "Doanh số";
-            chart1.Series["Doanh Thu"]["DrawingStyle"] = "Cylinder";
-            chart1.Series["Doanh Thu"].XValueMember = "hour";
-            chart1.Series["Doanh Thu"].YValueMembers = "sum";
-        }
-        private void Load_ChartMonth(DateTime dtp)
-        {
-
-
-            chart1.DataSource = DataProvider.Instance.ExecuteQuery("select  Day(DateCheckIn) AS day , sum(totalPrice) as sum from dbo.Bill where Year(DateCheckIn) = " + dtp.Year + " And Month(DateCheckIn)=" + dtp.Month + " group  by Day(DateCheckIn)");
-            chart1.ChartAreas["ChartArea1"].AxisX.Title = "Ngày";
-            chart1.ChartAreas["ChartArea1"].AxisY.Title = "Doanh số";
-            chart1.Series["Doanh Thu"]["DrawingStyle"] = "Cylinder";
-            chart1.Series["Doanh Thu"].XValueMember = "day";
-            chart1.Series["Doanh Thu"].YValueMembers = "sum";
+            load();
         }
 
-        private void cbOptions_SelectedIndexChanged(object sender, EventArgs e)
+        void load()
         {
-            dtp.Visible = false;
-            if (cbOptions.Text == "Năm")
-                Load_ChartYear();
-            if (cbOptions.Text == "Ngày")
+            day = dateTimePicker1.Value.ToString("dd");
+            month = dateTimePicker1.Value.ToString("MM");
+            year = dateTimePicker1.Value.ToString("yyyy");
+
+            DoanhSoBanHang();
+            ChartMoneydaybydate();
+            TopFood();
+            lbChart.Text = "Biểu đồ tháng " + month + "/" + year;
+        }
+
+        private void TopFood()
+        {
+            connect.Open();
+            string query = "select top(1) f.ID_Food from Food f, Bill b, BillInfo bi where b.ID_Bill = bi.ID_BillInfo and bi.ID_Food = f.ID_Food and MONTH(b.DateCheckOut) = " + month + " and YEAR(b.DateCheckOut) = " + year +  " group by f.ID_Food order by sum(bi.count) desc";
+            SqlCommand cmd = new SqlCommand(query,connect);
+            var id = (cmd.ExecuteScalar());
+            
+            if (id == null)
             {
-                dtp.Visible = true;
-                Load_ChartDay(dtp.Value);
+                picFood.Image = null;
+
+                lbIDFood.Text = "ID Food: ";
+                lbIDFoodCategory.Text = "ID Category: ";
+                lbFoodName.Text = "Tên: ";
+                lbFoodPrice.Text = "Giá: ";
+                
+                connect.Close();
+                return;
+            }    
+            else
+            {
+                int idfood = Convert.ToInt32(id);
+                picFood.Image = FoodDAO.Instance.getimagebyid(idfood);
+
+                lbIDFood.Text = "ID Food: " + idfood.ToString();
+                lbIDFoodCategory.Text = "ID Category: " + FoodDAO.Instance.getidcategorybyid(idfood).ToString();
+                lbFoodName.Text = "Tên: " + FoodDAO.Instance.getnamebyid(idfood);
+                lbFoodPrice.Text = "Giá: " + FoodDAO.Instance.getpricebyid(idfood).ToString("###,###");
+                
+            }
+            connect.Close();
+        }
+
+        private void DoanhSoBanHang()
+        {
+            connect.Open();
+
+            SqlCommand cmdCountTongHDThangNay = new SqlCommand("select COUNT (distinct ID_Bill) from dbo.Bill where MONTH(DateCheckOut) = '" + month + "'", connect);
+            SqlCommand cmdCountTongHDToday = new SqlCommand("select COUNT (distinct ID_Bill) from dbo.Bill where DAY(DateCheckOut) = DAY(GETDATE())", connect);
+            SqlCommand cmdCountTongTienThangNay = new SqlCommand("select sum (totalPrice) from dbo.Bill where MONTH(DateCheckOut) = " + month , connect);
+            SqlCommand cmdCountTienToday = new SqlCommand("select sum (totalPrice) from dbo.Bill where DAY(DateCheckOut) = DAY(GETDATE())", connect);
+
+            var CountTongHD = (cmdCountTongHDThangNay.ExecuteScalar());
+            var CountHDtoday = (cmdCountTongHDToday.ExecuteScalar());
+            var CountTongTienThangNay = (cmdCountTongTienThangNay.ExecuteScalar());
+            var CountTienToday = (cmdCountTienToday.ExecuteScalar());
+
+            if (CountTongTienThangNay == DBNull.Value)
+            {
+                lbTongDoanhSo.Text = "0";
+            }
+            else
+            {
+                lbTongDoanhSo.Text = CountTongTienThangNay.ToString();
             }
 
-            if (cbOptions.Text == "Tháng")
+            if (CountTienToday == DBNull.Value)
             {
-                dtp.Visible = true;
-                Load_ChartMonth(dtp.Value);
-
+                lbDoanhSoToday.Text = "Hôm nay: " + 0;
             }
+            else
+            {
+                lbDoanhSoToday.Text = "Hôm nay: " + CountTienToday.ToString();
+            }
+
+            if (CountTongHD == DBNull.Value)
+            {
+                lbSumHD.Text = "0";
+            }    
+            else
+            {
+                lbSumHD.Text = CountTongHD.ToString();
+            }
+
+            if (CountHDtoday == DBNull.Value)
+            {
+                lbHDtoday.Text = "0";
+            }
+            else
+            {
+                lbHDtoday.Text = "Hôm nay: " + CountHDtoday.ToString();
+            }
+
+            
+
+            connect.Close();
         }
 
-        private void dtp_ValueChanged(object sender, EventArgs e)
+        private void ChartMoneydaybydate()
         {
-            if (cbOptions.Text == "Ngày")
-                Load_ChartDay(dtp.Value);
-            if (cbOptions.Text == "Tháng")
-                Load_ChartMonth(dtp.Value);
+            chart1.Series["Thu nhập"].XValueType = ChartValueType.DateTime;
+
+            chart1.ChartAreas[0].AxisX.LabelStyle.Format = "dd-MM";
+            DataSet ds = new DataSet();
+            connect.Open();
+            //SqlDataAdapter adapt = new SqlDataAdapter("SELECT CAST(HDtime AS DATE) AS Ngay,COUNT(value) as slsp, HDthanhtoan as tien FROM HoaDon CROSS APPLY STRING_SPLIT(HDmasp, ',') where MONTH(HDtime) = '"+ CurrentMonth + "' group by HDtime, HDthanhtoan ORDER BY HDtime", connect);
+            SqlDataAdapter adapt = new SqlDataAdapter("select DAY(DateCheckOut) as [Ngày], sum(totalPrice) as [Tiền] from bill where MONTH(DateCheckOut) = " + month + " and YEAR(DateCheckOut) = " + year + " group by DAY(DateCheckOut) order by DAY(DateCheckOut)", connect);
+
+            adapt.Fill(ds);
+            chart1.DataSource = ds;
+            //set the member of the chart data source used to data bind to the X-values of the series  
+            chart1.Series["Thu nhập"].XValueMember = "Ngày";
+            //set the member columns of the chart data source used to data bind to the X-values of the series  
+            chart1.Series["Thu nhập"].YValueMembers = "Tiền";
+            chart1.Series["Thu nhập"].IsValueShownAsLabel = true;
+            //ChartSlspDayByDay.Titles.Add("Salary Chart");
+            connect.Close();
         }
 
-        private void btnColumn_Click(object sender, EventArgs e)
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            btnColumn.Visible = false;
-            btnLine.Visible = true;
-
-            chart1.Series["Doanh Thu"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
-
-        }
-
-
-       
-        
-        private void btnLine_Click(object sender, EventArgs e)
-        {
-            btnLine.Visible = false;
-            btnColumn.Visible = true;
-            chart1.Series["Doanh Thu"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-
+            load();
         }
     }
 }

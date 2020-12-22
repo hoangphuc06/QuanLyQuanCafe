@@ -38,7 +38,7 @@ namespace QuanLyQuanCafe
             this.Close();
         }
 
-        private void cbSwitchTable_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }

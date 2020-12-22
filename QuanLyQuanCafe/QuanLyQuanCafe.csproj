@@ -89,6 +89,12 @@
     <Compile Include="fMergeTable.Designer.cs">
       <DependentUpon>fMergeTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="fNotification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fNotification.Designer.cs">
+      <DependentUpon>fNotification.cs</DependentUpon>
+    </Compile>
     <Compile Include="fOrderFood.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +112,12 @@
     </Compile>
     <Compile Include="fCheckOut.Designer.cs">
       <DependentUpon>fCheckOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormChildren\BillDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChildren\BillDetails.Designer.cs">
+      <DependentUpon>BillDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="FormChildren\fcAccountInfo.cs">
       <SubType>Form</SubType>
@@ -184,6 +196,9 @@
     <EmbeddedResource Include="fMergeTable.resx">
       <DependentUpon>fMergeTable.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="fNotification.resx">
+      <DependentUpon>fNotification.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fOrderFood.resx">
       <DependentUpon>fOrderFood.cs</DependentUpon>
     </EmbeddedResource>
@@ -192,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fCheckOut.resx">
       <DependentUpon>fCheckOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChildren\BillDetails.resx">
+      <DependentUpon>BillDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormChildren\fcAccountInfo.resx">
       <DependentUpon>fcAccountInfo.cs</DependentUpon>
@@ -288,6 +306,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logo3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -109,7 +109,7 @@
             this.btnExit.TabIndex = 15;
             this.btnExit.Text = "Hủy";
             this.btnExit.UseVisualStyleBackColor = false;
-            this.btnExit.Click += new System.EventHandler(this.btnOK_Click);
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // panel1
             // 

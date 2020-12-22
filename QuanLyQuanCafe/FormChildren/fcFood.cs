@@ -26,47 +26,48 @@ namespace QuanLyQuanCafe.FormChildren
         {
             dtgvFood.DataSource = foodList;
             LoadListFood();
-            LoadCategoryIntoCombobox(cbxFoodCategory);
+            //LoadCategoryIntoCombobox(cbxFoodCategory);
             AddFoodBinding();
         }
         void LoadListFood()
         {
             foodList.DataSource = FoodDAO.Instance.GetListFood();
         }
-        void LoadCategoryIntoCombobox(ComboBox cb)
-        {
-            cb.DataSource = CategoryDAO.Instance.GetListCategory();
-            cb.DisplayMember = "name";
-        }
+        //void LoadCategoryIntoCombobox(ComboBox cb)
+        //{
+        //    cb.DataSource = CategoryDAO.Instance.GetListCategory();
+        //    cb.DisplayMember = "name";
+        //}
 
         void AddFoodBinding()
         {
-            txbFoodID.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "iD", true, DataSourceUpdateMode.Never));
-            txbFoodName.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Name", true, DataSourceUpdateMode.Never));
-            txbFoodPrice.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Price", true, DataSourceUpdateMode.Never));
+            lbFoodID.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "iD", true, DataSourceUpdateMode.Never));
+            lbFoodName.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Name", true, DataSourceUpdateMode.Never));
+            lbFoodCategory.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "categoryid", true, DataSourceUpdateMode.Never));
+            lbFoodPrice.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Price", true, DataSourceUpdateMode.Never));
         }
 
-        private void txbFoodName_TextChanged(object sender, EventArgs e)
-        {
-            if (dtgvFood.SelectedCells.Count > 0 && dtgvFood.SelectedCells[0].OwningRow.Cells["CategoryID"].Value != null)
-            {
-                int id = (int)dtgvFood.SelectedCells[0].OwningRow.Cells["CategoryID"].Value;
-                Category category = CategoryDAO.Instance.GetCategoryByID(id);
-                cbxFoodCategory.SelectedItem = category;
-                int Index = -1, i = 0;
-                foreach (Category item in cbxFoodCategory.Items)
-                {
-                    if (item.ID == category.ID)
-                    {
-                        Index = i;
-                        break;
-                    }
-                    i++;
-                }
-                cbxFoodCategory.SelectedIndex = Index;
+        //private void txbFoodName_TextChanged(object sender, EventArgs e)
+        //{
+        //    if (dtgvFood.SelectedCells.Count > 0 && dtgvFood.SelectedCells[0].OwningRow.Cells["CategoryID"].Value != null)
+        //    {
+        //        int id = (int)dtgvFood.SelectedCells[0].OwningRow.Cells["CategoryID"].Value;
+        //        Category category = CategoryDAO.Instance.GetCategoryByID(id);
+        //        cbxFoodCategory.SelectedItem = category;
+        //        int Index = -1, i = 0;
+        //        foreach (Category item in cbxFoodCategory.Items)
+        //        {
+        //            if (item.ID == category.ID)
+        //            {
+        //                Index = i;
+        //                break;
+        //            }
+        //            i++;
+        //        }
+        //        cbxFoodCategory.SelectedIndex = Index;
 
-            }
-        }
+        //    }
+        //}
 
         private void btnAddFood_Click(object sender, EventArgs e)
         {
@@ -101,10 +102,10 @@ namespace QuanLyQuanCafe.FormChildren
         private void btnEditFood_Click(object sender, EventArgs e)
         {
             FoodDetails f = new FoodDetails();
-            int fid = Convert.ToInt32(txbFoodID.Text);
-            string fname = txbFoodName.Text;
-            int fcategory = (cbxFoodCategory.SelectedItem as Category).ID;
-            float fprice = (float)Convert.ToInt32(txbFoodPrice.Text);
+            int fid = Convert.ToInt32(lbFoodID.Text);
+            string fname = lbFoodName.Text;
+            int fcategory = Convert.ToInt32(lbFoodCategory.Text);
+            float fprice = (float)Convert.ToInt32(lbFoodPrice.Text);
             byte[] img = ImageToByteArray( FoodDAO.instance.getimagebyid(fid));
             f.LoadFood(fid, fname, fcategory, fprice);
             f.ShowDialog();
@@ -130,7 +131,7 @@ namespace QuanLyQuanCafe.FormChildren
 
         private void btnDeleteFood_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(txbFoodID.Text);
+            int id = Convert.ToInt32(lbFoodID.Text);
             if (FoodDAO.Instance.DeleteFood(id))
             {
                 MessageBox.Show("Xoá thành công");

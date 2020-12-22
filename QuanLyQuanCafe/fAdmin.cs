@@ -102,8 +102,8 @@ namespace QuanLyQuanCafe
 
         private void btnChart_Click(object sender, EventArgs e)
         {
-            panelRight.Top = btnBill.Top;
-            panelRight.Height = btnBill.Height;
+            panelRight.Top = btnChart.Top;
+            panelRight.Height = btnChart.Height;
             fcChart fc = new fcChart();
             OpenChildFrom(fc);
         }

@@ -111,5 +111,56 @@ namespace QuanLyQuanCafe
         {
             BillDAO.Instance.DeleteBillByTableID(t.ID);
         }
+
+        private void cbFood_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int id = 0;
+
+            ComboBox cb = sender as ComboBox;
+
+            if (cb.SelectedItem == null)
+                return;
+            Food selected = cb.SelectedItem as Food;
+            id = selected.iD;
+
+            pictureBox1.Image = FoodDAO.Instance.getimagebyid(id);
+
+            nmFoodCount.Value = 1;
+        }
+
+        private void btnSubtract_Click(object sender, EventArgs e)
+        {
+            int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(t.ID);
+            int foodID = (cbFood.SelectedItem as Food).iD;
+            int count = -(int)nmFoodCount.Value;
+
+            string query = "select count from dbo.BillInfo as a,dbo.Bill as b Where a.ID_BillInfo=b.ID_Bill and status=0 and b.ID_TableFood= " + t.ID + " AND ID_Food= " + foodID;
+            object i = DataProvider.Instance.ExecuteScalar(query);
+            int a;
+            if (i == null)
+            {
+                a = 0;
+                return;
+            }      
+            else
+                a = int.Parse(i.ToString());
+
+            if (a > 0 || a + nmFoodCount.Value > 0)
+            {
+                if (idBill == -1)
+                {
+                    BillDAO.Instance.InsertBill(t.ID);
+                    BillInfoDAO.Instance.InsertBillInfo(BillDAO.Instance.GetMaxIdBill(), foodID, count);
+
+                }
+                else
+                {
+                    BillInfoDAO.Instance.InsertBillInfo(idBill, foodID, count);
+                }
+
+                ShowBill(t.ID);
+
+            }
+        }
     }
 }
