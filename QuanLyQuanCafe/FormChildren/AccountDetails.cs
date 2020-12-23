@@ -67,18 +67,26 @@ namespace QuanLyQuanCafe.FormChildren
             {
                 if (UserAccount.Instance.Check(txbAccountName.Text) == 1 || this.IsEdit == true)
                 {
-                    uname = txbAccountName.Text;
-                    dname = txbDisplayName.Text;
-                    type = (int)nmAccountType.Value;
-                    if (ptbPicture.Image != null)
-                        image = ImageToByteArray(ptbPicture.Image);
+                    int tmp = (int)nmAccountType.Value;
+                    if (tmp == 0)
+                    {
+                        Save();
+                        this.Close();
+                    }   
                     else
                     {
-                        string file = "DefaltAccountPic.png";
-                        Image foodimage = Image.FromFile(file);
-                        image = ImageToByteArray(foodimage);
-                    }
-                    this.Close();
+                        int dem = UserAccount.Instance.DemTaiKhoanQL();
+                        if (dem == 1 && IsEdit == true)
+                        {
+                            MessageBox.Show("Quán cần ít nhất 1 người quản lý !");
+                        }    
+                        else
+                        {
+                            Save();
+                            this.Close();
+                        }    
+                    }    
+                   
                 }
                 else
                 {
@@ -91,6 +99,23 @@ namespace QuanLyQuanCafe.FormChildren
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin");
             }
             
+        }
+
+        void Save()
+        {
+            uname = txbAccountName.Text;
+            dname = txbDisplayName.Text;
+            type = (int)nmAccountType.Value;
+            if (ptbPicture.Image != null)
+            {
+                image = ImageToByteArray(ptbPicture.Image);
+            }   
+            else
+            {
+                string file = "DefaltAccountPic.png";
+                Image foodimage = Image.FromFile(file);
+                image = ImageToByteArray(foodimage);
+            }
         }
         public bool IsAdd()
         {

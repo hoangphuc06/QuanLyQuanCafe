@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnResetPassword = new FontAwesome.Sharp.IconButton();
@@ -37,21 +37,23 @@
             this.btnDeleteAccount = new FontAwesome.Sharp.IconButton();
             this.btnEditAccount = new FontAwesome.Sharp.IconButton();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.nudAccountType = new System.Windows.Forms.NumericUpDown();
+            this.lbAccountType = new System.Windows.Forms.Label();
             this.lbTypeAccount = new System.Windows.Forms.Label();
             this.panel28 = new System.Windows.Forms.Panel();
-            this.txbDisplayName = new System.Windows.Forms.TextBox();
+            this.lbDisplayName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txbUserName = new System.Windows.Forms.TextBox();
+            this.lbUser = new System.Windows.Forms.Label();
             this.lbUserName = new System.Windows.Forms.Label();
+            this.picAccount = new System.Windows.Forms.PictureBox();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.dtgvAccount = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudAccountType)).BeginInit();
             this.panel28.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAccount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,6 +65,8 @@
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel28);
             this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.picAccount);
+            this.panel1.Controls.Add(this.panel5);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel1.Location = new System.Drawing.Point(633, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
@@ -148,30 +152,24 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.nudAccountType);
+            this.panel3.Controls.Add(this.lbAccountType);
             this.panel3.Controls.Add(this.lbTypeAccount);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 202);
+            this.panel3.Location = new System.Drawing.Point(0, 476);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(343, 101);
             this.panel3.TabIndex = 7;
             // 
-            // nudAccountType
+            // lbAccountType
             // 
-            this.nudAccountType.BackColor = System.Drawing.Color.White;
-            this.nudAccountType.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.nudAccountType.Location = new System.Drawing.Point(25, 53);
-            this.nudAccountType.Margin = new System.Windows.Forms.Padding(2);
-            this.nudAccountType.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudAccountType.Name = "nudAccountType";
-            this.nudAccountType.ReadOnly = true;
-            this.nudAccountType.Size = new System.Drawing.Size(268, 32);
-            this.nudAccountType.TabIndex = 1;
-            this.nudAccountType.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.lbAccountType.BackColor = System.Drawing.Color.White;
+            this.lbAccountType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbAccountType.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbAccountType.Location = new System.Drawing.Point(25, 53);
+            this.lbAccountType.Name = "lbAccountType";
+            this.lbAccountType.Size = new System.Drawing.Size(268, 36);
+            this.lbAccountType.TabIndex = 4;
+            this.lbAccountType.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbTypeAccount
             // 
@@ -188,25 +186,25 @@
             // panel28
             // 
             this.panel28.BackColor = System.Drawing.Color.White;
-            this.panel28.Controls.Add(this.txbDisplayName);
+            this.panel28.Controls.Add(this.lbDisplayName);
             this.panel28.Controls.Add(this.label1);
             this.panel28.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel28.Location = new System.Drawing.Point(0, 101);
+            this.panel28.Location = new System.Drawing.Point(0, 375);
             this.panel28.Margin = new System.Windows.Forms.Padding(2);
             this.panel28.Name = "panel28";
             this.panel28.Size = new System.Drawing.Size(343, 101);
             this.panel28.TabIndex = 3;
             // 
-            // txbDisplayName
+            // lbDisplayName
             // 
-            this.txbDisplayName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txbDisplayName.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txbDisplayName.Location = new System.Drawing.Point(25, 57);
-            this.txbDisplayName.Margin = new System.Windows.Forms.Padding(2);
-            this.txbDisplayName.Name = "txbDisplayName";
-            this.txbDisplayName.Size = new System.Drawing.Size(268, 32);
-            this.txbDisplayName.TabIndex = 1;
-            this.txbDisplayName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.lbDisplayName.BackColor = System.Drawing.Color.White;
+            this.lbDisplayName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbDisplayName.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbDisplayName.Location = new System.Drawing.Point(25, 44);
+            this.lbDisplayName.Name = "lbDisplayName";
+            this.lbDisplayName.Size = new System.Drawing.Size(268, 36);
+            this.lbDisplayName.TabIndex = 4;
+            this.lbDisplayName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1
             // 
@@ -222,26 +220,25 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.txbUserName);
+            this.panel2.Controls.Add(this.lbUser);
             this.panel2.Controls.Add(this.lbUserName);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Location = new System.Drawing.Point(0, 274);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(343, 101);
             this.panel2.TabIndex = 4;
             // 
-            // txbUserName
+            // lbUser
             // 
-            this.txbUserName.BackColor = System.Drawing.Color.White;
-            this.txbUserName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txbUserName.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txbUserName.Location = new System.Drawing.Point(25, 58);
-            this.txbUserName.Margin = new System.Windows.Forms.Padding(2);
-            this.txbUserName.Name = "txbUserName";
-            this.txbUserName.Size = new System.Drawing.Size(268, 32);
-            this.txbUserName.TabIndex = 1;
-            this.txbUserName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.lbUser.BackColor = System.Drawing.Color.White;
+            this.lbUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbUser.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbUser.Location = new System.Drawing.Point(25, 44);
+            this.lbUser.Name = "lbUser";
+            this.lbUser.Size = new System.Drawing.Size(268, 36);
+            this.lbUser.TabIndex = 4;
+            this.lbUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbUserName
             // 
@@ -254,27 +251,45 @@
             this.lbUserName.TabIndex = 0;
             this.lbUserName.Text = "Tên tài khoản:";
             // 
+            // picAccount
+            // 
+            this.picAccount.Dock = System.Windows.Forms.DockStyle.Top;
+            this.picAccount.Location = new System.Drawing.Point(0, 45);
+            this.picAccount.Name = "picAccount";
+            this.picAccount.Size = new System.Drawing.Size(343, 229);
+            this.picAccount.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picAccount.TabIndex = 9;
+            this.picAccount.TabStop = false;
+            // 
+            // panel5
+            // 
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(343, 45);
+            this.panel5.TabIndex = 10;
+            // 
             // dtgvAccount
             // 
             this.dtgvAccount.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvAccount.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvAccount.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvAccount.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dtgvAccount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgvAccount.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgvAccount.DefaultCellStyle = dataGridViewCellStyle4;
             this.dtgvAccount.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtgvAccount.Location = new System.Drawing.Point(0, 0);
             this.dtgvAccount.Margin = new System.Windows.Forms.Padding(2);
@@ -283,6 +298,7 @@
             this.dtgvAccount.RowTemplate.Height = 24;
             this.dtgvAccount.Size = new System.Drawing.Size(633, 772);
             this.dtgvAccount.TabIndex = 3;
+            this.dtgvAccount.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvAccount_CellClick);
             // 
             // fcAccountList
             // 
@@ -298,11 +314,11 @@
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudAccountType)).EndInit();
             this.panel28.ResumeLayout(false);
             this.panel28.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAccount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).EndInit();
             this.ResumeLayout(false);
 
@@ -312,12 +328,9 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel28;
-        private System.Windows.Forms.TextBox txbUserName;
         private System.Windows.Forms.Label lbUserName;
-        private System.Windows.Forms.NumericUpDown nudAccountType;
         private System.Windows.Forms.Label lbTypeAccount;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox txbDisplayName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dtgvAccount;
         private System.Windows.Forms.Panel panel3;
@@ -326,5 +339,10 @@
         private FontAwesome.Sharp.IconButton btnDeleteAccount;
         private System.Windows.Forms.Panel panel4;
         private FontAwesome.Sharp.IconButton btnResetPassword;
+        private System.Windows.Forms.PictureBox picAccount;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label lbDisplayName;
+        private System.Windows.Forms.Label lbUser;
+        private System.Windows.Forms.Label lbAccountType;
     }
 }

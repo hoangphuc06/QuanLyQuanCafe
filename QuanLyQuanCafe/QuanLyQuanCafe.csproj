@@ -214,6 +214,9 @@
     <EmbeddedResource Include="fCheckOut.resx">
       <DependentUpon>fCheckOut.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormChildren\AccountDetails.resx">
+      <DependentUpon>AccountDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormChildren\BillDetails.resx">
       <DependentUpon>BillDetails.cs</DependentUpon>
     </EmbeddedResource>

@@ -152,7 +152,7 @@ namespace QuanLyQuanCafe
         }
         public bool UpdateImage(string name, byte[] img)
         {
-            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-FLVOAAN8;Initial Catalog=QuanLyQuanCafe;Integrated Security=True");
+            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-2V5RLH6O\SQLEXPRESS01;Initial Catalog=QuanLyQuanCafe;Integrated Security=True");
             conn.Open();
             SqlCommand cmd = new SqlCommand("update Account set Image_Account = @hinh where UserName = @ten", conn);
             cmd.Parameters.Add("@ten", name);
@@ -164,7 +164,7 @@ namespace QuanLyQuanCafe
         }
         public Image GetImageByName(string name)
         {
-            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-FLVOAAN8;Initial Catalog=QuanLyQuanCafe;Integrated Security=True");
+            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-2V5RLH6O\SQLEXPRESS01;Initial Catalog=QuanLyQuanCafe;Integrated Security=True");
             conn.Open();
             string Sqlcmd = string.Format("select * from Account where UserName = N'{0}'", name);
             SqlDataAdapter cmd = new SqlDataAdapter(Sqlcmd, conn);
@@ -173,6 +173,20 @@ namespace QuanLyQuanCafe
             Image img = ByteArrayToImage((byte[])mtb.Rows[0]["Image_Account"]);
             conn.Close();
             return img;
+        }
+
+        public int DemTaiKhoanQL()
+        {
+            string query = "SELECT COUNT(UserName) FROM Account WHERE Type = 0";
+            int dem = Convert.ToInt32(DataProvider.Instance.ExecuteScalar(query).ToString());
+            return dem;
+        }
+
+        public string GetDisplayNameByID(string id)
+        {
+            string query = "SELECT DisplayName FROM Account WHERE UserName = '" + id + "'";
+            string displayname = DataProvider.Instance.ExecuteScalar(query).ToString();
+            return displayname;
         }
     }
 }

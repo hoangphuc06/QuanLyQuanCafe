@@ -38,6 +38,7 @@ namespace QuanLyQuanCafe
             InitializeComponent();
             this.LoginAccount = acc;
             LoadTable();
+            picUser.Image = UserAccount.Instance.GetImageByName(acc.UserName);
 
             // Hiện tổng tiền bằng 0;
             float money = 0;
@@ -118,6 +119,8 @@ namespace QuanLyQuanCafe
             this.Show();
             flpTable.Controls.Clear();
             LoadTable();
+            lbInfoUser.Text = UserAccount.Instance.GetDisplayNameByID(loginAccount.UserName);
+            picUser.Image = UserAccount.Instance.GetImageByName(loginAccount.UserName);
         }
 
         private void btnUser_Click(object sender, EventArgs e)
@@ -126,7 +129,8 @@ namespace QuanLyQuanCafe
             this.Hide();
             f.ShowDialog();
             this.Show();
-            lbInfoUser.Text = loginAccount.DisplayName;
+            lbInfoUser.Text = UserAccount.Instance.GetDisplayNameByID(loginAccount.UserName);
+            picUser.Image = UserAccount.Instance.GetImageByName(loginAccount.UserName);
         }
 
         
