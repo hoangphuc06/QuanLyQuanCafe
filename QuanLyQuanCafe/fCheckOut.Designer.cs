@@ -46,6 +46,7 @@
             this.btnAdd200k = new System.Windows.Forms.Button();
             this.btnAdd500k = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.txbSumMoney = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -58,7 +59,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbNameFood = new System.Windows.Forms.Label();
             this.CheckOut = new System.Windows.Forms.Button();
-            this.txbSumMoney = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmDiscount)).BeginInit();
@@ -309,6 +309,18 @@
             this.panel3.Size = new System.Drawing.Size(535, 316);
             this.panel3.TabIndex = 14;
             // 
+            // txbSumMoney
+            // 
+            this.txbSumMoney.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txbSumMoney.Location = new System.Drawing.Point(184, 126);
+            this.txbSumMoney.Name = "txbSumMoney";
+            this.txbSumMoney.Size = new System.Drawing.Size(313, 32);
+            this.txbSumMoney.TabIndex = 16;
+            this.txbSumMoney.Text = "0";
+            this.txbSumMoney.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txbSumMoney.Click += new System.EventHandler(this.txbSumMoney_Click);
+            this.txbSumMoney.TextChanged += new System.EventHandler(this.txbSumMoney_TextChanged);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -443,17 +455,6 @@
             this.CheckOut.Text = "THANH TOÁN";
             this.CheckOut.UseVisualStyleBackColor = false;
             this.CheckOut.Click += new System.EventHandler(this.CheckOut_Click);
-            // 
-            // txbSumMoney
-            // 
-            this.txbSumMoney.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txbSumMoney.Location = new System.Drawing.Point(184, 126);
-            this.txbSumMoney.Name = "txbSumMoney";
-            this.txbSumMoney.Size = new System.Drawing.Size(313, 32);
-            this.txbSumMoney.TabIndex = 16;
-            this.txbSumMoney.Text = "0";
-            this.txbSumMoney.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txbSumMoney.TextChanged += new System.EventHandler(this.txbSumMoney_TextChanged);
             // 
             // fCheckOut
             // 

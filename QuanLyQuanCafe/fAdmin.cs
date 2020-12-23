@@ -107,5 +107,13 @@ namespace QuanLyQuanCafe
             fcChart fc = new fcChart();
             OpenChildFrom(fc);
         }
+
+        private void btnResource_Click(object sender, EventArgs e)
+        {
+            panelRight.Top = btnResource.Top;
+            panelRight.Height = btnResource.Height;
+            fcResources fc = new fcResources();
+            OpenChildFrom(fc);
+        }
     }
 }
