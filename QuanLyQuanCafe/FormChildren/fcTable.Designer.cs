@@ -32,9 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnDeleteTable = new FontAwesome.Sharp.IconButton();
-            this.btnAddTable = new FontAwesome.Sharp.IconButton();
-            this.btnEditTable = new FontAwesome.Sharp.IconButton();
             this.panel5 = new System.Windows.Forms.Panel();
             this.cbxTableStatus = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,6 +42,9 @@
             this.txbID = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.dtgvTable = new System.Windows.Forms.DataGridView();
+            this.btnDeleteTable = new FontAwesome.Sharp.IconButton();
+            this.btnAddTable = new FontAwesome.Sharp.IconButton();
+            this.btnEditTable = new FontAwesome.Sharp.IconButton();
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -65,7 +65,7 @@
             this.panel4.Location = new System.Drawing.Point(647, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(331, 772);
+            this.panel4.Size = new System.Drawing.Size(331, 786);
             this.panel4.TabIndex = 2;
             // 
             // panel1
@@ -74,58 +74,10 @@
             this.panel1.Controls.Add(this.btnAddTable);
             this.panel1.Controls.Add(this.btnEditTable);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 672);
+            this.panel1.Location = new System.Drawing.Point(0, 686);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(329, 98);
             this.panel1.TabIndex = 6;
-            // 
-            // btnDeleteTable
-            // 
-            this.btnDeleteTable.BackColor = System.Drawing.Color.Teal;
-            this.btnDeleteTable.FlatAppearance.BorderSize = 0;
-            this.btnDeleteTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteTable.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
-            this.btnDeleteTable.IconColor = System.Drawing.Color.White;
-            this.btnDeleteTable.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnDeleteTable.IconSize = 40;
-            this.btnDeleteTable.Location = new System.Drawing.Point(241, 26);
-            this.btnDeleteTable.Name = "btnDeleteTable";
-            this.btnDeleteTable.Size = new System.Drawing.Size(51, 47);
-            this.btnDeleteTable.TabIndex = 10;
-            this.btnDeleteTable.UseVisualStyleBackColor = false;
-            this.btnDeleteTable.Click += new System.EventHandler(this.btnDeleteTable_Click);
-            // 
-            // btnAddTable
-            // 
-            this.btnAddTable.BackColor = System.Drawing.Color.Teal;
-            this.btnAddTable.FlatAppearance.BorderSize = 0;
-            this.btnAddTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddTable.IconChar = FontAwesome.Sharp.IconChar.Plus;
-            this.btnAddTable.IconColor = System.Drawing.Color.White;
-            this.btnAddTable.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnAddTable.IconSize = 40;
-            this.btnAddTable.Location = new System.Drawing.Point(33, 26);
-            this.btnAddTable.Name = "btnAddTable";
-            this.btnAddTable.Size = new System.Drawing.Size(60, 48);
-            this.btnAddTable.TabIndex = 8;
-            this.btnAddTable.UseVisualStyleBackColor = false;
-            this.btnAddTable.Click += new System.EventHandler(this.btnAddTable_Click);
-            // 
-            // btnEditTable
-            // 
-            this.btnEditTable.BackColor = System.Drawing.Color.Teal;
-            this.btnEditTable.FlatAppearance.BorderSize = 0;
-            this.btnEditTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditTable.IconChar = FontAwesome.Sharp.IconChar.Edit;
-            this.btnEditTable.IconColor = System.Drawing.Color.White;
-            this.btnEditTable.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnEditTable.IconSize = 40;
-            this.btnEditTable.Location = new System.Drawing.Point(137, 26);
-            this.btnEditTable.Name = "btnEditTable";
-            this.btnEditTable.Size = new System.Drawing.Size(59, 48);
-            this.btnEditTable.TabIndex = 9;
-            this.btnEditTable.UseVisualStyleBackColor = false;
-            this.btnEditTable.Click += new System.EventHandler(this.btnEditTable_Click);
             // 
             // panel5
             // 
@@ -258,14 +210,62 @@
             this.dtgvTable.Name = "dtgvTable";
             this.dtgvTable.RowHeadersWidth = 51;
             this.dtgvTable.RowTemplate.Height = 24;
-            this.dtgvTable.Size = new System.Drawing.Size(647, 772);
+            this.dtgvTable.Size = new System.Drawing.Size(647, 786);
             this.dtgvTable.TabIndex = 7;
+            // 
+            // btnDeleteTable
+            // 
+            this.btnDeleteTable.BackColor = System.Drawing.Color.Teal;
+            this.btnDeleteTable.FlatAppearance.BorderSize = 0;
+            this.btnDeleteTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteTable.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
+            this.btnDeleteTable.IconColor = System.Drawing.Color.White;
+            this.btnDeleteTable.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnDeleteTable.IconSize = 40;
+            this.btnDeleteTable.Location = new System.Drawing.Point(241, 26);
+            this.btnDeleteTable.Name = "btnDeleteTable";
+            this.btnDeleteTable.Size = new System.Drawing.Size(51, 47);
+            this.btnDeleteTable.TabIndex = 10;
+            this.btnDeleteTable.UseVisualStyleBackColor = false;
+            this.btnDeleteTable.Click += new System.EventHandler(this.btnDeleteTable_Click);
+            // 
+            // btnAddTable
+            // 
+            this.btnAddTable.BackColor = System.Drawing.Color.Teal;
+            this.btnAddTable.FlatAppearance.BorderSize = 0;
+            this.btnAddTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddTable.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.btnAddTable.IconColor = System.Drawing.Color.White;
+            this.btnAddTable.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAddTable.IconSize = 40;
+            this.btnAddTable.Location = new System.Drawing.Point(33, 26);
+            this.btnAddTable.Name = "btnAddTable";
+            this.btnAddTable.Size = new System.Drawing.Size(60, 48);
+            this.btnAddTable.TabIndex = 8;
+            this.btnAddTable.UseVisualStyleBackColor = false;
+            this.btnAddTable.Click += new System.EventHandler(this.btnAddTable_Click);
+            // 
+            // btnEditTable
+            // 
+            this.btnEditTable.BackColor = System.Drawing.Color.Teal;
+            this.btnEditTable.FlatAppearance.BorderSize = 0;
+            this.btnEditTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditTable.IconChar = FontAwesome.Sharp.IconChar.Edit;
+            this.btnEditTable.IconColor = System.Drawing.Color.White;
+            this.btnEditTable.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnEditTable.IconSize = 40;
+            this.btnEditTable.Location = new System.Drawing.Point(137, 26);
+            this.btnEditTable.Name = "btnEditTable";
+            this.btnEditTable.Size = new System.Drawing.Size(59, 48);
+            this.btnEditTable.TabIndex = 9;
+            this.btnEditTable.UseVisualStyleBackColor = false;
+            this.btnEditTable.Click += new System.EventHandler(this.btnEditTable_Click);
             // 
             // fcTable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(978, 772);
+            this.ClientSize = new System.Drawing.Size(978, 786);
             this.Controls.Add(this.dtgvTable);
             this.Controls.Add(this.panel4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

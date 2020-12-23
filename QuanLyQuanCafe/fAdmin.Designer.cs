@@ -29,18 +29,19 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panelRight = new System.Windows.Forms.Panel();
             this.btnExit = new FontAwesome.Sharp.IconButton();
             this.btnFood = new FontAwesome.Sharp.IconButton();
             this.btnCategory = new FontAwesome.Sharp.IconButton();
             this.btnTable = new FontAwesome.Sharp.IconButton();
             this.btnChart = new FontAwesome.Sharp.IconButton();
-            this.panelRight = new System.Windows.Forms.Panel();
             this.btnBill = new FontAwesome.Sharp.IconButton();
             this.btnAccount = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panelDesktop = new System.Windows.Forms.Panel();
+            this.btnResource = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -52,6 +53,7 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.panelRight);
             this.panel1.Controls.Add(this.btnExit);
+            this.panel1.Controls.Add(this.btnResource);
             this.panel1.Controls.Add(this.btnFood);
             this.panel1.Controls.Add(this.btnCategory);
             this.panel1.Controls.Add(this.btnTable);
@@ -62,10 +64,19 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.ForeColor = System.Drawing.Color.Teal;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(271, 922);
+            this.panel1.Size = new System.Drawing.Size(204, 836);
             this.panel1.TabIndex = 1;
+            // 
+            // panelRight
+            // 
+            this.panelRight.BackColor = System.Drawing.Color.Teal;
+            this.panelRight.Location = new System.Drawing.Point(0, 177);
+            this.panelRight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelRight.Name = "panelRight";
+            this.panelRight.Size = new System.Drawing.Size(10, 79);
+            this.panelRight.TabIndex = 5;
             // 
             // btnExit
             // 
@@ -78,10 +89,10 @@
             this.btnExit.IconColor = System.Drawing.Color.Teal;
             this.btnExit.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnExit.IconSize = 40;
-            this.btnExit.Location = new System.Drawing.Point(0, 800);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnExit.Location = new System.Drawing.Point(0, 730);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(269, 91);
+            this.btnExit.Size = new System.Drawing.Size(202, 74);
             this.btnExit.TabIndex = 19;
             this.btnExit.Text = "Home";
             this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -99,10 +110,10 @@
             this.btnFood.IconColor = System.Drawing.Color.Teal;
             this.btnFood.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnFood.IconSize = 40;
-            this.btnFood.Location = new System.Drawing.Point(0, 703);
-            this.btnFood.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnFood.Location = new System.Drawing.Point(0, 572);
+            this.btnFood.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnFood.Name = "btnFood";
-            this.btnFood.Size = new System.Drawing.Size(269, 97);
+            this.btnFood.Size = new System.Drawing.Size(202, 79);
             this.btnFood.TabIndex = 18;
             this.btnFood.Text = "Món";
             this.btnFood.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -120,10 +131,10 @@
             this.btnCategory.IconColor = System.Drawing.Color.Teal;
             this.btnCategory.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnCategory.IconSize = 40;
-            this.btnCategory.Location = new System.Drawing.Point(0, 606);
-            this.btnCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCategory.Location = new System.Drawing.Point(0, 493);
+            this.btnCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCategory.Name = "btnCategory";
-            this.btnCategory.Size = new System.Drawing.Size(269, 97);
+            this.btnCategory.Size = new System.Drawing.Size(202, 79);
             this.btnCategory.TabIndex = 17;
             this.btnCategory.Text = "Loại ";
             this.btnCategory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -141,10 +152,10 @@
             this.btnTable.IconColor = System.Drawing.Color.Teal;
             this.btnTable.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnTable.IconSize = 40;
-            this.btnTable.Location = new System.Drawing.Point(0, 509);
-            this.btnTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnTable.Location = new System.Drawing.Point(0, 414);
+            this.btnTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnTable.Name = "btnTable";
-            this.btnTable.Size = new System.Drawing.Size(269, 97);
+            this.btnTable.Size = new System.Drawing.Size(202, 79);
             this.btnTable.TabIndex = 16;
             this.btnTable.Text = "Bàn";
             this.btnTable.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -162,24 +173,15 @@
             this.btnChart.IconColor = System.Drawing.Color.Teal;
             this.btnChart.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnChart.IconSize = 40;
-            this.btnChart.Location = new System.Drawing.Point(0, 412);
-            this.btnChart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnChart.Location = new System.Drawing.Point(0, 335);
+            this.btnChart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnChart.Name = "btnChart";
-            this.btnChart.Size = new System.Drawing.Size(269, 97);
+            this.btnChart.Size = new System.Drawing.Size(202, 79);
             this.btnChart.TabIndex = 15;
             this.btnChart.Text = "Chart";
             this.btnChart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnChart.UseVisualStyleBackColor = true;
             this.btnChart.Click += new System.EventHandler(this.btnChart_Click);
-            // 
-            // panelRight
-            // 
-            this.panelRight.BackColor = System.Drawing.Color.Teal;
-            this.panelRight.Location = new System.Drawing.Point(0, 218);
-            this.panelRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panelRight.Name = "panelRight";
-            this.panelRight.Size = new System.Drawing.Size(11, 97);
-            this.panelRight.TabIndex = 5;
             // 
             // btnBill
             // 
@@ -192,10 +194,10 @@
             this.btnBill.IconColor = System.Drawing.Color.Teal;
             this.btnBill.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnBill.IconSize = 40;
-            this.btnBill.Location = new System.Drawing.Point(0, 315);
-            this.btnBill.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnBill.Location = new System.Drawing.Point(0, 256);
+            this.btnBill.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnBill.Name = "btnBill";
-            this.btnBill.Size = new System.Drawing.Size(269, 97);
+            this.btnBill.Size = new System.Drawing.Size(202, 79);
             this.btnBill.TabIndex = 4;
             this.btnBill.Text = "Hóa đơn";
             this.btnBill.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -213,10 +215,10 @@
             this.btnAccount.IconColor = System.Drawing.Color.Teal;
             this.btnAccount.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAccount.IconSize = 40;
-            this.btnAccount.Location = new System.Drawing.Point(0, 218);
-            this.btnAccount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAccount.Location = new System.Drawing.Point(0, 177);
+            this.btnAccount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAccount.Name = "btnAccount";
-            this.btnAccount.Size = new System.Drawing.Size(269, 97);
+            this.btnAccount.Size = new System.Drawing.Size(202, 79);
             this.btnAccount.TabIndex = 3;
             this.btnAccount.Text = "Tài khoản";
             this.btnAccount.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -229,9 +231,9 @@
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(269, 218);
+            this.panel2.Size = new System.Drawing.Size(202, 177);
             this.panel2.TabIndex = 2;
             // 
             // pictureBox1
@@ -239,9 +241,8 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = global::QuanLyQuanCafe.Properties.Resources.logo3;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(269, 218);
+            this.pictureBox1.Size = new System.Drawing.Size(202, 177);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -250,32 +251,51 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.Teal;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(271, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4);
+            this.panel3.Location = new System.Drawing.Point(204, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1305, 62);
+            this.panel3.Size = new System.Drawing.Size(978, 50);
             this.panel3.TabIndex = 0;
             // 
             // panelDesktop
             // 
             this.panelDesktop.BackColor = System.Drawing.Color.White;
             this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDesktop.Location = new System.Drawing.Point(271, 62);
-            this.panelDesktop.Margin = new System.Windows.Forms.Padding(4);
+            this.panelDesktop.Location = new System.Drawing.Point(204, 50);
             this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(1305, 860);
+            this.panelDesktop.Size = new System.Drawing.Size(978, 786);
             this.panelDesktop.TabIndex = 2;
+            // 
+            // btnResource
+            // 
+            this.btnResource.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnResource.FlatAppearance.BorderSize = 0;
+            this.btnResource.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResource.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnResource.ForeColor = System.Drawing.Color.Teal;
+            this.btnResource.IconChar = FontAwesome.Sharp.IconChar.DollyFlatbed;
+            this.btnResource.IconColor = System.Drawing.Color.Teal;
+            this.btnResource.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnResource.IconSize = 40;
+            this.btnResource.Location = new System.Drawing.Point(0, 651);
+            this.btnResource.Margin = new System.Windows.Forms.Padding(2);
+            this.btnResource.Name = "btnResource";
+            this.btnResource.Size = new System.Drawing.Size(202, 79);
+            this.btnResource.TabIndex = 20;
+            this.btnResource.Text = "Nguyên liệu";
+            this.btnResource.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnResource.UseVisualStyleBackColor = true;
+            this.btnResource.Click += new System.EventHandler(this.btnResource_Click);
             // 
             // fAdmin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1576, 922);
+            this.ClientSize = new System.Drawing.Size(1182, 836);
             this.Controls.Add(this.panelDesktop);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "fAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin";
@@ -301,5 +321,6 @@
         private FontAwesome.Sharp.IconButton btnCategory;
         private FontAwesome.Sharp.IconButton btnTable;
         private FontAwesome.Sharp.IconButton btnChart;
+        private FontAwesome.Sharp.IconButton btnResource;
     }
 }

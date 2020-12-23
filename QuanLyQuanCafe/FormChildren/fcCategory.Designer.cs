@@ -60,7 +60,7 @@
             this.panel15.Location = new System.Drawing.Point(655, 0);
             this.panel15.Margin = new System.Windows.Forms.Padding(2);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(323, 772);
+            this.panel15.Size = new System.Drawing.Size(323, 786);
             this.panel15.TabIndex = 2;
             // 
             // panel1
@@ -69,7 +69,7 @@
             this.panel1.Controls.Add(this.btnAddCategory);
             this.panel1.Controls.Add(this.btnEditCategory);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 672);
+            this.panel1.Location = new System.Drawing.Point(0, 686);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(321, 98);
             this.panel1.TabIndex = 7;
@@ -218,14 +218,14 @@
             this.dtgvCategory.Name = "dtgvCategory";
             this.dtgvCategory.RowHeadersWidth = 51;
             this.dtgvCategory.RowTemplate.Height = 24;
-            this.dtgvCategory.Size = new System.Drawing.Size(655, 772);
+            this.dtgvCategory.Size = new System.Drawing.Size(655, 786);
             this.dtgvCategory.TabIndex = 7;
             // 
             // fcCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(978, 772);
+            this.ClientSize = new System.Drawing.Size(978, 786);
             this.Controls.Add(this.dtgvCategory);
             this.Controls.Add(this.panel15);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

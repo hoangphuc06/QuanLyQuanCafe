@@ -249,6 +249,9 @@
     <EmbeddedResource Include="FormChildren\fcFood.resx">
       <DependentUpon>fcFood.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormChildren\fcResources.resx">
+      <DependentUpon>fcResources.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormChildren\fcTable.resx">
       <DependentUpon>fcTable.cs</DependentUpon>
     </EmbeddedResource>

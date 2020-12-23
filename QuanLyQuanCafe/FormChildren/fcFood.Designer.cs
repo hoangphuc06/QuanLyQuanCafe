@@ -36,12 +36,16 @@
             this.btnAddFood = new FontAwesome.Sharp.IconButton();
             this.btnEditFood = new FontAwesome.Sharp.IconButton();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.lbFoodPrice = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
+            this.lbFoodCategory = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panel13 = new System.Windows.Forms.Panel();
+            this.lbFoodName = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.lbFoodID = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.ptbFoodImage = new System.Windows.Forms.PictureBox();
             this.panel9 = new System.Windows.Forms.Panel();
@@ -49,10 +53,6 @@
             this.txbFindFoodName = new System.Windows.Forms.TextBox();
             this.panel10 = new System.Windows.Forms.Panel();
             this.dtgvFood = new System.Windows.Forms.DataGridView();
-            this.lbFoodID = new System.Windows.Forms.Label();
-            this.lbFoodName = new System.Windows.Forms.Label();
-            this.lbFoodCategory = new System.Windows.Forms.Label();
-            this.lbFoodPrice = new System.Windows.Forms.Label();
             this.panel8.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel11.SuspendLayout();
@@ -78,7 +78,7 @@
             this.panel8.Location = new System.Drawing.Point(650, 0);
             this.panel8.Margin = new System.Windows.Forms.Padding(2);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(328, 772);
+            this.panel8.Size = new System.Drawing.Size(328, 786);
             this.panel8.TabIndex = 1;
             // 
             // panel1
@@ -87,7 +87,7 @@
             this.panel1.Controls.Add(this.btnAddFood);
             this.panel1.Controls.Add(this.btnEditFood);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 672);
+            this.panel1.Location = new System.Drawing.Point(0, 686);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(326, 98);
             this.panel1.TabIndex = 7;
@@ -152,6 +152,17 @@
             this.panel11.Size = new System.Drawing.Size(326, 108);
             this.panel11.TabIndex = 9;
             // 
+            // lbFoodPrice
+            // 
+            this.lbFoodPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbFoodPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbFoodPrice.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbFoodPrice.Location = new System.Drawing.Point(33, 53);
+            this.lbFoodPrice.Name = "lbFoodPrice";
+            this.lbFoodPrice.Size = new System.Drawing.Size(268, 38);
+            this.lbFoodPrice.TabIndex = 13;
+            this.lbFoodPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -174,6 +185,17 @@
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(326, 108);
             this.panel14.TabIndex = 10;
+            // 
+            // lbFoodCategory
+            // 
+            this.lbFoodCategory.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbFoodCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbFoodCategory.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbFoodCategory.Location = new System.Drawing.Point(31, 54);
+            this.lbFoodCategory.Name = "lbFoodCategory";
+            this.lbFoodCategory.Size = new System.Drawing.Size(268, 38);
+            this.lbFoodCategory.TabIndex = 13;
+            this.lbFoodCategory.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label8
             // 
@@ -198,6 +220,17 @@
             this.panel13.Size = new System.Drawing.Size(326, 108);
             this.panel13.TabIndex = 10;
             // 
+            // lbFoodName
+            // 
+            this.lbFoodName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbFoodName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbFoodName.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbFoodName.Location = new System.Drawing.Point(31, 42);
+            this.lbFoodName.Name = "lbFoodName";
+            this.lbFoodName.Size = new System.Drawing.Size(268, 38);
+            this.lbFoodName.TabIndex = 13;
+            this.lbFoodName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -220,6 +253,17 @@
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(326, 96);
             this.panel12.TabIndex = 10;
+            // 
+            // lbFoodID
+            // 
+            this.lbFoodID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbFoodID.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbFoodID.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbFoodID.Location = new System.Drawing.Point(31, 39);
+            this.lbFoodID.Name = "lbFoodID";
+            this.lbFoodID.Size = new System.Drawing.Size(268, 38);
+            this.lbFoodID.TabIndex = 12;
+            this.lbFoodID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label6
             // 
@@ -322,59 +366,15 @@
             this.dtgvFood.Name = "dtgvFood";
             this.dtgvFood.RowHeadersWidth = 51;
             this.dtgvFood.RowTemplate.Height = 24;
-            this.dtgvFood.Size = new System.Drawing.Size(650, 717);
+            this.dtgvFood.Size = new System.Drawing.Size(650, 731);
             this.dtgvFood.TabIndex = 4;
             this.dtgvFood.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvFood_CellClick);
-            // 
-            // lbFoodID
-            // 
-            this.lbFoodID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbFoodID.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbFoodID.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbFoodID.Location = new System.Drawing.Point(31, 39);
-            this.lbFoodID.Name = "lbFoodID";
-            this.lbFoodID.Size = new System.Drawing.Size(268, 38);
-            this.lbFoodID.TabIndex = 12;
-            this.lbFoodID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbFoodName
-            // 
-            this.lbFoodName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbFoodName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbFoodName.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbFoodName.Location = new System.Drawing.Point(31, 42);
-            this.lbFoodName.Name = "lbFoodName";
-            this.lbFoodName.Size = new System.Drawing.Size(268, 38);
-            this.lbFoodName.TabIndex = 13;
-            this.lbFoodName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbFoodCategory
-            // 
-            this.lbFoodCategory.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbFoodCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbFoodCategory.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbFoodCategory.Location = new System.Drawing.Point(31, 54);
-            this.lbFoodCategory.Name = "lbFoodCategory";
-            this.lbFoodCategory.Size = new System.Drawing.Size(268, 38);
-            this.lbFoodCategory.TabIndex = 13;
-            this.lbFoodCategory.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbFoodPrice
-            // 
-            this.lbFoodPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbFoodPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbFoodPrice.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbFoodPrice.Location = new System.Drawing.Point(33, 53);
-            this.lbFoodPrice.Name = "lbFoodPrice";
-            this.lbFoodPrice.Size = new System.Drawing.Size(268, 38);
-            this.lbFoodPrice.TabIndex = 13;
-            this.lbFoodPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // fcFood
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(978, 772);
+            this.ClientSize = new System.Drawing.Size(978, 786);
             this.Controls.Add(this.dtgvFood);
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.panel8);

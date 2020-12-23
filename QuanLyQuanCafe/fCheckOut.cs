@@ -274,5 +274,10 @@ namespace QuanLyQuanCafe
                 load();
             }    
         }
+
+        private void txbSumMoney_Click(object sender, EventArgs e)
+        {
+            txbSumMoney.Text = "";
+        }
     }
 }

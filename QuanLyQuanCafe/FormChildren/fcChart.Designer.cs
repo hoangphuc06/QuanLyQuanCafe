@@ -47,24 +47,25 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.lbFoodPrice = new System.Windows.Forms.Label();
+            this.lbFoodName = new System.Windows.Forms.Label();
+            this.lbIDFoodCategory = new System.Windows.Forms.Label();
+            this.lbIDFood = new System.Windows.Forms.Label();
+            this.picFood = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.lbChart = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lbIDFood = new System.Windows.Forms.Label();
-            this.lbIDFoodCategory = new System.Windows.Forms.Label();
-            this.lbFoodName = new System.Windows.Forms.Label();
-            this.lbFoodPrice = new System.Windows.Forms.Label();
-            this.picFood = new System.Windows.Forms.PictureBox();
+            this.lbCount = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picFood)).BeginInit();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picFood)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -76,7 +77,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(962, 170);
+            this.panel1.Size = new System.Drawing.Size(978, 170);
             this.panel1.TabIndex = 0;
             // 
             // panel4
@@ -119,9 +120,9 @@
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(16, 14);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(131, 20);
+            this.label6.Size = new System.Drawing.Size(178, 20);
             this.label6.TabIndex = 0;
-            this.label6.Text = "Mặt hàng (tháng)";
+            this.label6.Text = "Tiền nguyên liệu (tháng)";
             // 
             // panel2
             // 
@@ -217,9 +218,9 @@
             this.panel5.Controls.Add(this.dateTimePicker1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.panel5.Location = new System.Drawing.Point(0, 686);
+            this.panel5.Location = new System.Drawing.Point(0, 739);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(962, 47);
+            this.panel5.Size = new System.Drawing.Size(978, 47);
             this.panel5.TabIndex = 1;
             // 
             // dateTimePicker1
@@ -233,6 +234,7 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.White;
+            this.panel6.Controls.Add(this.lbCount);
             this.panel6.Controls.Add(this.lbFoodPrice);
             this.panel6.Controls.Add(this.lbFoodName);
             this.panel6.Controls.Add(this.lbIDFoodCategory);
@@ -240,10 +242,80 @@
             this.panel6.Controls.Add(this.picFood);
             this.panel6.Controls.Add(this.label2);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel6.Location = new System.Drawing.Point(707, 170);
+            this.panel6.Location = new System.Drawing.Point(723, 170);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(255, 516);
+            this.panel6.Size = new System.Drawing.Size(255, 569);
             this.panel6.TabIndex = 2;
+            // 
+            // lbFoodPrice
+            // 
+            this.lbFoodPrice.BackColor = System.Drawing.Color.White;
+            this.lbFoodPrice.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbFoodPrice.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbFoodPrice.Location = new System.Drawing.Point(0, 412);
+            this.lbFoodPrice.Name = "lbFoodPrice";
+            this.lbFoodPrice.Size = new System.Drawing.Size(255, 56);
+            this.lbFoodPrice.TabIndex = 5;
+            this.lbFoodPrice.Text = "Giá";
+            this.lbFoodPrice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lbFoodName
+            // 
+            this.lbFoodName.BackColor = System.Drawing.Color.White;
+            this.lbFoodName.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbFoodName.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbFoodName.Location = new System.Drawing.Point(0, 356);
+            this.lbFoodName.Name = "lbFoodName";
+            this.lbFoodName.Size = new System.Drawing.Size(255, 56);
+            this.lbFoodName.TabIndex = 4;
+            this.lbFoodName.Text = "Name";
+            this.lbFoodName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lbIDFoodCategory
+            // 
+            this.lbIDFoodCategory.BackColor = System.Drawing.Color.White;
+            this.lbIDFoodCategory.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbIDFoodCategory.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbIDFoodCategory.Location = new System.Drawing.Point(0, 300);
+            this.lbIDFoodCategory.Name = "lbIDFoodCategory";
+            this.lbIDFoodCategory.Size = new System.Drawing.Size(255, 56);
+            this.lbIDFoodCategory.TabIndex = 3;
+            this.lbIDFoodCategory.Text = "ID category";
+            this.lbIDFoodCategory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lbIDFood
+            // 
+            this.lbIDFood.BackColor = System.Drawing.Color.White;
+            this.lbIDFood.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbIDFood.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbIDFood.Location = new System.Drawing.Point(0, 244);
+            this.lbIDFood.Name = "lbIDFood";
+            this.lbIDFood.Size = new System.Drawing.Size(255, 56);
+            this.lbIDFood.TabIndex = 2;
+            this.lbIDFood.Text = "ID";
+            this.lbIDFood.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // picFood
+            // 
+            this.picFood.Dock = System.Windows.Forms.DockStyle.Top;
+            this.picFood.Location = new System.Drawing.Point(0, 56);
+            this.picFood.Name = "picFood";
+            this.picFood.Size = new System.Drawing.Size(255, 188);
+            this.picFood.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picFood.TabIndex = 6;
+            this.picFood.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.White;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label2.Location = new System.Drawing.Point(0, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(255, 56);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Best seller";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel7
             // 
@@ -252,7 +324,7 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(0, 170);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(707, 516);
+            this.panel7.Size = new System.Drawing.Size(723, 569);
             this.panel7.TabIndex = 3;
             // 
             // chart1
@@ -270,7 +342,7 @@
             series1.Legend = "Legend1";
             series1.Name = "Thu nhập";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(707, 473);
+            this.chart1.Size = new System.Drawing.Size(723, 526);
             this.chart1.TabIndex = 16;
             this.chart1.Text = "chart1";
             // 
@@ -281,86 +353,28 @@
             this.lbChart.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbChart.Location = new System.Drawing.Point(0, 0);
             this.lbChart.Name = "lbChart";
-            this.lbChart.Size = new System.Drawing.Size(707, 43);
+            this.lbChart.Size = new System.Drawing.Size(723, 43);
             this.lbChart.TabIndex = 0;
             this.lbChart.Text = "label2";
             this.lbChart.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // lbCount
             // 
-            this.label2.BackColor = System.Drawing.Color.White;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(255, 56);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Best seller";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbIDFood
-            // 
-            this.lbIDFood.BackColor = System.Drawing.Color.White;
-            this.lbIDFood.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbIDFood.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbIDFood.Location = new System.Drawing.Point(0, 244);
-            this.lbIDFood.Name = "lbIDFood";
-            this.lbIDFood.Size = new System.Drawing.Size(255, 56);
-            this.lbIDFood.TabIndex = 2;
-            this.lbIDFood.Text = "ID";
-            this.lbIDFood.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbIDFoodCategory
-            // 
-            this.lbIDFoodCategory.BackColor = System.Drawing.Color.White;
-            this.lbIDFoodCategory.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbIDFoodCategory.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbIDFoodCategory.Location = new System.Drawing.Point(0, 300);
-            this.lbIDFoodCategory.Name = "lbIDFoodCategory";
-            this.lbIDFoodCategory.Size = new System.Drawing.Size(255, 56);
-            this.lbIDFoodCategory.TabIndex = 3;
-            this.lbIDFoodCategory.Text = "ID category";
-            this.lbIDFoodCategory.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbFoodName
-            // 
-            this.lbFoodName.BackColor = System.Drawing.Color.White;
-            this.lbFoodName.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbFoodName.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbFoodName.Location = new System.Drawing.Point(0, 356);
-            this.lbFoodName.Name = "lbFoodName";
-            this.lbFoodName.Size = new System.Drawing.Size(255, 56);
-            this.lbFoodName.TabIndex = 4;
-            this.lbFoodName.Text = "Name";
-            this.lbFoodName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbFoodPrice
-            // 
-            this.lbFoodPrice.BackColor = System.Drawing.Color.White;
-            this.lbFoodPrice.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbFoodPrice.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbFoodPrice.Location = new System.Drawing.Point(0, 412);
-            this.lbFoodPrice.Name = "lbFoodPrice";
-            this.lbFoodPrice.Size = new System.Drawing.Size(255, 56);
-            this.lbFoodPrice.TabIndex = 5;
-            this.lbFoodPrice.Text = "Giá";
-            this.lbFoodPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // picFood
-            // 
-            this.picFood.Dock = System.Windows.Forms.DockStyle.Top;
-            this.picFood.Location = new System.Drawing.Point(0, 56);
-            this.picFood.Name = "picFood";
-            this.picFood.Size = new System.Drawing.Size(255, 188);
-            this.picFood.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picFood.TabIndex = 6;
-            this.picFood.TabStop = false;
+            this.lbCount.BackColor = System.Drawing.Color.White;
+            this.lbCount.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbCount.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbCount.Location = new System.Drawing.Point(0, 468);
+            this.lbCount.Name = "lbCount";
+            this.lbCount.Size = new System.Drawing.Size(255, 56);
+            this.lbCount.TabIndex = 7;
+            this.lbCount.Text = "Số lượng";
+            this.lbCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // fcChart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(962, 733);
+            this.ClientSize = new System.Drawing.Size(978, 786);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
@@ -378,9 +392,9 @@
             this.panel3.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picFood)).EndInit();
             this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picFood)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -412,5 +426,6 @@
         private System.Windows.Forms.Label lbIDFood;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox picFood;
+        private System.Windows.Forms.Label lbCount;
     }
 }
