@@ -152,7 +152,7 @@ namespace QuanLyQuanCafe
         }
         public bool UpdateImage(string name, byte[] img)
         {
-            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-2V5RLH6O\SQLEXPRESS01;Initial Catalog=QuanLyQuanCafe;Integrated Security=True");
+            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-FLVOAAN8;Initial Catalog=QuanLyQuanCafe;Integrated Security=True");
             conn.Open();
             SqlCommand cmd = new SqlCommand("update Account set Image_Account = @hinh where UserName = @ten", conn);
             cmd.Parameters.Add("@ten", name);
@@ -164,7 +164,7 @@ namespace QuanLyQuanCafe
         }
         public Image GetImageByName(string name)
         {
-            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-2V5RLH6O\SQLEXPRESS01;Initial Catalog=QuanLyQuanCafe;Integrated Security=True");
+            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-FLVOAAN8;Initial Catalog=QuanLyQuanCafe;Integrated Security=True");
             conn.Open();
             string Sqlcmd = string.Format("select * from Account where UserName = N'{0}'", name);
             SqlDataAdapter cmd = new SqlDataAdapter(Sqlcmd, conn);

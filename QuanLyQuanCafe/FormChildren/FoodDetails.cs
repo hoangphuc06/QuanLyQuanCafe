@@ -162,5 +162,13 @@ namespace QuanLyQuanCafe
         {
             FoodDAO.Instance.UpdateFoodImage(ImageToByteArray(pbFoodImage.Image), txbFoodName.Text);
         }
+
+        private void txbPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

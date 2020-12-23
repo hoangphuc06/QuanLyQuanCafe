@@ -73,7 +73,7 @@ namespace QuanLyQuanCafe.FormChildren
         {
             FoodDetails f = new FoodDetails();
             f.ShowDialog();
-            if (f.IsAdd())
+            if (f.FoodName != null && f.IsAdd())
             {
                 string name = f.FoodName;
                 int categoryid = f.Category;
