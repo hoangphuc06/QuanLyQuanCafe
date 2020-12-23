@@ -54,7 +54,7 @@ namespace QuanLyQuanCafe.FormChildren
 
         private void ptbPicture_DoubleClick(object sender, EventArgs e)
         {
-            OpenFileDialog open = new OpenFileDialog();
+            OpenFileDialog open = new OpenFileDialog() { Filter = "Image Files (*.bmp;*.png;*.jpg)|*.bmp;*.png;*.jpg" };
             if (open.ShowDialog() == DialogResult.OK)
             {
                 ptbPicture.Image = Image.FromFile(open.FileName);
