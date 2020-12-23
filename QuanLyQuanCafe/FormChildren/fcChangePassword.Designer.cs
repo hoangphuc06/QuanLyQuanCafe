@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.panel9 = new System.Windows.Forms.Panel();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.label3 = new System.Windows.Forms.Label();
             this.txbPassWord = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -44,7 +43,6 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.checkboxPassword = new System.Windows.Forms.CheckBox();
-            this.panel9.SuspendLayout();
             this.pnNewPassword.SuspendLayout();
             this.pnRePassword.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -52,26 +50,11 @@
             // 
             // panel9
             // 
-            this.panel9.Controls.Add(this.iconButton1);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel9.Location = new System.Drawing.Point(0, 0);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(692, 120);
+            this.panel9.Size = new System.Drawing.Size(692, 77);
             this.panel9.TabIndex = 21;
-            // 
-            // iconButton1
-            // 
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.UserAlt;
-            this.iconButton1.IconColor = System.Drawing.Color.Teal;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.IconSize = 100;
-            this.iconButton1.Location = new System.Drawing.Point(248, 0);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(159, 118);
-            this.iconButton1.TabIndex = 1;
-            this.iconButton1.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -113,7 +96,7 @@
             this.pnNewPassword.Controls.Add(this.txbPassWord);
             this.pnNewPassword.Controls.Add(this.panel4);
             this.pnNewPassword.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnNewPassword.Location = new System.Drawing.Point(0, 120);
+            this.pnNewPassword.Location = new System.Drawing.Point(0, 77);
             this.pnNewPassword.Name = "pnNewPassword";
             this.pnNewPassword.Size = new System.Drawing.Size(692, 120);
             this.pnNewPassword.TabIndex = 23;
@@ -158,7 +141,7 @@
             this.pnRePassword.Controls.Add(this.txbNewPassWord);
             this.pnRePassword.Controls.Add(this.panel5);
             this.pnRePassword.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnRePassword.Location = new System.Drawing.Point(0, 240);
+            this.pnRePassword.Location = new System.Drawing.Point(0, 197);
             this.pnRePassword.Name = "pnRePassword";
             this.pnRePassword.Size = new System.Drawing.Size(692, 120);
             this.pnRePassword.TabIndex = 24;
@@ -219,7 +202,7 @@
             this.panel1.Controls.Add(this.txbRePassWord);
             this.panel1.Controls.Add(this.panel6);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 360);
+            this.panel1.Location = new System.Drawing.Point(0, 317);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(692, 120);
             this.panel1.TabIndex = 27;
@@ -228,7 +211,7 @@
             // 
             this.checkboxPassword.AutoSize = true;
             this.checkboxPassword.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.checkboxPassword.Location = new System.Drawing.Point(199, 486);
+            this.checkboxPassword.Location = new System.Drawing.Point(199, 453);
             this.checkboxPassword.Name = "checkboxPassword";
             this.checkboxPassword.Size = new System.Drawing.Size(126, 22);
             this.checkboxPassword.TabIndex = 28;
@@ -251,7 +234,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "fcChangePassword";
             this.Text = "fcChangePassword";
-            this.panel9.ResumeLayout(false);
             this.pnNewPassword.ResumeLayout(false);
             this.pnNewPassword.PerformLayout();
             this.pnRePassword.ResumeLayout(false);
@@ -279,7 +261,6 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Panel panel1;
-        private FontAwesome.Sharp.IconButton iconButton1;
         private System.Windows.Forms.CheckBox checkboxPassword;
     }
 }

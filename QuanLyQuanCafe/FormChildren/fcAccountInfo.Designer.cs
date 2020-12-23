@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.panel7 = new System.Windows.Forms.Panel();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.lbUser = new System.Windows.Forms.Label();
             this.txbUser = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -39,33 +38,23 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnAddPic = new FontAwesome.Sharp.IconButton();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.iconButton1);
+            this.panel7.Controls.Add(this.btnAddPic);
+            this.panel7.Controls.Add(this.pictureBox1);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(692, 124);
+            this.panel7.Size = new System.Drawing.Size(692, 181);
             this.panel7.TabIndex = 19;
-            // 
-            // iconButton1
-            // 
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.UserAlt;
-            this.iconButton1.IconColor = System.Drawing.Color.Teal;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.IconSize = 100;
-            this.iconButton1.Location = new System.Drawing.Point(248, 0);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(159, 124);
-            this.iconButton1.TabIndex = 0;
-            this.iconButton1.UseVisualStyleBackColor = true;
             // 
             // lbUser
             // 
@@ -109,7 +98,7 @@
             this.panel8.Controls.Add(this.txbUser);
             this.panel8.Controls.Add(this.panel2);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel8.Location = new System.Drawing.Point(0, 124);
+            this.panel8.Location = new System.Drawing.Point(0, 181);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(692, 142);
             this.panel8.TabIndex = 20;
@@ -169,10 +158,35 @@
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.txbDisplayName);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 266);
+            this.panel1.Location = new System.Drawing.Point(0, 323);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(692, 157);
             this.panel1.TabIndex = 26;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(230, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(204, 169);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnAddPic
+            // 
+            this.btnAddPic.BackColor = System.Drawing.Color.Teal;
+            this.btnAddPic.FlatAppearance.BorderSize = 0;
+            this.btnAddPic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddPic.IconChar = FontAwesome.Sharp.IconChar.Pen;
+            this.btnAddPic.IconColor = System.Drawing.Color.White;
+            this.btnAddPic.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAddPic.IconSize = 20;
+            this.btnAddPic.Location = new System.Drawing.Point(450, 154);
+            this.btnAddPic.Name = "btnAddPic";
+            this.btnAddPic.Size = new System.Drawing.Size(32, 27);
+            this.btnAddPic.TabIndex = 1;
+            this.btnAddPic.UseVisualStyleBackColor = false;
+            this.btnAddPic.Click += new System.EventHandler(this.btnAddPic_Click);
             // 
             // fcAccountInfo
             // 
@@ -191,6 +205,7 @@
             this.panel8.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -207,6 +222,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Panel panel1;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private FontAwesome.Sharp.IconButton btnAddPic;
     }
 }

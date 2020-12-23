@@ -44,9 +44,9 @@ namespace QuanLyQuanCafe.FormChildren
 
         void AddAccountBinding()
         {
-            txbUserName.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "UserName", true, DataSourceUpdateMode.Never));
-            txbDisplayName.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "DisplayName", true, DataSourceUpdateMode.Never));
-            nudAccountType.DataBindings.Add(new Binding("Value", dtgvAccount.DataSource, "Type", true, DataSourceUpdateMode.Never));
+            lbUser.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "UserName", true, DataSourceUpdateMode.Never));
+            lbDisplayName.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "DisplayName", true, DataSourceUpdateMode.Never));
+            lbAccountType.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "Type", true, DataSourceUpdateMode.Never));
         }
 
         void LoadAccount()
@@ -56,9 +56,9 @@ namespace QuanLyQuanCafe.FormChildren
 
         private void btnEditAccount_Click(object sender, EventArgs e)
         {
-            string userName = txbUserName.Text;
-            string displayName = txbDisplayName.Text;
-            int type = (int)nudAccountType.Value;
+            string userName = lbUser.Text;
+            string displayName = lbDisplayName.Text;
+            int type = Convert.ToInt32(lbAccountType.Text);
             byte[] img = ImageToByteArray(UserAccount.Instance.GetImageByName(userName));
             AccountDetails f = new AccountDetails();
             f.IsEdit = true;
@@ -119,7 +119,7 @@ namespace QuanLyQuanCafe.FormChildren
 
         private void btnDeleteAccount_Click(object sender, EventArgs e)
         {
-            string userName = txbUserName.Text;
+            string userName = lbUser.Text;
             DeleteAccount(userName);
         }
 
@@ -144,7 +144,7 @@ namespace QuanLyQuanCafe.FormChildren
 
         private void btnResetPassword_Click(object sender, EventArgs e)
         {
-            string userName = txbUserName.Text;
+            string userName = lbUser.Text;
             ResetPassword(userName);
         }
 
@@ -166,5 +166,13 @@ namespace QuanLyQuanCafe.FormChildren
         {
 
         }
+
+        private void dtgvAccount_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int r = dtgvAccount.CurrentCell.RowIndex;
+            string b = dtgvAccount.Rows[r].Cells[0].Value.ToString();
+            picAccount.Image = UserAccount.Instance.GetImageByName(b);
+        }
+
     }
 }
