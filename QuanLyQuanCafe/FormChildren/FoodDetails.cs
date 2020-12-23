@@ -83,7 +83,7 @@ namespace QuanLyQuanCafe
 
         private void btnAddImage_Click(object sender, EventArgs e)
         {
-            OpenFileDialog open = new OpenFileDialog();
+            OpenFileDialog open = new OpenFileDialog() { Filter = "Image Files (*.bmp;*.png;*.jpg)|*.bmp;*.png;*.jpg" };
             if (open.ShowDialog() == DialogResult.OK)
             {
                 pbFoodImage.Image = Image.FromFile(open.FileName);
