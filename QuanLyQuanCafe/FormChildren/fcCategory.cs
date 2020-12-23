@@ -43,29 +43,40 @@ namespace QuanLyQuanCafe.FormChildren
         {
             string name = txbCategoryName.Text;
             int id = Convert.ToInt32(txbCategoryID.Text);
-            if (CategoryDAO.Instance.UpdateCategory(name,id))
+            CategoryDetails f = new CategoryDetails();
+            f.LoadCategory(id, name);
+            f.ShowDialog();
+            if (f.CategoryName != null && f.IsChannged(name))
             {
-                MessageBox.Show("Sửa thành công !");
-                LoadListCategory();
-            }    
-            else
-            {
-                MessageBox.Show("Sửa thất bại !");
-            }    
+                if (CategoryDAO.Instance.UpdateCategory(f.CategoryName, f.ID))
+                {
+                    MessageBox.Show("Sửa thành công !");
+                    LoadListCategory();
+                }
+                else
+                {
+                    MessageBox.Show("Sửa thất bại !");
+                }
+            }
         }
 
         private void btnAddCategory_Click(object sender, EventArgs e)
-        {
-            string name = txbCategoryName.Text;
-            if (CategoryDAO.Instance.InsertCategory(name))
+        {         
+            CategoryDetails f = new CategoryDetails();
+            f.ShowDialog();
+            if (f.CategoryName != null && f.IsAdd())
             {
-                MessageBox.Show("Thêm thành công !");
-                LoadListCategory();
-            }    
-            else
-            {
-                MessageBox.Show("Có lỗi xảy ra khi thêm !");
-            }    
+                string name = f.CategoryName;
+                if (CategoryDAO.Instance.InsertCategory(name))
+                {
+                    MessageBox.Show("Thêm thành công !");
+                    LoadListCategory();
+                }
+                else
+                {
+                    MessageBox.Show("Có lỗi xảy ra khi thêm !");
+                }
+            }
         }
 
         private void btnDeleteCategory_Click(object sender, EventArgs e)

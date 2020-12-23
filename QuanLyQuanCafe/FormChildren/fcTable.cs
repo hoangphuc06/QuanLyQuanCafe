@@ -47,29 +47,41 @@ namespace QuanLyQuanCafe.FormChildren
         {
             string name = txbNameTable.Text;
             int id = Convert.ToInt32(txbID.Text);
-            if (TableDAO.Instance.UpdateTable(name,id))
+            string status = cbxTableStatus.Text;
+            TableDetails f = new TableDetails();
+            f.Loadtable(id,name,status);
+            f.ShowDialog();
+            if (f.TableName != null && f.IsChannged(name, status))
             {
-                MessageBox.Show("Sửa thành công !");
-                LoadTableList();
+                if (TableDAO.Instance.UpdateTable(f.TableName, f.ID))
+                {
+                    MessageBox.Show("Sửa thành công !");
+                    LoadTableList();
+                }
+                else
+                {
+                    MessageBox.Show("Sửa thất bại !");
+                }
             }
-            else
-            {
-                MessageBox.Show("Sửa thất bại !");
-            }    
         }
 
         private void btnAddTable_Click(object sender, EventArgs e)
         {
-            string name = txbNameTable.Text;
-            if (TableDAO.Instance.InsertTable(name))
+            TableDetails f = new TableDetails();
+            f.ShowDialog();          
+            if (f.TableName != null && f.IsAdd())
             {
-                MessageBox.Show("Thêm thành công !");
-                LoadTableList();
-            }    
-            else
-            {
-                MessageBox.Show("Thêm thất bại !");
-            }    
+                string name = f.TableName;
+                if (TableDAO.Instance.InsertTable(name))
+                {
+                    MessageBox.Show("Thêm thành công !");
+                    LoadTableList();
+                }
+                else
+                {
+                    MessageBox.Show("Thêm thất bại !");
+                }
+            }
         }
 
         private void btnDeleteTable_Click(object sender, EventArgs e)

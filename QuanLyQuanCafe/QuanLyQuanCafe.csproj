@@ -127,6 +127,12 @@
     <Compile Include="FormChildren\BillDetails.Designer.cs">
       <DependentUpon>BillDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormChildren\CategoryDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChildren\CategoryDetails.Designer.cs">
+      <DependentUpon>CategoryDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormChildren\fcAccountInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +193,12 @@
     <Compile Include="FormChildren\FoodDetails.Designer.cs">
       <DependentUpon>FoodDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormChildren\TableDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChildren\TableDetails.Designer.cs">
+      <DependentUpon>TableDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="fSwitchTable.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -228,6 +240,9 @@
     <EmbeddedResource Include="FormChildren\BillDetails.resx">
       <DependentUpon>BillDetails.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormChildren\CategoryDetails.resx">
+      <DependentUpon>CategoryDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormChildren\fcAccountInfo.resx">
       <DependentUpon>fcAccountInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -257,6 +272,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormChildren\FoodDetails.resx">
       <DependentUpon>FoodDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChildren\TableDetails.resx">
+      <DependentUpon>TableDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fSwitchTable.resx">
       <DependentUpon>fSwitchTable.cs</DependentUpon>
