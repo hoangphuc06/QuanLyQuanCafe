@@ -221,6 +221,12 @@ namespace QuanLyQuanCafe.FormChildren
             connect.Close();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            fDetails f = new fDetails(day, month, year);
+            f.ShowDialog();
+        }
+
         private void ChartMoneydaybydate()
         {
             chart1.Series["Thu nhập"].XValueType = ChartValueType.DateTime;

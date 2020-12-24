@@ -36,24 +36,30 @@ namespace QuanLyQuanCafe.FormChildren
             tableList.DataSource = TableDAO.Instance.LoadTableList();
         }
 
+        void LoadTableList(int active)
+        {
+            tableList.DataSource = TableDAO.Instance.LoadTableList(active);
+        }
+
         void AddTableBinding()
         {
-            txbID.DataBindings.Add(new Binding("Text", dtgvTable.DataSource, "iD", true, DataSourceUpdateMode.Never));
-            txbNameTable.DataBindings.Add(new Binding("Text", dtgvTable.DataSource, "name", true, DataSourceUpdateMode.Never));
-            cbxTableStatus.DataBindings.Add(new Binding("Text", dtgvTable.DataSource, "status", true, DataSourceUpdateMode.Never));
+            lbID.DataBindings.Add(new Binding("Text", dtgvTable.DataSource, "iD", true, DataSourceUpdateMode.Never));
+            lbNameTable.DataBindings.Add(new Binding("Text", dtgvTable.DataSource, "name", true, DataSourceUpdateMode.Never));
+            lbTableStatus.DataBindings.Add(new Binding("Text", dtgvTable.DataSource, "status", true, DataSourceUpdateMode.Never));
+            lbActive.DataBindings.Add(new Binding("Text", dtgvTable.DataSource, "Active", true, DataSourceUpdateMode.Never));
         }
 
         private void btnEditTable_Click(object sender, EventArgs e)
         {
-            string name = txbNameTable.Text;
-            int id = Convert.ToInt32(txbID.Text);
-            string status = cbxTableStatus.Text;
+            string name = lbNameTable.Text;
+            int id = Convert.ToInt32(lbID.Text);
+            string status = lbTableStatus.Text;
             TableDetails f = new TableDetails();
             f.Loadtable(id,name,status);
             f.ShowDialog();
-            if (f.TableName != null && f.IsChannged(name, status))
+            if (f.TableName != null)
             {
-                if (TableDAO.Instance.UpdateTable(f.TableName, f.ID))
+                if (TableDAO.Instance.UpdateTable(f.TableName, id))
                 {
                     MessageBox.Show("Sửa thành công !");
                     LoadTableList();
@@ -86,15 +92,29 @@ namespace QuanLyQuanCafe.FormChildren
 
         private void btnDeleteTable_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(txbID.Text);
-            if (TableDAO.Instance.DeleteTable(id))
+
+        }
+
+        private void btnActive_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(lbID.Text);
+            int active = Convert.ToInt32(lbActive.Text);
+            if (active == 1)
             {
-                MessageBox.Show("Xóa thành công !");
+                active = 0;
+            }
+            else
+            {
+                active = 1;
+            }
+            if (TableDAO.Instance.ChangeActive(id, active))
+            {
+                MessageBox.Show("Đổi trạng thái thành công !");
                 LoadTableList();
             }
             else
             {
-                MessageBox.Show("Xóa thất bại !");
+                MessageBox.Show("Đổi trạng thái thất bại !");
             }
         }
     }

@@ -320,6 +320,7 @@
             this.txbSumMoney.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txbSumMoney.Click += new System.EventHandler(this.txbSumMoney_Click);
             this.txbSumMoney.TextChanged += new System.EventHandler(this.txbSumMoney_TextChanged);
+            this.txbSumMoney.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbSumMoney_KeyPress);
             // 
             // label5
             // 

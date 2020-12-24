@@ -65,6 +65,7 @@
             this.cbSwitchTable1.Size = new System.Drawing.Size(145, 32);
             this.cbSwitchTable1.TabIndex = 24;
             this.cbSwitchTable1.TabStop = false;
+            this.cbSwitchTable1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbSwitchTable1_KeyPress);
             // 
             // cbSwitchTable3
             // 
@@ -79,6 +80,7 @@
             this.cbSwitchTable3.Size = new System.Drawing.Size(145, 32);
             this.cbSwitchTable3.TabIndex = 23;
             this.cbSwitchTable3.TabStop = false;
+            this.cbSwitchTable3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbSwitchTable3_KeyPress);
             // 
             // iconPictureBox1
             // 
@@ -123,6 +125,7 @@
             this.cbSwitchTable2.Size = new System.Drawing.Size(145, 32);
             this.cbSwitchTable2.TabIndex = 20;
             this.cbSwitchTable2.TabStop = false;
+            this.cbSwitchTable2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbSwitchTable2_KeyPress);
             // 
             // fMergeTable
             // 

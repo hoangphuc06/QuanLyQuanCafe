@@ -37,10 +37,10 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lbNameFood = new System.Windows.Forms.Label();
             this.nmFoodCount = new System.Windows.Forms.NumericUpDown();
+            this.btnSubtract = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.cbFood = new System.Windows.Forms.ComboBox();
             this.cbCategory = new System.Windows.Forms.ComboBox();
-            this.btnSubtract = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmFoodCount)).BeginInit();
@@ -146,6 +146,22 @@
             0,
             0});
             // 
+            // btnSubtract
+            // 
+            this.btnSubtract.BackColor = System.Drawing.Color.White;
+            this.btnSubtract.FlatAppearance.BorderSize = 2;
+            this.btnSubtract.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubtract.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnSubtract.ForeColor = System.Drawing.Color.Red;
+            this.btnSubtract.Location = new System.Drawing.Point(21, 556);
+            this.btnSubtract.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSubtract.Name = "btnSubtract";
+            this.btnSubtract.Size = new System.Drawing.Size(254, 54);
+            this.btnSubtract.TabIndex = 2;
+            this.btnSubtract.Text = "Xóa";
+            this.btnSubtract.UseVisualStyleBackColor = false;
+            this.btnSubtract.Click += new System.EventHandler(this.btnSubtract_Click);
+            // 
             // btnAdd
             // 
             this.btnAdd.BackColor = System.Drawing.Color.Red;
@@ -172,6 +188,7 @@
             this.cbFood.Size = new System.Drawing.Size(254, 32);
             this.cbFood.TabIndex = 1;
             this.cbFood.SelectedIndexChanged += new System.EventHandler(this.cbFood_SelectedIndexChanged);
+            this.cbFood.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbFood_KeyPress);
             // 
             // cbCategory
             // 
@@ -183,22 +200,7 @@
             this.cbCategory.Size = new System.Drawing.Size(254, 32);
             this.cbCategory.TabIndex = 0;
             this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
-            // 
-            // btnSubtract
-            // 
-            this.btnSubtract.BackColor = System.Drawing.Color.White;
-            this.btnSubtract.FlatAppearance.BorderSize = 2;
-            this.btnSubtract.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSubtract.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnSubtract.ForeColor = System.Drawing.Color.Red;
-            this.btnSubtract.Location = new System.Drawing.Point(21, 556);
-            this.btnSubtract.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSubtract.Name = "btnSubtract";
-            this.btnSubtract.Size = new System.Drawing.Size(254, 54);
-            this.btnSubtract.TabIndex = 2;
-            this.btnSubtract.Text = "Xóa";
-            this.btnSubtract.UseVisualStyleBackColor = false;
-            this.btnSubtract.Click += new System.EventHandler(this.btnSubtract_Click);
+            this.cbCategory.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbCategory_KeyPress);
             // 
             // fOrderFood
             // 

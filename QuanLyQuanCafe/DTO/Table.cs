@@ -9,11 +9,12 @@ namespace QuanLyQuanCafe.DTO
 {
     public class Table
     {
-        public Table(int id, string name, string status)
+        public Table(int id, string name, string status, int active)
         {
             this.ID = id;
             this.Name = name;
             this.Status = status;
+            this.Active = active;
         }
 
         public Table(DataRow row)
@@ -21,6 +22,7 @@ namespace QuanLyQuanCafe.DTO
             this.ID = (int)row["ID_TableFood"];
             this.Name = row["NameTable"].ToString();
             this.Status = row["StatusTable"].ToString();
+            this.Active = (int)row["Active"];
         }
         private int iD;
         public int ID
@@ -40,7 +42,12 @@ namespace QuanLyQuanCafe.DTO
             get { return status; }
             set { status = value; }
         }
+
        
-       
+
+        private int active;
+
+        public int Active { get => active; set => active = value; }
+
     }
 }

@@ -45,6 +45,7 @@ namespace QuanLyQuanCafe.FormChildren
             lbFoodName.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Name", true, DataSourceUpdateMode.Never));
             lbFoodCategory.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "categoryid", true, DataSourceUpdateMode.Never));
             lbFoodPrice.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Price", true, DataSourceUpdateMode.Never));
+            lbActive.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Active", true, DataSourceUpdateMode.Never));
         }
 
         //private void txbFoodName_TextChanged(object sender, EventArgs e)
@@ -106,10 +107,10 @@ namespace QuanLyQuanCafe.FormChildren
             string fname = lbFoodName.Text;
             int fcategory = Convert.ToInt32(lbFoodCategory.Text);
             float fprice = (float)Convert.ToInt32(lbFoodPrice.Text);
-            byte[] img = ImageToByteArray( FoodDAO.instance.getimagebyid(fid));
+            byte[] img = ImageToByteArray(FoodDAO.instance.getimagebyid(fid));
             f.LoadFood(fid, fname, fcategory, fprice);
             f.ShowDialog();
-            if (f.IsChannged(fname, fcategory, fprice,img) && f.FoodName != null)
+            if (f.IsChannged(fname, fcategory, fprice, img) && f.FoodName != null)
             {
                 fname = f.FoodName;
                 fcategory = f.Category;
@@ -129,21 +130,6 @@ namespace QuanLyQuanCafe.FormChildren
             this.Show();
         }
 
-        private void btnDeleteFood_Click(object sender, EventArgs e)
-        {
-            int id = Convert.ToInt32(lbFoodID.Text);
-            if (FoodDAO.Instance.DeleteFood(id))
-            {
-                MessageBox.Show("Xoá thành công");
-                LoadListFood();
-            }
-            else
-            {
-                MessageBox.Show("Có lỗi xảy ra!");
-            }
-            LoadListFood();
-        }
-
         List<Food> SearchFoodByName(string name)
         {
             List<Food> listFood = FoodDAO.Instance.SearchFoodByName(name);
@@ -151,10 +137,6 @@ namespace QuanLyQuanCafe.FormChildren
             return listFood;
         }
 
-        private void panel9_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void txbFindFoodName_TextChanged(object sender, EventArgs e)
         {
@@ -166,6 +148,29 @@ namespace QuanLyQuanCafe.FormChildren
             int r = dtgvFood.CurrentCell.RowIndex;
             int b = (int)dtgvFood.Rows[r].Cells[0].Value;
             ptbFoodImage.Image = FoodDAO.Instance.getimagebyid(b);
+        }
+
+        private void btnActive_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(lbFoodID.Text);
+            int active = Convert.ToInt32(lbActive.Text);
+            if (active == 1)
+            {
+                active = 0;
+            }
+            else
+            {
+                active = 1;
+            }
+            if (FoodDAO.Instance.ChangeActive(id, active))
+            {
+                MessageBox.Show("Đổi trạng thái thành công !");
+                LoadListFood();
+            }
+            else
+            {
+                MessageBox.Show("Đổi trạng thái thất bại !");
+            }
         }
     }
 }

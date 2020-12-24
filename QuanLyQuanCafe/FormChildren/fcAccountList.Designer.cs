@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnResetPassword = new FontAwesome.Sharp.IconButton();
             this.btnAddAccount = new FontAwesome.Sharp.IconButton();
-            this.btnDeleteAccount = new FontAwesome.Sharp.IconButton();
+            this.btnActiveAccount = new FontAwesome.Sharp.IconButton();
             this.btnEditAccount = new FontAwesome.Sharp.IconButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lbAccountType = new System.Windows.Forms.Label();
@@ -48,6 +48,9 @@
             this.picAccount = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.dtgvAccount = new System.Windows.Forms.DataGridView();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.lbActive = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -55,12 +58,14 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAccount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).BeginInit();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.panel6);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel28);
@@ -78,7 +83,7 @@
             // 
             this.panel4.Controls.Add(this.btnResetPassword);
             this.panel4.Controls.Add(this.btnAddAccount);
-            this.panel4.Controls.Add(this.btnDeleteAccount);
+            this.panel4.Controls.Add(this.btnActiveAccount);
             this.panel4.Controls.Add(this.btnEditAccount);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Location = new System.Drawing.Point(0, 685);
@@ -118,21 +123,21 @@
             this.btnAddAccount.UseVisualStyleBackColor = false;
             this.btnAddAccount.Click += new System.EventHandler(this.btnAddAccount_Click);
             // 
-            // btnDeleteAccount
+            // btnActiveAccount
             // 
-            this.btnDeleteAccount.BackColor = System.Drawing.Color.Teal;
-            this.btnDeleteAccount.FlatAppearance.BorderSize = 0;
-            this.btnDeleteAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteAccount.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
-            this.btnDeleteAccount.IconColor = System.Drawing.Color.White;
-            this.btnDeleteAccount.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnDeleteAccount.IconSize = 40;
-            this.btnDeleteAccount.Location = new System.Drawing.Point(190, 26);
-            this.btnDeleteAccount.Name = "btnDeleteAccount";
-            this.btnDeleteAccount.Size = new System.Drawing.Size(51, 47);
-            this.btnDeleteAccount.TabIndex = 4;
-            this.btnDeleteAccount.UseVisualStyleBackColor = false;
-            this.btnDeleteAccount.Click += new System.EventHandler(this.btnDeleteAccount_Click);
+            this.btnActiveAccount.BackColor = System.Drawing.Color.Teal;
+            this.btnActiveAccount.FlatAppearance.BorderSize = 0;
+            this.btnActiveAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActiveAccount.IconChar = FontAwesome.Sharp.IconChar.PowerOff;
+            this.btnActiveAccount.IconColor = System.Drawing.Color.White;
+            this.btnActiveAccount.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnActiveAccount.IconSize = 40;
+            this.btnActiveAccount.Location = new System.Drawing.Point(190, 26);
+            this.btnActiveAccount.Name = "btnActiveAccount";
+            this.btnActiveAccount.Size = new System.Drawing.Size(51, 47);
+            this.btnActiveAccount.TabIndex = 4;
+            this.btnActiveAccount.UseVisualStyleBackColor = false;
+            this.btnActiveAccount.Click += new System.EventHandler(this.btnActiveAccount_Click);
             // 
             // btnEditAccount
             // 
@@ -273,23 +278,23 @@
             // 
             this.dtgvAccount.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvAccount.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvAccount.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvAccount.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dtgvAccount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgvAccount.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgvAccount.DefaultCellStyle = dataGridViewCellStyle4;
             this.dtgvAccount.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtgvAccount.Location = new System.Drawing.Point(0, 0);
             this.dtgvAccount.Margin = new System.Windows.Forms.Padding(2);
@@ -299,6 +304,38 @@
             this.dtgvAccount.Size = new System.Drawing.Size(633, 786);
             this.dtgvAccount.TabIndex = 3;
             this.dtgvAccount.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvAccount_CellClick);
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.lbActive);
+            this.panel6.Controls.Add(this.label3);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel6.Location = new System.Drawing.Point(0, 577);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(343, 101);
+            this.panel6.TabIndex = 11;
+            // 
+            // lbActive
+            // 
+            this.lbActive.BackColor = System.Drawing.Color.White;
+            this.lbActive.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbActive.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbActive.Location = new System.Drawing.Point(25, 53);
+            this.lbActive.Name = "lbActive";
+            this.lbActive.Size = new System.Drawing.Size(268, 36);
+            this.lbActive.TabIndex = 4;
+            this.lbActive.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label3.Location = new System.Drawing.Point(21, 17);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(208, 24);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Trạng thái làm việc:";
             // 
             // fcAccountList
             // 
@@ -320,6 +357,8 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAccount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).EndInit();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -336,7 +375,7 @@
         private System.Windows.Forms.Panel panel3;
         private FontAwesome.Sharp.IconButton btnAddAccount;
         private FontAwesome.Sharp.IconButton btnEditAccount;
-        private FontAwesome.Sharp.IconButton btnDeleteAccount;
+        private FontAwesome.Sharp.IconButton btnActiveAccount;
         private System.Windows.Forms.Panel panel4;
         private FontAwesome.Sharp.IconButton btnResetPassword;
         private System.Windows.Forms.PictureBox picAccount;
@@ -344,5 +383,8 @@
         private System.Windows.Forms.Label lbDisplayName;
         private System.Windows.Forms.Label lbUser;
         private System.Windows.Forms.Label lbAccountType;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Label lbActive;
+        private System.Windows.Forms.Label label3;
     }
 }

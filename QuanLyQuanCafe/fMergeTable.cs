@@ -48,5 +48,20 @@ namespace QuanLyQuanCafe
                 this.Close();
             }
         }
+
+        private void cbSwitchTable1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cbSwitchTable2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cbSwitchTable3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }

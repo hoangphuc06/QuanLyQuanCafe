@@ -13,9 +13,11 @@ namespace QuanLyQuanCafe.FormChildren
 {
     public partial class AccountDetails : Form
     {
-        public AccountDetails()
+        int type_;
+        public AccountDetails(int t)
         {
             InitializeComponent();
+            type_ = t;
         }
         private string uname;
         private string dname;
@@ -67,18 +69,17 @@ namespace QuanLyQuanCafe.FormChildren
             {
                 if (UserAccount.Instance.Check(txbAccountName.Text) == 1 || this.IsEdit == true)
                 {
-                    int tmp = (int)nmAccountType.Value;
-                    if (tmp == 0)
+                    if (UserAccount.Instance.Check(txbAccountName.Text) == 1)
                     {
                         Save();
                         this.Close();
-                    }   
+                    }                
                     else
                     {
-                        int dem = UserAccount.Instance.DemTaiKhoanQL();
-                        if (dem == 1 && IsEdit == true)
+                        int tmp = (int)nmAccountType.Value;
+                        if (UserAccount.Instance.DemTaiKhoanQL() == 1 && type_ == 0 && tmp == 1)
                         {
-                            MessageBox.Show("Quán cần ít nhất 1 người quản lý !");
+                            MessageBox.Show("Cần ít nhất 1 tài khoản lại quản lý !");
                         }    
                         else
                         {
@@ -86,7 +87,6 @@ namespace QuanLyQuanCafe.FormChildren
                             this.Close();
                         }    
                     }    
-                   
                 }
                 else
                 {

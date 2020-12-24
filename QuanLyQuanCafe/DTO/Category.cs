@@ -9,16 +9,18 @@ namespace QuanLyQuanCafe.DTO
 {
     public class Category
     {
-        public Category(int id, string name)
+        public Category(int id, string name, int active)
         {
             this.ID = id;
             this.Name = name;
+            this.Active = active;
         }
 
         public Category(DataRow row)
         {
             this.ID = (int)row["ID_FoodCategory"];
             this.name = row["name"].ToString();
+            this.Active = (int)row["Active"];
 
         }
         private int iD;
@@ -36,6 +38,8 @@ namespace QuanLyQuanCafe.DTO
 
         
 
+        private int active;
+        public int Active { get => active; set => active = value; }
 
 
     }

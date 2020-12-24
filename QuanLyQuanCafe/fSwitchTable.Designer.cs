@@ -64,6 +64,7 @@
             this.cbSwitchTable.Size = new System.Drawing.Size(145, 32);
             this.cbSwitchTable.TabIndex = 13;
             this.cbSwitchTable.TabStop = false;
+            this.cbSwitchTable.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbSwitchTable_KeyPress);
             // 
             // iconPictureBox1
             // 
