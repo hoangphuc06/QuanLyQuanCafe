@@ -47,6 +47,7 @@ namespace QuanLyQuanCafe.FormChildren
             lbUser.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "UserName", true, DataSourceUpdateMode.Never));
             lbDisplayName.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "DisplayName", true, DataSourceUpdateMode.Never));
             lbAccountType.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "Type", true, DataSourceUpdateMode.Never));
+            lbActive.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "Active", true, DataSourceUpdateMode.Never));
         }
 
         void LoadAccount()
@@ -60,7 +61,7 @@ namespace QuanLyQuanCafe.FormChildren
             string displayName = lbDisplayName.Text;
             int type = Convert.ToInt32(lbAccountType.Text);
             byte[] img = ImageToByteArray(UserAccount.Instance.GetImageByName(userName));
-            AccountDetails f = new AccountDetails();
+            AccountDetails f = new AccountDetails(type);
             f.IsEdit = true;
             f.LoadAccount(userName, displayName, type);
             f.ShowDialog();
@@ -93,7 +94,8 @@ namespace QuanLyQuanCafe.FormChildren
 
         private void btnAddAccount_Click(object sender, EventArgs e)
         {
-            AccountDetails f = new AccountDetails();
+            int type = Convert.ToInt32(lbAccountType.Text);
+            AccountDetails f = new AccountDetails(type);
             f.IsEdit = false;
             f.ShowDialog();
             if (f.IsAdd())
@@ -174,5 +176,38 @@ namespace QuanLyQuanCafe.FormChildren
             picAccount.Image = UserAccount.Instance.GetImageByName(b);
         }
 
+        private void btnActiveAccount_Click(object sender, EventArgs e)
+        {
+            string name = lbUser.Text;
+            int active = Convert.ToInt32(lbActive.Text);
+            if (active == 0)
+            {
+                active = 1;
+            }    
+            else
+            {
+                active = 0;
+            }    
+            ChangeActive(name, active);
+        }
+
+        void ChangeActive(string name, int active)
+        {
+            if (loginAccount.UserName.Equals(name))
+            {
+                MessageBox.Show("Không thể đổi trạng thái tài khoản đang được đăng nhập");
+                return;
+            }
+            if (UserAccount.Instance.ChangeActive(name,active))
+            {
+                MessageBox.Show("Đổi trạng thái thành công");
+
+            }
+            else
+            {
+                MessageBox.Show("Đổi trạng thái thất bại");
+            }
+            LoadAccount();
+        }
     }
 }

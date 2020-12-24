@@ -25,7 +25,7 @@ namespace QuanLyQuanCafe.DAO
         public List<Food> GetFoodByCategoryID(int id)
         {
             List<Food> list = new List<Food>();
-            string query = "select * from Food where ID_FoodCategory = " + id;
+            string query = "select * from Food where Active = 1 and ID_FoodCategory = " + id;
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
             foreach (DataRow item in data.Rows)
             {
@@ -94,7 +94,7 @@ namespace QuanLyQuanCafe.DAO
         }
         public bool UpdateFoodImage(byte[] img, string name)
         {
-            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-FLVOAAN8;Initial Catalog=QuanLyQuanCafe;Integrated Security=True");
+            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-2V5RLH6O\SQLEXPRESS01;Initial Catalog=QuanLyQuanCafe;Integrated Security=True");
             conn.Open();
             SqlCommand cmd = new SqlCommand("update Food set Image_Food = @hinh where NameFood = @ten", conn);
             cmd.Parameters.Add("@ten", name);
@@ -106,7 +106,7 @@ namespace QuanLyQuanCafe.DAO
         }
         public Image getimagebyid(int id)
         {
-            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-FLVOAAN8;Initial Catalog=QuanLyQuanCafe;Integrated Security=True");
+            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-2V5RLH6O\SQLEXPRESS01;Initial Catalog=QuanLyQuanCafe;Integrated Security=True");
             conn.Open();
             string Sqlcmd = string.Format("select * from Food where ID_Food = {0}", id);
             SqlDataAdapter cmd = new SqlDataAdapter(Sqlcmd, conn);
@@ -139,6 +139,24 @@ namespace QuanLyQuanCafe.DAO
             var v = DataProvider.Instance.ExecuteScalar(query);
 
             return Convert.ToInt32(v);
+        }
+
+        public DataTable getFoodofBillinMonth(string month, string year)
+        {
+            return DataProvider.Instance.ExecuteQuery("exec USP_getFoodofBillinMonth @MONTH , @YEAR", new object[] { month, year });
+        }
+
+        public DataTable getFoodofBillinDay(string month, string year, string day)
+        {
+            return DataProvider.Instance.ExecuteQuery("exec USP_getFoodofBillinDay @MONTH , @YEAR , @DAY", new object[] { month, year, day });
+        }
+
+        public bool ChangeActive(int id, int active)
+        {
+            string query = string.Format("update dbo.Food set Active = {0} where ID_Food = {1}", active.ToString(), id.ToString());
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
         }
     }
 }

@@ -35,20 +35,21 @@ namespace QuanLyQuanCafe.FormChildren
 
         void AddCategoryBinding()
         {
-            txbCategoryID.DataBindings.Add(new Binding("Text", dtgvCategory.DataSource, "iD", true, DataSourceUpdateMode.Never));
-            txbCategoryName.DataBindings.Add(new Binding("Text", dtgvCategory.DataSource, "name", true, DataSourceUpdateMode.Never));
+            lbCategoryID.DataBindings.Add(new Binding("Text", dtgvCategory.DataSource, "iD", true, DataSourceUpdateMode.Never));
+            lbCategoryName.DataBindings.Add(new Binding("Text", dtgvCategory.DataSource, "name", true, DataSourceUpdateMode.Never));
+            lbActive.DataBindings.Add(new Binding("Text", dtgvCategory.DataSource, "Active", true, DataSourceUpdateMode.Never));
         }
 
         private void btnEditCategory_Click(object sender, EventArgs e)
         {
-            string name = txbCategoryName.Text;
-            int id = Convert.ToInt32(txbCategoryID.Text);
+            string name = lbCategoryName.Text;
+            int id = Convert.ToInt32(lbCategoryID.Text);
             CategoryDetails f = new CategoryDetails();
             f.LoadCategory(id, name);
             f.ShowDialog();
             if (f.CategoryName != null && f.IsChannged(name))
             {
-                if (CategoryDAO.Instance.UpdateCategory(f.CategoryName, f.ID))
+                if (CategoryDAO.Instance.UpdateCategory(f.CategoryName, id))
                 {
                     MessageBox.Show("Sửa thành công !");
                     LoadListCategory();
@@ -81,7 +82,7 @@ namespace QuanLyQuanCafe.FormChildren
 
         private void btnDeleteCategory_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(txbCategoryID.Text);
+            int id = Convert.ToInt32(lbCategoryID.Text);
             if (CategoryDAO.Instance.DeleteCategory(id))
             {
                 MessageBox.Show("Xóa thành công !");
@@ -90,6 +91,29 @@ namespace QuanLyQuanCafe.FormChildren
             else
             {
                 MessageBox.Show("Xóa thất bại !");
+            }
+        }
+
+        private void btnActive_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(lbCategoryID.Text);
+            int active = Convert.ToInt32(lbActive.Text);
+            if (active == 1)
+            {
+                active = 0;
+            }
+            else
+            {
+                active = 1;
+            }
+            if (CategoryDAO.Instance.ChangeActive(id, active))
+            {
+                MessageBox.Show("Đổi trạng thái thành công !");
+                LoadListCategory();
+            }
+            else
+            {
+                MessageBox.Show("Đổi trạng thái thất bại !");
             }
         }
     }

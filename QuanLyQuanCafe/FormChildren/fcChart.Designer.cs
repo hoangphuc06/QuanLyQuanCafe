@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lbSPtoday = new System.Windows.Forms.Label();
@@ -47,6 +47,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.lbCount = new System.Windows.Forms.Label();
             this.lbFoodPrice = new System.Windows.Forms.Label();
             this.lbFoodName = new System.Windows.Forms.Label();
             this.lbIDFoodCategory = new System.Windows.Forms.Label();
@@ -56,7 +57,7 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.lbChart = new System.Windows.Forms.Label();
-            this.lbCount = new System.Windows.Forms.Label();
+            this.btnDetail = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -215,6 +216,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.Controls.Add(this.btnDetail);
             this.panel5.Controls.Add(this.dateTimePicker1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -225,7 +227,7 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(370, 6);
+            this.dateTimePicker1.Location = new System.Drawing.Point(171, 6);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(270, 29);
             this.dateTimePicker1.TabIndex = 0;
@@ -246,6 +248,18 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(255, 569);
             this.panel6.TabIndex = 2;
+            // 
+            // lbCount
+            // 
+            this.lbCount.BackColor = System.Drawing.Color.White;
+            this.lbCount.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbCount.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbCount.Location = new System.Drawing.Point(0, 468);
+            this.lbCount.Name = "lbCount";
+            this.lbCount.Size = new System.Drawing.Size(255, 56);
+            this.lbCount.TabIndex = 7;
+            this.lbCount.Text = "Số lượng";
+            this.lbCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lbFoodPrice
             // 
@@ -330,18 +344,18 @@
             // chart1
             // 
             this.chart1.BorderlineWidth = 0;
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(0, 43);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Thu nhập";
-            this.chart1.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Thu nhập";
+            this.chart1.Series.Add(series3);
             this.chart1.Size = new System.Drawing.Size(723, 526);
             this.chart1.TabIndex = 16;
             this.chart1.Text = "chart1";
@@ -358,17 +372,18 @@
             this.lbChart.Text = "label2";
             this.lbChart.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lbCount
+            // btnDetail
             // 
-            this.lbCount.BackColor = System.Drawing.Color.White;
-            this.lbCount.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbCount.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbCount.Location = new System.Drawing.Point(0, 468);
-            this.lbCount.Name = "lbCount";
-            this.lbCount.Size = new System.Drawing.Size(255, 56);
-            this.lbCount.TabIndex = 7;
-            this.lbCount.Text = "Số lượng";
-            this.lbCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDetail.FlatAppearance.BorderSize = 0;
+            this.btnDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDetail.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnDetail.Location = new System.Drawing.Point(773, 8);
+            this.btnDetail.Name = "btnDetail";
+            this.btnDetail.Size = new System.Drawing.Size(158, 29);
+            this.btnDetail.TabIndex = 1;
+            this.btnDetail.Text = "Chi tiết số lượng";
+            this.btnDetail.UseVisualStyleBackColor = true;
+            this.btnDetail.Click += new System.EventHandler(this.button1_Click);
             // 
             // fcChart
             // 
@@ -427,5 +442,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox picFood;
         private System.Windows.Forms.Label lbCount;
+        private System.Windows.Forms.Button btnDetail;
     }
 }

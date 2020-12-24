@@ -27,7 +27,12 @@ namespace QuanLyQuanCafe
         }
         void LoadCategory()
         {
-            List<Category> listCategory = CategoryDAO.Instance.GetListCategory();
+            if (CategoryDAO.Instance.GetCountCategoryActive1() == 0)
+            {
+                btnAdd.Enabled = false;
+                btnSubtract.Enabled = false;
+            }
+            List<Category> listCategory = CategoryDAO.Instance.GetListCategory(1);
             cbCategory.DataSource = listCategory;
             cbCategory.DisplayMember = "Name";
         }
@@ -48,6 +53,19 @@ namespace QuanLyQuanCafe
                 return;
             Category selected = cb.SelectedItem as Category;
             id = selected.ID;
+
+            if (CategoryDAO.Instance.GetCountFoodinCategory(id) == 0)
+            {
+                cbFood.Text = null;
+                pictureBox1.Image = null;
+                btnAdd.Enabled = false;
+                btnSubtract.Enabled = false;
+            }
+            else
+            {
+                btnAdd.Enabled = true;
+                btnSubtract.Enabled = true;
+            }
 
             LoadFoodListByCategoryID(id);
         }
@@ -162,5 +180,16 @@ namespace QuanLyQuanCafe
 
             }
         }
+
+        private void cbCategory_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cbFood_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
     }
 }

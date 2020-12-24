@@ -46,14 +46,14 @@ namespace QuanLyQuanCafe.DAO
         }
         public bool InsertResource(string id,string resourcename,float price,string dayin,string unit,int amount,string username)
         {
-            string query = string.Format("insert into Resources values(N'{0}', N'{1}',{2},'{3}', N'{4}',{5}, N'{6}')", id, resourcename, price, dayin, unit, amount, username);
+            string query = string.Format("set dateformat dmy insert into Resources values(N'{0}', N'{1}',{2},'{3}', N'{4}',{5}, N'{6}')", id.ToString(), resourcename, price.ToString(), dayin, unit, amount.ToString(), username);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
         }
         public bool UpdateResource(string id, string resourcename, float price, string dayin, string unit, int amount, string username)
         {
-            string query = string.Format("update Resources set RName = N'{0}',Price = {1},DayIn = '{2}',Unit = N'{3}',Amount = {4},UserName = N'{5}'	where ID_Resource = N'{6}'",resourcename, price, dayin, unit, amount, username,id);
+            string query = string.Format("set dateformat dmy update Resources set RName = N'{0}',Price = {1},DayIn = '{2}',Unit = N'{3}',Amount = {4},UserName = N'{5}'	where ID_Resource = N'{6}'", resourcename, price, dayin, unit, amount, username,id);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
@@ -64,6 +64,16 @@ namespace QuanLyQuanCafe.DAO
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
+        }
+
+        public int checkTonTai(string id)
+        {
+            string query = string.Format("select * from Resources where ID_Resource = N'{0}'", id);
+            var result = DataProvider.Instance.ExecuteScalar(query);
+            if (result == null)
+                return 0;
+            else
+                return 1;
         }
     }
 }

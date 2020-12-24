@@ -33,6 +33,21 @@ namespace QuanLyQuanCafe.DAO
             DataProvider.Instance.ExecuteQuery("USP_MergeTable @idTable1 , @idTable2 , @idTable3", new object[] { id1, id2, id3 });
         }
 
+        public List<Table> LoadTableList(int active)
+        {
+            List<Table> tablelsit = new List<Table>();
+
+            DataTable data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.TableFood where Active = 1");
+
+            foreach (DataRow item in data.Rows)
+            {
+                Table table = new Table(item);
+                tablelsit.Add(table);
+            }
+
+            return tablelsit;
+        }
+
         public List<Table> LoadTableList()
         {
             List<Table> tablelsit = new List<Table>();
@@ -67,6 +82,14 @@ namespace QuanLyQuanCafe.DAO
         public bool DeleteTable(int id)
         {
             string query = string.Format("delete dbo.TableFood where ID_TableFood = {0}",id);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
+        public bool ChangeActive(int id, int active)
+        {
+            string query = string.Format("update dbo.TableFood set Active = {0} where ID_TableFood = {1}", active.ToString(), id.ToString());
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;

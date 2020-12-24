@@ -77,11 +77,13 @@ EXEC dbo.USP_Getaccountbyusername @username = N'staff'
 
 SELECT COUNT(*) FROM dbo.Account WHERE UserName = N'staff' AND Password = N'1' OR 1=1
 select*from Account
+
+DROP PROC USP_Login
 CREATE PROC USP_Login
 @username varchar(100),@password varchar(100)
 AS
 BEGIN
-	SELECT *FROM Account WHERE UserName = @username AND Password = @password
+	SELECT *FROM Account WHERE UserName = @username AND Password = @password AND Active = 1
 END
 GO
 
@@ -653,3 +655,65 @@ add Image_Food image
 alter table Account
 add Image_Account image
  set dateformat dmy
+
+-- Lấy danh sách số lượng món bán trong tháng
+ create proc USP_getFoodofBillinMonth
+@MONTH nvarchar(10), @YEAR nvarchar(10)
+as
+begin
+select f.ID_Food, f.NameFood , sum(bi.count) as [Số lượng]
+from Food f, Bill b, BillInfo bi 
+where b.ID_Bill = bi.ID_BillInfo and bi.ID_Food = f.ID_Food and MONTH(b.DateCheckOut) = @MONTH and YEAR(b.DateCheckOut) = @YEAR 
+group by f.ID_Food, f.NameFood
+union
+select f2.ID_Food, f2.NameFood , sum(0) as [Số lượng]
+from Food f2
+where f2.ID_Food not in 
+						(
+							select f3.ID_Food
+							from Food f3, Bill b3, BillInfo bi3 
+							where b3.ID_Bill = bi3.ID_BillInfo and bi3.ID_Food = f3.ID_Food and MONTH(b3.DateCheckOut) = @MONTH and YEAR(b3.DateCheckOut) = @YEAR
+							group by f3.ID_Food
+						)
+group by f2.ID_Food, f2.NameFood
+order by sum(bi.count) desc
+end
+go
+-- Lấy danh sách số lượng món bán trong ngày
+create proc USP_getFoodofBillinDay
+@MONTH nvarchar(10), @YEAR nvarchar(10), @DAY nvarchar(10)
+as
+begin
+select f.ID_Food, f.NameFood , sum(bi.count) as [Số lượng]
+from Food f, Bill b, BillInfo bi 
+where b.ID_Bill = bi.ID_BillInfo and bi.ID_Food = f.ID_Food and MONTH(b.DateCheckOut) = @MONTH and YEAR(b.DateCheckOut) = @YEAR and DAY(b.DateCheckOut) = @DAY
+group by f.ID_Food, f.NameFood
+union
+select f2.ID_Food, f2.NameFood , sum(0) as [Số lượng]
+from Food f2
+where f2.ID_Food not in 
+						(
+							select f3.ID_Food
+							from Food f3, Bill b3, BillInfo bi3 
+							where b3.ID_Bill = bi3.ID_BillInfo and bi3.ID_Food = f3.ID_Food and MONTH(b3.DateCheckOut) = @MONTH and YEAR(b3.DateCheckOut) = @YEAR and DAY(b3.DateCheckOut) = @DAY
+							group by f3.ID_Food
+						)
+group by f2.ID_Food, f2.NameFood
+order by sum(bi.count) desc
+end
+go
+
+set dateformat dmy insert into Resources values(N'S1', N'Sữa bò',10000,'23/12/2001', N'lít',10, N'admin')
+
+-- Thuộc tính active
+alter table Account add Active int -- 0:nghỉ việc   1:còn làm
+alter table TableFood add Active int
+alter table Food add Active int
+alter table FoodCategory add Active int
+
+update Account set Active  = 1
+update TableFood set Active  = 1
+update Food set Active  = 1
+update FoodCategory set Active  = 1
+
+SELECT * FROM dbo.TableFood

@@ -112,7 +112,7 @@ namespace QuanLyQuanCafe
         {
             panelRight.Top = btnResource.Top;
             panelRight.Height = btnResource.Height;
-            fcResources fc = new fcResources();
+            fcResources fc = new fcResources(loginAccount.UserName);
             OpenChildFrom(fc);
         }
     }

@@ -9,12 +9,13 @@ namespace QuanLyQuanCafe.DTO
 {
     class Food
     {
-        public Food(int id, string name, int categoryId, float price)
+        public Food(int id, string name, int categoryId, float price, int active)
         {
             this.ID = id;
             this.Name = name;
             this.CategoryID = categoryid;
             this.Price = price;
+            this.Active = active;
         }
         public Food(DataRow row)
         {
@@ -22,6 +23,7 @@ namespace QuanLyQuanCafe.DTO
             this.Name = row["NameFood"].ToString();
             this.CategoryID = (int)row["ID_FoodCategory"];
             this.Price = (float)Convert.ToDouble(row["Price"].ToString());
+            this.Active = (int)row["Active"];
         }
         private int ID;
 
@@ -30,6 +32,8 @@ namespace QuanLyQuanCafe.DTO
         private int CategoryID;
 
         private float Price;
+
+        private int active;
 
         public int iD
         {
@@ -51,6 +55,7 @@ namespace QuanLyQuanCafe.DTO
             get { return Price; }
             set { Price = value; }
         }
-        
+
+        public int Active { get => active; set => active = value; }
     }
 }

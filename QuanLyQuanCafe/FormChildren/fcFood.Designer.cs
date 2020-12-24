@@ -31,8 +31,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lbActive = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnDeleteFood = new FontAwesome.Sharp.IconButton();
+            this.btnActive = new FontAwesome.Sharp.IconButton();
             this.btnAddFood = new FontAwesome.Sharp.IconButton();
             this.btnEditFood = new FontAwesome.Sharp.IconButton();
             this.panel11 = new System.Windows.Forms.Panel();
@@ -54,6 +57,7 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.dtgvFood = new System.Windows.Forms.DataGridView();
             this.panel8.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel14.SuspendLayout();
@@ -68,6 +72,7 @@
             // 
             this.panel8.BackColor = System.Drawing.Color.White;
             this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel8.Controls.Add(this.panel2);
             this.panel8.Controls.Add(this.panel1);
             this.panel8.Controls.Add(this.panel11);
             this.panel8.Controls.Add(this.panel14);
@@ -81,9 +86,43 @@
             this.panel8.Size = new System.Drawing.Size(328, 786);
             this.panel8.TabIndex = 1;
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.lbActive);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 594);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(326, 108);
+            this.panel2.TabIndex = 12;
+            // 
+            // lbActive
+            // 
+            this.lbActive.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbActive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbActive.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbActive.Location = new System.Drawing.Point(33, 53);
+            this.lbActive.Name = "lbActive";
+            this.lbActive.Size = new System.Drawing.Size(268, 38);
+            this.lbActive.TabIndex = 13;
+            this.lbActive.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label2.Location = new System.Drawing.Point(32, 16);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(237, 24);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Trạng thái kinh doanh:\r\n";
+            // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnDeleteFood);
+            this.panel1.Controls.Add(this.btnActive);
             this.panel1.Controls.Add(this.btnAddFood);
             this.panel1.Controls.Add(this.btnEditFood);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -92,21 +131,21 @@
             this.panel1.Size = new System.Drawing.Size(326, 98);
             this.panel1.TabIndex = 7;
             // 
-            // btnDeleteFood
+            // btnActive
             // 
-            this.btnDeleteFood.BackColor = System.Drawing.Color.Teal;
-            this.btnDeleteFood.FlatAppearance.BorderSize = 0;
-            this.btnDeleteFood.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteFood.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
-            this.btnDeleteFood.IconColor = System.Drawing.Color.White;
-            this.btnDeleteFood.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnDeleteFood.IconSize = 40;
-            this.btnDeleteFood.Location = new System.Drawing.Point(248, 26);
-            this.btnDeleteFood.Name = "btnDeleteFood";
-            this.btnDeleteFood.Size = new System.Drawing.Size(51, 47);
-            this.btnDeleteFood.TabIndex = 10;
-            this.btnDeleteFood.UseVisualStyleBackColor = false;
-            this.btnDeleteFood.Click += new System.EventHandler(this.btnDeleteFood_Click);
+            this.btnActive.BackColor = System.Drawing.Color.Teal;
+            this.btnActive.FlatAppearance.BorderSize = 0;
+            this.btnActive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActive.IconChar = FontAwesome.Sharp.IconChar.PowerOff;
+            this.btnActive.IconColor = System.Drawing.Color.White;
+            this.btnActive.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnActive.IconSize = 40;
+            this.btnActive.Location = new System.Drawing.Point(248, 26);
+            this.btnActive.Name = "btnActive";
+            this.btnActive.Size = new System.Drawing.Size(51, 47);
+            this.btnActive.TabIndex = 10;
+            this.btnActive.UseVisualStyleBackColor = false;
+            this.btnActive.Click += new System.EventHandler(this.btnActive_Click);
             // 
             // btnAddFood
             // 
@@ -300,7 +339,6 @@
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(650, 55);
             this.panel9.TabIndex = 2;
-            this.panel9.Paint += new System.Windows.Forms.PaintEventHandler(this.panel9_Paint);
             // 
             // iconButton1
             // 
@@ -382,6 +420,8 @@
             this.Name = "fcFood";
             this.Text = "fcFood";
             this.panel8.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
@@ -416,7 +456,7 @@
         private System.Windows.Forms.DataGridView dtgvFood;
         private FontAwesome.Sharp.IconButton iconButton1;
         private System.Windows.Forms.Panel panel1;
-        private FontAwesome.Sharp.IconButton btnDeleteFood;
+        private FontAwesome.Sharp.IconButton btnActive;
         private FontAwesome.Sharp.IconButton btnAddFood;
         private FontAwesome.Sharp.IconButton btnEditFood;
         private System.Windows.Forms.PictureBox ptbFoodImage;
@@ -424,5 +464,8 @@
         private System.Windows.Forms.Label lbFoodCategory;
         private System.Windows.Forms.Label lbFoodName;
         private System.Windows.Forms.Label lbFoodID;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lbActive;
+        private System.Windows.Forms.Label label2;
     }
 }

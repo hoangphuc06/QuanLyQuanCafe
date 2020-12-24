@@ -98,14 +98,14 @@ namespace QuanLyQuanCafe
 
         public DataTable GetListAccount()
         {
-            return DataProvider.Instance.ExecuteQuery("SELECT UserName, DisplayName, Type FROM dbo.Account");
+            return DataProvider.Instance.ExecuteQuery("SELECT UserName, DisplayName, Type, Active FROM dbo.Account");
         }
 
         public bool InsertAccount(string name, string displayName, int type)
         {
             if (Check(name) == 1)
             {
-                string query = string.Format("INSERT dbo.Account (UserName, DisplayName, Type, PassWord) VALUES ( N'{0}', N'{1}', {2}, N'{3}')", name, displayName, type, "1962026656160185351301320480154111117132155");
+                string query = string.Format("INSERT dbo.Account (UserName, DisplayName, Type, PassWord, Active) VALUES ( N'{0}', N'{1}', {2}, N'{3}', 1)", name, displayName, type, "1962026656160185351301320480154111117132155");
                 int result = DataProvider.Instance.ExecuteNonQuery(query);
                 return result > 0;
             }
@@ -136,6 +136,13 @@ namespace QuanLyQuanCafe
             return result > 0;
         }
 
+        public bool ChangeActive(string name, int active)
+        {
+            string query = string.Format("UPDATE dbo.Account SET Active = {0} WHERE UserName = N'{1}'", active, name);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
+
         public int Check(string userName)
         {
             string check = string.Format("SELECT * FROM dbo.Account WHERE UserName = N'{0}'", userName);
@@ -152,7 +159,7 @@ namespace QuanLyQuanCafe
         }
         public bool UpdateImage(string name, byte[] img)
         {
-            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-FLVOAAN8;Initial Catalog=QuanLyQuanCafe;Integrated Security=True");
+            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-2V5RLH6O\SQLEXPRESS01;Initial Catalog=QuanLyQuanCafe;Integrated Security=True");
             conn.Open();
             SqlCommand cmd = new SqlCommand("update Account set Image_Account = @hinh where UserName = @ten", conn);
             cmd.Parameters.Add("@ten", name);
@@ -164,7 +171,7 @@ namespace QuanLyQuanCafe
         }
         public Image GetImageByName(string name)
         {
-            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-FLVOAAN8;Initial Catalog=QuanLyQuanCafe;Integrated Security=True");
+            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-2V5RLH6O\SQLEXPRESS01;Initial Catalog=QuanLyQuanCafe;Integrated Security=True");
             conn.Open();
             string Sqlcmd = string.Format("select * from Account where UserName = N'{0}'", name);
             SqlDataAdapter cmd = new SqlDataAdapter(Sqlcmd, conn);

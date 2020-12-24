@@ -54,7 +54,7 @@ namespace QuanLyQuanCafe
         }
         void LoadTable()
         {
-            List<Table> tablelist = TableDAO.Instance.LoadTableList();
+            List<Table> tablelist = TableDAO.Instance.LoadTableList(1);
 
             foreach (Table item in tablelist)
             {

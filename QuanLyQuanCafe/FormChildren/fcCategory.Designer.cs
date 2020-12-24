@@ -28,31 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel15 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnDeleteCategory = new FontAwesome.Sharp.IconButton();
+            this.btnActive = new FontAwesome.Sharp.IconButton();
             this.btnAddCategory = new FontAwesome.Sharp.IconButton();
             this.btnEditCategory = new FontAwesome.Sharp.IconButton();
             this.panel16 = new System.Windows.Forms.Panel();
-            this.txbCategoryName = new System.Windows.Forms.TextBox();
+            this.lbCategoryName = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.panel19 = new System.Windows.Forms.Panel();
-            this.txbCategoryID = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.lbCategoryID = new System.Windows.Forms.Label();
             this.dtgvCategory = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lbActive = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel15.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel19.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvCategory)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel15
             // 
             this.panel15.BackColor = System.Drawing.Color.White;
             this.panel15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel15.Controls.Add(this.panel2);
             this.panel15.Controls.Add(this.panel1);
             this.panel15.Controls.Add(this.panel16);
             this.panel15.Controls.Add(this.panel19);
@@ -65,7 +70,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnDeleteCategory);
+            this.panel1.Controls.Add(this.btnActive);
             this.panel1.Controls.Add(this.btnAddCategory);
             this.panel1.Controls.Add(this.btnEditCategory);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -74,21 +79,21 @@
             this.panel1.Size = new System.Drawing.Size(321, 98);
             this.panel1.TabIndex = 7;
             // 
-            // btnDeleteCategory
+            // btnActive
             // 
-            this.btnDeleteCategory.BackColor = System.Drawing.Color.Teal;
-            this.btnDeleteCategory.FlatAppearance.BorderSize = 0;
-            this.btnDeleteCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteCategory.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
-            this.btnDeleteCategory.IconColor = System.Drawing.Color.White;
-            this.btnDeleteCategory.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnDeleteCategory.IconSize = 40;
-            this.btnDeleteCategory.Location = new System.Drawing.Point(236, 26);
-            this.btnDeleteCategory.Name = "btnDeleteCategory";
-            this.btnDeleteCategory.Size = new System.Drawing.Size(51, 47);
-            this.btnDeleteCategory.TabIndex = 10;
-            this.btnDeleteCategory.UseVisualStyleBackColor = false;
-            this.btnDeleteCategory.Click += new System.EventHandler(this.btnDeleteCategory_Click);
+            this.btnActive.BackColor = System.Drawing.Color.Teal;
+            this.btnActive.FlatAppearance.BorderSize = 0;
+            this.btnActive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActive.IconChar = FontAwesome.Sharp.IconChar.PowerOff;
+            this.btnActive.IconColor = System.Drawing.Color.White;
+            this.btnActive.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnActive.IconSize = 40;
+            this.btnActive.Location = new System.Drawing.Point(236, 26);
+            this.btnActive.Name = "btnActive";
+            this.btnActive.Size = new System.Drawing.Size(51, 47);
+            this.btnActive.TabIndex = 10;
+            this.btnActive.UseVisualStyleBackColor = false;
+            this.btnActive.Click += new System.EventHandler(this.btnActive_Click);
             // 
             // btnAddCategory
             // 
@@ -125,7 +130,7 @@
             // panel16
             // 
             this.panel16.BackColor = System.Drawing.Color.White;
-            this.panel16.Controls.Add(this.txbCategoryName);
+            this.panel16.Controls.Add(this.lbCategoryName);
             this.panel16.Controls.Add(this.label13);
             this.panel16.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel16.Location = new System.Drawing.Point(0, 112);
@@ -134,16 +139,16 @@
             this.panel16.Size = new System.Drawing.Size(321, 112);
             this.panel16.TabIndex = 9;
             // 
-            // txbCategoryName
+            // lbCategoryName
             // 
-            this.txbCategoryName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txbCategoryName.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txbCategoryName.Location = new System.Drawing.Point(29, 67);
-            this.txbCategoryName.Margin = new System.Windows.Forms.Padding(2);
-            this.txbCategoryName.Name = "txbCategoryName";
-            this.txbCategoryName.Size = new System.Drawing.Size(268, 32);
-            this.txbCategoryName.TabIndex = 1;
-            this.txbCategoryName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.lbCategoryName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbCategoryName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbCategoryName.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbCategoryName.Location = new System.Drawing.Point(26, 64);
+            this.lbCategoryName.Name = "lbCategoryName";
+            this.lbCategoryName.Size = new System.Drawing.Size(268, 38);
+            this.lbCategoryName.TabIndex = 13;
+            this.lbCategoryName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label13
             // 
@@ -159,26 +164,14 @@
             // panel19
             // 
             this.panel19.BackColor = System.Drawing.Color.White;
-            this.panel19.Controls.Add(this.txbCategoryID);
             this.panel19.Controls.Add(this.label10);
+            this.panel19.Controls.Add(this.lbCategoryID);
             this.panel19.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel19.Location = new System.Drawing.Point(0, 0);
             this.panel19.Margin = new System.Windows.Forms.Padding(2);
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(321, 112);
             this.panel19.TabIndex = 10;
-            // 
-            // txbCategoryID
-            // 
-            this.txbCategoryID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txbCategoryID.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txbCategoryID.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txbCategoryID.Location = new System.Drawing.Point(29, 66);
-            this.txbCategoryID.Margin = new System.Windows.Forms.Padding(2);
-            this.txbCategoryID.Name = "txbCategoryID";
-            this.txbCategoryID.Size = new System.Drawing.Size(268, 32);
-            this.txbCategoryID.TabIndex = 1;
-            this.txbCategoryID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label10
             // 
@@ -191,27 +184,38 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "ID:";
             // 
+            // lbCategoryID
+            // 
+            this.lbCategoryID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbCategoryID.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbCategoryID.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbCategoryID.Location = new System.Drawing.Point(26, 61);
+            this.lbCategoryID.Name = "lbCategoryID";
+            this.lbCategoryID.Size = new System.Drawing.Size(268, 38);
+            this.lbCategoryID.TabIndex = 13;
+            this.lbCategoryID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // dtgvCategory
             // 
             this.dtgvCategory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvCategory.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvCategory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvCategory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dtgvCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgvCategory.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgvCategory.DefaultCellStyle = dataGridViewCellStyle4;
             this.dtgvCategory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtgvCategory.Location = new System.Drawing.Point(0, 0);
             this.dtgvCategory.Margin = new System.Windows.Forms.Padding(2);
@@ -220,6 +224,40 @@
             this.dtgvCategory.RowTemplate.Height = 24;
             this.dtgvCategory.Size = new System.Drawing.Size(655, 786);
             this.dtgvCategory.TabIndex = 7;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.lbActive);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 224);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(321, 112);
+            this.panel2.TabIndex = 11;
+            // 
+            // lbActive
+            // 
+            this.lbActive.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbActive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbActive.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbActive.Location = new System.Drawing.Point(26, 64);
+            this.lbActive.Name = "lbActive";
+            this.lbActive.Size = new System.Drawing.Size(268, 38);
+            this.lbActive.TabIndex = 13;
+            this.lbActive.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label2.Location = new System.Drawing.Point(25, 27);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(237, 24);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Trạng thái kinh doanh:";
             // 
             // fcCategory
             // 
@@ -238,6 +276,8 @@
             this.panel19.ResumeLayout(false);
             this.panel19.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvCategory)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -246,15 +286,18 @@
 
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.Panel panel16;
-        private System.Windows.Forms.TextBox txbCategoryID;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel panel19;
-        private System.Windows.Forms.TextBox txbCategoryName;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridView dtgvCategory;
         private System.Windows.Forms.Panel panel1;
-        private FontAwesome.Sharp.IconButton btnDeleteCategory;
+        private FontAwesome.Sharp.IconButton btnActive;
         private FontAwesome.Sharp.IconButton btnAddCategory;
         private FontAwesome.Sharp.IconButton btnEditCategory;
+        private System.Windows.Forms.Label lbCategoryName;
+        private System.Windows.Forms.Label lbCategoryID;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lbActive;
+        private System.Windows.Forms.Label label2;
     }
 }

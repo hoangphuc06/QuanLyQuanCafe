@@ -279,5 +279,13 @@ namespace QuanLyQuanCafe
         {
             txbSumMoney.Text = "";
         }
+
+        private void txbSumMoney_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

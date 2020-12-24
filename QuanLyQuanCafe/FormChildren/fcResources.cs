@@ -14,11 +14,13 @@ namespace QuanLyQuanCafe.FormChildren
     public partial class fcResources : Form
     {
         bool isAdd;
+        string username;
         BindingSource ResourceList = new BindingSource();
-        public fcResources()
+        public fcResources(string user)
         {
             InitializeComponent();
             load();
+            username = user;
         }
         string day, month, year;
         void load()
@@ -55,57 +57,88 @@ namespace QuanLyQuanCafe.FormChildren
             txbDay.Text = DateTime.Now.ToShortDateString();
             txbDonvi.Enabled = true;
             txbSoLuong.Enabled = true;
-            txbNguoiNhap.Enabled = true;
+            txbNguoiNhap.Text = username;
             btnAdd.Enabled = false;
             btnSave.Enabled = true;
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
+            btnHuy.Enabled = true;
+            dtpkDate.Enabled = false;
             isAdd = true;
+
+            txbID.Text = null;
+            txbName.Text = null;
+            txbSoLuong.Text = null;
+            txbDonvi.Text = null;
+            txbPrice.Text = null;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (isAdd)
+            if (IsFullInfo())
             {
-                string id = txbID.Text;
-                string rname = txbName.Text;
-                float price = Convert.ToInt32(txbPrice.Text);
-                string dayin = DateTime.Now.ToShortDateString();
-                string unit = txbDonvi.Text;
-                int amount = Convert.ToInt32(txbSoLuong.Text);
-                string username = txbNguoiNhap.Text;
-                if (ResourceDAO.Instance.InsertResource(id, rname, price, dayin, unit, amount, username))
+                if (isAdd)
                 {
-                    MessageBox.Show("Nhập thành công");
-                    LoadListResource();
+                    string id = txbID.Text;
+                    string rname = txbName.Text;
+                    float price = Convert.ToInt32(txbPrice.Text);
+                    string dayin = DateTime.Now.ToShortDateString();
+                    string unit = txbDonvi.Text;
+                    int amount = Convert.ToInt32(txbSoLuong.Text);
+                    string username = txbNguoiNhap.Text;
+                    if (ResourceDAO.Instance.checkTonTai(id) == 0)
+                    {
+                        if (ResourceDAO.Instance.InsertResource(id, rname, price, dayin, unit, amount, username))
+                        {
+                            MessageBox.Show("Nhập thành công");
+                            LoadListResource();
+                            setSave();
+                        }
+                    }    
+                    else
+                    {
+                        MessageBox.Show("ID đã tồn tại !");
+                    }    
                 }
-            }
+                else
+                {
+                    string id = txbID.Text;
+                    string rname = txbName.Text;
+                    float price = Convert.ToInt32(txbPrice.Text);
+                    string dayin = DateTime.Now.ToShortDateString();
+                    string unit = txbDonvi.Text;
+                    int amount = Convert.ToInt32(txbSoLuong.Text);
+                    string username = txbNguoiNhap.Text;
+                    if (ResourceDAO.Instance.UpdateResource(id, rname, price, dayin, unit, amount, username))
+                    {
+                        MessageBox.Show("Cập nhật thành công");
+                        LoadListResource();
+                        setSave();
+                    }
+                }
+                
+            }   
             else
             {
-                string id = txbID.Text;
-                string rname = txbName.Text;
-                float price = Convert.ToInt32(txbPrice.Text);
-                string dayin = DateTime.Now.ToShortDateString();
-                string unit = txbDonvi.Text;
-                int amount = Convert.ToInt32(txbSoLuong.Text);
-                string username = txbNguoiNhap.Text;
-                if (ResourceDAO.Instance.UpdateResource(id, rname, price, dayin, unit, amount, username))
-                {
-                    MessageBox.Show("Cập nhật thành công");
-                    LoadListResource();
-                }
-            }
-                txbID.Enabled = false;
-                txbName.Enabled = false;
-                txbPrice.Enabled = false;
-                txbDay.Enabled = false;
-                txbDonvi.Enabled = false;
-                txbSoLuong.Enabled = false;
-                txbNguoiNhap.Enabled = false;
-                btnAdd.Enabled = true;
-                btnSave.Enabled = false;
-                btnEdit.Enabled = true;
-                btnDelete.Enabled = true;
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin !");
+            }    
+        }
+
+        void setSave()
+        {
+            txbID.Enabled = false;
+            txbName.Enabled = false;
+            txbPrice.Enabled = false;
+            txbDay.Enabled = false;
+            txbDonvi.Enabled = false;
+            txbSoLuong.Enabled = false;
+            txbNguoiNhap.Enabled = false;
+            btnAdd.Enabled = true;
+            btnSave.Enabled = false;
+            btnEdit.Enabled = true;
+            btnDelete.Enabled = true;
+            btnHuy.Enabled = false;
+            dtpkDate.Enabled = true;
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -113,14 +146,16 @@ namespace QuanLyQuanCafe.FormChildren
             txbID.Enabled = false;
             txbName.Enabled = true;
             txbPrice.Enabled = true;
-            txbDay.Enabled = true;
+            txbDay.Enabled = false;
             txbDonvi.Enabled = true;
             txbSoLuong.Enabled = true;
-            txbNguoiNhap.Enabled = true;
+            txbNguoiNhap.Enabled = false;
             btnAdd.Enabled = false;
             btnSave.Enabled = true;
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
+            btnHuy.Enabled = true;
+            dtpkDate.Enabled = false;
             isAdd = false;
         }
 
@@ -150,6 +185,25 @@ namespace QuanLyQuanCafe.FormChildren
             }
         }
 
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+
+            ListMonthResoures();
+            txbID.Enabled = false;
+            txbName.Enabled = false;
+            txbPrice.Enabled = false;
+            txbDay.Enabled = false;
+            txbDonvi.Enabled = false;
+            txbSoLuong.Enabled = false;
+            txbNguoiNhap.Enabled = false;
+            btnAdd.Enabled = true;
+            btnSave.Enabled = false;
+            btnEdit.Enabled = true;
+            btnDelete.Enabled = true;
+            btnHuy.Enabled = false;
+            dtpkDate.Enabled = true;
+        }
+
         void ListMonthResoures()
         {
 
@@ -159,6 +213,15 @@ namespace QuanLyQuanCafe.FormChildren
         private void dtpkDate_ValueChanged(object sender, EventArgs e)
         {
             ListMonthResoures();
+        }
+
+        private bool IsFullInfo()
+        {
+            if (string.IsNullOrEmpty(txbID.Text) || string.IsNullOrEmpty(txbName.Text) || string.IsNullOrEmpty(txbDonvi.Text) || string.IsNullOrEmpty(txbPrice.Text) || string.IsNullOrEmpty(txbSoLuong.Text))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
