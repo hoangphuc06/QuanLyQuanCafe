@@ -75,7 +75,7 @@ namespace QuanLyQuanCafe
            
 
             int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(t.ID);
-            int foodID = (cbFood.SelectedItem as Food).iD;
+            int foodID = (cbFood.SelectedItem as Food).ID;
             int count = (int)nmFoodCount.Value;
 
             string query = "select count from dbo.BillInfo as a,dbo.Bill as b Where a.ID_BillInfo=b.ID_Bill and status=0 and b.ID_TableFood= " + t.ID + " AND ID_Food= " + foodID;
@@ -139,7 +139,7 @@ namespace QuanLyQuanCafe
             if (cb.SelectedItem == null)
                 return;
             Food selected = cb.SelectedItem as Food;
-            id = selected.iD;
+            id = selected.ID;
 
             pictureBox1.Image = FoodDAO.Instance.getimagebyid(id);
 
@@ -149,7 +149,7 @@ namespace QuanLyQuanCafe
         private void btnSubtract_Click(object sender, EventArgs e)
         {
             int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(t.ID);
-            int foodID = (cbFood.SelectedItem as Food).iD;
+            int foodID = (cbFood.SelectedItem as Food).ID;
             int count = -(int)nmFoodCount.Value;
 
             string query = "select count from dbo.BillInfo as a,dbo.Bill as b Where a.ID_BillInfo=b.ID_Bill and status=0 and b.ID_TableFood= " + t.ID + " AND ID_Food= " + foodID;

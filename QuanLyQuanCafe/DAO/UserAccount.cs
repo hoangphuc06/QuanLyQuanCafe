@@ -159,26 +159,19 @@ namespace QuanLyQuanCafe
         }
         public bool UpdateImage(string name, byte[] img)
         {
-            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-2V5RLH6O\SQLEXPRESS01;Initial Catalog=QuanLyQuanCafe;Integrated Security=True");
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("update Account set Image_Account = @hinh where UserName = @ten", conn);
-            cmd.Parameters.Add("@ten", name);
-            cmd.Parameters.Add("@hinh", img);
-            int result = cmd.ExecuteNonQuery();
-            conn.Close();
+            string temp = string.Format(" where UserName = N'{0}'", name);
+            int result = DataProvider.Instance.ExecuteNonQuery("update Account set Image_Account="+  img +temp);
+            
 
             return result > 0;
         }
         public Image GetImageByName(string name)
         {
-            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-2V5RLH6O\SQLEXPRESS01;Initial Catalog=QuanLyQuanCafe;Integrated Security=True");
-            conn.Open();
-            string Sqlcmd = string.Format("select * from Account where UserName = N'{0}'", name);
-            SqlDataAdapter cmd = new SqlDataAdapter(Sqlcmd, conn);
-            DataTable mtb = new DataTable();
-            cmd.Fill(mtb);
+            string temp = string.Format("select * from Account where UserName = N'{0}'", name);
+            DataTable mtb = DataProvider.Instance.ExecuteQuery(temp);
+          
             Image img = ByteArrayToImage((byte[])mtb.Rows[0]["Image_Account"]);
-            conn.Close();
+            
             return img;
         }
 

@@ -43,9 +43,9 @@ namespace QuanLyQuanCafe.FormChildren
 
         void AddTableBinding()
         {
-            lbID.DataBindings.Add(new Binding("Text", dtgvTable.DataSource, "iD", true, DataSourceUpdateMode.Never));
-            lbNameTable.DataBindings.Add(new Binding("Text", dtgvTable.DataSource, "name", true, DataSourceUpdateMode.Never));
-            lbTableStatus.DataBindings.Add(new Binding("Text", dtgvTable.DataSource, "status", true, DataSourceUpdateMode.Never));
+            lbID.DataBindings.Add(new Binding("Text", dtgvTable.DataSource, "ID", true, DataSourceUpdateMode.Never));
+            lbNameTable.DataBindings.Add(new Binding("Text", dtgvTable.DataSource, "Tên Bàn", true, DataSourceUpdateMode.Never));
+            lbTableStatus.DataBindings.Add(new Binding("Text", dtgvTable.DataSource, "Trạng Thái", true, DataSourceUpdateMode.Never));
             lbActive.DataBindings.Add(new Binding("Text", dtgvTable.DataSource, "Active", true, DataSourceUpdateMode.Never));
         }
 

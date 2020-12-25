@@ -140,7 +140,7 @@
             this.txbID.Enabled = false;
             this.txbID.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txbID.Location = new System.Drawing.Point(189, 75);
-            this.txbID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txbID.Margin = new System.Windows.Forms.Padding(2);
             this.txbID.Name = "txbID";
             this.txbID.Size = new System.Drawing.Size(302, 29);
             this.txbID.TabIndex = 7;
@@ -150,7 +150,7 @@
             this.txbName.Enabled = false;
             this.txbName.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txbName.Location = new System.Drawing.Point(189, 123);
-            this.txbName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txbName.Margin = new System.Windows.Forms.Padding(2);
             this.txbName.Name = "txbName";
             this.txbName.Size = new System.Drawing.Size(302, 29);
             this.txbName.TabIndex = 8;
@@ -160,7 +160,7 @@
             this.txbPrice.Enabled = false;
             this.txbPrice.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txbPrice.Location = new System.Drawing.Point(703, 75);
-            this.txbPrice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txbPrice.Margin = new System.Windows.Forms.Padding(2);
             this.txbPrice.Name = "txbPrice";
             this.txbPrice.Size = new System.Drawing.Size(212, 29);
             this.txbPrice.TabIndex = 9;
@@ -171,7 +171,7 @@
             this.txbDonvi.Enabled = false;
             this.txbDonvi.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txbDonvi.Location = new System.Drawing.Point(703, 123);
-            this.txbDonvi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txbDonvi.Margin = new System.Windows.Forms.Padding(2);
             this.txbDonvi.Name = "txbDonvi";
             this.txbDonvi.Size = new System.Drawing.Size(212, 29);
             this.txbDonvi.TabIndex = 10;
@@ -181,7 +181,7 @@
             this.txbSoLuong.Enabled = false;
             this.txbSoLuong.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txbSoLuong.Location = new System.Drawing.Point(703, 173);
-            this.txbSoLuong.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txbSoLuong.Margin = new System.Windows.Forms.Padding(2);
             this.txbSoLuong.Name = "txbSoLuong";
             this.txbSoLuong.Size = new System.Drawing.Size(212, 29);
             this.txbSoLuong.TabIndex = 11;
@@ -192,7 +192,7 @@
             this.txbDay.Enabled = false;
             this.txbDay.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txbDay.Location = new System.Drawing.Point(189, 173);
-            this.txbDay.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txbDay.Margin = new System.Windows.Forms.Padding(2);
             this.txbDay.Name = "txbDay";
             this.txbDay.Size = new System.Drawing.Size(302, 29);
             this.txbDay.TabIndex = 12;
@@ -202,7 +202,7 @@
             this.txbNguoiNhap.Enabled = false;
             this.txbNguoiNhap.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txbNguoiNhap.Location = new System.Drawing.Point(189, 219);
-            this.txbNguoiNhap.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txbNguoiNhap.Margin = new System.Windows.Forms.Padding(2);
             this.txbNguoiNhap.Name = "txbNguoiNhap";
             this.txbNguoiNhap.Size = new System.Drawing.Size(302, 29);
             this.txbNguoiNhap.TabIndex = 13;
@@ -233,8 +233,9 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dtgvResource.DefaultCellStyle = dataGridViewCellStyle2;
             this.dtgvResource.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtgvResource.EnableHeadersVisualStyles = false;
             this.dtgvResource.Location = new System.Drawing.Point(0, 0);
-            this.dtgvResource.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtgvResource.Margin = new System.Windows.Forms.Padding(2);
             this.dtgvResource.Name = "dtgvResource";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -255,7 +256,7 @@
             // 
             this.dtpkDate.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.dtpkDate.Location = new System.Drawing.Point(620, 2);
-            this.dtpkDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpkDate.Margin = new System.Windows.Forms.Padding(2);
             this.dtpkDate.Name = "dtpkDate";
             this.dtpkDate.Size = new System.Drawing.Size(342, 29);
             this.dtpkDate.TabIndex = 17;
@@ -269,7 +270,7 @@
             this.btnAdd.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnAdd.ForeColor = System.Drawing.Color.White;
             this.btnAdd.Location = new System.Drawing.Point(33, 291);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(83, 53);
             this.btnAdd.TabIndex = 18;
@@ -285,7 +286,7 @@
             this.btnEdit.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnEdit.ForeColor = System.Drawing.Color.White;
             this.btnEdit.Location = new System.Drawing.Point(147, 291);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(90, 53);
             this.btnEdit.TabIndex = 19;
@@ -301,7 +302,7 @@
             this.btnDelete.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
             this.btnDelete.Location = new System.Drawing.Point(275, 291);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(83, 53);
             this.btnDelete.TabIndex = 20;
@@ -318,7 +319,7 @@
             this.btnSave.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(712, 291);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(89, 53);
             this.btnSave.TabIndex = 22;
@@ -380,7 +381,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dtgvResource);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "fcResources";
             this.Text = "fcResources";
             ((System.ComponentModel.ISupportInitialize)(this.dtgvResource)).EndInit();

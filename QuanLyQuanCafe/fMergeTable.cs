@@ -24,7 +24,7 @@ namespace QuanLyQuanCafe
         }
         void LoadComboboxTable(ComboBox cb)
         {
-            cb.DataSource = TableDAO.Instance.LoadTableList();
+            cb.DataSource = TableDAO.Instance.LoadTableList(1);
             cb.DisplayMember = "Name";
         }
 

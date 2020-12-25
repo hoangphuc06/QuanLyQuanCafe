@@ -25,7 +25,7 @@ namespace QuanLyQuanCafe.DAO
         public List<Food> GetFoodByCategoryID(int id)
         {
             List<Food> list = new List<Food>();
-            string query = "select * from Food where Active = 1 and ID_FoodCategory = " + id;
+            string query = "select ID_Food as [ID], ID_FoodCategory as [Category ID] ,NameFood as [Tên Món],Price as [Giá],Active from Food where Active = 1 and ID_FoodCategory = " + id;
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
             foreach (DataRow item in data.Rows)
             {
@@ -34,17 +34,9 @@ namespace QuanLyQuanCafe.DAO
             }
             return list;
         }
-        public List<Food> GetListFood()
+        public DataTable GetListFood()
         {
-            List<Food> list = new List<Food>();
-            string query = "select * from Food ";
-            DataTable data = DataProvider.Instance.ExecuteQuery(query);
-            foreach (DataRow item in data.Rows)
-            {
-                Food food = new Food(item);
-                list.Add(food);
-            }
-            return list;
+            return DataProvider.Instance.ExecuteQuery("exec USP_GetListFood");
         }
         public bool InsertFood(string name, int categoryid, float price)
         {
@@ -94,26 +86,20 @@ namespace QuanLyQuanCafe.DAO
         }
         public bool UpdateFoodImage(byte[] img, string name)
         {
-            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-2V5RLH6O\SQLEXPRESS01;Initial Catalog=QuanLyQuanCafe;Integrated Security=True");
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("update Food set Image_Food = @hinh where NameFood = @ten", conn);
-            cmd.Parameters.Add("@ten", name);
-            cmd.Parameters.Add("@hinh", img);
-            int result = cmd.ExecuteNonQuery();
-            conn.Close();
+            
+            int result = DataProvider.Instance.ExecuteNonQuery("update Food set Image_Food ="+ img+ " where NameFood = "+name);
+       
 
             return result > 0;
         }
         public Image getimagebyid(int id)
         {
-            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-2V5RLH6O\SQLEXPRESS01;Initial Catalog=QuanLyQuanCafe;Integrated Security=True");
-            conn.Open();
-            string Sqlcmd = string.Format("select * from Food where ID_Food = {0}", id);
-            SqlDataAdapter cmd = new SqlDataAdapter(Sqlcmd, conn);
-            DataTable mtb = new DataTable();
-            cmd.Fill(mtb);
+            
+            DataTable mtb = DataProvider.Instance.ExecuteQuery("select * from Food where ID_Food ="+id);
+
+
             Image img = ByteArrayToImage((byte[])mtb.Rows[0]["Image_Food"]);
-            conn.Close();
+        
             return img;
         }
 

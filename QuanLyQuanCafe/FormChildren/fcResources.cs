@@ -41,12 +41,12 @@ namespace QuanLyQuanCafe.FormChildren
         void AddFoodBinding()
         {
             txbID.DataBindings.Add(new Binding("Text",dtgvResource.DataSource,"ID",true,DataSourceUpdateMode.Never));
-            txbName.DataBindings.Add(new Binding("Text", dtgvResource.DataSource, "RName", true, DataSourceUpdateMode.Never));
-            txbSoLuong.DataBindings.Add(new Binding("Text", dtgvResource.DataSource, "Amount", true, DataSourceUpdateMode.Never));
-            txbPrice.DataBindings.Add(new Binding("Text", dtgvResource.DataSource, "Price", true, DataSourceUpdateMode.Never));
-            txbDonvi.DataBindings.Add(new Binding("Text", dtgvResource.DataSource, "Unit", true, DataSourceUpdateMode.Never));
-            txbDay.DataBindings.Add(new Binding("Text", dtgvResource.DataSource, "Dayin", true, DataSourceUpdateMode.Never));
-            txbNguoiNhap.DataBindings.Add(new Binding("Text", dtgvResource.DataSource, "DisplayName", true, DataSourceUpdateMode.Never));
+            txbName.DataBindings.Add(new Binding("Text", dtgvResource.DataSource, "Nguyên Liệu", true, DataSourceUpdateMode.Never));
+            txbSoLuong.DataBindings.Add(new Binding("Text", dtgvResource.DataSource, "Số Lượng", true, DataSourceUpdateMode.Never));
+            txbPrice.DataBindings.Add(new Binding("Text", dtgvResource.DataSource, "Giá", true, DataSourceUpdateMode.Never));
+            txbDonvi.DataBindings.Add(new Binding("Text", dtgvResource.DataSource, "Đơn Vị", true, DataSourceUpdateMode.Never));
+            txbDay.DataBindings.Add(new Binding("Text", dtgvResource.DataSource, "Ngày Nhập", true, DataSourceUpdateMode.Never));
+            txbNguoiNhap.DataBindings.Add(new Binding("Text", dtgvResource.DataSource, "Người Nhập", true, DataSourceUpdateMode.Never));
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
