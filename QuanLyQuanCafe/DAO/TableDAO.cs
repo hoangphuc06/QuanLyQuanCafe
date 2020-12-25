@@ -48,19 +48,9 @@ namespace QuanLyQuanCafe.DAO
             return tablelsit;
         }
 
-        public List<Table> LoadTableList()
+        public DataTable LoadTableList()
         {
-            List<Table> tablelsit = new List<Table>();
-
-            DataTable data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.TableFood");
-
-            foreach (DataRow item in data.Rows)
-            {
-                Table table = new Table(item);
-                tablelsit.Add(table);
-            }
-
-            return tablelsit;
+            return DataProvider.Instance.ExecuteQuery("exec USP_LoadTableFood");
         }
 
         public bool InsertTable(string name)

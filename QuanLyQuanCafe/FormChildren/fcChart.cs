@@ -17,7 +17,6 @@ namespace QuanLyQuanCafe.FormChildren
 {
     public partial class fcChart : Form
     {
-        SqlConnection connect = new SqlConnection(@"Data Source=LAPTOP-2V5RLH6O\SQLEXPRESS01;Initial Catalog=QuanLyQuanCafe;Integrated Security=True");
 
         string CurrentMonth;
         string CurrentYear;
@@ -53,13 +52,12 @@ namespace QuanLyQuanCafe.FormChildren
 
         private void SanPham()
         {
-            connect.Open();
+            
 
-            SqlCommand cmdSoSPThang = new SqlCommand("select sum(Price*Amount) from Resources where YEAR(DayIn) = " + year + " and MONTH(DayIn) = " + month, connect);
-            SqlCommand cmdSoSPToday = new SqlCommand("select sum(Price*Amount) from Resources where YEAR(DayIn) = " + year + " and MONTH(DayIn) = " + month + " and DAY(DayIn) = " + day, connect);
 
-            var SoSPThang = (cmdSoSPThang.ExecuteScalar());
-            var SoSPToday = (cmdSoSPToday.ExecuteScalar());
+
+            var SoSPThang = DataProvider.Instance.ExecuteScalar("select sum(Price*Amount) from Resources where YEAR(DayIn) = " + year + " and MONTH(DayIn) = " + month);
+            var SoSPToday = DataProvider.Instance.ExecuteScalar("select sum(Price*Amount) from Resources where YEAR(DayIn) = " + year + " and MONTH(DayIn) = " + month + " and DAY(DayIn) = " + day);
 
             if (SoSPThang == DBNull.Value)
             {
@@ -93,15 +91,14 @@ namespace QuanLyQuanCafe.FormChildren
                 }
             }
 
-            connect.Close();
+            
         }
 
         private void TopFood()
         {
-            connect.Open();
-            string query = "select top(1) f.ID_Food from Food f, Bill b, BillInfo bi where b.ID_Bill = bi.ID_BillInfo and bi.ID_Food = f.ID_Food and MONTH(b.DateCheckOut) = " + month + " and YEAR(b.DateCheckOut) = " + year +  " group by f.ID_Food order by sum(bi.count) desc";
-            SqlCommand cmd = new SqlCommand(query,connect);
-            var id = (cmd.ExecuteScalar());
+
+
+            var id = DataProvider.Instance.ExecuteScalar("select top(1) f.ID_Food from Food f, Bill b, BillInfo bi where b.ID_Bill = bi.ID_BillInfo and bi.ID_Food = f.ID_Food and MONTH(b.DateCheckOut) = " + month + " and YEAR(b.DateCheckOut) = " + year + " group by f.ID_Food order by sum(bi.count) desc");
             
             if (id == null)
             {
@@ -114,7 +111,7 @@ namespace QuanLyQuanCafe.FormChildren
                 lbCount.Text = "Số lượng: ";
 
 
-                connect.Close();
+               
                 return;
             }    
             else
@@ -128,27 +125,23 @@ namespace QuanLyQuanCafe.FormChildren
                 lbFoodPrice.Text = "Giá: " + FoodDAO.Instance.getpricebyid(idfood).ToString("###,###");
 
 
-                string query1 = "select top(1)  sum(bi.count) from Food f, Bill b, BillInfo bi where b.ID_Bill = bi.ID_BillInfo and bi.ID_Food = f.ID_Food and MONTH(b.DateCheckOut) = " + month + " and YEAR(b.DateCheckOut) = " + year + " group by f.ID_Food order by sum(bi.count) desc";
-                SqlCommand cmd1 = new SqlCommand(query1, connect);
-                var sl = (cmd1.ExecuteScalar());
+
+                var sl = DataProvider.Instance.ExecuteScalar("select top(1)  sum(bi.count) from Food f, Bill b, BillInfo bi where b.ID_Bill = bi.ID_BillInfo and bi.ID_Food = f.ID_Food and MONTH(b.DateCheckOut) = " + month + " and YEAR(b.DateCheckOut) = " + year + " group by f.ID_Food order by sum(bi.count) desc");
                 lbCount.Text = "Số lượng: " + sl.ToString();
             }
-            connect.Close();
+          
         }
 
         private void DoanhSoBanHang()
         {
-            connect.Open();
+   
 
-            SqlCommand cmdCountTongHDThangNay = new SqlCommand("select COUNT (distinct ID_Bill) from dbo.Bill where MONTH(DateCheckOut) = '" + month + "' and YEAR(DateCheckOut) = " + year, connect);
-            SqlCommand cmdCountTongHDToday = new SqlCommand("select COUNT (distinct ID_Bill) from dbo.Bill where DAY(DateCheckOut) = " + day + " and MONTH(DateCheckOut) = " + month + "and YEAR(DateCheckOut) = " + year, connect);
-            SqlCommand cmdCountTongTienThangNay = new SqlCommand("select sum (totalPrice) from dbo.Bill where MONTH(DateCheckOut) = " + month + " and YEAR(DateCheckOut) = " + year, connect);
-            SqlCommand cmdCountTienToday = new SqlCommand("select sum (totalPrice) from dbo.Bill where DAY(DateCheckOut) = " + day + " and MONTH(DateCheckOut) = " + month + "and YEAR(DateCheckOut) = " + year, connect);
+           
 
-            var CountTongHD = (cmdCountTongHDThangNay.ExecuteScalar());
-            var CountHDtoday = (cmdCountTongHDToday.ExecuteScalar());
-            var CountTongTienThangNay = (cmdCountTongTienThangNay.ExecuteScalar());
-            var CountTienToday = (cmdCountTienToday.ExecuteScalar());
+            var CountTongHD = DataProvider.Instance.ExecuteScalar("select COUNT (distinct ID_Bill) from dbo.Bill where MONTH(DateCheckOut) = '" + month + "' and YEAR(DateCheckOut) = " + year);
+            var CountHDtoday = DataProvider.Instance.ExecuteScalar("select COUNT (distinct ID_Bill) from dbo.Bill where DAY(DateCheckOut) = " + day + " and MONTH(DateCheckOut) = " + month + "and YEAR(DateCheckOut) = " + year);
+            var CountTongTienThangNay = DataProvider.Instance.ExecuteScalar("select sum (totalPrice) from dbo.Bill where MONTH(DateCheckOut) = " + month + " and YEAR(DateCheckOut) = " + year);
+            var CountTienToday = DataProvider.Instance.ExecuteScalar("select sum (totalPrice) from dbo.Bill where DAY(DateCheckOut) = " + day + " and MONTH(DateCheckOut) = " + month + "and YEAR(DateCheckOut) = " + year);
 
             if (CountTongTienThangNay == DBNull.Value)
             {
@@ -218,7 +211,7 @@ namespace QuanLyQuanCafe.FormChildren
 
             
 
-            connect.Close();
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -232,12 +225,10 @@ namespace QuanLyQuanCafe.FormChildren
             chart1.Series["Thu nhập"].XValueType = ChartValueType.DateTime;
 
             chart1.ChartAreas[0].AxisX.LabelStyle.Format = "dd";
-            DataSet ds = new DataSet();
-            connect.Open();
+            DataTable ds = DataProvider.Instance.ExecuteQuery("select DAY(DateCheckOut) as [Ngày], sum(totalPrice) as [Tiền] from bill where MONTH(DateCheckOut) = " + month + " and YEAR(DateCheckOut) = " + year + " group by DAY(DateCheckOut) order by DAY(DateCheckOut)");
             
-            SqlDataAdapter adapt = new SqlDataAdapter("select DAY(DateCheckOut) as [Ngày], sum(totalPrice) as [Tiền] from bill where MONTH(DateCheckOut) = " + month + " and YEAR(DateCheckOut) = " + year + " group by DAY(DateCheckOut) order by DAY(DateCheckOut)", connect);
-
-            adapt.Fill(ds);
+            
+            
             chart1.DataSource = ds;
             //set the member of the chart data source used to data bind to the X-values of the series  
             chart1.Series["Thu nhập"].XValueMember = "Ngày";
@@ -245,7 +236,7 @@ namespace QuanLyQuanCafe.FormChildren
             chart1.Series["Thu nhập"].YValueMembers = "Tiền";
             chart1.Series["Thu nhập"].IsValueShownAsLabel = true;
             //ChartSlspDayByDay.Titles.Add("Salary Chart");
-            connect.Close();
+            
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)

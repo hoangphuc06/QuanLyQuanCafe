@@ -20,6 +20,7 @@ namespace QuanLyQuanCafe.FormChildren
         {
             InitializeComponent();
             load();
+            AddFoodBinding();
         }
 
         void load()
@@ -27,11 +28,12 @@ namespace QuanLyQuanCafe.FormChildren
             dtgvFood.DataSource = foodList;
             LoadListFood();
             //LoadCategoryIntoCombobox(cbxFoodCategory);
-            AddFoodBinding();
+            
         }
         void LoadListFood()
         {
-            foodList.DataSource = FoodDAO.Instance.GetListFood();
+            foodList.DataSource =FoodDAO.Instance.GetListFood();
+            
         }
         //void LoadCategoryIntoCombobox(ComboBox cb)
         //{
@@ -41,10 +43,10 @@ namespace QuanLyQuanCafe.FormChildren
 
         void AddFoodBinding()
         {
-            lbFoodID.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "iD", true, DataSourceUpdateMode.Never));
-            lbFoodName.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Name", true, DataSourceUpdateMode.Never));
-            lbFoodCategory.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "categoryid", true, DataSourceUpdateMode.Never));
-            lbFoodPrice.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Price", true, DataSourceUpdateMode.Never));
+            lbFoodID.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "ID", true, DataSourceUpdateMode.Never));
+            lbFoodName.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Tên Món", true, DataSourceUpdateMode.Never));
+            lbFoodCategory.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Category ID", true, DataSourceUpdateMode.Never));
+            lbFoodPrice.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Giá", true, DataSourceUpdateMode.Never));
             lbActive.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Active", true, DataSourceUpdateMode.Never));
         }
 

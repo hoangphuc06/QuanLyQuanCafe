@@ -11,49 +11,49 @@ namespace QuanLyQuanCafe.DTO
     {
         public Food(int id, string name, int categoryId, float price, int active)
         {
-            this.ID = id;
-            this.Name = name;
-            this.CategoryID = categoryid;
+            this.iD = id;
+            this.name = name;
+            this.CategoryiD = categoryId;
             this.Price = price;
             this.Active = active;
         }
         public Food(DataRow row)
         {
-            this.ID = (int)row["ID_Food"];
-            this.Name = row["NameFood"].ToString();
-            this.CategoryID = (int)row["ID_FoodCategory"];
-            this.Price = (float)Convert.ToDouble(row["Price"].ToString());
+            this.iD = (int)row["ID"];
+            this.name = row["Tên Món"].ToString();
+            this.CategoryiD = (int)row["Category ID"];
+            this.price = (float)Convert.ToDouble(row["Giá"].ToString());
             this.Active = (int)row["Active"];
         }
-        private int ID;
+        private int iD;
 
-        private string Name;
+        private string name;
 
-        private int CategoryID;
+        private int CategoryiD;
 
-        private float Price;
+        private float price;
 
         private int active;
 
-        public int iD
+        public int ID
         {
-            get { return ID; }
-            set { ID = value; }
+            get { return iD; }
+            set { iD = value; }
         }
-        public int categoryid
+        public int CategoryID
         {
-            get { return CategoryID; }
-            set { CategoryID = value; }
+            get { return CategoryiD; }
+            set { CategoryiD = value; }
         }
-        public string name
+        public string Name
         {
-            get { return Name; }
-            set { Name = value; }
+            get { return name; }
+            set { name = value; }
         }
-        public float price
+        public float Price
         {
-            get { return Price; }
-            set { Price = value; }
+            get { return price; }
+            set { price = value; }
         }
 
         public int Active { get => active; set => active = value; }

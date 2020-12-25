@@ -19,17 +19,9 @@ namespace QuanLyQuanCafe.DAO
 
         private ResourceDAO() { }
 
-        public List<Resource> GetListResource()
+        public DataTable GetListResource()
         {
-            List<Resource> list = new List<Resource>();
-            string query = "select * from Resources";
-            DataTable data = DataProvider.Instance.ExecuteQuery(query);
-            foreach (DataRow item in data.Rows)
-            {
-                Resource res = new Resource(item);
-                list.Add(res);
-            }
-            return list;
+            return DataProvider.Instance.ExecuteQuery("exec USP_LoadResource");
         }
 
         public List<Resource> GetResourceByMonth(int month,int year)
