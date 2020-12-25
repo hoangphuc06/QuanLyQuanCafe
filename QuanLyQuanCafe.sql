@@ -731,3 +731,32 @@ create table Resources
 
 	primary key (ID_Resource)
 )
+
+--sửa bảng
+alter table Bill
+add ID_User varchar(100)
+
+alter table Bill
+add constraint FK_username foreign key (ID_User) references Account(UserName)
+
+--LoadTableFood
+Create USP_LoadTableFood
+as
+begin
+	select ID_TableFood as [ID], NameTable as [Tên Bàn] ,StatusTable as [Trạng Thái],Active from TableFood
+end
+
+--GetListFood
+Create USP_GetListFood
+as
+begin
+	select ID_Food as [ID], ID_FoodCategory as [Category ID] ,NameFood as [Tên Món],Price as [Giá],Active from Food 
+end
+--Load Reasource
+Create USP_LoadResource
+as
+begin
+	select ID_Resource as [ID], RName as [Nguyên Liệu] ,Price as [Giá],DayIn as [Ngày Nhập],Unit as[Đơn Vị],Amount as[Số Lượng],UserName as[Người Nhập] from Resources
+end
+
+select*from Resources
