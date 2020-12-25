@@ -717,3 +717,17 @@ update Food set Active  = 1
 update FoodCategory set Active  = 1
 
 SELECT * FROM dbo.TableFood
+
+--create table Resources
+create table Resources
+(
+	ID_Resource varchar(4) not null,
+	RName Nvarchar(40) not null,
+	Price money not null,
+	DayIn date not null,
+	Unit nvarchar(20) not null,
+	Amount int not null,
+	UserName Nvarchar(100) not null,
+
+	primary key (ID_Resource)
+)
