@@ -31,6 +31,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelRight = new System.Windows.Forms.Panel();
             this.btnExit = new FontAwesome.Sharp.IconButton();
+            this.btnResource = new FontAwesome.Sharp.IconButton();
             this.btnFood = new FontAwesome.Sharp.IconButton();
             this.btnCategory = new FontAwesome.Sharp.IconButton();
             this.btnTable = new FontAwesome.Sharp.IconButton();
@@ -41,7 +42,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panelDesktop = new System.Windows.Forms.Panel();
-            this.btnResource = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -64,7 +64,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.ForeColor = System.Drawing.Color.Teal;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(204, 836);
             this.panel1.TabIndex = 1;
@@ -73,7 +73,7 @@
             // 
             this.panelRight.BackColor = System.Drawing.Color.Teal;
             this.panelRight.Location = new System.Drawing.Point(0, 177);
-            this.panelRight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelRight.Margin = new System.Windows.Forms.Padding(2);
             this.panelRight.Name = "panelRight";
             this.panelRight.Size = new System.Drawing.Size(10, 79);
             this.panelRight.TabIndex = 5;
@@ -90,7 +90,7 @@
             this.btnExit.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnExit.IconSize = 40;
             this.btnExit.Location = new System.Drawing.Point(0, 730);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(2);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(202, 74);
             this.btnExit.TabIndex = 19;
@@ -98,6 +98,27 @@
             this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // btnResource
+            // 
+            this.btnResource.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnResource.FlatAppearance.BorderSize = 0;
+            this.btnResource.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResource.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnResource.ForeColor = System.Drawing.Color.Teal;
+            this.btnResource.IconChar = FontAwesome.Sharp.IconChar.DollyFlatbed;
+            this.btnResource.IconColor = System.Drawing.Color.Teal;
+            this.btnResource.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnResource.IconSize = 40;
+            this.btnResource.Location = new System.Drawing.Point(0, 651);
+            this.btnResource.Margin = new System.Windows.Forms.Padding(2);
+            this.btnResource.Name = "btnResource";
+            this.btnResource.Size = new System.Drawing.Size(202, 79);
+            this.btnResource.TabIndex = 20;
+            this.btnResource.Text = "Nguyên liệu";
+            this.btnResource.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnResource.UseVisualStyleBackColor = true;
+            this.btnResource.Click += new System.EventHandler(this.btnResource_Click);
             // 
             // btnFood
             // 
@@ -111,7 +132,7 @@
             this.btnFood.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnFood.IconSize = 40;
             this.btnFood.Location = new System.Drawing.Point(0, 572);
-            this.btnFood.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnFood.Margin = new System.Windows.Forms.Padding(2);
             this.btnFood.Name = "btnFood";
             this.btnFood.Size = new System.Drawing.Size(202, 79);
             this.btnFood.TabIndex = 18;
@@ -132,7 +153,7 @@
             this.btnCategory.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnCategory.IconSize = 40;
             this.btnCategory.Location = new System.Drawing.Point(0, 493);
-            this.btnCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCategory.Margin = new System.Windows.Forms.Padding(2);
             this.btnCategory.Name = "btnCategory";
             this.btnCategory.Size = new System.Drawing.Size(202, 79);
             this.btnCategory.TabIndex = 17;
@@ -153,7 +174,7 @@
             this.btnTable.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnTable.IconSize = 40;
             this.btnTable.Location = new System.Drawing.Point(0, 414);
-            this.btnTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTable.Margin = new System.Windows.Forms.Padding(2);
             this.btnTable.Name = "btnTable";
             this.btnTable.Size = new System.Drawing.Size(202, 79);
             this.btnTable.TabIndex = 16;
@@ -174,7 +195,7 @@
             this.btnChart.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnChart.IconSize = 40;
             this.btnChart.Location = new System.Drawing.Point(0, 335);
-            this.btnChart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnChart.Margin = new System.Windows.Forms.Padding(2);
             this.btnChart.Name = "btnChart";
             this.btnChart.Size = new System.Drawing.Size(202, 79);
             this.btnChart.TabIndex = 15;
@@ -195,7 +216,7 @@
             this.btnBill.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnBill.IconSize = 40;
             this.btnBill.Location = new System.Drawing.Point(0, 256);
-            this.btnBill.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBill.Margin = new System.Windows.Forms.Padding(2);
             this.btnBill.Name = "btnBill";
             this.btnBill.Size = new System.Drawing.Size(202, 79);
             this.btnBill.TabIndex = 4;
@@ -216,7 +237,7 @@
             this.btnAccount.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAccount.IconSize = 40;
             this.btnAccount.Location = new System.Drawing.Point(0, 177);
-            this.btnAccount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAccount.Margin = new System.Windows.Forms.Padding(2);
             this.btnAccount.Name = "btnAccount";
             this.btnAccount.Size = new System.Drawing.Size(202, 79);
             this.btnAccount.TabIndex = 3;
@@ -231,7 +252,7 @@
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(202, 177);
             this.panel2.TabIndex = 2;
@@ -265,27 +286,6 @@
             this.panelDesktop.Size = new System.Drawing.Size(978, 786);
             this.panelDesktop.TabIndex = 2;
             // 
-            // btnResource
-            // 
-            this.btnResource.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnResource.FlatAppearance.BorderSize = 0;
-            this.btnResource.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResource.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnResource.ForeColor = System.Drawing.Color.Teal;
-            this.btnResource.IconChar = FontAwesome.Sharp.IconChar.DollyFlatbed;
-            this.btnResource.IconColor = System.Drawing.Color.Teal;
-            this.btnResource.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnResource.IconSize = 40;
-            this.btnResource.Location = new System.Drawing.Point(0, 651);
-            this.btnResource.Margin = new System.Windows.Forms.Padding(2);
-            this.btnResource.Name = "btnResource";
-            this.btnResource.Size = new System.Drawing.Size(202, 79);
-            this.btnResource.TabIndex = 20;
-            this.btnResource.Text = "Nguyên liệu";
-            this.btnResource.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnResource.UseVisualStyleBackColor = true;
-            this.btnResource.Click += new System.EventHandler(this.btnResource_Click);
-            // 
             // fAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -295,10 +295,9 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "fAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Admin";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

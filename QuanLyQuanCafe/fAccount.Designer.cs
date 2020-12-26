@@ -174,7 +174,6 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "fAccount";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Tài khoản";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

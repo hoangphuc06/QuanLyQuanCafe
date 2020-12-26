@@ -30,15 +30,15 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dtgvMonth = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dtgvMonth = new System.Windows.Forms.DataGridView();
             this.dtgvDay = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvMonth)).BeginInit();
+            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDay)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,6 +66,20 @@
             this.tabPage1.Text = "Tháng";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // dtgvMonth
+            // 
+            this.dtgvMonth.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgvMonth.BackgroundColor = System.Drawing.Color.White;
+            this.dtgvMonth.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvMonth.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtgvMonth.Location = new System.Drawing.Point(3, 73);
+            this.dtgvMonth.Margin = new System.Windows.Forms.Padding(2);
+            this.dtgvMonth.Name = "dtgvMonth";
+            this.dtgvMonth.RowHeadersWidth = 51;
+            this.dtgvMonth.RowTemplate.Height = 24;
+            this.dtgvMonth.Size = new System.Drawing.Size(671, 573);
+            this.dtgvMonth.TabIndex = 8;
+            // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.SandyBrown;
@@ -91,33 +105,6 @@
             this.tabPage2.Text = "Ngày";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.Color.SandyBrown;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(3, 3);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(671, 70);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "label2";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // dtgvMonth
-            // 
-            this.dtgvMonth.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtgvMonth.BackgroundColor = System.Drawing.Color.White;
-            this.dtgvMonth.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvMonth.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtgvMonth.Location = new System.Drawing.Point(3, 73);
-            this.dtgvMonth.Margin = new System.Windows.Forms.Padding(2);
-            this.dtgvMonth.Name = "dtgvMonth";
-            this.dtgvMonth.RowHeadersWidth = 51;
-            this.dtgvMonth.RowTemplate.Height = 24;
-            this.dtgvMonth.Size = new System.Drawing.Size(671, 573);
-            this.dtgvMonth.TabIndex = 8;
-            // 
             // dtgvDay
             // 
             this.dtgvDay.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -132,6 +119,19 @@
             this.dtgvDay.Size = new System.Drawing.Size(671, 573);
             this.dtgvDay.TabIndex = 8;
             // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.SandyBrown;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(3, 3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(671, 70);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "label2";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // fDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -142,11 +142,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "fDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "fDetail";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvMonth)).EndInit();
+            this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDay)).EndInit();
             this.ResumeLayout(false);
 

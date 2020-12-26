@@ -57,6 +57,7 @@
             this.txbUser.Size = new System.Drawing.Size(277, 28);
             this.txbUser.TabIndex = 1;
             this.txbUser.Text = "admin";
+            this.txbUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txbUser_KeyDown);
             // 
             // panel2
             // 
@@ -89,6 +90,7 @@
             this.txbPassword.TabIndex = 2;
             this.txbPassword.Text = "a";
             this.txbPassword.UseSystemPasswordChar = true;
+            this.txbPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txbPassword_KeyDown);
             // 
             // btnLogin
             // 
@@ -215,9 +217,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "fLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Đăng nhập";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.fLogin_FormClosing);
-            this.Load += new System.EventHandler(this.fLogin_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();

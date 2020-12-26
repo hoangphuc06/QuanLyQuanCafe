@@ -62,7 +62,7 @@
             this.txbID.Enabled = false;
             this.txbID.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txbID.Location = new System.Drawing.Point(91, 33);
-            this.txbID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txbID.Margin = new System.Windows.Forms.Padding(2);
             this.txbID.Name = "txbID";
             this.txbID.Size = new System.Drawing.Size(292, 29);
             this.txbID.TabIndex = 2;
@@ -71,7 +71,7 @@
             // 
             this.txbCategoryName.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txbCategoryName.Location = new System.Drawing.Point(91, 104);
-            this.txbCategoryName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txbCategoryName.Margin = new System.Windows.Forms.Padding(2);
             this.txbCategoryName.Name = "txbCategoryName";
             this.txbCategoryName.Size = new System.Drawing.Size(292, 29);
             this.txbCategoryName.TabIndex = 3;
@@ -84,7 +84,7 @@
             this.btnOK.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnOK.ForeColor = System.Drawing.Color.White;
             this.btnOK.Location = new System.Drawing.Point(234, 161);
-            this.btnOK.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(2);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(149, 44);
             this.btnOK.TabIndex = 4;
@@ -104,10 +104,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CategoryDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CategoryDetails";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CategoryDetails_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();

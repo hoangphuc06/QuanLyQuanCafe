@@ -42,7 +42,7 @@
             this.txbID.Enabled = false;
             this.txbID.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txbID.Location = new System.Drawing.Point(175, 31);
-            this.txbID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txbID.Margin = new System.Windows.Forms.Padding(2);
             this.txbID.Name = "txbID";
             this.txbID.Size = new System.Drawing.Size(207, 29);
             this.txbID.TabIndex = 0;
@@ -51,7 +51,7 @@
             // 
             this.txbTablename.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txbTablename.Location = new System.Drawing.Point(175, 94);
-            this.txbTablename.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txbTablename.Margin = new System.Windows.Forms.Padding(2);
             this.txbTablename.Name = "txbTablename";
             this.txbTablename.Size = new System.Drawing.Size(207, 29);
             this.txbTablename.TabIndex = 1;
@@ -61,7 +61,7 @@
             this.txbStatus.Enabled = false;
             this.txbStatus.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txbStatus.Location = new System.Drawing.Point(175, 161);
-            this.txbStatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txbStatus.Margin = new System.Windows.Forms.Padding(2);
             this.txbStatus.Name = "txbStatus";
             this.txbStatus.Size = new System.Drawing.Size(207, 29);
             this.txbStatus.TabIndex = 2;
@@ -107,7 +107,7 @@
             this.btnOK.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnOK.ForeColor = System.Drawing.Color.White;
             this.btnOK.Location = new System.Drawing.Point(269, 225);
-            this.btnOK.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(2);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(113, 38);
             this.btnOK.TabIndex = 6;
@@ -129,10 +129,9 @@
             this.Controls.Add(this.txbTablename);
             this.Controls.Add(this.txbID);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "TableDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "TableDetails";
             this.ResumeLayout(false);
             this.PerformLayout();
 
