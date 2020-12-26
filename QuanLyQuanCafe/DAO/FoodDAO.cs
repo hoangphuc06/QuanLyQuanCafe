@@ -25,7 +25,7 @@ namespace QuanLyQuanCafe.DAO
         public List<Food> GetFoodByCategoryID(int id)
         {
             List<Food> list = new List<Food>();
-            string query = "select ID_Food as [ID], ID_FoodCategory as [Category ID] ,NameFood as [Tên Món],Price as [Giá],Active from Food where Active = 1 and ID_FoodCategory = " + id;
+            string query = "select ID_Food as [ID], ID_FoodCategory as [CategoryID] ,NameFood as [Name],Price as [Price],Active from Food where Active = 1 and ID_FoodCategory = " + id;
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
             foreach (DataRow item in data.Rows)
             {
@@ -70,7 +70,7 @@ namespace QuanLyQuanCafe.DAO
         public List<Food> SearchFoodByName(string name)
         {
             List<Food> list = new List<Food>();
-            string query = string.Format("select * from dbo.Food where dbo.GetUnsignString(NameFood) like N'%' + dbo.GetUnsignString(N'{0}')+ '%'", name);
+            string query = string.Format("select ID_Food as [ID], ID_FoodCategory as [CategoryID] ,NameFood as [Name],Price as [Price],Active from Food where dbo.GetUnsignString(NameFood) like N'%' + dbo.GetUnsignString(N'{0}')+ '%'", name);
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
             foreach (DataRow item in data.Rows)
             {
@@ -81,14 +81,39 @@ namespace QuanLyQuanCafe.DAO
         }
         Image ByteArrayToImage(byte[] img)
         {
-            MemoryStream m = new MemoryStream(img);
-            return Image.FromStream(m);
+            if (IsValidImage(img) == true)
+            {
+                MemoryStream m = new MemoryStream(img);
+                return Image.FromStream(m);
+            }
+            else
+                return null;
+
+        }
+
+        public static bool IsValidImage(byte[] bytes)
+        {
+            try
+            {
+                using (MemoryStream ms = new MemoryStream(bytes))
+                    Image.FromStream(ms);
+            }
+            catch (ArgumentException)
+            {
+                return false;
+            }
+            return true;
         }
         public bool UpdateFoodImage(byte[] img, string name)
         {
-            
-            int result = DataProvider.Instance.ExecuteNonQuery("update Food set Image_Food ="+ img+ " where NameFood = "+name);
-       
+
+            SqlConnection conn = new SqlConnection(DataProvider.Instance.ConnectionSTR);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("update Food set Image_Food = @hinh where NameFood = @ten", conn);
+            cmd.Parameters.Add("@ten", name);
+            cmd.Parameters.Add("@hinh", img);
+            int result = cmd.ExecuteNonQuery();
+            conn.Close();
 
             return result > 0;
         }
@@ -97,6 +122,8 @@ namespace QuanLyQuanCafe.DAO
             
             DataTable mtb = DataProvider.Instance.ExecuteQuery("select * from Food where ID_Food ="+id);
 
+            if (IsValidImage((byte[])mtb.Rows[0]["Image_Food"]) == false)
+                return null;
 
             Image img = ByteArrayToImage((byte[])mtb.Rows[0]["Image_Food"]);
         

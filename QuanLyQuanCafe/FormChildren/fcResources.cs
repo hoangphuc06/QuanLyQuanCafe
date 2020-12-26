@@ -41,12 +41,12 @@ namespace QuanLyQuanCafe.FormChildren
         void AddFoodBinding()
         {
             txbID.DataBindings.Add(new Binding("Text",dtgvResource.DataSource,"ID",true,DataSourceUpdateMode.Never));
-            txbName.DataBindings.Add(new Binding("Text", dtgvResource.DataSource, "Nguyên Liệu", true, DataSourceUpdateMode.Never));
-            txbSoLuong.DataBindings.Add(new Binding("Text", dtgvResource.DataSource, "Số Lượng", true, DataSourceUpdateMode.Never));
-            txbPrice.DataBindings.Add(new Binding("Text", dtgvResource.DataSource, "Giá", true, DataSourceUpdateMode.Never));
-            txbDonvi.DataBindings.Add(new Binding("Text", dtgvResource.DataSource, "Đơn Vị", true, DataSourceUpdateMode.Never));
-            txbDay.DataBindings.Add(new Binding("Text", dtgvResource.DataSource, "Ngày Nhập", true, DataSourceUpdateMode.Never));
-            txbNguoiNhap.DataBindings.Add(new Binding("Text", dtgvResource.DataSource, "Người Nhập", true, DataSourceUpdateMode.Never));
+            txbName.DataBindings.Add(new Binding("Text", dtgvResource.DataSource, "Name", true, DataSourceUpdateMode.Never));
+            txbSoLuong.DataBindings.Add(new Binding("Text", dtgvResource.DataSource, "Amount", true, DataSourceUpdateMode.Never));
+            txbPrice.DataBindings.Add(new Binding("Text", dtgvResource.DataSource, "Price", true, DataSourceUpdateMode.Never));
+            txbDonvi.DataBindings.Add(new Binding("Text", dtgvResource.DataSource, "Unit", true, DataSourceUpdateMode.Never));
+            txbDay.DataBindings.Add(new Binding("Text", dtgvResource.DataSource, "DayIn", true, DataSourceUpdateMode.Never));
+            txbNguoiNhap.DataBindings.Add(new Binding("Text", dtgvResource.DataSource, "UserName", true, DataSourceUpdateMode.Never));
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -188,7 +188,7 @@ namespace QuanLyQuanCafe.FormChildren
         private void btnHuy_Click(object sender, EventArgs e)
         {
 
-            ListMonthResoures();
+            LoadListResource();
             txbID.Enabled = false;
             txbName.Enabled = false;
             txbPrice.Enabled = false;

@@ -20,15 +20,16 @@ namespace QuanLyQuanCafe.FormChildren
         {
             InitializeComponent();
             load();
-            AddFoodBinding();
+            
         }
 
         void load()
         {
             dtgvFood.DataSource = foodList;
             LoadListFood();
+            AddFoodBinding();
             //LoadCategoryIntoCombobox(cbxFoodCategory);
-            
+
         }
         void LoadListFood()
         {
@@ -44,9 +45,9 @@ namespace QuanLyQuanCafe.FormChildren
         void AddFoodBinding()
         {
             lbFoodID.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "ID", true, DataSourceUpdateMode.Never));
-            lbFoodName.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Tên Món", true, DataSourceUpdateMode.Never));
-            lbFoodCategory.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Category ID", true, DataSourceUpdateMode.Never));
-            lbFoodPrice.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Giá", true, DataSourceUpdateMode.Never));
+            lbFoodName.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Name", true, DataSourceUpdateMode.Never));
+            lbFoodCategory.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "CategoryID", true, DataSourceUpdateMode.Never));
+            lbFoodPrice.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Price", true, DataSourceUpdateMode.Never));
             lbActive.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Active", true, DataSourceUpdateMode.Never));
         }
 
@@ -98,9 +99,13 @@ namespace QuanLyQuanCafe.FormChildren
         }
         byte[] ImageToByteArray(Image img)
         {
-            MemoryStream m = new MemoryStream();
-            img.Save(m, System.Drawing.Imaging.ImageFormat.Png);
-            return m.ToArray();
+            if (img != null)
+            {
+                MemoryStream m = new MemoryStream();
+                img.Save(m, System.Drawing.Imaging.ImageFormat.Png);
+                return m.ToArray();
+            }
+            return null;
         }
         private void btnEditFood_Click(object sender, EventArgs e)
         {

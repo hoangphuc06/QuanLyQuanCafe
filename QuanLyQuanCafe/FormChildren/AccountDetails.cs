@@ -54,14 +54,6 @@ namespace QuanLyQuanCafe.FormChildren
 
         }
 
-        private void ptbPicture_DoubleClick(object sender, EventArgs e)
-        {
-            OpenFileDialog open = new OpenFileDialog() { Filter = "Image Files (*.bmp;*.png;*.jpg)|*.bmp;*.png;*.jpg" };
-            if (open.ShowDialog() == DialogResult.OK)
-            {
-                ptbPicture.Image = Image.FromFile(open.FileName);
-            }
-        }
 
         private void btnOk_Click(object sender, EventArgs e)
         {
@@ -161,6 +153,15 @@ namespace QuanLyQuanCafe.FormChildren
         private void AccountDetails_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Close();
+        }
+
+        private void btnAddImage_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog() { Filter = "Image Files (*.bmp;*.png;*.jpg)|*.bmp;*.png;*.jpg" };
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                ptbPicture.Image = Image.FromFile(open.FileName);
+            }
         }
     }
 }

@@ -20,9 +20,9 @@ namespace QuanLyQuanCafe.DTO
         public Food(DataRow row)
         {
             this.iD = (int)row["ID"];
-            this.name = row["Tên Món"].ToString();
-            this.CategoryiD = (int)row["Category ID"];
-            this.price = (float)Convert.ToDouble(row["Giá"].ToString());
+            this.name = row["Name"].ToString();
+            this.CategoryiD = (int)row["CategoryID"];
+            this.price = (float)Convert.ToDouble(row["Price"].ToString());
             this.Active = (int)row["Active"];
         }
         private int iD;

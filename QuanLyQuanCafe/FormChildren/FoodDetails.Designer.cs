@@ -56,7 +56,7 @@
             this.ID.Location = new System.Drawing.Point(33, 39);
             this.ID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ID.Name = "ID";
-            this.ID.Size = new System.Drawing.Size(35, 27);
+            this.ID.Size = new System.Drawing.Size(30, 22);
             this.ID.TabIndex = 0;
             this.ID.Text = "ID";
             // 
@@ -67,7 +67,7 @@
             this.label2.Location = new System.Drawing.Point(33, 164);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(107, 27);
+            this.label2.Size = new System.Drawing.Size(85, 22);
             this.label2.TabIndex = 1;
             this.label2.Text = "Tên món";
             // 
@@ -78,7 +78,7 @@
             this.label3.Location = new System.Drawing.Point(33, 281);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 27);
+            this.label3.Size = new System.Drawing.Size(46, 22);
             this.label3.TabIndex = 2;
             this.label3.Text = "Loại";
             // 
@@ -89,7 +89,7 @@
             this.label4.Location = new System.Drawing.Point(33, 396);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 27);
+            this.label4.Size = new System.Drawing.Size(39, 22);
             this.label4.TabIndex = 3;
             this.label4.Text = "Giá";
             // 
@@ -101,7 +101,7 @@
             this.txbID.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txbID.Name = "txbID";
             this.txbID.ReadOnly = true;
-            this.txbID.Size = new System.Drawing.Size(180, 35);
+            this.txbID.Size = new System.Drawing.Size(180, 29);
             this.txbID.TabIndex = 4;
             this.txbID.TextChanged += new System.EventHandler(this.txbID_TextChanged);
             // 
@@ -111,7 +111,7 @@
             this.txbFoodName.Location = new System.Drawing.Point(38, 204);
             this.txbFoodName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txbFoodName.Name = "txbFoodName";
-            this.txbFoodName.Size = new System.Drawing.Size(336, 35);
+            this.txbFoodName.Size = new System.Drawing.Size(336, 29);
             this.txbFoodName.TabIndex = 5;
             this.txbFoodName.TextChanged += new System.EventHandler(this.txbFoodName_TextChanged);
             // 
@@ -121,7 +121,7 @@
             this.txbPrice.Location = new System.Drawing.Point(38, 436);
             this.txbPrice.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txbPrice.Name = "txbPrice";
-            this.txbPrice.Size = new System.Drawing.Size(336, 35);
+            this.txbPrice.Size = new System.Drawing.Size(336, 29);
             this.txbPrice.TabIndex = 7;
             this.txbPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbPrice_KeyPress);
             // 
@@ -132,8 +132,9 @@
             this.cbFoodCategory.Location = new System.Drawing.Point(40, 321);
             this.cbFoodCategory.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cbFoodCategory.Name = "cbFoodCategory";
-            this.cbFoodCategory.Size = new System.Drawing.Size(336, 35);
+            this.cbFoodCategory.Size = new System.Drawing.Size(336, 30);
             this.cbFoodCategory.TabIndex = 8;
+            this.cbFoodCategory.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbFoodCategory_KeyPress);
             // 
             // pbFoodImage
             // 
@@ -231,7 +232,7 @@
             // 
             // FoodDetails
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 27F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(781, 542);

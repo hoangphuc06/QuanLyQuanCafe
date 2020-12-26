@@ -24,17 +24,18 @@ namespace QuanLyQuanCafe.DAO
             return DataProvider.Instance.ExecuteQuery("exec USP_LoadResource");
         }
 
-        public List<Resource> GetResourceByMonth(int month,int year)
+        public DataTable GetResourceByMonth(int month,int year)
         {
-            List<Resource> list = new List<Resource>();
-            string query = string.Format("select * from Resources where MONTH(DayIn) = {0} AND YEAR(DayIn) = {1}",month,year);
-            DataTable data = DataProvider.Instance.ExecuteQuery(query);
-            foreach (DataRow item in data.Rows)
-            {
-                Resource res = new Resource(item);
-                list.Add(res);
-            }
-            return list;
+            //List<Resource> list = new List<Resource>();
+            string query = string.Format("select ID_Resource as [ID], RName as [Name], Price,DayIn, Unit, Amount, UserName from Resources where MONTH(DayIn) = {0} AND YEAR(DayIn) = {1}", month,year);
+            //DataTable data = DataProvider.Instance.ExecuteQuery(query);
+            //foreach (DataRow item in data.Rows)
+            //{
+            //    Resource res = new Resource(item);
+            //    list.Add(res);
+            //}
+            //return list;
+            return DataProvider.Instance.ExecuteQuery(query);
         }
         public bool InsertResource(string id,string resourcename,float price,string dayin,string unit,int amount,string username)
         {

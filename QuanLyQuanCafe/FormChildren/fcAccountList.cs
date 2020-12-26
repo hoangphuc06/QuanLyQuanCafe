@@ -74,9 +74,13 @@ namespace QuanLyQuanCafe.FormChildren
 
         byte[] ImageToByteArray(Image img)
         {
-            MemoryStream m = new MemoryStream();
-            img.Save(m, System.Drawing.Imaging.ImageFormat.Png);
-            return m.ToArray();
+            if (img != null)
+            {
+                MemoryStream m = new MemoryStream();
+                img.Save(m, System.Drawing.Imaging.ImageFormat.Png);
+                return m.ToArray();
+            }
+            return null;
         }
         void EditAccount(string userName, string displayName, int type)
         {
