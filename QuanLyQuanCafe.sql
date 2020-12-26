@@ -692,7 +692,6 @@ begin
 end
 go
 --Load Reasource
-
 Create proc USP_LoadResource
 as
 begin
