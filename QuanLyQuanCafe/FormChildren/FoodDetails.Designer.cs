@@ -244,7 +244,6 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "FoodDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FoodDetails";
             this.Load += new System.EventHandler(this.FoodDetails_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbFoodImage)).EndInit();
             this.panel1.ResumeLayout(false);

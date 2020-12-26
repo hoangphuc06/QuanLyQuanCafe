@@ -68,11 +68,21 @@ namespace QuanLyQuanCafe
             }    
         }
 
-        private void fLogin_Load(object sender, EventArgs e)
-        {
 
+        private void txbPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin_Click(sender, e);
+            }
         }
 
-        
+        private void txbUser_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin_Click(sender, e);
+            }
+        }
     }
 }

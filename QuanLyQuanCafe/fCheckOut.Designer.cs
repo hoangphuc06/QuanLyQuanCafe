@@ -84,7 +84,7 @@
             this.lsvBill.Margin = new System.Windows.Forms.Padding(2);
             this.lsvBill.Name = "lsvBill";
             this.lsvBill.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lsvBill.Size = new System.Drawing.Size(485, 749);
+            this.lsvBill.Size = new System.Drawing.Size(485, 826);
             this.lsvBill.TabIndex = 12;
             this.lsvBill.UseCompatibleStateImageBehavior = false;
             this.lsvBill.View = System.Windows.Forms.View.Details;
@@ -129,9 +129,9 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.panel1.ForeColor = System.Drawing.Color.White;
-            this.panel1.Location = new System.Drawing.Point(0, 268);
+            this.panel1.Location = new System.Drawing.Point(0, 314);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(841, 481);
+            this.panel1.Size = new System.Drawing.Size(841, 512);
             this.panel1.TabIndex = 13;
             // 
             // btnReset
@@ -306,7 +306,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(535, 268);
+            this.panel3.Size = new System.Drawing.Size(535, 314);
             this.panel3.TabIndex = 14;
             // 
             // txbSumMoney
@@ -427,7 +427,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(535, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(306, 268);
+            this.panel2.Size = new System.Drawing.Size(306, 314);
             this.panel2.TabIndex = 15;
             // 
             // lbNameFood
@@ -461,7 +461,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1326, 749);
+            this.ClientSize = new System.Drawing.Size(1326, 826);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
@@ -469,7 +469,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "fCheckOut";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Form2";
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
