@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.lbActive = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnResetPassword = new FontAwesome.Sharp.IconButton();
             this.btnAddAccount = new FontAwesome.Sharp.IconButton();
@@ -48,17 +51,14 @@
             this.picAccount = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.dtgvAccount = new System.Windows.Forms.DataGridView();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.lbActive = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel28.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAccount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).BeginInit();
-            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -74,10 +74,42 @@
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel1.Location = new System.Drawing.Point(633, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(345, 786);
             this.panel1.TabIndex = 1;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.lbActive);
+            this.panel6.Controls.Add(this.label3);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel6.Location = new System.Drawing.Point(0, 577);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(343, 101);
+            this.panel6.TabIndex = 11;
+            // 
+            // lbActive
+            // 
+            this.lbActive.BackColor = System.Drawing.Color.White;
+            this.lbActive.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbActive.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbActive.Location = new System.Drawing.Point(25, 53);
+            this.lbActive.Name = "lbActive";
+            this.lbActive.Size = new System.Drawing.Size(268, 36);
+            this.lbActive.TabIndex = 4;
+            this.lbActive.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label3.Location = new System.Drawing.Point(21, 17);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(208, 24);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Trạng thái làm việc:";
             // 
             // panel4
             // 
@@ -195,7 +227,7 @@
             this.panel28.Controls.Add(this.label1);
             this.panel28.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel28.Location = new System.Drawing.Point(0, 375);
-            this.panel28.Margin = new System.Windows.Forms.Padding(2);
+            this.panel28.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel28.Name = "panel28";
             this.panel28.Size = new System.Drawing.Size(343, 101);
             this.panel28.TabIndex = 3;
@@ -229,7 +261,7 @@
             this.panel2.Controls.Add(this.lbUserName);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 274);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(343, 101);
             this.panel2.TabIndex = 4;
@@ -276,66 +308,37 @@
             // 
             // dtgvAccount
             // 
+            this.dtgvAccount.AllowUserToAddRows = false;
+            this.dtgvAccount.AllowUserToDeleteRows = false;
             this.dtgvAccount.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvAccount.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvAccount.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvAccount.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgvAccount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgvAccount.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgvAccount.DefaultCellStyle = dataGridViewCellStyle2;
             this.dtgvAccount.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtgvAccount.Location = new System.Drawing.Point(0, 0);
-            this.dtgvAccount.Margin = new System.Windows.Forms.Padding(2);
+            this.dtgvAccount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtgvAccount.Name = "dtgvAccount";
+            this.dtgvAccount.ReadOnly = true;
             this.dtgvAccount.RowHeadersWidth = 51;
             this.dtgvAccount.RowTemplate.Height = 24;
             this.dtgvAccount.Size = new System.Drawing.Size(633, 786);
             this.dtgvAccount.TabIndex = 3;
             this.dtgvAccount.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvAccount_CellClick);
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.lbActive);
-            this.panel6.Controls.Add(this.label3);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(0, 577);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(343, 101);
-            this.panel6.TabIndex = 11;
-            // 
-            // lbActive
-            // 
-            this.lbActive.BackColor = System.Drawing.Color.White;
-            this.lbActive.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbActive.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbActive.Location = new System.Drawing.Point(25, 53);
-            this.lbActive.Name = "lbActive";
-            this.lbActive.Size = new System.Drawing.Size(268, 36);
-            this.lbActive.TabIndex = 4;
-            this.lbActive.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label3.Location = new System.Drawing.Point(21, 17);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(208, 24);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Trạng thái làm việc:";
             // 
             // fcAccountList
             // 
@@ -348,6 +351,8 @@
             this.Name = "fcAccountList";
             this.Text = "fcAccountList";
             this.panel1.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -357,8 +362,6 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAccount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).EndInit();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -371,7 +374,6 @@
         private System.Windows.Forms.Label lbTypeAccount;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dtgvAccount;
         private System.Windows.Forms.Panel panel3;
         private FontAwesome.Sharp.IconButton btnAddAccount;
         private FontAwesome.Sharp.IconButton btnEditAccount;
@@ -386,5 +388,6 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label lbActive;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridView dtgvAccount;
     }
 }

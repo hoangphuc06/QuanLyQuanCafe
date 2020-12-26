@@ -114,9 +114,9 @@ namespace QuanLyQuanCafe
         private void btnAdmin_Click(object sender, EventArgs e)
         {
             fAdmin f = new fAdmin(LoginAccount);
-            this.Hide();
+            
             f.ShowDialog();
-            this.Show();
+        
             flpTable.Controls.Clear();
             LoadTable();
             lbInfoUser.Text = UserAccount.Instance.GetDisplayNameByID(loginAccount.UserName);
@@ -126,9 +126,9 @@ namespace QuanLyQuanCafe
         private void btnUser_Click(object sender, EventArgs e)
         {
             fAccount f = new fAccount(loginAccount);
-            this.Hide();
+           
             f.ShowDialog();
-            this.Show();
+           
             lbInfoUser.Text = UserAccount.Instance.GetDisplayNameByID(loginAccount.UserName);
             picUser.Image = UserAccount.Instance.GetImageByName(loginAccount.UserName);
         }

@@ -170,5 +170,10 @@ namespace QuanLyQuanCafe
                 e.Handled = true;
             }
         }
+
+        private void cbFoodCategory_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }

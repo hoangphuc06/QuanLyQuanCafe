@@ -1,47 +1,63 @@
 ﻿CREATE DATABASE QuanLyQuanCafe
+go
 USE QuanLyQuanCafe
+go
 
 CREATE TABLE TableFood
 (
 	ID_TableFood INT IDENTITY PRIMARY KEY,
 	NameTable NVARCHAR(100) NOT NULL DEFAULT N'Bàn chưa có tên',
-	StatusTable NVARCHAR(100) NOT NULL DEFAULT N'Trống'	-- Tr?ng ho?c Có ngý?i
+	StatusTable NVARCHAR(100) NOT NULL DEFAULT N'Trống',	-- Trống hoặc có người
+	Active int default 1
 )
+go
 
 CREATE TABLE Account
 (
 	UserName NVARCHAR(100) PRIMARY KEY,	
 	DisplayName NVARCHAR(100) NOT NULL DEFAULT N'Tên hiển thị',
 	PassWord NVARCHAR(1000) NOT NULL DEFAULT 0,
-	Type INT NOT NULL  DEFAULT 0 -- 0: admin && 1: staff
+	Type INT NOT NULL  DEFAULT 0, -- 0: admin && 1: staff
+	Active int default 1,
+	Image_Account image
 )
+go
 
 CREATE TABLE FoodCategory
 (
 	ID_FoodCategory INT IDENTITY PRIMARY KEY,
-	name NVARCHAR(100) NOT NULL DEFAULT N'Chưa đặt tên'
+	name NVARCHAR(100) NOT NULL DEFAULT N'Chưa đặt tên',
+	Active int default 1
 )
+go
 
 CREATE TABLE Food
 (
 	ID_Food INT IDENTITY PRIMARY KEY,
 	NameFood NVARCHAR(100) NOT NULL DEFAULT N'Chưa đặt tên',
 	ID_FoodCategory INT NOT NULL,
-	Price FLOAT NOT NULL DEFAULT 0
+	Price FLOAT NOT NULL DEFAULT 0,
+	Active int default 1,
+	Image_Food image
 	
 	FOREIGN KEY (ID_FoodCategory) REFERENCES FoodCategory(ID_FoodCategory)
 )
+go
 
 CREATE TABLE Bill
 (
 	ID_Bill INT IDENTITY PRIMARY KEY,
-	DateCheckIn DATETIME NOT NULL DEFAULT GETDATE(),
-	DateCheckOut DATETIME,
+	DateCheckIn DATE NOT NULL DEFAULT GETDATE(),
+	DateCheckOut DATE,
 	ID_TableFood INT NOT NULL, 
-	status INT NOT NULL DEFAULT 0 -- 1: đã thanh toán && 0: chưa thanh toán
+	status INT NOT NULL DEFAULT 0, -- 1: đã thanh toán && 0: chưa thanh toán
+	totalPrice FLOAT,
+	discount INT,
+	ID_User NVARCHAR(100)
 	
 	FOREIGN KEY (ID_TableFood) REFERENCES TableFood(ID_TableFood)
 )
+go
 
 CREATE TABLE BillInfo
 (
@@ -53,17 +69,33 @@ CREATE TABLE BillInfo
 	FOREIGN KEY (ID_BillInfo) REFERENCES Bill(ID_Bill),
 	FOREIGN KEY (ID_Food) REFERENCES dbo.Food(ID_Food)
 )
+go
+
+create table Resources
+(
+	ID_Resource varchar(4) not null,
+	RName Nvarchar(40) not null,
+	Price money not null,
+	DayIn date not null,
+	Unit nvarchar(20) not null,
+	Amount int not null,
+	UserName Nvarchar(100) not null,
+
+	primary key (ID_Resource)
+)
+go
 
 --//CSDL Form đăng nhập
 		
-insert into Account(UserName,DisplayName,Password,Type)
-values ('admin','Phuc','1962026656160185351301320480154111117132155',0)
+insert into Account(UserName,DisplayName,Password,Type,Active,Image_Account)
+values ('admin',N'Quản lý','1962026656160185351301320480154111117132155',0,1,'1550')
+go
 
-insert into Account(UserName,DisplayName,Password,Type)
-values ('staff1','Hoang','1962026656160185351301320480154111117132',1)
+INSERT INTO FoodCategory (name ) VALUES (N'Cafe')
+go
 
-insert into Account(UserName,DisplayName,Password,Type)
-values ('staff2','Hung','1962026656160185351301320480154111117132',1)
+INSERT INTO Food (NameFood, ID_FoodCategory, Price,Image_Food) VALUES (N'Cafe đá',1, 18000,'1550')
+go
 
 CREATE PROC USP_Getaccountbyusername
 @username varchar(100)
@@ -73,12 +105,6 @@ BEGIN
 END
 GO
 
-EXEC dbo.USP_Getaccountbyusername @username = N'staff'
-
-SELECT COUNT(*) FROM dbo.Account WHERE UserName = N'staff' AND Password = N'1' OR 1=1
-select*from Account
-
-DROP PROC USP_Login
 CREATE PROC USP_Login
 @username varchar(100),@password varchar(100)
 AS
@@ -90,97 +116,76 @@ GO
 -- INSERT BAN AN
 DECLARE @i INT = 1
 
-WHILE @i <= 30
+WHILE @i <= 10
 BEGIN
 	INSERT DBO.TableFood(NameTable) VALUES ('Bàn ' + CAST(@i AS nvarchar(100)))
 	SET @i = @i + 1
 END
 GO
 
-SELECT * FROM TableFood
-GO
 
 CREATE PROC USP_GetTableList
 AS SELECT * FROM dbo.TableFood
 GO
 
-EXEC dbo.USP_GetTableList
 
- -- INSERT CATEGORY
-INSERT INTO FoodCategory (name ) VALUES (N'Cafe')
-INSERT INTO FoodCategory (name ) VALUES (N'Trà sữa')
-INSERT INTO FoodCategory (name ) VALUES (N'Sinh tố')
-INSERT INTO FoodCategory (name ) VALUES (N'Chè')
-INSERT INTO FoodCategory (name ) VALUES (N'Ðá xay')
-INSERT INTO FoodCategory (name ) VALUES (N'Nước ngọt')
-INSERT INTO FoodCategory (name ) VALUES (N'Mì cay')
-INSERT INTO FoodCategory (name ) VALUES (N'Ăn vặt')
+-- -- INSERT CATEGORY
+--INSERT INTO FoodCategory (name ) VALUES (N'Cafe')
+--INSERT INTO FoodCategory (name ) VALUES (N'Trà sữa')
+--INSERT INTO FoodCategory (name ) VALUES (N'Sinh tố')
+--INSERT INTO FoodCategory (name ) VALUES (N'Chè')
+--INSERT INTO FoodCategory (name ) VALUES (N'Ðá xay')
+--INSERT INTO FoodCategory (name ) VALUES (N'Nước ngọt')
+--INSERT INTO FoodCategory (name ) VALUES (N'Mì cay')
+--INSERT INTO FoodCategory (name ) VALUES (N'Ăn vặt')
 
--- INSERT FOOD
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Cafe đá',1, 18000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Cafe nóng',1, 18000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Cafe sữa đá',1, 20000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Cafe sữa nóng',1, 20000)
+---- INSERT FOOD
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Cafe đá',1, 18000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Cafe nóng',1, 18000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Cafe sữa đá',1, 20000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Cafe sữa nóng',1, 20000)
 
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Trà sữa truyền thống',2, 25000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Trà sữa nho',2, 25000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Trà sữa socola',2, 25000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Trà sữa kiwi',2, 25000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Trà sữa dâu',2, 25000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Trà sữa bạc hà',2, 25000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Trà sữa truyền thống',2, 25000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Trà sữa nho',2, 25000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Trà sữa socola',2, 25000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Trà sữa kiwi',2, 25000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Trà sữa dâu',2, 25000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Trà sữa bạc hà',2, 25000)
 
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh tố bơ',3, 30000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh tố dâu',3, 30000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh tố mít',3, 25000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh tố xoài',3, 25000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh tố đu đủ',3, 25000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh tố sapôchê',3, 25000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh tố bơ',3, 30000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh tố dâu',3, 30000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh tố mít',3, 25000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh tố xoài',3, 25000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh tố đu đủ',3, 25000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sinh tố sapôchê',3, 25000)
 
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Chè thái',4, 20000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Chè bưởi',4, 20000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Chè thập cẩm',4, 20000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Chè đậu xanh',4, 20000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Chè đậu đen',4, 20000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Chè thái',4, 20000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Chè bưởi',4, 20000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Chè thập cẩm',4, 20000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Chè đậu xanh',4, 20000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Chè đậu đen',4, 20000)
 
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Caramel đá xay',5, 35000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Cacpuccino đá xay',5, 35000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Matcha đá xay',5, 35000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Socola đá xay',5, 35000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Caramel đá xay',5, 35000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Cacpuccino đá xay',5, 35000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Matcha đá xay',5, 35000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Socola đá xay',5, 35000)
 
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sting',6, 10000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'CocaCola',6, 10000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'7Up',6, 10000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Pepsi',6, 10000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Sting',6, 10000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'CocaCola',6, 10000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'7Up',6, 10000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Pepsi',6, 10000)
 
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Mì cay bò',7, 40000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Mì cay bò Mỹ',7, 40000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Mì cay hải sản',7, 40000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Mì cay trứng',7, 40000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Mì cay bò',7, 40000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Mì cay bò Mỹ',7, 40000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Mì cay hải sản',7, 40000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Mì cay trứng',7, 40000)
 
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Bò cá viên chiên',8, 25000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Bánh tráng trộn',8, 20000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Bánh bao chiên',8, 10000)
-INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Bánh sầu riêng',8, 15000)
-
--- INSERT BILL
-INSERT INTO Bill (DateCheckIn, DateCheckOut, ID_TableFood, status) VALUES (GETDATE(), NULL, 1, 0)
-INSERT INTO Bill (DateCheckIn, DateCheckOut, ID_TableFood, status) VALUES (GETDATE(), NULL, 2, 0)
-INSERT INTO Bill (DateCheckIn, DateCheckOut, ID_TableFood, status) VALUES (GETDATE(), GETDATE(), 3, 1)
-
--- INSERT BILL INFO
-INSERT INTO BillInfo (ID_BillInfo, ID_Food, count) VALUES (1, 1, 3)
-INSERT INTO BillInfo (ID_BillInfo, ID_Food, count) VALUES (1, 6, 1)
-INSERT INTO BillInfo (ID_BillInfo, ID_Food, count) VALUES (1, 10, 2)
-INSERT INTO BillInfo (ID_BillInfo, ID_Food, count) VALUES (2, 2, 1)
-INSERT INTO BillInfo (ID_BillInfo, ID_Food, count) VALUES (2, 10, 1)
-INSERT INTO BillInfo (ID_BillInfo, ID_Food, count) VALUES (2, 15, 2)
-INSERT INTO BillInfo (ID_BillInfo, ID_Food, count) VALUES (2,20, 1)
-
-select * from Food
-select * from Bill
-select * from BillInfo
-
--- Update tài kho?n
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Bò cá viên chiên',8, 25000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Bánh tráng trộn',8, 20000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Bánh bao chiên',8, 10000)
+--INSERT INTO Food (NameFood, ID_FoodCategory, Price) VALUES (N'Bánh sầu riêng',8, 15000)
+--go
+-- Update tài khoản
 CREATE PROC USP_UpdateAccount
 @userName NVARCHAR(100), @displayName NVARCHAR(100), @password NVARCHAR(100), @newPassword NVARCHAR(100)
 AS
@@ -198,15 +203,6 @@ BEGIN
  	END
 END
 GO
-
-SELECT * FROM Bill
-SELECT * FROM BillInfo
-
-
-
-ALter table dbo.Bill
-add discount INT
-update dbo.Bill set discount=0
 
 --Thanh toán hóa đơn
 Create PROC USP_InsertBill
@@ -402,9 +398,6 @@ BEGIN
 END
 GO
 
---Hiển thị danh sách hóa đơn
-ALTER TABLE dbo.Bill ADD totalPrice FLOAT
-
 --drop proc  USP_GetListBillByDate
 CREATE PROC USP_GetListBillByDate
 @checkIn date,@checkout date
@@ -465,21 +458,7 @@ BEGIN
     END
     RETURN @strInput
 END
-
-
-
-
-select a.count from dbo.BillInfo as a,dbo.Bill as b
-Where a.ID_BillInfo=b.ID_Bill and b.ID_TableFood=22
-
-select * from dbo.BillInfo where ID_Bill=66
-select* from dbo.TableFood
-
-select count from dbo.BillInfo as a,dbo.Bill as b Where a.ID_BillInfo=b.ID_Bill and b.ID_TableFood=7  AND ID_Food=1 and status=0
-delete from dbo.BillInfo
-where ID_BillInfo=(select ID_Bill from dbo.Bill where ID_TableFood=7   and status=0 )
-delete from dbo.Bill where ID_TableFood=7   and status=0
-
+go
 
 --Gộp bàn
 
@@ -648,13 +627,6 @@ BEGIN
 END
 GO
 
-alter table Food
-add Image_Food image
-
---Add Image for Account
-alter table Account
-add Image_Account image
- set dateformat dmy
 
 -- Lấy danh sách số lượng món bán trong tháng
  create proc USP_getFoodofBillinMonth
@@ -703,31 +675,27 @@ order by sum(bi.count) desc
 end
 go
 
-set dateformat dmy insert into Resources values(N'S1', N'Sữa bò',10000,'23/12/2001', N'lít',10, N'admin')
+--LoadTableFood
+Create proc USP_LoadTableFood
+as
+begin
+	select ID_TableFood as [ID], NameTable as [Tên Bàn] ,StatusTable as [Trạng Thái],Active from TableFood
+end
+go
 
--- Thuộc tính active
-alter table Account add Active int -- 0:nghỉ việc   1:còn làm
-alter table TableFood add Active int
-alter table Food add Active int
-alter table FoodCategory add Active int
+--GetListFood
 
-update Account set Active  = 1
-update TableFood set Active  = 1
-update Food set Active  = 1
-update FoodCategory set Active  = 1
+Create proc USP_GetListFood
+as
+begin
+	select ID_Food as [ID], ID_FoodCategory as [CategoryID] ,NameFood as [Name],Price as [Price],Active from Food 
+end
+go
+--Load Reasource
 
-SELECT * FROM dbo.TableFood
-
---create table Resources
-create table Resources
-(
-	ID_Resource varchar(4) not null,
-	RName Nvarchar(40) not null,
-	Price money not null,
-	DayIn date not null,
-	Unit nvarchar(20) not null,
-	Amount int not null,
-	UserName Nvarchar(100) not null,
-
-	primary key (ID_Resource)
-)
+Create proc USP_LoadResource
+as
+begin
+	select ID_Resource as [ID], RName as [Name], Price,DayIn, Unit, Amount, UserName from Resources
+end
+go

@@ -378,6 +378,8 @@
             // 
             // dtgvFood
             // 
+            this.dtgvFood.AllowUserToAddRows = false;
+            this.dtgvFood.AllowUserToDeleteRows = false;
             this.dtgvFood.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvFood.BackgroundColor = System.Drawing.Color.White;
             this.dtgvFood.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -402,6 +404,7 @@
             this.dtgvFood.Location = new System.Drawing.Point(0, 55);
             this.dtgvFood.Margin = new System.Windows.Forms.Padding(2);
             this.dtgvFood.Name = "dtgvFood";
+            this.dtgvFood.ReadOnly = true;
             this.dtgvFood.RowHeadersWidth = 51;
             this.dtgvFood.RowTemplate.Height = 24;
             this.dtgvFood.Size = new System.Drawing.Size(650, 731);

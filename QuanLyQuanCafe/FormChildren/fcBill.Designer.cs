@@ -109,6 +109,8 @@
             // 
             // dtgvBill
             // 
+            this.dtgvBill.AllowUserToAddRows = false;
+            this.dtgvBill.AllowUserToDeleteRows = false;
             this.dtgvBill.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvBill.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -132,6 +134,7 @@
             this.dtgvBill.Location = new System.Drawing.Point(0, 78);
             this.dtgvBill.Margin = new System.Windows.Forms.Padding(2);
             this.dtgvBill.Name = "dtgvBill";
+            this.dtgvBill.ReadOnly = true;
             this.dtgvBill.RowHeadersWidth = 51;
             this.dtgvBill.RowTemplate.Height = 24;
             this.dtgvBill.Size = new System.Drawing.Size(978, 708);

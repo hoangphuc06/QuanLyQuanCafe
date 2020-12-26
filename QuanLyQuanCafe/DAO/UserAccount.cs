@@ -154,24 +154,51 @@ namespace QuanLyQuanCafe
         }
         Image ByteArrayToImage(byte[] img)
         {
-            MemoryStream m = new MemoryStream(img);
-            return Image.FromStream(m);
+            if (IsValidImage(img) == true)
+            {
+                MemoryStream m = new MemoryStream(img);
+                return Image.FromStream(m);
+            }
+            else
+                return null;
+            
         }
         public bool UpdateImage(string name, byte[] img)
         {
-            string temp = string.Format(" where UserName = N'{0}'", name);
-            int result = DataProvider.Instance.ExecuteNonQuery("update Account set Image_Account="+  img +temp);
-            
+            SqlConnection conn = new SqlConnection(DataProvider.Instance.ConnectionSTR);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("update Account set Image_Account = @hinh where UserName = @ten", conn);
+            cmd.Parameters.Add("@ten", name);
+            cmd.Parameters.Add("@hinh", img);
+            int result = cmd.ExecuteNonQuery();
+            conn.Close();
 
             return result > 0;
         }
+
+        public static bool IsValidImage(byte[] bytes)
+        {
+            try
+            {
+                using (MemoryStream ms = new MemoryStream(bytes))
+                    Image.FromStream(ms);
+            }
+            catch (ArgumentException)
+            {
+                return false;
+            }
+            return true;
+        }
+
         public Image GetImageByName(string name)
         {
             string temp = string.Format("select * from Account where UserName = N'{0}'", name);
             DataTable mtb = DataProvider.Instance.ExecuteQuery(temp);
-          
+
+            if (IsValidImage((byte[])mtb.Rows[0]["Image_Account"]) == false)
+                return null;
+
             Image img = ByteArrayToImage((byte[])mtb.Rows[0]["Image_Account"]);
-            
             return img;
         }
 

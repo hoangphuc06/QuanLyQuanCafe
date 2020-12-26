@@ -18,15 +18,13 @@ namespace QuanLyQuanCafe
         Timer t;
         bool isclick = false;
 
-        WindowsMediaPlayer sound1;
-        WindowsMediaPlayer sound2;
+        WindowsMediaPlayer sound;
 
         bool isplay = false;
         public fNotification()
         {
             InitializeComponent();
-            sound1 = new WindowsMediaPlayer();
-            sound2 = new WindowsMediaPlayer();
+            sound = new WindowsMediaPlayer();
         }
 
         private void btnPlay_Click(object sender, EventArgs e)
@@ -37,7 +35,7 @@ namespace QuanLyQuanCafe
                 t = new Timer();
                 t.Interval = 1000;
 
-                Speak1();
+                Speak();
                 t.Start();
                 t.Tick += T_Tick;
             }    
@@ -51,10 +49,6 @@ namespace QuanLyQuanCafe
         private void T_Tick(object sender, EventArgs e)
         {
             time++;
-            if (time == 7)
-            {
-                Speak2();
-            }
             if (time == 30)
             {
                 isclick = false;
@@ -63,14 +57,7 @@ namespace QuanLyQuanCafe
             }    
         }
 
-        private void Speak1()
-        {
-            string path = Path.GetFullPath(@"..\..\Sound\NhacDao.mp3");
-            sound1.URL = path;
-            sound1.controls.play();
-        }
-
-        private void Speak2()
+        private void Speak()
         {
             
             string path;
@@ -78,18 +65,18 @@ namespace QuanLyQuanCafe
             {
                 case "Thông báo đóng cửa":
                     path = Path.GetFullPath(@"..\..\Sound\DongCua.mp3");
-                    sound2.URL = path;
-                    sound2.controls.play();
+                    sound.URL = path;
+                    sound.controls.play();
                     break;
                 case "Thông báo nhận ví":
                     path = Path.GetFullPath(@"..\..\..\Sound\Vi.mp3");
-                    sound2.URL = path;
-                    sound2.controls.play();
+                    sound.URL = path;
+                    sound.controls.play();
                     break;
                 case "Thông báo nhận điện thoại":
                     path = Path.GetFullPath(@"..\..\Sound\DienThoai.mp3");
-                    sound2.URL = path;
-                    sound2.controls.play();
+                    sound.URL = path;
+                    sound.controls.play();
                     break;
             }
             
@@ -98,6 +85,12 @@ namespace QuanLyQuanCafe
         private void comboBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void fNotification_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.sound.controls.stop();
+            
         }
     }
 }

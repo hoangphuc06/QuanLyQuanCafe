@@ -33,8 +33,8 @@ namespace QuanLyQuanCafe.DTO
         }
         public Resource(DataRow row)
         {
-            this.id = row["ID_Resource"].ToString();
-            this.nName = row["RName"].ToString();
+            this.id = row["ID"].ToString();
+            this.nName = row["Name"].ToString();
             this.amount = (int)row["Amount"];
             this.price = (float)Convert.ToDouble(row["Price"]);
             this.unit = row["Unit"].ToString();

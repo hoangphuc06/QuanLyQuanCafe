@@ -18,15 +18,17 @@ namespace QuanLyQuanCafe.DAO
             private set => instance = value;
         }
 
+        public string ConnectionSTR { get => connectionSTR; set => connectionSTR = value; }
+
         private DataProvider() { }
 
-        private string connectionSTR = @"Data Source=MAYTINH\SQLEXPRESS;Initial Catalog=QuanLyQuanCafe;Integrated Security=True";
+        private string connectionSTR = @"Data Source=LAPTOP-2V5RLH6O\SQLEXPRESS01;Initial Catalog=QuanLyQuanCafe;Integrated Security=True";
 
         public DataTable ExecuteQuery(string query, object[] parameter = null)
         {
             DataTable data = new DataTable();
 
-            using (SqlConnection connection = new SqlConnection(connectionSTR))
+            using (SqlConnection connection = new SqlConnection(ConnectionSTR))
             {
                 connection.Open();
 
@@ -61,7 +63,7 @@ namespace QuanLyQuanCafe.DAO
         {
             int data = 0;
 
-            using (SqlConnection connection = new SqlConnection(connectionSTR))
+            using (SqlConnection connection = new SqlConnection(ConnectionSTR))
             {
                 connection.Open();
 
@@ -93,7 +95,7 @@ namespace QuanLyQuanCafe.DAO
         {
             object data = 0;
 
-            using (SqlConnection connection = new SqlConnection(connectionSTR))
+            using (SqlConnection connection = new SqlConnection(ConnectionSTR))
             {
                 connection.Open();
 
