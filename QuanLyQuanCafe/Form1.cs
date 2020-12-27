@@ -1,4 +1,5 @@
-﻿using QuanLyQuanCafe.DTO;
+﻿using QuanLyQuanCafe.DAO;
+using QuanLyQuanCafe.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,9 +17,10 @@ namespace QuanLyQuanCafe
         public fLogin()
         {
             InitializeComponent();
+            timer1.Start();
         }
 
-
+        
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string username = txbUser.Text;
@@ -82,6 +84,18 @@ namespace QuanLyQuanCafe
             if (e.KeyCode == Keys.Enter)
             {
                 btnLogin_Click(sender, e);
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (!InternetConnection.IsConnectedToInternet())
+            {
+                timer1.Stop();
+                MessageBox.Show("Tình trạng kết nối: Mất!");
+
+                
+                Environment.Exit(0);
             }
         }
     }
