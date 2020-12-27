@@ -22,7 +22,7 @@ namespace QuanLyQuanCafe.DAO
 
         private DataProvider() { }
 
-        private string connectionSTR = @"Data Source=LAPTOP-FLVOAAN8;Initial Catalog=QuanLyQuanCafe;Integrated Security=True";
+        private string connectionSTR = @"Server = 192.168.137.1,1433; Initial Catalog = QuanLyQuanCafe; User ID = sa; Password = 05062001; Integrated Security = False; Connect Timeout = 20;";
 
         public DataTable ExecuteQuery(string query, object[] parameter = null)
         {
