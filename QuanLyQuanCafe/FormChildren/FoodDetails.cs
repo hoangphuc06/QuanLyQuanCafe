@@ -92,9 +92,13 @@ namespace QuanLyQuanCafe
         }
         byte[] ImageToByteArray(Image img)
         {
-            MemoryStream m = new MemoryStream();
-            img.Save(m, System.Drawing.Imaging.ImageFormat.Png);
-            return m.ToArray();
+            if (img != null)
+            {
+                MemoryStream m = new MemoryStream();
+                img.Save(m, System.Drawing.Imaging.ImageFormat.Png);
+                return m.ToArray();
+            }
+            return null;
         }
         public bool IsAdd()
         {
@@ -105,9 +109,10 @@ namespace QuanLyQuanCafe
             else return true;
         }
 
-        public bool IsChannged(string fname, int fcategory, float fprice,byte[] img)
+        public bool IsChannged(string fname, int fcategory, float fprice,byte[] fimg)
         {
-            if (nName == fname && category == fcategory && price == fprice && image == img)
+            byte[] img = ImageToByteArray(pbFoodImage.Image);
+            if (nName == fname && category == fcategory && price == fprice && image == fimg)
                 return false;
             else
             {

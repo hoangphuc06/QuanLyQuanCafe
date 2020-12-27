@@ -120,7 +120,7 @@ namespace QuanLyQuanCafe.FormChildren
         public bool IsChannged(string funame,string fdname, int ftype,byte[] fimg)
         {
             byte[] img = ImageToByteArray(ptbPicture.Image);
-            if (uname == funame && dname == fdname && type == ftype && img.Equals(fimg))
+            if (uname == funame && dname == fdname && type == ftype && img == fimg)
                 return false;
             else
             {
@@ -129,9 +129,13 @@ namespace QuanLyQuanCafe.FormChildren
         }
         byte[] ImageToByteArray(Image img)
         {
-            MemoryStream m = new MemoryStream();
-            img.Save(m, System.Drawing.Imaging.ImageFormat.Png);
-            return m.ToArray();
+            if (img != null)
+            {
+                MemoryStream m = new MemoryStream();
+                img.Save(m, System.Drawing.Imaging.ImageFormat.Png);
+                return m.ToArray();
+            }
+            return null;
         }
         public void LoadAccount(string fid, string fname,int ftype)
         {
