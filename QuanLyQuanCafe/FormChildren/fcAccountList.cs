@@ -102,7 +102,7 @@ namespace QuanLyQuanCafe.FormChildren
             AccountDetails f = new AccountDetails(type);
             f.IsEdit = false;
             f.ShowDialog();
-            if (f.IsAdd())
+            if (f.UserName != null && f.IsAdd())
             {
                 AddAccount(f.UserName,f.DisplayName, f.AccountType);
                 UserAccount.Instance.UpdateImage(f.UserName, f.AccountImage);
@@ -212,6 +212,11 @@ namespace QuanLyQuanCafe.FormChildren
                 MessageBox.Show("Đổi trạng thái thất bại");
             }
             LoadAccount();
+        }
+
+        private void dtgvAccount_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

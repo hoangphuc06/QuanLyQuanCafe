@@ -339,6 +339,7 @@
             this.dtgvAccount.Size = new System.Drawing.Size(633, 786);
             this.dtgvAccount.TabIndex = 3;
             this.dtgvAccount.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvAccount_CellClick);
+            this.dtgvAccount.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvAccount_CellContentClick);
             // 
             // fcAccountList
             // 

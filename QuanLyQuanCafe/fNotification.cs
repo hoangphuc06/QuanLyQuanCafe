@@ -60,22 +60,24 @@ namespace QuanLyQuanCafe
         private void Speak()
         {
             
-            string path;
-            switch(comboBox1.SelectedItem.ToString())
+            switch (comboBox1.SelectedItem.ToString())
             {
                 case "Thông báo đóng cửa":
-                    path = Path.GetFullPath(@"..\..\Sound\DongCua.mp3");
-                    sound.URL = path;
+                    string pathss1 = Path.GetFullPath("./DongCua.mp3");
+                    FileInfo fi1 = new FileInfo(pathss1);
+                    sound.URL = fi1.FullName;
                     sound.controls.play();
                     break;
                 case "Thông báo nhận ví":
-                    path = Path.GetFullPath(@"..\..\..\Sound\Vi.mp3");
-                    sound.URL = path;
+                    string pathss2 = Path.GetFullPath("./Vi.mp3");
+                    FileInfo fi2 = new FileInfo(pathss2);
+                    sound.URL = fi2.FullName;
                     sound.controls.play();
                     break;
                 case "Thông báo nhận điện thoại":
-                    path = Path.GetFullPath(@"..\..\Sound\DienThoai.mp3");
-                    sound.URL = path;
+                    string pathss3 = Path.GetFullPath("./DienThoai.mp3");
+                    FileInfo fi3 = new FileInfo(pathss3);
+                    sound.URL = fi3.FullName;
                     sound.controls.play();
                     break;
             }
