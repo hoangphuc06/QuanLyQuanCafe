@@ -37,6 +37,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbInfoUser = new System.Windows.Forms.Label();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.picUser = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lsvBill = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -52,28 +54,28 @@
             this.lbTotalPrice = new System.Windows.Forms.Label();
             this.btnCheckOut = new FontAwesome.Sharp.IconButton();
             this.flpTable = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.picUser = new System.Windows.Forms.PictureBox();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
+            this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picUser)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picUser)).BeginInit();
+            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.btnNotification);
             this.panel1.Controls.Add(this.btnExit);
             this.panel1.Controls.Add(this.btnUser);
             this.panel1.Controls.Add(this.btnAdmin);
             this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.panel8);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.ForeColor = System.Drawing.Color.Teal;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -93,7 +95,7 @@
             this.btnNotification.IconColor = System.Drawing.Color.White;
             this.btnNotification.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnNotification.IconSize = 40;
-            this.btnNotification.Location = new System.Drawing.Point(20, 690);
+            this.btnNotification.Location = new System.Drawing.Point(19, 12);
             this.btnNotification.Margin = new System.Windows.Forms.Padding(2);
             this.btnNotification.Name = "btnNotification";
             this.btnNotification.Size = new System.Drawing.Size(50, 47);
@@ -217,6 +219,24 @@
             this.lbInfoUser.TabIndex = 0;
             this.lbInfoUser.Text = "label1";
             this.lbInfoUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.picUser);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel7.Location = new System.Drawing.Point(1062, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(71, 63);
+            this.panel7.TabIndex = 1;
+            // 
+            // picUser
+            // 
+            this.picUser.Location = new System.Drawing.Point(11, 12);
+            this.picUser.Name = "picUser";
+            this.picUser.Size = new System.Drawing.Size(48, 36);
+            this.picUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picUser.TabIndex = 0;
+            this.picUser.TabStop = false;
             // 
             // panel4
             // 
@@ -414,23 +434,14 @@
             this.flpTable.Size = new System.Drawing.Size(656, 686);
             this.flpTable.TabIndex = 4;
             // 
-            // panel7
+            // panel8
             // 
-            this.panel7.Controls.Add(this.picUser);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel7.Location = new System.Drawing.Point(1062, 0);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(71, 63);
-            this.panel7.TabIndex = 1;
-            // 
-            // picUser
-            // 
-            this.picUser.Location = new System.Drawing.Point(11, 12);
-            this.picUser.Name = "picUser";
-            this.picUser.Size = new System.Drawing.Size(48, 36);
-            this.picUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picUser.TabIndex = 0;
-            this.picUser.TabStop = false;
+            this.panel8.Controls.Add(this.btnNotification);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel8.Location = new System.Drawing.Point(0, 668);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(235, 79);
+            this.panel8.TabIndex = 9;
             // 
             // fTableManager
             // 
@@ -449,11 +460,12 @@
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picUser)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picUser)).EndInit();
+            this.panel8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -486,5 +498,6 @@
         private FontAwesome.Sharp.IconButton btnNotification;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.PictureBox picUser;
+        private System.Windows.Forms.Panel panel8;
     }
 }
